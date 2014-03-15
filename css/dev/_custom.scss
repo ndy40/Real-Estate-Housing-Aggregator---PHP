@@ -1,0 +1,54 @@
+
+//  
+//  Contents
+//  ================================
+//  
+//  Shared
+//	General
+//  Login
+//  
+//  ================================
+//  
+
+
+// Shared
+// --------------------------------------------------
+
+.full-width{ width: 100%;}
+
+$mb: mb !default;
+$mt: mt !default;
+
+@for $i from 1 through 10 {
+	.#{$mb}-#{$i} {margin-bottom: 0em + $i;}	
+	.#{$mt}-#{$i} {margin-top: 0em + $i;}		
+} 
+
+.fl-r{ float: right; }
+.fl-l{ float: left; }
+
+.cl-r {clear: right; }
+.cl-l {clear: left; }
+
+.ta-r {text-align: right; }
+.ta-l {text-align: left; }
+
+input {
+	height: 2.5em;
+	padding: 0.5em;	
+	border: none;
+	border-radius:0.2em;
+}
+
+// Login
+// --------------------------------------------------
+
+body{
+  background: url(../img/login-bg.jpg) no-repeat center center fixed; 
+  background-size: cover;	
+}
+
+input{
+	font-size: 1.1em;
+}
+
