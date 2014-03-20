@@ -11,7 +11,9 @@
 |
 */
 
-Route::get('/', function()
+Route::get('/', function() 
 {
-	return View::make('login');
+	return View::make('login.index');
 });
+
+Route::get('signup', array('uses' => 'UserController@get_new'));

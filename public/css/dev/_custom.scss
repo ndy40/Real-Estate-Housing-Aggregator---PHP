@@ -3,9 +3,10 @@
 //  Contents
 //  ================================
 //  
-//  Shared
+//  Bricks
 //	General
 //  Login
+//	Register Page
 //  
 //  ================================
 //  
@@ -14,24 +15,72 @@
 // Bricks
 // --------------------------------------------------
 
+
+// colors
+
+.c-white{color: #fff;}
+
+
+// layout
+
 .full-w{ width: 100%;}
-
-$mb: mb !default;
-$mt: mt !default;
-
-@for $i from 1 through 10 {
-	.#{$mb}-#{$i} {margin-bottom: 0em + $i;}	
-	.#{$mt}-#{$i} {margin-top: 0em + $i;}		
-} 
+.full-h{ height: 100%;}
 
 .fl-r{ float: right; }
 .fl-l{ float: left; }
 
 .cl-r {clear: right; }
 .cl-l {clear: left; }
+.cl {clear: both;}
 
 .ta-r {text-align: right; }
 .ta-l {text-align: left; }
+.ta-c {text-align: center; }
+
+.mt-half {margin-top: 0.5em;}
+.mb-half {margin-bottom: 0.5em;}
+
+$mb: mb !default;
+$mt: mt !default;
+
+
+@for $i from 0 through 10 {
+	.#{$mb}-#{$i} {margin-bottom: 0em + $i;}	
+	.#{$mt}-#{$i} {margin-top: 0em + $i;}		
+} 
+
+// unused
+
+// font
+
+.fw-b{font-weight: bold;}
+
+.fz-0_5 {font-size: 0.5em;}
+.fz-1_5 {font-size: 1.5em;}
+
+
+$fz: fz !default;
+
+@for $i from 0 through 9 {
+	.#{$fz}-#{$i} {font-size: 0em + $i;}	
+} 
+
+
+// transition
+
+.trans-3{
+	transition: 0.3s;
+}
+
+
+// General
+// --------------------------------------------------
+
+$pc-green: #35C07E;
+
+body{
+	background-color: #f1f1f1;
+}
 
 input {
 	height: 2.5em;
@@ -40,15 +89,70 @@ input {
 	border-radius:0.2em;
 }
 
+
+.c-green{color: $pc-green;}
+
+[role="banner"]{
+	background-color: $pc-green;
+	color: #fff;
+	padding: 0.6em 0;
+	font-size: 1.2em;
+	text-transform: uppercase;	
+
+	a{
+		color: #fff;
+	}
+
+	[class*="ion-"] {
+		padding-top: 0.2em;
+		font-weight: bold;		
+	}
+}
+
+
+
 // Login
 // --------------------------------------------------
 
-body{
+body.login{
   background: url(../img/login-bg.jpg) no-repeat center center fixed; 
   background-size: cover;	
 }
 
 input{
 	font-size: 1.1em;
+}
+
+.login-form {
+	position: absolute;
+	bottom: 1em;
+	padding-right: 15px;	
+
+	.btn{
+		padding: 0.5em 1.5em;
+	}
+}
+
+.forgot a{
+	color: #fff;
+	font-size: 0.9em;
+	text-decoration: underline;
+}
+
+
+// Register Page
+// -------------------------------------------------
+
+.reg-form {
+
+	input{
+		margin-bottom: 0.5em;
+		@extend .full-w;	
+	}
+}
+
+.tac{
+	font-size: 0.9em;
+	text-align: center;
 }
 
