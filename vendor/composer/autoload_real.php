@@ -23,6 +23,7 @@ class ComposerAutoloaderInit3a58d2222b86f36dc0cc21382c2291fa
 
         spl_autoload_register(array('ComposerAutoloaderInit3a58d2222b86f36dc0cc21382c2291fa', 'loadClassLoader'), true, true);
         self::$loader = $loader = new \Composer\Autoload\ClassLoader();
+        
         spl_autoload_unregister(array('ComposerAutoloaderInit3a58d2222b86f36dc0cc21382c2291fa', 'loadClassLoader'));
 
 
