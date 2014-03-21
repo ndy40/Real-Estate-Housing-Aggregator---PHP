@@ -3,3 +3,5 @@
 node_modules
 .npm-debug.log
 tmp
+/nbproject/private/
+app/config/database.php
