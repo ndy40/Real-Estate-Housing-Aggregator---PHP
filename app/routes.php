@@ -17,3 +17,5 @@ Route::get('/', function()
 });
 
 Route::get('signup', array('uses' => 'UserController@get_new'));
+
+Route::get('dashboard', array('uses' => 'DashController@get_index'));

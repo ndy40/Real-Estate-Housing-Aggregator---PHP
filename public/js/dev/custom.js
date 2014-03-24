@@ -1,1 +1,2 @@
-//custom js goes here
+$('.btn').button();
+$('.dropdown-toggle').dropdown();

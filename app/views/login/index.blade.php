@@ -32,7 +32,7 @@
 					</section>
 
 					<section class="cl-r ta-r mt-1 forgot">
-						<a href="#">Forgot Password?</a>
+						<a href="/dashboard">Forgot Password?</a>
 					</section>
 				</form>
 			</section>

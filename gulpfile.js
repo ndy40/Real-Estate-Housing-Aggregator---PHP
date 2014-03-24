@@ -3,6 +3,7 @@ var gulp = require('gulp'),
 	prefix = require('gulp-autoprefixer'),
 	minifyCSS = require('gulp-minify-css'),
 	concat = require('gulp-concat'),
+	rjs = require('gulp-requirejs'),
 	uglify = require('gulp-uglify');
 
 gulp.task('styles', function () {
@@ -14,7 +15,11 @@ gulp.task('styles', function () {
 });
 
 gulp.task('scripts', function () {
-	gulp.src('public/js/dev/*.js')
+	gulp.src([	'./public/js/dev/libraries/jquery.js', 
+				'./public/js/dev/bootstrap/button.js', 
+				'./public/js/dev/bootstrap/dropdown.js',
+				'./public/js/dev/custom.js'
+			])
 		.pipe(concat("scripts.js"))
 		.pipe(uglify())
 		.pipe(gulp.dest('public/js'))

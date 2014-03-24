@@ -37,8 +37,11 @@
 .ta-l {text-align: left; }
 .ta-c {text-align: center; }
 
-.mt-half {margin-top: 0.5em;}
-.mb-half {margin-bottom: 0.5em;}
+.m-0 {margin:0;}
+.mt-0_5 {margin-top: 0.5em;}
+.mb-0_5 {margin-bottom: 0.5em;}
+
+.tt-u{text-transform: uppercase;}
 
 $mb: mb !default;
 $mt: mt !default;
@@ -109,7 +112,15 @@ input {
 	}
 }
 
+.page-break{
+	background: $btn-default-bg;
+	font-size: 0.75em;
+	padding: 5px 15px;
+}
 
+h2.h2{
+
+}
 
 // Login
 // --------------------------------------------------

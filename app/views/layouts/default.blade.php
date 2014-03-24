@@ -11,10 +11,19 @@
 	</head>
 
 	<body>
+
+		<header role="banner">
+
+			<div class="container ta-c">
+				<a href="/"><i class="ion-navicon-round fl-l"></i></a>
+				{{ $pageTitle }}
+				<i class="ion-ios7-search-strong fl-r"></i>
+			</div>
+
+		</header>		
 		
 		@yield('content')
 		
-
 		{{ HTML::script('js/scripts.js'); }}
 	    <script>
 			// analytics code goes here
