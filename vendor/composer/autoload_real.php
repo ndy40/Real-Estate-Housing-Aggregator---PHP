@@ -28,6 +28,8 @@ class ComposerAutoloaderInit3a58d2222b86f36dc0cc21382c2291fa
 
 
 
+        $vendorDir = dirname(__DIR__);
+        $baseDir = dirname($vendorDir);
 
         $includePaths = require __DIR__ . '/include_paths.php';
         array_push($includePaths, get_include_path());
@@ -55,6 +57,7 @@ class ComposerAutoloaderInit3a58d2222b86f36dc0cc21382c2291fa
 
             composerRequire3a58d2222b86f36dc0cc21382c2291fa($file);
 
+
         }
 
         return $loader;
@@ -67,3 +70,4 @@ function composerRequire3a58d2222b86f36dc0cc21382c2291fa($file)
 {
 
 }
+
