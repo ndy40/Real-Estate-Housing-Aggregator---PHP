@@ -18,8 +18,8 @@
 
 // colors
 
-.c-white{color: #fff;}
-
+.c-white {color: #fff;}
+.c-grey {color: #838383;}
 
 // layout
 
@@ -52,7 +52,6 @@ $mt: mt !default;
 	.#{$mt}-#{$i} {margin-top: 0em + $i;}		
 } 
 
-// unused
 
 // font
 
@@ -64,16 +63,14 @@ $mt: mt !default;
 
 $fz: fz !default;
 
-@for $i from 0 through 9 {
+@for $i from 0 through 5 {
 	.#{$fz}-#{$i} {font-size: 0em + $i;}	
 } 
 
 
 // transition
 
-.trans-3{
-	transition: 0.3s;
-}
+.trans-3{transition: 0.3s;}
 
 
 // General
@@ -118,16 +115,53 @@ input {
 	padding: 5px 15px;
 }
 
-h2.h2{
+.btn-tap {
+	border: 1px solid $pc-green;
+	background-color: $white;
+	font-size: 0.85em;
+	@extend .c-green;
+	@extend .tt-u;
+	@extend .fw-b;
 
+	&:hover{
+		color: $pc-green;
+	}
+
+	&.active {
+		background-color: $pc-green;
+		color: $white;
+	}
 }
+
+.btn-group{
+	label{
+		&:first-child{
+			border-top-left-radius:2em;
+			border-bottom-left-radius:2em;
+		}
+
+		&:last-child{
+			border-top-right-radius:2em;
+			border-bottom-right-radius:2em;
+		}
+	}
+}
+
+.dropdown-toggle { border-radius: 2em; }
+
+.r-gap { margin-right: 5px; }
+
+.sml-font{ font-size: 0.8em; }
+
+.w-7{ width:70%;}
+
 
 // Login
 // --------------------------------------------------
 
 body.login{
-  background: url(../img/login-bg.jpg) no-repeat center center fixed; 
-  background-size: cover;	
+	background: url(../img/login-bg.jpg) no-repeat center center fixed; 
+	background-size: cover;	
 }
 
 input{
@@ -167,3 +201,17 @@ input{
 	text-align: center;
 }
 
+
+// Dashboard
+// -------------------------------------------------
+
+
+.dash-bg{
+	background: url(../img/dash-bg.jpg) no-repeat center center; 
+	min-height:6em;
+}
+
+.block{
+	border-bottom: 1px solid #ccc;
+	padding-bottom: 1em;	
+}
