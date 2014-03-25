@@ -5,6 +5,7 @@
 //  
 //  Bricks
 //	General
+//	Navigation
 //  Login
 //	Register Page
 //  
@@ -70,7 +71,7 @@ $fz: fz !default;
 
 // transition
 
-.trans-3{transition: 0.3s;}
+.trans-3 {transition: 0.3s;}
 
 
 // General
@@ -80,6 +81,9 @@ $pc-green: #35C07E;
 
 body{
 	background-color: #f1f1f1;
+	&.active{
+		overflow-x: hidden;
+	}
 }
 
 input {
@@ -118,7 +122,7 @@ input {
 .btn-tap {
 	border: 1px solid $pc-green;
 	background-color: $white;
-	font-size: 0.85em;
+	font-size: 0.65em;
 	@extend .c-green;
 	@extend .tt-u;
 	@extend .fw-b;
@@ -153,11 +157,69 @@ input {
 
 .sml-font{ font-size: 0.8em; }
 
-.w-7{ width:70%;}
+.w-7{ width:66%;}
+.w-5{ width:50%;}
 
+.title-txt{
+	@extend .tt-u;
+	font-size: 0.7em;
+	margin-bottom: 0.5em;	
+}
+
+// Navigation
+// --------------------------------------------------
+
+
+.left-nav {
+	width: 15em;
+	height: 100%;
+	position: fixed;
+	left: 0;
+	overflow: hidden;
+	background-color: #333;
+}
+
+.wrapper{
+	background-color: #f1f1f1;
+	position: relative;
+	width: 100%;
+	height: 100%;
+	transition: 0.3s;
+
+	&.active{
+		margin-left: 15em;
+	}
+}
+
+[role="complementary"] {
+	ul{
+		padding:0;
+		margin: 0;
+
+		li{
+			line-height: 3em;
+			border-bottom: 1px solid #464646;
+			padding-left: 1em;
+
+			a{
+				color: $white;
+				&:hover{text-decoration: none;}
+			}
+		}
+		
+	}
+}
+
+.logout-btn {
+	position: absolute;
+	bottom: 0;
+	background: rgba(80, 43, 43, 1);
+	width: 100%;	
+}
 
 // Login
 // --------------------------------------------------
+
 
 body.login{
 	background: url(../img/login-bg.jpg) no-repeat center center fixed; 
@@ -187,6 +249,7 @@ input{
 
 // Register Page
 // -------------------------------------------------
+
 
 .reg-form {
 

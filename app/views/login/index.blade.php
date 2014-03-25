@@ -22,17 +22,18 @@
 				{{ HTML::image('img/logo.png', 'Property Crunch Logo', array( 'class' => 'full-w')); }}
 			</section>
 			<section class="login-form">
-				<form action="">
-					<input type="text" class="full-w" placeholder="Username or Email">
-					<input type="password" class="full-w mt-1" placeholder="Password">
-					<input type="submit" value="Login" class="btn btn-success pull-right fl-r mt-1 fw-b">
+				<form action="" class="l-temp">
+					<div class="error ta-c mb-1 c-white login-error" style="background: #D42C2C; display:none;">Username/Password is incorrect</div>
+					<input type="text" class="full-w usrname" placeholder="Username or Email">
+					<input type="password" class="full-w mt-1 pswrd" placeholder="Password">
+					<input type="submit" value="Login" class="btn btn-success pull-right fl-r mt-1 fw-b go">
 
 					<section class="mt-1">
 						<a href="/signup" class="btn btn-default fw-b">Sign Up</a>
 					</section>
 
 					<section class="cl-r ta-r mt-1 forgot">
-						<a href="/dashboard">Forgot Password?</a>
+						<a href="/working">Forgot Password?</a>
 					</section>
 				</form>
 			</section>

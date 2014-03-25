@@ -12,17 +12,29 @@
 
 	<body>
 
-		<header role="banner">
+		<nav class="left-nav" role="complementary">
+			<ul>
+				<li><a href="/dashboard">Dashboard</a></li>
+				<li><a href="/working">Discovery</a></li> 
+				<li><a href="/calculations">Calculations</a></li> 
+				<li><a href="/working">Alerts</a></li> 
+				<li><a href="/working">Settings</a></li> 
+				<li class="logout-btn"><a href="/">Logout</a></li>  												                                                  
+			</ul>
+		</nav>
 
-			<div class="container ta-c">
-				<a href="/"><i class="ion-navicon-round fl-l"></i></a>
-				{{ $pageTitle }}
-				<i class="ion-ios7-search-strong fl-r"></i>
-			</div>
+		<div class="wrapper">
+			<header role="banner">
+				<div class="container ta-c">
+					<a class="menu-btn"><i class="ion-navicon-round fl-l"></i></a>
+					{{ $pageTitle }}
+					<i class="ion-ios7-search-strong fl-r"></i>
+				</div>
 
-		</header>		
-		
-		@yield('content')
+			</header>		
+			
+			@yield('content')
+		</div>
 		
 		{{ HTML::script('js/scripts.js'); }}
 	    <script>

@@ -1,19 +1,18 @@
 @extends('layouts.default')
 
 @section('content')
-	
-	<div class="dash-banner">
-		
-	</div>
+
 	<main role="main">
+		<!--
 		<section class="dash-bg c-white">
 			<div class="container fw-b fz-2">
 				IG9
 			</div>
 		</section>
+		-->
 
 		<div class="page-break tt-u fw-b c-white">New Properties</div>
-
+		
 		<section>
 			<div class="container">
 				<span class="fl-l mt-1">New properties this week</span>
