@@ -16,11 +16,11 @@ class CreatePostCodeTable extends Migration {
         Schema::create('post_codes', function (Blueprint $table) {
             $table->increments('id');
             $table->string('code');
-            $table->integer('county')->unsigned();
+            $table->integer('county_id')->unsigned();
         });
         
         Schema::table('post_codes', function (Blueprint $table) {
-           $table->foreign('county')->references('id')->on('county'); 
+           $table->foreign('county_id')->references('id')->on('county'); 
         });
 	}
 

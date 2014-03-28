@@ -17,11 +17,11 @@ class CreateCountyTable extends Migration {
             $table->increments('id');
             $table->string('name');
             $table->string('code');
-            $table->integer('country')->unsigned();
+            $table->integer('country_id')->unsigned();
         });
         
         Schema::table('county', function (Blueprint $table) {
-           $table->foreign('country')->references('id')->on('country'); 
+           $table->foreign('country_id')->references('id')->on('country'); 
         });
 	}
 

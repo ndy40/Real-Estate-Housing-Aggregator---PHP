@@ -16,8 +16,13 @@ class CreateAgencyTable extends Migration {
         Schema::create('agency', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->mediumText('url');
             $table->string('crawler');
+            $table->string('country_id')->unsigned();
+            $table->boolean('enabled')->default(false);
+        });
+        
+        Schema::table('agency', function (Blueprint $table) {
+            $table->foreign('country_id')->references('id')->on("country");
         });
 	}
 
@@ -28,6 +33,11 @@ class CreateAgencyTable extends Migration {
 	 */
 	public function down()
 	{
+        
+        Schema::table('agency', function (Blueprint $table) {
+            $table->dropForeign('agency_country_id_foreign');
+        });
+        
 		Schema::drop('agency');
 	}
 
