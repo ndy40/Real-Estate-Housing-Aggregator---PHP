@@ -44,8 +44,8 @@
 			<section class="mt-1">
 				<div class="title-txt">Minimum Yeild</div>
 				<input type="text" class="full-w w-7" placeholder="10%">
-				<i class="ion-minus"></i>
-				<i class="ion-plus"></i>
+				<i class="calc-btn ion-minus"></i>
+				<i class="calc-btn ion-plus"></i>
 			</section>		
 
 			<input type="submit" value="Add Cost" class="mt-1 btn btn-default fl-r full-w">							

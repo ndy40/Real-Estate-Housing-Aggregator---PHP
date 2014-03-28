@@ -44,6 +44,10 @@
 
 .tt-u{text-transform: uppercase;}
 
+.pos-r{position: relative;}
+.pos-f{position: fixed;}
+.pos-a{position: absolute;}
+
 $mb: mb !default;
 $mt: mt !default;
 
@@ -122,7 +126,7 @@ input {
 .btn-tap {
 	border: 1px solid $pc-green;
 	background-color: $white;
-	font-size: 0.65em;
+	font-size: 0.75em;
 	@extend .c-green;
 	@extend .tt-u;
 	@extend .fw-b;
@@ -231,7 +235,6 @@ input{
 }
 
 .login-form {
-	position: absolute;
 	bottom: 1em;
 	padding-right: 15px;	
 
@@ -277,4 +280,12 @@ input{
 .block{
 	border-bottom: 1px solid #ccc;
 	padding-bottom: 1em;	
+}
+
+.calc-btn{
+	background: $pc-green;
+	padding: 0.4em 0.6em;
+	color: white;
+	font-size: 1.4em;
+	border-radius: 0.15em;
 }

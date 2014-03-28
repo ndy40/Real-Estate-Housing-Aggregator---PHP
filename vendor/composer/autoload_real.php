@@ -26,8 +26,6 @@ class ComposerAutoloaderInit3a58d2222b86f36dc0cc21382c2291fa
         
         spl_autoload_unregister(array('ComposerAutoloaderInit3a58d2222b86f36dc0cc21382c2291fa', 'loadClassLoader'));
 
-
-
         $vendorDir = dirname(__DIR__);
         $baseDir = dirname($vendorDir);
 
@@ -57,7 +55,6 @@ class ComposerAutoloaderInit3a58d2222b86f36dc0cc21382c2291fa
 
             composerRequire3a58d2222b86f36dc0cc21382c2291fa($file);
 
-
         }
 
         return $loader;
@@ -70,4 +67,3 @@ function composerRequire3a58d2222b86f36dc0cc21382c2291fa($file)
 {
 
 }
-

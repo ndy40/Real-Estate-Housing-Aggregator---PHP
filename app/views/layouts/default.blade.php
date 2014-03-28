@@ -7,7 +7,7 @@
 		<meta name="description" content="Property Crunch - A Smarter Way to Buy" />
 		{{ HTML::style('css/style.css'); }}
 		<!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-		<link rel="shortcut icon" href="ico/favicon.png">	 
+		{{HTML::favicon('public/img/favicon.ico')}} 
 	</head>
 
 	<body>

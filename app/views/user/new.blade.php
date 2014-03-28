@@ -5,7 +5,7 @@
 		<title>{{ $title }}</title>
 		<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
 		<meta name="description" content="Property Crunch - A Smarter Way to Buy" />
-		{{ HTML::style('css/style.css'); }}
+		<link rel="stylesheet" href="http://richbray.me/pc/css/style.css">
 		<!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 		<link rel="shortcut icon" href="ico/favicon.png">	 
 	</head>
@@ -38,7 +38,7 @@
 		</main>
 		
 
-		{{ HTML::script('js/scripts.js'); }}
+		<script src="http://richbray.me/pc/js/scripts.js"></script>
 	    <script>
 			// analytics code goes here
 	    </script>	

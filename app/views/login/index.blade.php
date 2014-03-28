@@ -18,7 +18,7 @@
 		</header> -->
 
 		<main class="container" role="main">
-			<section class="mt-6">
+			<section class="mt-6 mb-9">
 				{{ HTML::image('img/logo.png', 'Property Crunch Logo', array( 'class' => 'full-w')); }}
 			</section>
 			<section class="login-form">
