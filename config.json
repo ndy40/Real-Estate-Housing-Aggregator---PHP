@@ -1,0 +1,21 @@
+{
+    "config": {
+        "directory": {
+            "agents": "agents",
+            "library": "library"
+        },
+        "environments": {
+            "local": {
+                "logLevel": "debug",
+                "verbose": true,
+                "exitOnError": true
+            },
+            "production": {
+                "logLevel": "info",
+                "verbose": false,
+                "exitOnError": true
+            }
+        },
+        "mode" : "local"
+    }
+}
