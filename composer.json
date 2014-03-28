@@ -6,13 +6,24 @@
 	"require": {
 		"laravel/framework": "4.1.*",
         "cartalyst/sentry": "2.1.*",
-        "laravelbook/ardent": "dev-master"
+        "laravelbook/ardent": "dev-master",
+        "pda/pheanstalk": "v2.1.0"
 	},
 	"autoload": {
 		"classmap": [
 			"app/commands",
 			"app/controllers",
 			"app/models",
+            "app/models/crawler",
+            "app/models/crawler/abstracts",
+            "app/models/crawler/commands",
+            "app/models/crawler/factories",
+            "app/models/crawler/scrape",
+            "app/models/entities",
+            "app/models/exceptions",
+            "app/models/interfaces",
+            "app/models/repositories",
+            "app/models/utility",
 			"app/database/migrations",
 			"app/database/seeds",
 			"app/tests/TestCase.php"
