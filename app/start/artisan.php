@@ -1,5 +1,8 @@
 <?php
 
+use crunch\CrunchItemCommand;
+use crunch\CrunchListCommand;
+
 /*
 |--------------------------------------------------------------------------
 | Register The Artisan Commands
@@ -11,3 +14,6 @@
 |
 */
 
+Artisan::add(new CrunchListCommand);
+
+Artisan::add(new CrunchItemCommand);
