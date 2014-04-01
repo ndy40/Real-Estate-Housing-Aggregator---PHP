@@ -8,3 +8,19 @@
 App::singleton('ScrapeFactory', function ($app) {
     return new models\crawler\factories\ScrapeFactory;
 });
+
+App::bind('JobQueue', function ($app) {
+    return new models\crawler\JobQueue;
+});
+
+App::bind('ScrapeRepository', function ($app) {
+    return new models\repositories\ScrapeRepository;
+});
+
+App::bind('AgentRespository', function ($app) {
+    return new \models\repositories\AgentRepository;
+});
+
+App::bind('PropertyRepository', function ($app) {
+    return new models\repositories\PropertyRepository;
+});

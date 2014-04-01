@@ -5,6 +5,8 @@ use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Queue;
 
 class CrunchItemCommand extends Command {
 
@@ -50,7 +52,7 @@ class CrunchItemCommand extends Command {
         $this->info("Building scrape");
         
 		$config = $this->argument();
-        $config['type'] = 'type';
+        $config['type'] = 'item';
         $config['debug'] = $this->option('debug');
         $config['command'] = Config::get('crawler.command');
         $config['scriptName'] = Config::get('crawler.script_name');
@@ -78,7 +80,7 @@ class CrunchItemCommand extends Command {
         fwrite($file, $output);
         fclose($file);
         
-           $data = array (
+        $data = array (
             'country' => $this->argument('country'),
             'agency'  => $this->argument('agent'),
             'url'     => $this->argument('url'),

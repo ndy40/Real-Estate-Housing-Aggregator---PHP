@@ -76,9 +76,9 @@ class CrunchListCommand extends Command {
         fwrite($file, $output);
         fclose($file);
         
-           $data = array (
+        $data = array (
             'country' => $this->argument('country'),
-            'agency'  => $this->argument('agent'),
+            'agent'  => $this->argument('agent'),
             'url'     => $this->argument('url'),
             'result'  => $filePath,
         );

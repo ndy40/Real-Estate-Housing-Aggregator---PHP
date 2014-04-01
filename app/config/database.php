@@ -55,7 +55,7 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
-			'database'  => 'property-crunch',
+			'database'  => 'propertycrunch',
 			'username'  => 'root',
 			'password'  => 'mysql',
 			'charset'   => 'utf8',

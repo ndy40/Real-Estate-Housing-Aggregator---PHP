@@ -17,6 +17,8 @@ use LaravelBook\Ardent\Ardent;
  */
 class Country extends Ardent
 {
+    protected $table = 'country';
+    
     public static $rules = array (
         'name'      => 'required|alpha',
         'code'      => 'required|alpha|min:2|max:3',
@@ -24,7 +26,7 @@ class Country extends Ardent
     );
     
     public function agencies () {
-        return $this->hasMany('Agency');
+        return $this->hasMany('\models\entities\Agency');
     }
     
     

@@ -17,8 +17,9 @@ class CreateAgencyTable extends Migration {
             $table->increments('id');
             $table->string('name');
             $table->string('crawler');
-            $table->string('country_id')->unsigned();
+            $table->integer('country_id')->unsigned();
             $table->boolean('enabled')->default(false);
+            $table->boolean('auto_publish')->default(false);
         });
         
         Schema::table('agency', function (Blueprint $table) {
