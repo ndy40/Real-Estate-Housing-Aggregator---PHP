@@ -2,8 +2,8 @@
 // Bootstrap Stuff
 // --------------------------------------------------
 
-//$('.btn').button();
-//$('.dropdown-toggle').dropdown();
+$('.btn').button();
+$('.dropdown-toggle').dropdown();
 
 
 // Navigation Toggle
@@ -23,17 +23,6 @@ $('.left-nav a').click(function() {
 });
 
 
-// Makeshift Login
-// --------------------------------------------------
-
-$(".l-temp").submit(function(e) {
-	e.preventDefault();
-	if ($('.usrname').val() == "test" && $('.pswrd').val() == "1234"){
-		window.location = "/pc/dashboard"; 		
-	} else{
-		$('.login-error').show();
-	}
-});
 
 // Full Width Prevent
 // --------------------------------------------------
