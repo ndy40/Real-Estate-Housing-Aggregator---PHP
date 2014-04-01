@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en" ng-app="propertycrunchApp">
+	<head>
+		<meta charset="utf-8"/>
+		<title ng-bind="'Property Crunch' + title"></title>
+		<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+		<meta name="description" content="Property Crunch - A Smarter Way to Buy" />
+		<link rel="author" href="humans.txt">
+		<link rel="stylesheet" href="css/style.css">
+		<!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+		<link rel="shortcut icon" href="ico/favicon.png">
+	</head>
+
+	<body>
+
+		<nav class="left-nav" role="complementary">
+			<ul>
+				<li><a href="/"><i class="ion-home"></i> Dashboard</a></li>
+				<li><a href="/#/search"><i class="ion-search"> </i>Search</a></li> 
+				<li><a href="/#/calculcations"><i class="ion-calculator"></i> Calculations</a></li> 
+				<li><a href="/working"><i class="ion-alert-circled"></i> Alerts</a></li> 
+				<li><a href="/working"><i class="ion-gear-b"></i> Settings</a></li> 
+				<li class="logout-btn"><a href="/"><i class="ion-log-out"></i> Logout</a></li>                                          
+			</ul>
+		</nav>
+
+		<div class="wrapper">
+			<header role="banner">
+				<div class="container ta-c">
+					<a class="menu-btn" ng-click="showNav()"><i class="ion-navicon-round fl-l"></i></a>
+					<span ng-bind="title"></span>
+					<a href="/#/search"><i class="ion-ios7-search-strong fl-r"></i></a>
+				</div>
+
+			</header>		
+			
+			<div ng-view></div>
+		</div>
+		
+		<script src="js/vendor/jquery.js"></script>
+		<script src="js/vendor/angular.min.js"></script>
+		<script src="js/services/angular-route.min.js"></script>
+		<script src="js/app.js"></script>
+		<script src="js/vendor/custom.js"></script>	
+	</body>
+</html>

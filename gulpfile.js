@@ -3,7 +3,6 @@ var gulp = require('gulp'),
 	prefix = require('gulp-autoprefixer'),
 	minifyCSS = require('gulp-minify-css'),
 	concat = require('gulp-concat'),
-	rjs = require('gulp-requirejs'),
 	uglify = require('gulp-uglify');
 
 gulp.task('styles', function () {
@@ -14,6 +13,7 @@ gulp.task('styles', function () {
         .pipe(gulp.dest('public/css'))
 });
 
+/*
 gulp.task('scripts', function () {
 	gulp.src([	'./public/js/dev/libraries/jquery.js', 
 				'./public/js/dev/bootstrap/button.js', 
@@ -24,10 +24,11 @@ gulp.task('scripts', function () {
 		.pipe(uglify())
 		.pipe(gulp.dest('public/js'))
 });
+*/
 
 gulp.task('watch', function () {
 	gulp.watch('public/css/dev/*.scss', ['styles']);
-	gulp.watch('public/js/dev/*.js', ['scripts']);
+	//gulp.watch('public/js/dev/*.js', ['scripts']);
 });
 
 
