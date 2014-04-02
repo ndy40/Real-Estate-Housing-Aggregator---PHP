@@ -1,5 +1,5 @@
 
-	<main role="main">
+	<main role="main" ng-controller="DashboardCtrl">
 		
 		<section class="dash-bg c-white">
 			<div class="container fw-b fz-2">
@@ -15,35 +15,31 @@
 			<h1 class="ta-c c-green m-0 mb-0_5">£1104.00 pcm</h1>
 
 			<section class="container">
-				<div class="btn-group fl-l r-gap" data-toggle="buttons">
-					<label class="btn btn-tap active">
-						<input type="radio" name="ros" id="rent"> Rent
-					</label>
-					<label class="btn btn-tap">
-						<input type="radio" name="ros" id="sale"> Sale
-					</label>
-				</div>	
+				<div class="btn-group fl-l r-gap">
+				    <button type="button" class="btn btn-tap" ng-model="radioModel" btn-radio="'Rent'">Rent</button>
+				    <button type="button" class="btn btn-tap" ng-model="radioModel" btn-radio="'Sale'">Sale</button>
+				</div>				
 
 				<div class="dropdown fl-l r-gap">
-					<button class="btn btn-tap dropdown-toggle sr-only" type="button" data-toggle="dropdown">
+					<a class="btn btn-tap dropdown-toggle sr-only">
 						Detatched
 						<span class="caret"></span>
-					</button>
-					<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-						<li role="presentation"><a role="menuitem"  href="#">Option1</a></li>
-						<li role="presentation"><a role="menuitem"  href="#">Option2</a></li>
+					</a>
+					<ul class="dropdown-menu">
+						<li><a>Option1</a></li>
+						<li><a>Option2</a></li>
 					</ul>
 				</div>			
 
 				<div class="dropdown fl-l">
-					<button class="btn btn-tap dropdown-toggle sr-only" type="button" data-toggle="dropdown">
+					<button class="btn btn-tap dropdown-toggle sr-only">
 						1 Bed
 						<span class="caret"></span>
 					</button>
-					<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-						<li role="presentation"><a role="menuitem"  href="#">2 Bed</a></li>
-						<li role="presentation"><a role="menuitem"  href="#">3 Bed</a></li>
-						<li role="presentation"><a role="menuitem"  href="#">4 Bed</a></li>
+					<ul class="dropdown-menu" role="menu">
+						<li><a>2 Bed</a></li>
+						<li><a>3 Bed</a></li>
+						<li><a>4 Bed</a></li>
 					</ul>
 				</div>
 

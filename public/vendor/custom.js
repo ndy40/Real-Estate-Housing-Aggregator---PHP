@@ -2,8 +2,6 @@
 // Bootstrap Stuff
 // --------------------------------------------------
 
-$('.btn').button();
-$('.dropdown-toggle').dropdown();
 
 
 // Navigation Toggle
@@ -13,14 +11,8 @@ function toggleNav() {
 	$('.left-nav, .wrapper, body').toggleClass('active');      
 }
 
-$('.menu-btn').click(function() {
-	toggleNav();
-});  
-
-
-$('.left-nav a').click(function() {
-	toggleNav();
-});
+$('.menu-btn').click(function() {toggleNav();});  
+$('.left-nav a').click(function() {toggleNav();});
 
 
 

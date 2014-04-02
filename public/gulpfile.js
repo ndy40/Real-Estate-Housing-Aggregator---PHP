@@ -6,11 +6,11 @@ var gulp = require('gulp'),
 	uglify = require('gulp-uglify');
 
 gulp.task('styles', function () {
-    gulp.src('public/css/dev/*.scss')
+    gulp.src('assets/css/dev/*.scss')
         .pipe(sass())
         .pipe(prefix("last 1 version", "> 1%", "ie 8", "ie 7"))
         .pipe(minifyCSS())
-        .pipe(gulp.dest('public/css'))
+        .pipe(gulp.dest('assets/css'))
 });
 
 /*
@@ -27,7 +27,7 @@ gulp.task('scripts', function () {
 */
 
 gulp.task('watch', function () {
-	gulp.watch('public/css/dev/*.scss', ['styles']);
+	gulp.watch('assets/css/dev/*.scss', ['styles']);
 	//gulp.watch('public/js/dev/*.js', ['scripts']);
 });
 

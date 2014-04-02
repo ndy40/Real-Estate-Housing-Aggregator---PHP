@@ -5,7 +5,7 @@
 		<title>Property Crunch - A Smarter Way to Buy</title>
 		<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
 		<meta name="description" content="Property Crunch - A Smarter Way to Buy" />
-		<link rel="stylesheet" href="../../css/style.css">
+		<link rel="stylesheet" href="../../assets/css/style.css">
 		<!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 		<link rel="shortcut icon" href="ico/favicon.png">	 
 	</head>
@@ -13,7 +13,7 @@
 	<body class="login">
 		<main class="container" role="main">
 			<section class="mt-6 mb-9">
-				<img src="../../img/logo.png" alt="Property Crunch Logo" class="full-w">
+				<img src="../../assets/img/logo.png" alt="Property Crunch Logo" class="full-w">
 			</section>
 			<section class="login-form">
 				<form action="" class="l-temp">
@@ -40,7 +40,7 @@
 			$(".l-temp").submit(function(e) {
 				e.preventDefault();
 				if ($('.usrname').val() == "test" && $('.pswrd').val() == "1234"){
-					window.location = "/pc"; 		
+					window.location = "/"; 		
 				} else{
 					$('.login-error').show();
 				}
