@@ -70,6 +70,7 @@ class ScrapeRepository implements RepositoryInterface
         
         $postCode = $data->getElementsByTagName('areacode')->nodeValue;
         $postCode = $propertyRepo->fetchPostCode($postCode);
+        
         $phone = $data->getElementsByTagName('phone')->nodeValue;
         $price = doubleval($data->getElementsByTagName('price')->nodeValue);
         $type = $data->getElementsByTagName('type')->nodeValue;
