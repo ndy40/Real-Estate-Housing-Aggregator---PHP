@@ -8,3 +8,5 @@ app/config/database.php
 crawler/*
 app/config/app.php
 vendor/autoload.php
+app/storage/scrape/
+
