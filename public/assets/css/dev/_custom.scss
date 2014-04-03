@@ -1,0 +1,304 @@
+
+//  
+//  Contents
+//  ================================
+//  
+//  Bricks
+//	General
+//	Navigation
+//  Login
+//	Register Page
+//  
+//  ================================
+//  
+
+
+// Bricks
+// --------------------------------------------------
+
+
+// colors
+
+.c-white {color: #fff;}
+.c-grey {color: #838383;}
+
+// layout
+
+.full-w{ width: 100%;}
+.full-h{ height: 100%;}
+
+.fl-r{ float: right; }
+.fl-l{ float: left; }
+
+.cl-r {clear: right; }
+.cl-l {clear: left; }
+.cl {clear: both;}
+
+.ta-r {text-align: right; }
+.ta-l {text-align: left; }
+.ta-c {text-align: center; }
+
+.m-0 {margin:0;}
+.mt-0_5 {margin-top: 0.5em;}
+.mb-0_5 {margin-bottom: 0.5em;}
+
+.tt-u{text-transform: uppercase;}
+
+.pos-r{position: relative;}
+.pos-f{position: fixed;}
+.pos-a{position: absolute;}
+
+$mb: mb !default;
+$mt: mt !default;
+
+
+@for $i from 0 through 10 {
+	.#{$mb}-#{$i} {margin-bottom: 0em + $i;}	
+	.#{$mt}-#{$i} {margin-top: 0em + $i;}		
+} 
+
+
+// font
+
+.fw-b{font-weight: bold;}
+
+.fz-0_5 {font-size: 0.5em;}
+.fz-1_5 {font-size: 1.5em;}
+
+
+$fz: fz !default;
+
+@for $i from 0 through 5 {
+	.#{$fz}-#{$i} {font-size: 0em + $i;}	
+} 
+
+
+// transition
+
+.trans-3 {transition: 0.3s;}
+
+
+// General
+// --------------------------------------------------
+
+$pc-green: #35C07E;
+
+body{
+	background-color: #f1f1f1;
+	&.active{
+		overflow-x: hidden;
+	}
+}
+
+input {
+	height: 2.5em;
+	padding: 0.5em;	
+	border: none;
+	border-radius:0.2em;
+}
+
+
+.c-green{color: $pc-green;}
+
+[role="banner"]{
+	background-color: $pc-green;
+	color: #fff;
+	padding: 0.6em 0;
+	font-size: 1.3em;
+	text-transform: uppercase;	
+
+	a{
+		color: #fff;
+	}
+
+	[class*="ion-"] {
+		padding-top: 0.2em;
+		font-weight: bold;		
+	}
+}
+
+.page-break{
+	background: $btn-default-bg;
+	font-size: 0.75em;
+	padding: 5px 15px;
+}
+
+.btn-tap {
+	border: 1px solid $pc-green;
+	background-color: $white;
+	font-size: 0.75em;
+	@extend .c-green;
+	@extend .tt-u;
+	@extend .fw-b;
+
+	&:hover{
+		color: $pc-green;
+	}
+
+	&.active {
+		background-color: $pc-green;
+		color: $white;
+	}
+}
+
+.btn-group{
+	button{
+		&:first-child{
+			border-top-left-radius:2em;
+			border-bottom-left-radius:2em;
+		}
+
+		&:last-child{
+			border-top-right-radius:2em;
+			border-bottom-right-radius:2em;
+		}
+	}
+}
+
+.dropdown-toggle { border-radius: 2em; }
+
+.r-gap { margin-right: 5px; }
+
+.sml-font{ font-size: 0.8em; }
+
+.w-7{ width:66%;}
+.w-5{ width:50%;}
+
+.title-txt{
+	@extend .tt-u;
+	font-size: 0.7em;
+	margin-bottom: 0.5em;	
+}
+
+.dropdown-menu{
+	width: 95%;
+}
+
+
+// Navigation
+// --------------------------------------------------
+
+
+.left-nav {
+	width: 15em;
+	height: 100%;
+	font-size: 1.2em;
+	position: fixed;
+	left: 0;
+	z-index: 0;
+	overflow: hidden;
+	background-color: #333;
+
+	[class*="ion-"]{
+		margin-right: 0.7em;
+		opacity: 0.4;
+	}
+}
+
+.wrapper{
+	background-color: #f1f1f1;
+	position: relative;
+	width: 100%;
+	min-height: 50em;
+	z-index: 2;
+	transition: 0.3s;
+
+	&.active{
+		margin-left: 15em;
+	}
+}
+
+[role="complementary"] {
+	ul{
+		padding:0;
+		margin: 0;
+
+		li{
+			line-height: 3em;
+			border-bottom: 1px solid #464646;
+			padding-left: 1em;
+
+			a{
+				color: $white;
+				&:hover{text-decoration: none;}
+			}
+		}
+		
+	}
+}
+
+.logout-btn {
+	position: absolute;
+	bottom: 0;
+	background: rgba(80, 43, 43, 1);
+	width: 100%;	
+}
+
+// Login
+// --------------------------------------------------
+
+
+body.login{
+	background: url(../img/login-bg.jpg) no-repeat center center fixed; 
+	background-size: cover;	
+}
+
+input{
+	font-size: 1.1em;
+}
+
+.login-form {
+	bottom: 1em;
+	padding-right: 15px;	
+
+	.btn{
+		padding: 0.5em 1.5em;
+	}
+}
+
+.forgot a{
+	color: #fff;
+	font-size: 0.9em;
+	text-decoration: underline;
+}
+
+
+// Register Page
+// -------------------------------------------------
+
+
+.reg-form {
+
+	input{
+		margin-bottom: 0.5em;
+		@extend .full-w;	
+	}
+}
+
+.tac{
+	font-size: 0.9em;
+	text-align: center;
+}
+
+
+// Dashboard
+// -------------------------------------------------
+
+
+.dash-bg{
+	background: url(../img/dash-bg.jpg) no-repeat center center; 
+	min-height:10em;
+}
+
+.block{
+	border-bottom: 1px solid #ccc;
+	padding-bottom: 1em;	
+}
+
+.calc-btn{
+	background: $pc-green;
+	padding: 0.4em 0.6em;
+	color: white;
+	font-size: 1.4em;
+	border-radius: 0.15em;
+}

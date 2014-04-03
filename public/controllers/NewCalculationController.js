@@ -1,0 +1,3 @@
+var NewCalculationController = function ($scope) {
+
+};

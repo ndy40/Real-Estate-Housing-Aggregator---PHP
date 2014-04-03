@@ -1,0 +1,87 @@
+	<main role="main" ng-controller="NewCalculationController">
+		<section class="mt-1 container">
+			<div class="title-txt">Calculation Type</div>
+<!-- 			<div class="btn-group cl-r " data-toggle="buttons">
+				<label class="btn btn-tap active">
+					<input type="radio" name="ros" id="rent"> Buy to Let
+				</label>
+				<label class="btn btn-tap">
+					<input type="radio" name="ros" id="sale"> Buy to Sell
+				</label>
+			</div> -->
+			<tabset>
+				<tab heading="Buy To Let">
+					<form action="" class="mb-2 container">
+
+					<section class="mt-1">
+						<div class="title-txt">Asking Price</div>
+						<input type="text" class="full-w" placeholder="e.g £200,000">
+					</section>
+
+					<section class="mt-1">
+						<div class="title-txt">Deposit</div>
+						<input type="text" class="full-w" placeholder="e.g £200,000">
+					</section>		
+
+					<section class="mt-1">
+						<div class="title-txt">Interest Rate</div>
+						<input type="text" class="full-w w-7" placeholder="e.g 3.5%">
+						<i class="calc-btn ion-minus"></i>
+						<i class="calc-btn ion-plus"></i>						
+					</section>	
+
+					<section class="mt-1">
+						<div class="title-txt">Monthly Rent</div>
+						<input type="text" class="full-w" placeholder="e.g £1,000">
+					</section>		
+
+					<section class="mt-1">
+						<div class="title-txt">Minimum Yeild</div>
+						<input type="text" class="full-w w-7" placeholder="e.g 10%">
+						<i class="calc-btn ion-minus"></i>
+						<i class="calc-btn ion-plus"></i>
+					</section>		
+
+					<input type="submit" value="Calculate" class="mt-4 btn btn-success fl-r full-w">							
+					</form>					
+				</tab>
+				<tab heading="Buy To Sell">
+					<form action="" class="mb-2 container">
+
+					<section class="mt-1">
+						<div class="title-txt">Asking Price</div>
+						<input type="text" class="full-w" placeholder="e.g £200,000">
+					</section>
+
+					<section class="mt-1">
+						<div class="title-txt">Renovation Costs</div>
+						<input type="text" class="full-w" placeholder="e.g £20,000">
+					</section>		
+
+					<section class="mt-1">
+						<div class="title-txt">Estimated Resale Price</div>
+						<input type="text" class="full-w" placeholder="e.g £250,000">
+					</section>	
+
+					<section class="mt-1">
+						<div class="title-txt">Interest Rate</div>
+						<input type="text" class="full-w w-7" placeholder="e.g 3.5%">
+						<i class="calc-btn ion-minus"></i>
+						<i class="calc-btn ion-plus"></i>
+					</section>		
+
+					<section class="mt-1">
+						<div class="title-txt">Minimum Yeild</div>
+						<input type="text" class="full-w w-7" placeholder="e.g 10%">
+						<i class="calc-btn ion-minus"></i>
+						<i class="calc-btn ion-plus"></i>
+					</section>						
+
+					<input type="submit" value="Calculate" class="mt-4 btn btn-success fl-r full-w">							
+					</form>					
+				</tab>				
+			</tabset>
+		</section>
+
+
+	</main>

@@ -16,15 +16,11 @@ Route::get('/', function()
 	return View::make('login.index');
 });
 
+/*	Old Routes
 Route::get('signup', array('uses' => 'UserController@get_new'));
-
-// Dashboard Controller
-// --------------------------------------------------
 
 Route::get('dashboard', array('uses' => 'DashController@get_index'));
 
-// Calculations Controller
-// --------------------------------------------------
-
 Route::get('calculations', array('uses' => 'CalcController@get_new'));
 Route::get('working', array('uses' => 'CalcController@get_index'));
+*/
