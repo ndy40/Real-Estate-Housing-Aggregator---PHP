@@ -4,9 +4,14 @@
 			<input type="text" placeholder="Full Name" value="Test">
 			<input type="text" placeholder="Email" value="test@test.co.uk">
 			<input type="password" placeholder="Password" value="1234">
-		    <input type="text" ng-model="asyncSelected" placeholder="Where are you looking to buy?" typeahead="location.name for location in locations | filter:$viewValue | limitTo:5" typeahead-loading="loadingLocations">
+		    <input type="text" ng-model="asyncSelected" placeholder="Where are you looking to buy?" typeahead="location as location.name for location in locations | filter:$viewValue | limitTo:5" typeahead-loading="loadingLocations" typeahead-template-url="itemTpl.html">
 		    <i ng-show="loadingLocations" class="ion ion-loop"></i>			
 		</section>
 		<input type="submit" value="Save" class="mt-2 btn btn-default">
 	</form>
 </main>			
+
+
+<script type="text/ng-template" id="itemTpl.html">
+      <span  ng-bind-html-unsafe="match.model.name"></span>
+</script>

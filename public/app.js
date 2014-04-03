@@ -24,7 +24,7 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
             url: "/calculcations",
             templateUrl: "views/calculations/index.html"
         }) 
-            .state('calculationNew', {
+            .state('New calculation', {
                 url: "/calculcations/new",
                 templateUrl: "views/calculations/show.html"
             })                 
@@ -38,7 +38,7 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
             url: "/alerts",
             templateUrl: "views/alerts/index.html"
         }) 
-            .state('alertsNew', {
+            .state('New alert', {
                 url: "/alerts/new",
                 templateUrl: "views/alerts/new.html"
             })         
