@@ -2,19 +2,13 @@ var SettingsCtrl = function ($scope, $http) {
 
     $scope.selected = undefined;
 
-    $scope.getLocation = function(val) {
-        return $http.get('../assets/locations.json', {
-            params: {
-                address: val,
-                sensor: false
-            }
-        }).then(function(res){
-            var addresses = [];
-            angular.forEach(res.data.results, function(item){
-                addresses.push(item.formatted_address);
-            });
-            return addresses;
-        });
-    };
+    $http.get('/locations.json').then(function(response){
+        $scope.locations = response.data;
+    })
+
+
+    //$scope.searchLocation = function(val) {
+    //    return $http.get('../assets/locations.json', { search: val });
+    //}
 
 };
