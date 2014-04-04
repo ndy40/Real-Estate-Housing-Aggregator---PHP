@@ -81,6 +81,7 @@ $fz: fz !default;
 // General
 // --------------------------------------------------
 
+
 $pc-green: #35C07E;
 
 body{
@@ -161,7 +162,7 @@ input {
 
 .sml-font{ font-size: 0.8em; }
 
-.w-7{ width:66%;}
+.w-7{ width:76%;}
 .w-5{ width:50%;}
 
 .title-txt{
@@ -302,3 +303,28 @@ input{
 	font-size: 1.4em;
 	border-radius: 0.15em;
 }
+
+
+
+// Calculations Page
+// --------------------------------------------------
+
+
+.new-calc {
+	.nav-tabs {
+		padding: 0 10px;
+		li{
+			@extend .btn-tap;
+			@extend .ta-c;
+			border-radius: 3px;
+			width: 48%;
+			float: left;
+			a {color: $pc-green;}
+
+			&.active a {color: $white;}
+
+			&:first-child{margin-right: 10px;}
+		}
+	}
+}
+

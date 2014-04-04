@@ -6,6 +6,10 @@ var SettingsCtrl = function ($scope, $http) {
         $scope.locations = response.data;
     })
 
+    $scope.selectLocation = function(item, model, label){
+		$scope.applicationSettings.image = model.image;
+    }
+
 
     //$scope.searchLocation = function(val) {
     //    return $http.get('../assets/locations.json', { search: val });
