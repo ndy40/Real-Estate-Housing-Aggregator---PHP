@@ -16,6 +16,7 @@ class CreatePropertyType extends Migration {
         Schema::create('type', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->unique('name');
         });
 	}
 

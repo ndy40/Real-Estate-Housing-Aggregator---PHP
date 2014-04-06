@@ -12,7 +12,8 @@ use models\interfaces\RepositoryInterface;
 use Illuminate\Support\Facades\App;
 use models\entities\FailedScrapes;
 use models\crawler\JobQueue;
-
+use models\entities\Property;
+use models\entities\PostCode;
 
 /**
  * Description of ScrapeRepository
@@ -21,6 +22,15 @@ use models\crawler\JobQueue;
  */
 class ScrapeRepository implements RepositoryInterface
 {
+    protected $propertyRepo;
+    protected $agentRepo;
+    
+    public function __construct() {
+        $this->propertyRepo = $propertyRepo =  App::make('PropertyRepository');
+        $this->agentRepo = App::make('AgentRespository');
+    }
+
+
     public function delete($id) {
         
     }
@@ -39,9 +49,9 @@ class ScrapeRepository implements RepositoryInterface
      * @param string $agent - Agency name.
      * @param mixed[] $data - Scrape job data 
      */
-    public function saveFailedScrapes($agent, $country, $result) {
-        $repo = App::make('AgentRespository');
-        $agency = $repo->fetchAgentByNameAndCountry(
+    public function saveFailedScrapes($agent, $country, $result) 
+    {
+        $agency = $this->agentRepo->fetchAgentByNameAndCountry(
                 $agent,
                 $country
         );
@@ -54,51 +64,94 @@ class ScrapeRepository implements RepositoryInterface
     
     public function saveProperty(\DOMDocument $data)
     {
-        $propertyRepo =  App::make('PropertyRepository');
-        $agencyRepo = App::make('AgentRespository');
-        $scrapeProperty = new \models\entities\Property;
+        $scrapedProperty = $this->buildPropertyClassPart($data);
         
-        $status = $data->getElementsByTagName('status')->nodeValue;
-        $marketer = $data->getElementsByTagName('marketer')->nodeValue;
-        $scrapeProperty->setAttribute('marketer', $marketer);
+        $status = $data->getElementsByTagName('status')->item(0)->nodeValue;
+        $agent = $data->getElementsByTagName('agent')->item(0)->nodeValue;
+        $country = $data->getElementsByTagName('country')->item(0)->nodeValue;
+        $type = $data->getElementsByTagName('type')->item(0)->nodeValue;
+        $postCode = $data->getElementsByTagName('areacode')->item(0)->nodeValue;
         
-        $address = $data->getElementsByTagName('address')->nodeValue;
-        $scrapeProperty->setAttribute('address', $address);
+        $agency = $this->agentRepo->fetchAgentByNameAndCountry($agent, $country);
+        $scrapedProperty->agency()->associate($agency);
         
-        $rooms = (int)$data->getElementsByTagName('rooms')->nodeValue;
-        $scrapeProperty->setAttribute('rooms',$rooms);
+        $postCode = $this->propertyRepo->fetchPostCode($postCode);
+        if (is_null($postCode)) {
+            $postCode = $data->getElementsByTagName('areacode')->item(0)->nodeValue;
+            $postCode = new PostCode(array('code' => strtoupper($postCode)));
+            $postCode->save();
+        }
+        $scrapedProperty->associate($postCode);
         
-        $postCode = $data->getElementsByTagName('areacode')->nodeValue;
-        $postCode = $propertyRepo->fetchPostCode($postCode);
+        $type = $this->propertyRepo->fetchPropertyType($type);
+        $scrapedProperty->associate($type);
         
-        $phone = $data->getElementsByTagName('phone')->nodeValue;
-        $price = doubleval($data->getElementsByTagName('price')->nodeValue);
-        $type = $data->getElementsByTagName('type')->nodeValue;
-        $url = $data->getElementsByTagName('url')->nodeValue;
-        $country = $data->getElementsByTagName('country')->nodeValue;
-        $agent = $data->getElementsByTagName('agent')->nodeValue;
-        $hash = $propertyRepo->generatePropertyHash (
-            $country,
-            $agent,
-            $address,
-            $marketer,
-            $postCode,
-            $address
-        );
-        
-        
-        $agency = $agencyRepo->fetchAgentByNameAndCountry($agent, $country);
         switch ($status) {
             case JobQueue::ITEM_NOT_AVAILABLE :
-                $property = $propertyRepo->fetchPropertyByHash($hash);
-                
-                
-                
+                $property = $this->propertyRepo
+                    ->fetchPropertyByHash($scrapedProperty->hash);
+                $property->available = false;
+                $property->save();
                 break;
             case JobQueue::ITEM_AVAILABLE:
-                
+                $property = $this->propertyRepo
+                    ->fetchPropertyByHash($scrapedProperty->hash);
+                //check if agency has been configured for auto-approval. If true then 
+                //set available to 1.
+                if ($agency->auto_publish) {
+                    $scrapedProperty->available = 1;
+                }
+                if (is_null($property)) {
+                    $this->propertyRepo->save($scrapedProperty);
+                } else {
+                    //perform proper test on data insert/update of property.
+                    $property = $this->propertyRepo
+                        ->updateChangedFields($scrapedProperty, $property);
+                    $property->save();
+                }
                 break;
         }
-       
+        return $property;
     }
+    
+    protected function buildPropertyClassPart(\DOMDocument $data)
+    {
+        $scrapeProperty = array();
+        $country = rawurldecode($data->getElementsByTagName('country')->item(0)->nodeValue);
+        $agent = rawurldecode($data->getElementsByTagName('agent')->item(0)->nodeValue);
+        
+        $scrapeProperty['marketer'] 
+            = $data->getElementsByTagName('marketer')->item(0)->nodeValue;
+        
+        $scrapeProperty['address'] 
+            = $data->getElementsByTagName('address')->item(0)->nodeValue;
+        
+        $scrapeProperty['rooms'] 
+            = $data->getElementsByTagName('rooms')->item(0)->nodeValue;
+        
+        $postcode = $data->getElementsByTagName('rooms')->item(0)->nodeValue;
+        
+        $scrapeProperty['phone'] 
+            = $data->getElementsByTagName('phone')->item(0)->nodeValue;
+        
+        $scrapeProperty['price'] 
+            = doubleval($data->getElementsByTagName('price')->item(0)->nodeValue);
+        
+        $scrapeProperty['url'] = rawurldecode($data->getElementsByTagName('url')->item(0)->nodeValue);
+        
+        $scrapeProperty['hash'] = $this->propertyRepo->generatePropertyHash (
+            $country,
+            $agent,
+            $scrapeProperty['address'],
+            $scrapeProperty['marketer'],
+            $postcode
+        );
+        
+        return new Property($scrapeProperty);        
+    }
+
+    public function save($entity) {
+        throw new Exception ('Not implemented yet');
+    }
+
 }

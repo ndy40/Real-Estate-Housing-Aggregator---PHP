@@ -10,8 +10,9 @@ namespace models\repositories;
 
 use models\interfaces\RepositoryInterface;
 use models\entities\PostCode;
-use Illuminate\Support\Facades\Crypt;
 use models\entities\Property;
+use models\entities\PropertyType;
+use Illuminate\Support\Facades\App;
 
 /**
  * Description of PropertyRepository
@@ -20,17 +21,25 @@ use models\entities\Property;
  */
 class PropertyRepository implements RepositoryInterface
 {
-    public function delete($id) {
+    public function delete($id) 
+    {
         
     }
 
-    public function fetch($id) {
-        
+    public function fetch($id) 
+    {
+        return Property::find($id);
     }
 
-    public function update($entity) {
+    public function update($entity) 
+    {
         
     }
+    
+    public function save($entity) {
+        return $entity->save();
+    }
+
     
     public function fetchPropertyByHash($hash) {
         return Property::where('hash', '=', $hash)->first();
@@ -43,7 +52,7 @@ class PropertyRepository implements RepositoryInterface
             $postCode = PostCode::find($postCode);
         } else {
             $postCode = PostCode::where('code', '=', strtoupper($postCode))
-                ->first();
+                ->firstOrFail();
         }
         return $postCode;
     }
@@ -53,11 +62,56 @@ class PropertyRepository implements RepositoryInterface
         $agent, 
         $address, 
         $marketer, 
-        $postcode,
-        $address
+        $postcode
     ){
-        $hashString = $country . $agent . $address . $marketer 
-            . $postcode . $address;
-        return Crypt::encrypt($hashString);
+        $hashString = strtolower($country) . strtolower($agent) 
+            . strtolower($address) . strtolower($marketer) 
+            . strtolower($postcode) . strtolower($address);
+        return md5($hashString);
     }
+    
+    public function insertProperty($agencyId, $data = array()) {
+        $agencyRepo = App::make('AgentRepository');
+        $agency = $agencyRepo->fetch($agencyId);
+        if (empty($data)) {
+            throw new Exception("No initial data provided");
+        }
+        $property = new Property($data);
+    }
+    
+    public function fetchPropertyType($type = '') {
+        $type = null;
+        if (is_string($type)) {
+            $type = PropertyType::where('name', 'like', "%{$type}%")
+                ->firstOrFail();
+        } else {
+            $type = PropertyType::find($type);
+        }
+        return $type;
+    }
+    
+    /**
+     * Method to update difference in values between scraped and db object.
+     * 
+     * @param models\entities\Property $scrapedProperty Property being scraped
+     * @param models\entities\Property $dbProperty Property from DB that should be
+     * compared against.
+     * @return boolean True if something has been updated else false returned.
+     */
+    public function updateChangedFields($scrapedProperty, $dbProperty)
+    {
+        $changeArray = array();
+        $attributes = $dbProperty->getAttributes();
+        
+        foreach($attributes as $key) {
+            if ($scrapedProperty->{$key} == $dbProperty->{$key}) {
+                $changeArray[$key] = $dbProperty->{$key};
+            }
+        }
+        $dbProperty->setAttributes($changeArray);
+        
+        return $dbProperty;
+    }
+
+   
 }

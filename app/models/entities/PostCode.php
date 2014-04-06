@@ -19,8 +19,14 @@ class PostCode extends Ardent
 {
     protected $table = "post_codes";
     
-    public function county () {
+    public function county () 
+    {
         return $this->belongsTo('County');
+    }
+    
+    public function properties ()
+    {
+        return $this->hasMany('Property', 'post_code');
     }
     
 }

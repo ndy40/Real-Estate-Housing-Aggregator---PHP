@@ -18,4 +18,6 @@ interface RepositoryInterface
     public function delete($id);
     
     public function update($entity);
+    
+    public function save($entity);
 }

@@ -19,6 +19,7 @@ class CreateCountryTable extends Migration {
             $table->string('code');
             $table->string('currency', 4);
             $table->boolean('enabled');
+            $table->unique(array('name', 'code'));
         });
 	}
 

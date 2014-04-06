@@ -3,6 +3,7 @@ namespace models\entities;
 
 use LaravelBook\Ardent\Ardent;
 
+
 /**
  * Description of Property
  *
@@ -19,8 +20,17 @@ class Property extends Ardent
         'url'       => 'required|url',
     );
     
+    protected $fillable = array('marketer', 'rooms', 'url', 'address', 'price',
+        'hash', 'available', 'published'
+    );
+    
     public function postCode () {
-        return $this->belongsTo('PostCode');
+        return $this->belongsTo('\models\entities\PostCode', 'post_code');
+    }
+    
+    public function agency()
+    {
+        return $this->belongsTo('\models\entities\Agency', 'agency_id');
     }
     
 }

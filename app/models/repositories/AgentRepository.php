@@ -38,4 +38,8 @@ class AgentRepository  implements RepositoryInterface
             ->agencies()->where('crawler', '=', $agency)->first();
     }
 
+    public function save($entity) {
+        
+    }
+
 }

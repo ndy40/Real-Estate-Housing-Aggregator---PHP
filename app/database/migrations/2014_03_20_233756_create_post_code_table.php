@@ -16,7 +16,9 @@ class CreatePostCodeTable extends Migration {
         Schema::create('post_codes', function (Blueprint $table) {
             $table->increments('id');
             $table->string('code');
+            $table->string('area');
             $table->integer('county_id')->unsigned();
+            $table->index(array('code', 'area'));
         });
         
         Schema::table('post_codes', function (Blueprint $table) {

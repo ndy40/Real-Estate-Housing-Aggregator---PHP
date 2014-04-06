@@ -103,7 +103,7 @@ abstract class Scrape
 
 //        $this->cleanUp();
         
-        return $this->output;
+        return trim($this->output);
         
     }
     
