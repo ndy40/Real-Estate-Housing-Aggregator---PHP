@@ -22,6 +22,15 @@
 .c-white {color: #fff;}
 .c-grey {color: #838383;}
 
+.c-red {color: #D42C2C;}
+.c-orange {color: #FF6600;}
+.c-yellow {color: #FFCC00;}
+.c-green {color: #33CC33;}
+.c-blue {color: #0066FF;}
+.c-purple {color: #9966FF;}
+.c-pink {color: #FF33CC;}
+.c-brown {color: #663300;}
+
 // layout
 
 .full-w{ width: 100%;}
@@ -42,6 +51,9 @@
 .mt-0_5 {margin-top: 0.5em;}
 .mb-0_5 {margin-bottom: 0.5em;}
 
+.pt-0_5 {padding-top: 0.5em;}
+.pb-0_5 {padding-bottom: 0.5em;}
+
 .tt-u{text-transform: uppercase;}
 
 .pos-r{position: relative;}
@@ -51,10 +63,15 @@
 $mb: mb !default;
 $mt: mt !default;
 
+$pb: pb !default;
+$pt: pt !default;
 
 @for $i from 0 through 10 {
 	.#{$mb}-#{$i} {margin-bottom: 0em + $i;}	
-	.#{$mt}-#{$i} {margin-top: 0em + $i;}		
+	.#{$mt}-#{$i} {margin-top: 0em + $i;}
+
+	.#{$pb}-#{$i} {padding-bottom: 0em + $i;}	
+	.#{$pt}-#{$i} {padding-top: 0em + $i;}						
 } 
 
 
@@ -67,9 +84,11 @@ $mt: mt !default;
 
 
 $fz: fz !default;
+$p: p !default;
 
 @for $i from 0 through 5 {
 	.#{$fz}-#{$i} {font-size: 0em + $i;}	
+	.#{$p}-#{$i} {padding: 0em + $i;}
 } 
 
 
@@ -83,9 +102,10 @@ $fz: fz !default;
 
 
 $pc-green: #35C07E;
+$pc-grey-light: #f1f1f1;
 
 body{
-	background-color: #f1f1f1;
+	background-color: $pc-grey-light;
 	&.active{
 		overflow-x: hidden;
 	}
@@ -98,7 +118,7 @@ input {
 	border-radius:0.2em;
 }
 
-
+.bgc-grey{background-color: $pc-grey-light}
 .c-green{color: $pc-green;}
 
 [role="banner"]{
@@ -286,10 +306,20 @@ input{
 // -------------------------------------------------
 
 
-.dash-bg{
-	background: url(../img/dash-bg.jpg) no-repeat center center; 
-	min-height:10em;
+.dash-bg {
+
+	img {
+		width: 100%;
+		height: auto;
+		position: relative;
+		top: 0;
+		left: 0;
+		z-index: -1;
+		margin-top: -10em;
+		margin-bottom: -16em;
+	}	
 }
+
 
 .block{
 	border-bottom: 1px solid #ccc;
@@ -304,7 +334,11 @@ input{
 	border-radius: 0.15em;
 }
 
-
+.dd-home{
+	background: transparent;
+	color: $white;
+	border: 1px solid $white;	
+}
 
 // Calculations Page
 // --------------------------------------------------
@@ -327,4 +361,24 @@ input{
 		}
 	}
 }
+
+
+
+
+
+#container {
+    width: 400px;
+    overflow: auto;
+    white-space: nowrap;
+}
+
+.contents {
+    width: 140px;
+    height: 60px;
+    display: inline-block;
+	border-left: 2px solid white;
+	margin-left: 1em;
+
+}
+
 
