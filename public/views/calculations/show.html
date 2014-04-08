@@ -10,75 +10,97 @@
 					<input type="radio" name="ros" id="sale"> Buy to Sell
 				</label>
 			</div> -->
+
 			<tabset>
 				<tab heading="Buy To Let">
-					<form action="" class="mb-2 container">
+					<form action="" class="mb-2 container" ng-submit="letFormula()">
+						<section class="mt-1">
+							<div class="title-txt">Asking Price (£)</div>
+							<input type="number" name="asking" class="full-w" placeholder="e.g 200,000" ng-model="btl.asking">
+						</section>
 
-					<section class="mt-1">
-						<div class="title-txt">Asking Price</div>
-						<input type="text" class="full-w" placeholder="e.g £200,000">
-					</section>
+						<section class="mt-1">
+							<div class="title-txt">Mortgage LTV (%)</div>
+							<input type="number" name="mortgage" class="full-w" placeholder="e.g 75" ng-model="btl.mortgage">
+						</section>		
 
-					<section class="mt-1">
-						<div class="title-txt">Deposit</div>
-						<input type="text" class="full-w" placeholder="e.g £200,000">
-					</section>		
+						<section class="mt-1">
+							<div class="title-txt">Interest Rate (%)</div>
+							<input type="number" name="interest"  class="full-w" placeholder="e.g 6" ng-model="btl.interest">					
+						</section>	
 
-					<section class="mt-1">
-						<div class="title-txt">Interest Rate</div>
-						<input type="text" class="full-w w-7" placeholder="e.g 3.5%">
-						<i class="calc-btn ion-minus"></i>
-						<i class="calc-btn ion-plus"></i>						
-					</section>	
+						<section class="mt-1">
+							<div class="title-txt">Monthly Rent (£)</div>
+							<input type="number" name="rent" class="full-w" placeholder="e.g 1,000" ng-model="btl.rent">
+						</section>		
 
-					<section class="mt-1">
-						<div class="title-txt">Monthly Rent</div>
-						<input type="text" class="full-w" placeholder="e.g £1,000">
-					</section>		
+						<section class="mt-1">
+							<div class="title-txt">Management (%)</div>
+							<input type="number" name="manage" class="full-w" placeholder="e.g 10" ng-model="btl.manage">
+						</section>	
 
-					<section class="mt-1">
-						<div class="title-txt">Minimum Yeild</div>
-						<input type="text" class="full-w w-7" placeholder="e.g 10%">
-						<i class="calc-btn ion-minus"></i>
-						<i class="calc-btn ion-plus"></i>
-					</section>		
+						<section class="mt-1">
+							<div class="title-txt">Maintenance (%)</div>
+							<input type="number" name="main" class="full-w" placeholder="e.g 5" ng-model="btl.main">
+						</section>	
 
-					<input type="submit" value="Calculate" class="mt-4 btn btn-success fl-r full-w">							
+						<!--
+						<section class="mt-1">
+							<div class="title-txt">Maintenance %</div>
+							<input type="text" class="full-w w-7" placeholder="e.g 10%">
+							<i class="calc-btn ion-minus"></i>
+							<i class="calc-btn ion-plus"></i>
+						</section>							
+						-->				
+
+						<input type="submit" value="Calculate" class="mt-4 btn btn-success fl-r full-w mb-1">	
+
+						<div>
+							Monthly Profit: <strong>£{{ mProfit | number:2 }} </strong><br>
+							Yearly Profit: <strong>£{{ yProfit | number:0 }} </strong><br>
+							Rate of Return: <strong>{{ rReturn | number:0 }}%</strong>
+						</div>
 					</form>					
 				</tab>
+
 				<tab heading="Buy To Sell">
-					<form action="" class="mb-2 container">
+					<form action="" class="mb-2 container" ng-submit="sellFormula()">
+						<section class="mt-1">
+							<div class="title-txt">Asking Price (£)</div>
+							<input type="number" class="full-w" placeholder="e.g 200,000" ng-model="bts.asking">
+						</section>
 
-					<section class="mt-1">
-						<div class="title-txt">Asking Price</div>
-						<input type="text" class="full-w" placeholder="e.g £200,000">
-					</section>
+						<section class="mt-1">
+							<div class="title-txt">Mortgage LTV (%)</div>
+							<input type="number" class="full-w" placeholder="e.g 75" ng-model="bts.mortgage">
+						</section>		
 
-					<section class="mt-1">
-						<div class="title-txt">Renovation Costs</div>
-						<input type="text" class="full-w" placeholder="e.g £20,000">
-					</section>		
+						<section class="mt-1">
+							<div class="title-txt">Interest Rate (%)</div>
+							<input type="number" class="full-w" placeholder="e.g 6" ng-model="bts.interest">
+						</section>
 
-					<section class="mt-1">
-						<div class="title-txt">Estimated Resale Price</div>
-						<input type="text" class="full-w" placeholder="e.g £250,000">
-					</section>	
+						<section class="mt-1">
+							<div class="title-txt">Holding Period (months)</div>
+							<input type="number" class="full-w" placeholder="e.g 12" ng-model="bts.holding">
+						</section>			
 
-					<section class="mt-1">
-						<div class="title-txt">Interest Rate</div>
-						<input type="text" class="full-w w-7" placeholder="e.g 3.5%">
-						<i class="calc-btn ion-minus"></i>
-						<i class="calc-btn ion-plus"></i>
-					</section>		
+						<section class="mt-1">
+							<div class="title-txt">Refurbishment Cost (£)</div>
+							<input type="number" class="full-w" placeholder="e.g 40,000" ng-model="bts.refurb">
+						</section>	
 
-					<section class="mt-1">
-						<div class="title-txt">Minimum Yeild</div>
-						<input type="text" class="full-w w-7" placeholder="e.g 10%">
-						<i class="calc-btn ion-minus"></i>
-						<i class="calc-btn ion-plus"></i>
-					</section>						
+						<section class="mt-1">
+							<div class="title-txt">Estimated Resale Price(£)</div>
+							<input type="number" class="full-w" placeholder="e.g 220,000" ng-model="bts.resale">
+						</section>										
 
-					<input type="submit" value="Calculate" class="mt-4 btn btn-success fl-r full-w">							
+						<input type="submit" value="Calculate" class="mt-4 btn btn-success fl-r full-w mb-1">		
+
+						<div>
+							Total Profit/Loss: <strong>£{{ totalPl | number:2 }} </strong><br>
+							Return on Investment: <strong>{{ roi | number:0 }}% </strong>
+						</div>			
 					</form>					
 				</tab>				
 			</tabset>

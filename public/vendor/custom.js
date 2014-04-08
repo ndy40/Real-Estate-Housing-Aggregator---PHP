@@ -31,3 +31,8 @@ $('.left-nav a').click(function() {toggleNav();});
 //	if ($(window).width() >= 640){$('body').html(msg);}
 //});
 
+
+
+// Buy to Let Formula
+// --------------------------------------------------
+
