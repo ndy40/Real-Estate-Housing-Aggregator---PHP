@@ -33,6 +33,14 @@ $('.left-nav a').click(function() {toggleNav();});
 
 
 
-// Buy to Let Formula
+// Dashboard Scrolly text
 // --------------------------------------------------
 
+
+$( document ).ready(function() {
+	$('#container').css('width', ($(window).width()));
+});
+
+$(window).resize(function() {
+	$('#container').css('width', ($(window).width()));	
+});

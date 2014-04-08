@@ -10,6 +10,7 @@ var NewCalculationController = function ($scope) {
 	$scope.bts.mortgage = 75;
 	$scope.bts.interest = 6;
 
+
 	$scope.letFormula = function() {
 
 		mortgage = $scope.btl.mortgage/100;
@@ -30,6 +31,7 @@ var NewCalculationController = function ($scope) {
 
 		$scope.rReturn = rate * 100;
 	};
+
 
 	$scope.sellFormula = function() {
 
