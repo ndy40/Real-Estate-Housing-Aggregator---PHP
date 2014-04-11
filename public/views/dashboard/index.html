@@ -5,7 +5,7 @@
 			<img ng-src="assets/{{ applicationSettings.image }}">
 			<div class="container">
 				<div class="row container">
-					<span class="fw-b fz-2">{{ applicationSettings.name }}</span>
+					<span class="fw-b fz-1_5">{{ applicationSettings.name }}</span>
 					<div class="dropdown fl-r">
 						<a class="btn btn-tap dd-home dropdown-toggle sr-only">
 							Last 7 Days
@@ -13,15 +13,15 @@
 						</a>
 						<ul class="dropdown-menu">
 							<li><a>Option1</a></li>
-							<li><a>Option2</a></li>
+							<li ng-click="dataChange()"><a>Change</a></li>
 						</ul>
 					</div>						
 				</div>
 				<div class="row mb-1 mt-1" id="container">
 					<div class="col-md-3  contents fl-l">
 						<strong>1 Bed House</strong> <br>
-						£225,000 <br>
-						<span class="c-red fw-b"><i class="ion-arrow-down-a"></i> 1.5%</span>
+						{{ locationData.one_bed_house.price }}<br>
+						<span class="c-red fw-b"><i class="ion-arrow-down-a"></i> {{ locationData.one_bed_house.change }}%</span>
 					</div>
 					<div class="col-md-3  contents fl-l">
 						<strong>2 Bed House</strong> <br>
@@ -92,7 +92,7 @@
 						<div class="c-grey sml-font">Asking Price increasaed</div>
 						<span>23 High Road, Buckhurst Hill, IG9 6</span>
 					</div>
-					<h1 class="ta-c c-green m-0 mb-0_5 fl-r">+4.7%</h1>
+					<h1 class="ta-c c-green m-0 mb-0_5 fl-r fz-1_5">+4.7%</h1>
 				</article>
 			</div>
 
@@ -102,7 +102,7 @@
 						<div class="c-grey sml-font">Asking Price increasaed</div>
 						<span>Flat 8, 23 Beatrice Court, Buckhurst Hill, IG9 6</span>
 					</div>
-					<h1 class="ta-c c-green m-0 mb-0_5 fl-r">+4.7%</h1>
+					<h1 class="ta-c c-green m-0 mb-0_5 fl-r fz-1_5">+4.7%</h1>
 				</article>
 			</div>
 		</section>		

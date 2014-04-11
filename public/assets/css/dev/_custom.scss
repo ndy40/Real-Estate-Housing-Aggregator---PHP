@@ -112,7 +112,6 @@ input {
 	background-color: $pc-green;
 	color: #fff;
 	padding: 0.6em 0;
-	font-size: 1.3em;
 	text-transform: uppercase;	
 
 	a{
@@ -362,6 +361,17 @@ input{
 
 			&:first-child{margin-right: 10px;}
 		}
+	}
+}
+
+
+// Calculations Page
+// --------------------------------------------------
+
+
+.reg-form{
+	.dropdown-menu{
+		width: 96%;
 	}
 }
 
