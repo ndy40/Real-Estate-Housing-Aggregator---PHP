@@ -1,4 +1,4 @@
-var SettingsCtrl = function ($scope, $http) {
+var SettingsCtrl = function ($scope, $http, $location) {
 
     $scope.selected = undefined;
 
@@ -9,6 +9,10 @@ var SettingsCtrl = function ($scope, $http) {
     $scope.selectLocation = function(item, model, label){
 		$scope.applicationSettings.image = model.image;
         $scope.applicationSettings.name = model.name;
+    }
+
+    $scope.searchResults = function(){
+    	$location.path('/');
     }
 
 };
