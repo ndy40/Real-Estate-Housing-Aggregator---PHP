@@ -1,17 +1,4 @@
 
-//  
-//  Contents
-//  ================================
-//  
-//  Bricks
-//	General
-//	Navigation
-//  Login
-//	Register Page
-//  
-//  ================================
-//  
-
 
 // Bricks
 // --------------------------------------------------
@@ -339,6 +326,23 @@ input{
 	border: 1px solid $white;	
 }
 
+#container {
+   // width: auto;
+    overflow: auto;
+    white-space: nowrap;
+}
+
+.contents {
+    width: 140px;
+    height: 60px;
+    display: inline-block;
+	border-left: 2px solid white;
+	margin-left: 1em;
+
+}
+
+
+
 // Calculations Page
 // --------------------------------------------------
 
@@ -362,22 +366,52 @@ input{
 }
 
 
+// Block UI
+// -------------------------------------------------
 
 
-
-#container {
-   // width: auto;
-    overflow: auto;
-    white-space: nowrap;
+.block-ui-overlay {
+    z-index: 10001;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    position: absolute;
 }
 
-.contents {
-    width: 140px;
-    height: 60px;
-    display: inline-block;
-	border-left: 2px solid white;
-	margin-left: 1em;
+body .block-ui {
+	.block-ui-overlay, .block-ui-message-container {
+	    position: fixed;
+	}
+}
 
+
+.block-ui-overlay.block-ui-visible {
+    background-color: #fff;
+    opacity: 0.3;
+}
+
+.block-ui-message-container {
+    position: absolute;
+    top: 35%;
+    left: 0;
+    right: 0;
+    height: 0;
+    text-align: center;
+    z-index: 10002;
+}
+
+.block-ui-message {
+    display: inline-block;
+    text-align: left;
+    background-color: $orangeAddvocate;
+    color: $white;
+    padding: 10px 30px;
+    border-radius: 4px;
+    border: 2px solid darken($orangeAddvocate, 15%);
 }
 
 

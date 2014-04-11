@@ -1,4 +1,4 @@
-var SettingsCtrl = function ($scope, $http, $location) {
+var SettingsCtrl = function ($scope, $http, $location, blockUI, $timeout) {
 
     $scope.selected = undefined;
 
@@ -12,7 +12,8 @@ var SettingsCtrl = function ($scope, $http, $location) {
     }
 
     $scope.searchResults = function(){
-    	$location.path('/');
+        blockUI.start("Settings Saved");
+        $timeout(function() { blockUI.stop();}, 1100);
     }
 
 };

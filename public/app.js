@@ -1,7 +1,8 @@
 
 var app = angular.module('propertycrunchApp', [
 	'ui.router',
-    'ui.bootstrap'
+    'ui.bootstrap',
+    'blockUI'
 ]);
 
 
