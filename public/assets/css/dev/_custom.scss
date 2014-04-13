@@ -1,17 +1,4 @@
 
-//  
-//  Contents
-//  ================================
-//  
-//  Bricks
-//	General
-//	Navigation
-//  Login
-//	Register Page
-//  
-//  ================================
-//  
-
 
 // Bricks
 // --------------------------------------------------
@@ -21,6 +8,15 @@
 
 .c-white {color: #fff;}
 .c-grey {color: #838383;}
+
+.c-red {color: #D42C2C;}
+.c-orange {color: #FF6600;}
+.c-yellow {color: #FFCC00;}
+.c-green {color: #33CC33;}
+.c-blue {color: #0066FF;}
+.c-purple {color: #9966FF;}
+.c-pink {color: #FF33CC;}
+.c-brown {color: #663300;}
 
 // layout
 
@@ -42,6 +38,9 @@
 .mt-0_5 {margin-top: 0.5em;}
 .mb-0_5 {margin-bottom: 0.5em;}
 
+.pt-0_5 {padding-top: 0.5em;}
+.pb-0_5 {padding-bottom: 0.5em;}
+
 .tt-u{text-transform: uppercase;}
 
 .pos-r{position: relative;}
@@ -51,10 +50,15 @@
 $mb: mb !default;
 $mt: mt !default;
 
+$pb: pb !default;
+$pt: pt !default;
 
 @for $i from 0 through 10 {
 	.#{$mb}-#{$i} {margin-bottom: 0em + $i;}	
-	.#{$mt}-#{$i} {margin-top: 0em + $i;}		
+	.#{$mt}-#{$i} {margin-top: 0em + $i;}
+
+	.#{$pb}-#{$i} {padding-bottom: 0em + $i;}	
+	.#{$pt}-#{$i} {padding-top: 0em + $i;}						
 } 
 
 
@@ -67,9 +71,11 @@ $mt: mt !default;
 
 
 $fz: fz !default;
+$p: p !default;
 
 @for $i from 0 through 5 {
 	.#{$fz}-#{$i} {font-size: 0em + $i;}	
+	.#{$p}-#{$i} {padding: 0em + $i;}
 } 
 
 
@@ -81,10 +87,12 @@ $fz: fz !default;
 // General
 // --------------------------------------------------
 
+
 $pc-green: #35C07E;
+$pc-grey-light: #f1f1f1;
 
 body{
-	background-color: #f1f1f1;
+	background-color: $pc-grey-light;
 	&.active{
 		overflow-x: hidden;
 	}
@@ -97,14 +105,13 @@ input {
 	border-radius:0.2em;
 }
 
-
+.bgc-grey{background-color: $pc-grey-light}
 .c-green{color: $pc-green;}
 
 [role="banner"]{
 	background-color: $pc-green;
 	color: #fff;
 	padding: 0.6em 0;
-	font-size: 1.3em;
 	text-transform: uppercase;	
 
 	a{
@@ -161,7 +168,7 @@ input {
 
 .sml-font{ font-size: 0.8em; }
 
-.w-7{ width:66%;}
+.w-7{ width:76%;}
 .w-5{ width:50%;}
 
 .title-txt{
@@ -171,7 +178,8 @@ input {
 }
 
 .dropdown-menu{
-	width: 95%;
+	width: 95px;
+	position: absolute;
 }
 
 
@@ -228,8 +236,6 @@ input {
 }
 
 .logout-btn {
-	position: absolute;
-	bottom: 0;
 	background: rgba(80, 43, 43, 1);
 	width: 100%;	
 }
@@ -285,10 +291,20 @@ input{
 // -------------------------------------------------
 
 
-.dash-bg{
-	background: url(../img/dash-bg.jpg) no-repeat center center; 
-	min-height:10em;
+.dash-bg {
+
+	img {
+		width: 100%;
+		height: auto;
+		position: relative;
+		top: 0;
+		left: 0;
+		z-index: -1;
+		margin-top: -10em;
+		margin-bottom: -19em;
+	}	
 }
+
 
 .block{
 	border-bottom: 1px solid #ccc;
@@ -302,3 +318,110 @@ input{
 	font-size: 1.4em;
 	border-radius: 0.15em;
 }
+
+.dd-home{
+	background: transparent;
+	color: $white;
+	border: 1px solid $white;	
+}
+
+#container {
+   // width: auto;
+    overflow: auto;
+    white-space: nowrap;
+}
+
+.contents {
+    width: 140px;
+    height: 60px;
+    display: inline-block;
+	border-left: 2px solid white;
+	margin-left: 1em;
+
+}
+
+
+
+// Calculations Page
+// --------------------------------------------------
+
+
+.new-calc {
+	.nav-tabs {
+		padding: 0 10px;
+		li{
+			@extend .btn-tap;
+			@extend .ta-c;
+			border-radius: 3px;
+			width: 48%;
+			float: left;
+			a {color: $pc-green;}
+
+			&.active a {color: $white;}
+
+			&:first-child{margin-right: 10px;}
+		}
+	}
+}
+
+
+// Calculations Page
+// --------------------------------------------------
+
+
+.reg-form{
+	.dropdown-menu{
+		width: 96%;
+	}
+}
+
+
+// Block UI
+// -------------------------------------------------
+
+
+.block-ui-overlay {
+    z-index: 10001;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    position: absolute;
+}
+
+body .block-ui {
+	.block-ui-overlay, .block-ui-message-container {
+	    position: fixed;
+	}
+}
+
+
+.block-ui-overlay.block-ui-visible {
+    background-color: #fff;
+    opacity: 0.3;
+}
+
+.block-ui-message-container {
+    position: absolute;
+    top: 35%;
+    left: 0;
+    right: 0;
+    height: 0;
+    text-align: center;
+    z-index: 10002;
+}
+
+.block-ui-message {
+    display: inline-block;
+    text-align: left;
+    background-color: $orangeAddvocate;
+    color: $white;
+    padding: 10px 30px;
+    border-radius: 4px;
+    border: 2px solid darken($orangeAddvocate, 15%);
+}
+
+

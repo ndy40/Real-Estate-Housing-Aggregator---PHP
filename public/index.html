@@ -1,8 +1,8 @@
 <!doctype html>
-<html lang="en" ng-app="propertycrunchApp">
+<html lang="en" ng-app="propertycrunchApp" ng-controller="AppCtrl">
 	<head>
 		<meta charset="utf-8"/>
-		<title ng-bind="$state.current.name + ' - ui-router'">ui-router</title>
+		<title ng-bind="$state.current.name + ' - Property Crunch'">ui-router</title>
 		<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
 		<meta name="description" content="Property Crunch - A Smarter Way to Buy" />
 		<link rel="author" href="humans.txt">
@@ -25,13 +25,12 @@
 		</nav>
 
 		<div class="wrapper">
-			<header role="banner">
+			<header role="banner" class="fz-1_5">
 				<div class="container ta-c">
 					<a class="menu-btn" ng-click="showNav()"><i class="ion-navicon-round fl-l"></i></a>
 					<span ng-bind="$state.current.name"></span>
 					<a ui-sref="search"><i class="ion-ios7-search-strong fl-r"></i></a>
 				</div>
-
 			</header>		
 			
 			<div ui-view></div>
@@ -41,11 +40,16 @@
 		<script src="vendor/angular.min.js"></script>
 		<script src="services/angular-ui-router.js"></script>
 		<script src="services/ui-bootstrap-tpls-0.10.0.js"></script>
+		
 		<script src="app.js"></script>
-		<script src="vendor/custom.js"></script>	
 
+		<script src="controllers/AppController.js"></script>
 		<script src="controllers/DashboardController.js"></script>
 		<script src="controllers/SettingsController.js"></script>	
-		<script src="controllers/NewCalculationController.js"></script>			
+		<script src="controllers/NewCalculationController.js"></script>	
+
+		<script src="vendor/fastclick.js"></script>
+		<script src="vendor/jquery.blockUI.js"></script>
+		<script src="vendor/custom.js"></script>			
 	</body>
 </html>

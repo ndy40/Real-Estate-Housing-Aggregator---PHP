@@ -10,7 +10,7 @@
 
 		<form action="" class="mb-2 container">
 			<section class="mt-1">
-				<div class="title-txt">Calculation Type</div>
+				<!-- <div class="title-txt">Calculation Type</div> -->
 				<div class="btn-group cl-r " data-toggle="buttons">
 					<label class="btn btn-tap active">
 						<input type="radio" name="ros" id="rent"> Buy to Let
