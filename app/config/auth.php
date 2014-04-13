@@ -67,5 +67,8 @@ return array(
 		'expire' => 60,
 
 	),
+    
+    //config to set auto email activation
+    "auto_activate_user" => true,
 
 );
