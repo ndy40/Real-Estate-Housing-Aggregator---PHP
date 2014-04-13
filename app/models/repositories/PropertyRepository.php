@@ -13,7 +13,7 @@ use models\entities\PostCode;
 use models\entities\Property;
 use models\entities\PropertyType;
 use Illuminate\Support\Facades\App;
-
+use Illuminate\Support\Facades\Crypt;
 /**
  * Description of PropertyRepository
  *
@@ -49,9 +49,9 @@ class PropertyRepository implements RepositoryInterface
     {
         $postCode = null;
         if (is_numeric($postCode)) {
-            $postCode = PostCode::find($postCode);
+            $postCode = PostCode::find($postcode);
         } else {
-            $postCode = PostCode::where('code', '=', strtoupper($postCode))
+            $postCode = PostCode::where('code', '=', strtoupper($postcode))
                 ->firstOrFail();
         }
         return $postCode;
@@ -66,8 +66,9 @@ class PropertyRepository implements RepositoryInterface
     ){
         $hashString = strtolower($country) . strtolower($agent) 
             . strtolower($address) . strtolower($marketer) 
-            . strtolower($postcode) . strtolower($address);
-        return md5($hashString);
+            . strtolower($postcode);
+        
+        return ($hashString);
     }
     
     public function insertProperty($agencyId, $data = array()) {
@@ -79,8 +80,7 @@ class PropertyRepository implements RepositoryInterface
         $property = new Property($data);
     }
     
-    public function fetchPropertyType($type = '') {
-        $type = null;
+    public function fetchPropertyType($type) {
         if (is_string($type)) {
             $type = PropertyType::where('name', 'like', "%{$type}%")
                 ->firstOrFail();
@@ -101,15 +101,15 @@ class PropertyRepository implements RepositoryInterface
     public function updateChangedFields($scrapedProperty, $dbProperty)
     {
         $changeArray = array();
-        $attributes = $dbProperty->getAttributes();
-        
-        foreach($attributes as $key) {
-            if ($scrapedProperty->{$key} == $dbProperty->{$key}) {
-                $changeArray[$key] = $dbProperty->{$key};
+        $fields = array('marketer', 'price', 'address', 'url', 'availabile');
+        foreach($fields as $key) {
+            if ($scrapedProperty->{$key} !== $dbProperty->{$key}) {
+                $changeArray[$key] = $scrapedProperty->{$key};
             }
         }
-        $dbProperty->setAttributes($changeArray);
         
+        $dbProperty->postCode()->associate($scrapedProperty->postCode);
+        $dbProperty->assignAttributes($changeArray);
         return $dbProperty;
     }
 

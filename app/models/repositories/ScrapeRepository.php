@@ -24,7 +24,7 @@ class ScrapeRepository implements RepositoryInterface
 {
     protected $propertyRepo;
     protected $agentRepo;
-    
+
     public function __construct() {
         $this->propertyRepo = $propertyRepo =  App::make('PropertyRepository');
         $this->agentRepo = App::make('AgentRespository');
@@ -32,24 +32,24 @@ class ScrapeRepository implements RepositoryInterface
 
 
     public function delete($id) {
-        
+
     }
 
     public function fetch($id) {
-        
+
     }
 
     public function update($entity) {
-        
+
     }
-    
+
     /**
-     * This saves failed scrape jobs into the 
+     * This saves failed scrape jobs into the
      * @param string $country - Country code
      * @param string $agent - Agency name.
-     * @param mixed[] $data - Scrape job data 
+     * @param mixed[] $data - Scrape job data
      */
-    public function saveFailedScrapes($agent, $country, $result) 
+    public function saveFailedScrapes($agent, $country, $result)
     {
         $agency = $this->agentRepo->fetchAgentByNameAndCountry(
                 $agent,
@@ -58,34 +58,37 @@ class ScrapeRepository implements RepositoryInterface
         $failedJob = new FailedScrapes;
         $failedJob->results = $result;
         $agency->failedScrapes()->save($failedJob);
-        
+
         return $failedJob;
     }
-    
+
     public function saveProperty(\DOMDocument $data)
     {
         $scrapedProperty = $this->buildPropertyClassPart($data);
-        
+
         $status = $data->getElementsByTagName('status')->item(0)->nodeValue;
         $agent = $data->getElementsByTagName('agent')->item(0)->nodeValue;
         $country = $data->getElementsByTagName('country')->item(0)->nodeValue;
+
         $type = $data->getElementsByTagName('type')->item(0)->nodeValue;
+        $type = $this->propertyRepo->fetchPropertyType($type);
+        $scrapedProperty->type()->associate($type);
+
         $postCode = $data->getElementsByTagName('areacode')->item(0)->nodeValue;
-        
+
         $agency = $this->agentRepo->fetchAgentByNameAndCountry($agent, $country);
         $scrapedProperty->agency()->associate($agency);
-        
-        $postCode = $this->propertyRepo->fetchPostCode($postCode);
+
+
         if (is_null($postCode)) {
             $postCode = $data->getElementsByTagName('areacode')->item(0)->nodeValue;
             $postCode = new PostCode(array('code' => strtoupper($postCode)));
             $postCode->save();
         }
-        $scrapedProperty->associate($postCode);
-        
-        $type = $this->propertyRepo->fetchPropertyType($type);
-        $scrapedProperty->associate($type);
-        
+
+        $postCode = $this->propertyRepo->fetchPostCode($postCode);
+        $scrapedProperty->postCode()->associate($postCode);
+
         switch ($status) {
             case JobQueue::ITEM_NOT_AVAILABLE :
                 $property = $this->propertyRepo
@@ -94,51 +97,54 @@ class ScrapeRepository implements RepositoryInterface
                 $property->save();
                 break;
             case JobQueue::ITEM_AVAILABLE:
+                $scrapedProperty->available = 1;
                 $property = $this->propertyRepo
                     ->fetchPropertyByHash($scrapedProperty->hash);
-                //check if agency has been configured for auto-approval. If true then 
+                //check if agency has been configured for auto-approval. If true then
                 //set available to 1.
                 if ($agency->auto_publish) {
-                    $scrapedProperty->available = 1;
+                    $scrapedProperty->published = 1;
                 }
-                if (is_null($property)) {
-                    $this->propertyRepo->save($scrapedProperty);
+                if ($property === null) {
+                   $scrapedProperty =  $this->propertyRepo->save($scrapedProperty);
                 } else {
                     //perform proper test on data insert/update of property.
-                    $property = $this->propertyRepo
+                    $scrapedProperty = $this->propertyRepo
                         ->updateChangedFields($scrapedProperty, $property);
-                    $property->save();
+                    $scrapedProperty = $this->propertyRepo->save($scrapedProperty);
                 }
+
                 break;
         }
-        return $property;
+
+        return $scrapedProperty;
     }
-    
+
     protected function buildPropertyClassPart(\DOMDocument $data)
     {
         $scrapeProperty = array();
         $country = rawurldecode($data->getElementsByTagName('country')->item(0)->nodeValue);
         $agent = rawurldecode($data->getElementsByTagName('agent')->item(0)->nodeValue);
-        
-        $scrapeProperty['marketer'] 
+
+        $scrapeProperty['marketer']
             = $data->getElementsByTagName('marketer')->item(0)->nodeValue;
-        
-        $scrapeProperty['address'] 
+
+        $scrapeProperty['address']
             = $data->getElementsByTagName('address')->item(0)->nodeValue;
-        
-        $scrapeProperty['rooms'] 
+
+        $scrapeProperty['rooms']
             = $data->getElementsByTagName('rooms')->item(0)->nodeValue;
-        
+
         $postcode = $data->getElementsByTagName('rooms')->item(0)->nodeValue;
-        
-        $scrapeProperty['phone'] 
+
+        $scrapeProperty['phone']
             = $data->getElementsByTagName('phone')->item(0)->nodeValue;
-        
-        $scrapeProperty['price'] 
+
+        $scrapeProperty['price']
             = doubleval($data->getElementsByTagName('price')->item(0)->nodeValue);
-        
+
         $scrapeProperty['url'] = rawurldecode($data->getElementsByTagName('url')->item(0)->nodeValue);
-        
+
         $scrapeProperty['hash'] = $this->propertyRepo->generatePropertyHash (
             $country,
             $agent,
@@ -146,8 +152,10 @@ class ScrapeRepository implements RepositoryInterface
             $scrapeProperty['marketer'],
             $postcode
         );
-        
-        return new Property($scrapeProperty);        
+        $property = new Property();
+        $property->assignAttributes($scrapeProperty);
+
+        return $property;
     }
 
     public function save($entity) {

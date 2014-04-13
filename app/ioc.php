@@ -5,6 +5,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
+//////////////////////////////////////////
+//// Repository and Factory Binding //////
+/////////////////////////////////////////
+
 App::singleton('ScrapeFactory', function ($app) {
     return new models\crawler\factories\ScrapeFactory;
 });
@@ -23,4 +28,17 @@ App::bind('AgentRespository', function ($app) {
 
 App::bind('PropertyRepository', function ($app) {
     return new models\repositories\PropertyRepository;
+});
+
+App::bind('AuthRepository', function ($app) {
+    return new \models\repositories\AuthRepository;
+});
+
+
+/////////////////////////////
+///// Data Logic Binding ////
+/////////////////////////////
+
+App::bind("AuthLogic", function ($app) {
+    return new \models\datalogic\AuthenticationLogic;
 });

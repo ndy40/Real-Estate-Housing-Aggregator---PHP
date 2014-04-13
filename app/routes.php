@@ -24,3 +24,6 @@ Route::get('dashboard', array('uses' => 'DashController@get_index'));
 Route::get('calculations', array('uses' => 'CalcController@get_new'));
 Route::get('working', array('uses' => 'CalcController@get_index'));
 */
+
+//route for restful authenticatin countroller
+Route::controller('auth', '\controllers\service\RestAuthController');

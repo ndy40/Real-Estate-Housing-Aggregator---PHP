@@ -39,7 +39,7 @@ class Agency extends Ardent implements MassAssignInterface
         }
         
         foreach ($attribute as $key => $value) {
-            $this->{$key} = $value;
+            $this->setAttribute($key, $value);
         }
     }
 

@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder {
        	$this->call('CountryTableSeeder');
        	$this->call('PropertyTableSeeder');
        	$this->call('PostCodeTableSeeder');
+        $this->call('GroupTableSeeder');
         
 	}
 

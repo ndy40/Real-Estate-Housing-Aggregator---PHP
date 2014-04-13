@@ -46,9 +46,35 @@ Log::useFiles(storage_path().'/logs/laravel.log');
 |
 */
 
+App::error(function (Cartalyst\Sentry\Users\UserNotFoundException $ex, $code) {
+    if (Request::isJson() || Request::isMethod('get')) {
+        return Response::json(explode('\n', $ex->getMessage()), 400);
+    }
+});
+
+App::error(function (\models\exceptions\UserCreationException $ex, $code){
+    if (Request::isJson()) {
+        return Response::json(explode('\n', $ex->getMessage()), 400);
+    }
+});
+
+App::error(function (\Cartalyst\Sentry\Users\LoginRequiredException $ex, $code){
+    if (Request::isJson() && Request::isMethod('post')) {
+        return Response::json(explode('\n', $ex->getMessage()), 400);
+    }
+});
+
+App::error(function (Cartalyst\Sentry\Users\UserExistsException $ex, $code){
+    if (Request::isJson()) {
+        return Response::json(explode('\n', $ex->getMessage()), 400);
+    }
+});
+
 App::error(function(Exception $exception, $code)
 {
-	Log::error($exception);
+   
+    Log::error($exception);
+    
 });
 
 /*

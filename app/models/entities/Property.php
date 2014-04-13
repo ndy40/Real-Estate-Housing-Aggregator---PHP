@@ -2,6 +2,10 @@
 namespace models\entities;
 
 use LaravelBook\Ardent\Ardent;
+use models\interfaces\MassAssignInterface;
+use Illuminate\Database\Eloquent\Model;
+
+
 
 
 /**
@@ -9,13 +13,15 @@ use LaravelBook\Ardent\Ardent;
  *
  * @author ndy40
  */
-class Property extends Ardent
+class Property extends Ardent implements MassAssignInterface
 {
+    protected $table = 'properties';
+    
     public static $rules = array (
-        'marketer'  => 'required|alpha_num',
+        'marketer'  => 'required',
         'phone'     => 'required',
         'rooms'     => 'numeric',
-        'address'   => 'required|alpha_num',
+        'address'   => 'required',
         'price'     => 'numeric',
         'url'       => 'required|url',
     );
@@ -25,12 +31,23 @@ class Property extends Ardent
     );
     
     public function postCode () {
-        return $this->belongsTo('\models\entities\PostCode', 'post_code');
+        return $this->belongsTo('\models\entities\PostCode');
     }
     
     public function agency()
     {
-        return $this->belongsTo('\models\entities\Agency', 'agency_id');
+        return $this->belongsTo('\models\entities\Agency');
     }
     
+    public function type()
+    {
+        return $this->belongsTo('\models\entities\PropertyType', 'type_id');
+    }
+
+    public function assignAttributes($attribute = array()) {
+        foreach($attribute as $key => $value) {
+            $this->setAttribute($key, $value);
+        }
+    }
+
 }

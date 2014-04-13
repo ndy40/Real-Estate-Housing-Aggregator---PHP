@@ -13,7 +13,10 @@
 		"classmap": [
 			"app/commands",
 			"app/controllers",
+            "app/controllers/auth",
+            "app/controllers/service",
 			"app/models",
+            "app/models/datalogic",
             "app/models/crawler",
             "app/models/crawler/abstracts",
             "app/models/crawler/commands",
