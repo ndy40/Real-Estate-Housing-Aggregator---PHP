@@ -2,32 +2,86 @@
 Login Page
 ==========
 
-- Check EMAIL & PSWRD with database
-- Retrieve USERS 'Where are you looking to buy?' location/postcode
+
+loginData [ 
+	email:string, 
+	password: string
+] , 
+
+Response: [  #what do you mean by response?
+
+	data: { 
+			first_name: value, 
+			email: value 
+		}
+]
 
 
 Signup Page
 ===========
 
-- Save entered values (email, name, password, postcode/location) to database.
+
+signupData [
+	name: string,
+	email: string,
+	locaton: string,
+	password string
+]
+
 
 Dashboard Page
 ==============
 
-- Retrieve users postcode/location for title and image
-- Calculare average price for 1-4 bed house.
-- To be honest I'm not sure what the rest of the info on the dashboard is. You'll have to ask Charles.
+
+locationName [
+	name: string  #e.g Aberdeen,
+	options :["sevenDays", "twoWeeks", "oneMonth"]
+],
+
+locationData [
+
+	one_bed_house {
+		price: number,
+		change: number
+	},
+
+	two_bed_house {
+		price: number,
+		change: number
+	},
+
+	three_bed_house {
+		price: number,
+		change: number
+	},	
+
+	four_bed_house {
+		price: number,
+		change: number
+	}				
+
+],
+
+locationAveragePrice [
+	priceType: ['rent', 'sell'],
+	houseType: ['detatched', 'semi', 'terrace', 'maisonette'],
+	bedrroms: ['1 Bed', '2 Bed', '3 Bed', '4 Bed']
+]
 
 
-Recen Views / Calculation Page
+Recent Views / Calculation Page
 ==============================
 
-- Retrieve saved and last 5 calcumations made
 
+butToLet [
+	monthlyProfit: number,
+	yearlyProfit: number,
+	rateOfReturn: number
+]
 
-Alerts Page (not for MVP)
-==============================
-
-- Retrieve last 5 saved alerts
+butToSell [
+	totalProfitLoss: number,
+	rateOnInvestment: number
+]
 
 
