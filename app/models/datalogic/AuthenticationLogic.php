@@ -42,7 +42,7 @@ class AuthenticationLogic implements DataLogic
         return $errorMessage;
     }
     
-    public function authenicateUser($username, $password, $remember = false) 
+    public function authenticateUser($username, $password, $remember = false) 
     {
         $hasher = new BcryptHasher();
         

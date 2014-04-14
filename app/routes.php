@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -13,7 +12,7 @@
 
 Route::get('/', function() 
 {
-	return View::make('login.index');
+	return View::make('index');
 });
 
 /*	Old Routes
@@ -27,3 +26,26 @@ Route::get('working', array('uses' => 'CalcController@get_index'));
 
 //route for restful authenticatin countroller
 Route::controller('auth', '\controllers\service\RestAuthController');
+
+
+////////////////////////
+////// Admin routes ////
+///////////////////////
+
+Route::group(array('prefix' => 'admin'), function () {
+    //define login rounte
+    Route::any('/', array(
+        'uses' => 'controllers\auth\AuthenticationController@index', 
+        "as" => "admin"
+    ));
+    
+    Route::post("/recovery", array(
+        "uses" => "controllers\auth\AuthenticationController@recovery",
+        "as" => "recovery",
+    ));
+    
+    Route::get("/dashboard", array(
+        "uses" => "controllers\property\DashboardController@index",
+        'as'   => "dashboard",
+    ));
+});

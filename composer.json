@@ -14,6 +14,7 @@
 			"app/commands",
 			"app/controllers",
             "app/controllers/auth",
+            "app/controllers/property",
             "app/controllers/service",
 			"app/models",
             "app/models/datalogic",

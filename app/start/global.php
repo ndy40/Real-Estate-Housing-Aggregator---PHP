@@ -59,9 +59,13 @@ App::error(function (\models\exceptions\UserCreationException $ex, $code){
 });
 
 App::error(function (\Cartalyst\Sentry\Users\LoginRequiredException $ex, $code){
+    $messages = explode('\n', $ex->getMessage());
+    
     if (Request::isJson() && Request::isMethod('post')) {
-        return Response::json(explode('\n', $ex->getMessage()), 400);
+        return Response::json($messages, 400);
     }
+    
+    return Response::make("admin.login", array("flash" => $messages));
 });
 
 App::error(function (Cartalyst\Sentry\Users\UserExistsException $ex, $code){

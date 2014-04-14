@@ -40,6 +40,7 @@ return array(
     'SessionHandlerInterface' => $vendorDir . '/symfony/http-foundation/Symfony/Component/HttpFoundation/Resources/stubs/SessionHandlerInterface.php',
     'TestCase' => $baseDir . '/app/tests/TestCase.php',
     'controllers\\auth\\AuthenticationController' => $baseDir . '/app/controllers/auth/AuthenticationController.php',
+    'controllers\\property\\DashboardController' => $baseDir . '/app/controllers/property/DashboardController.php',
     'controllers\\service\\RestAuthController' => $baseDir . '/app/controllers/service/RestAuthController.php',
     'crunch\\CrunchItemCommand' => $baseDir . '/app/models/crawler/commands/CrunchItemCommand.php',
     'crunch\\CrunchListCommand' => $baseDir . '/app/models/crawler/commands/CrunchListCommand.php',
