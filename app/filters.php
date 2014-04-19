@@ -78,3 +78,14 @@ Route::filter('csrf', function()
 		throw new Illuminate\Session\TokenMismatchException;
 	}
 });
+
+///////////////////////////
+///// Custom Filters //////
+//////////////////////////
+
+Route::filter('admin', function () {
+    $authLogic = App::make("AuthLogic");
+    if (!$authLogic->isLoggedIn()) {
+        return Redirect::route("adminLogin");
+    }
+});

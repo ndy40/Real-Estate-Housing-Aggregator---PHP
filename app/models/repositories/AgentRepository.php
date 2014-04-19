@@ -37,9 +37,15 @@ class AgentRepository  implements RepositoryInterface
         return Country::where('code', '=', $country)->first()
             ->agencies()->where('crawler', '=', $agency)->first();
     }
+    
+    public function fetchAllAgents($orderBy = "name", $direction = "asc")
+    {
+        return Agency::all();
+    }
 
     public function save($entity) {
-        
+        return $entity->save();
     }
+    
 
 }

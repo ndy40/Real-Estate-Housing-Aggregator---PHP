@@ -10,7 +10,16 @@ use LaravelBook\Ardent\Ardent;
  */
 class Catalogue extends Ardent
 {
+    protected $table = "catalogue";
+    
+    public $timestamps = false;
+    
     public static $rules = array (
         'url' => 'required|url',
     );
+    
+    public function agency()
+    {
+        return $this->belongsTo("Agency");
+    }
 }

@@ -10,20 +10,6 @@
 |
 */
 
-Route::get('/', function() 
-{
-	return View::make('index');
-});
-
-/*	Old Routes
-Route::get('signup', array('uses' => 'UserController@get_new'));
-
-Route::get('dashboard', array('uses' => 'DashController@get_index'));
-
-Route::get('calculations', array('uses' => 'CalcController@get_new'));
-Route::get('working', array('uses' => 'CalcController@get_index'));
-*/
-
 //route for restful authenticatin countroller
 Route::controller('auth', '\controllers\service\RestAuthController');
 
@@ -32,20 +18,54 @@ Route::controller('auth', '\controllers\service\RestAuthController');
 ////// Admin routes ////
 ///////////////////////
 
-Route::group(array('prefix' => 'admin'), function () {
-    //define login rounte
-    Route::any('/', array(
-        'uses' => 'controllers\auth\AuthenticationController@index', 
-        "as" => "admin"
-    ));
+Route::group(array('prefix' => 'admin', "before" => "admin"), function () {
+    Route::get("/", array(
+        "uses" => "controllers\property\DashboardController@index",
+        'as'   => "dashboard",
+     ));
     
-    Route::post("/recovery", array(
+    Route::post("recovery", array(
         "uses" => "controllers\auth\AuthenticationController@recovery",
         "as" => "recovery",
     ));
     
-    Route::get("/dashboard", array(
-        "uses" => "controllers\property\DashboardController@index",
-        'as'   => "dashboard",
+    Route::any("profile", array(
+        "uses" => "controllers\auth\AuthenticationController@profile",
+        "as" => "profile",
     ));
+    
+    Route::any("changepassword", array(
+        "uses" => "controllers\auth\AuthenticationController@changePassword",
+        "as" => "changepassword",
+    ));
+    
+    Route::controller("service", "controllers\property\PropertyController");
+    Route::controller("scrape", "controllers\scrape\ScrapeConfigController");
+    
+    Route::get("property/country", array(
+        "as" => "country", 
+        "uses" => "controllers\property\PropertyController@country"
+    ));
+    
+    Route::get("property/", array(
+        "as" => "property", 
+        "uses" => "controllers\property\PropertyController@index"
+    ));
+    
+    Route::get("catalogue", array(
+        "as" => "catalogue",
+        "uses" => "controllers\scrape\ScrapeConfigController@index",
+    ));
+    
 });
+
+//define login rounte
+Route::any('login', array(
+    'uses' => 'controllers\auth\AuthenticationController@login', 
+    "as" => "adminLogin"
+));
+
+Route::get("logout", array(
+    "uses" => "controllers\auth\AuthenticationController@logout",
+    'as' => "logout",
+));

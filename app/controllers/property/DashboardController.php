@@ -2,6 +2,7 @@
 namespace controllers\property;
 
 use BaseController;
+use Illuminate\Support\Facades\View;
 
 /**
  * Description of Dashboard
@@ -11,6 +12,6 @@ use BaseController;
 class DashboardController extends BaseController
 {
     public function index(){
-        return "Dashboard here";
+        return View::make("dashboard");
     }
 }

@@ -24,5 +24,9 @@ class User extends \Cartalyst\Sentry\Users\Eloquent\User implements MassAssignIn
             $this->setAttribute($key, $value);
         }
     }
-
+    
+    public function getFullName () {
+        return $this->first_name . " " . $this->last_name;
+    }
+    
 }

@@ -42,3 +42,11 @@ App::bind('AuthRepository', function ($app) {
 App::bind("AuthLogic", function ($app) {
     return new \models\datalogic\AuthenticationLogic;
 });
+
+App::bind("PropertyLogic", function ($app) {
+    return new \models\datalogic\PropertyLogic;
+});
+
+App::bind("AgentLogic", function ($app) {
+    return new models\datalogic\AgentLogic;
+});

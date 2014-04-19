@@ -1,7 +1,7 @@
 <?php
 namespace models\datalogic;
 
-use models\interfaces\DataLogic;
+use models\interfaces\DataLogicInterface;
 use \Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Validator;
 use models\exceptions\UserCreationException;
@@ -12,7 +12,7 @@ use Cartalyst\Sentry\Hashing\BcryptHasher;
  *
  * @author ndy40
  */
-class AuthenticationLogic implements DataLogic 
+class AuthenticationLogic implements DataLogicInterface 
 {
     /**
      * A respository instance.
@@ -174,6 +174,13 @@ class AuthenticationLogic implements DataLogic
         }
         
         return $user;
+    }
+    public function updateUser($id, $options) {
+        $user = $this->findUser($id);
+        foreach($options as $key => $value) {
+            $user->{$key} = $value;
+        }
+        return $user->save();
     }
     
 }

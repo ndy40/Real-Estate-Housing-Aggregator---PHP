@@ -42,7 +42,7 @@ class RestAuthController extends AuthenticationController
         $user = $this->authLogic->authenicateUser(
             $data['email'], 
             $data['password'], 
-            (isset($data['remember'])?$data['remember']: false)
+            (isset($data['remember'])? $data['remember']: false)
         );
 
         if ($user instanceof User) {

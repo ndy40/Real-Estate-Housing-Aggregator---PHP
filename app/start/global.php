@@ -74,6 +74,14 @@ App::error(function (Cartalyst\Sentry\Users\UserExistsException $ex, $code){
     }
 });
 
+App::error(function (Cartalyst\Sentry\Users\WrongPasswordException $ex, $code){
+    if (Request::isJson()) {
+        return Response::json(explode('\n', $ex->getMessage()), 400);
+    }
+    
+    return Redirect::intended("login");
+});
+
 App::error(function(Exception $exception, $code)
 {
    
@@ -110,3 +118,4 @@ App::down(function()
 
 require app_path().'/filters.php';
 require app_path() . '/ioc.php';
+require app_path() . '/viewcomposer.php';

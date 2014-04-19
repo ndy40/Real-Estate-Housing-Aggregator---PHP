@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder {
        	$this->call('PropertyTableSeeder');
        	$this->call('PostCodeTableSeeder');
         $this->call('GroupTableSeeder');
+        $this->call("PropertyTypeSeed");
         
 	}
 

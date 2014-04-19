@@ -14,6 +14,7 @@ use models\entities\Property;
 use models\entities\PropertyType;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Crypt;
+use models\entities\Country;
 /**
  * Description of PropertyRepository
  *
@@ -112,6 +113,10 @@ class PropertyRepository implements RepositoryInterface
         $dbProperty->assignAttributes($changeArray);
         return $dbProperty;
     }
-
+    
+    public function fetchCountries()
+    {
+        return Country::all();
+    }
    
 }

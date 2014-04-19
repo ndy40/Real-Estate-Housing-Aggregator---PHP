@@ -21,7 +21,7 @@ class CreatePropertiesTable extends Migration {
             $table->integer('type_id')->unsigned()->nullable();
             $table->integer('rooms')->nullable();
             $table->string('address');
-            $table->integer('post_code')->unsigned();
+            $table->integer('post_code_id')->unsigned();
             $table->mediumText('url');
             $table->float('price');
             $table->string('hash')->nullable();
@@ -34,7 +34,7 @@ class CreatePropertiesTable extends Migration {
         Schema::table('properties', function (Blueprint $table) {
            $table->foreign('agency_id')->references('id')->on('agency');
            $table->foreign('type_id')->references('id')->on('type');
-           $table->foreign('post_code')->references('id')->on('post_codes');
+           $table->foreign('post_code_id')->references('id')->on('post_codes');
         });
 	}
 

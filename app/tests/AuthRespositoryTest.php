@@ -49,9 +49,4 @@ class AuthRespositoryTest extends TestCase
         $group->delete();
     }
     
-    
-    
-    
-    
-    
 }
