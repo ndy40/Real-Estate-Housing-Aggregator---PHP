@@ -44,3 +44,23 @@ $( document ).ready(function() {
 $(window).resize(function() {
 	$('#container').css('width', ($(window).width()));	
 });
+
+
+// Commas on inputs
+// --------------------------------------------------
+
+
+$('input.number').keyup(function(event) {
+
+  // skip for arrow keys
+  if(event.which >= 37 && event.which <= 40){
+    event.preventDefault();
+  }
+
+  $(this).val(function(index, value) {
+    return value
+      .replace(/\D/g, "")
+      .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+    ;
+  });
+});
