@@ -188,18 +188,24 @@ input {
 
 
 .left-nav {
-	width: 15em;
+	width: 12.5em;
 	height: 100%;
 	font-size: 1.2em;
 	position: fixed;
 	left: 0;
 	z-index: 0;
 	overflow: hidden;
-	background-color: #333;
+	background-color: #f1f1f1;
+	transition: 0.3s;
 
 	[class*="ion-"]{
 		margin-right: 0.7em;
 		opacity: 0.4;
+	}
+
+	&.active{
+		transition: 0.3s;
+		background-color: #333;
 	}
 }
 
@@ -210,9 +216,11 @@ input {
 	min-height: 50em;
 	z-index: 2;
 	transition: 0.3s;
+	position: relative;
 
 	&.active{
 		margin-left: 15em;
+		position: fixed;
 	}
 }
 
@@ -268,6 +276,19 @@ input{
 	text-decoration: underline;
 }
 
+.login .container{
+	max-width: 450px;
+}
+
+.forgot {
+	color: #fff;
+
+	[type="checkbox"] {
+		height: auto;
+		margin-right: 5px;
+	}
+}
+
 
 // Register Page
 // -------------------------------------------------
@@ -302,6 +323,10 @@ input{
 		z-index: -1;
 		margin-top: -10em;
 		margin-bottom: -19em;
+
+		@media (min-width:960px){
+			max-height: 150px;
+		}
 	}	
 }
 
@@ -425,3 +450,11 @@ body .block-ui {
 }
 
 
+
+// Modal Style
+// --------------------------------------------------
+
+.modal-content{
+	background-color: #f1f1f1;
+	border-radius:0;
+}

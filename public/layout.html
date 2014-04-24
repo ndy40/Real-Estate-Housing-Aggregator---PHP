@@ -20,7 +20,7 @@
 				<li><a ui-sref="calculation"><i class="ion-calculator"></i> Recent Views</a></li> 
 				<li><a ui-sref="alerts"><i class="ion-alert-circled"></i> Alerts</a></li> 
 				<li><a ui-sref="settings"><i class="ion-gear-b"></i> Settings</a></li> 
-				<li class="logout-btn"><a href="/views/login/index.html"><i class="ion-log-out"></i> Logout</a></li>                                          
+				<li class="logout-btn"><a href="/pc/views/login/index.html"><i class="ion-log-out"></i> Logout</a></li>                                          
 			</ul>
 		</nav>
 
@@ -50,6 +50,20 @@
 
 		<script src="vendor/fastclick.js"></script>
 		<script src="vendor/jquery.blockUI.js"></script>
-		<script src="vendor/custom.js"></script>			
+		<script src="vendor/custom.js"></script>	
+
+	    <script type="text/ng-template" id="myModalContent.html">
+	        <div class="modal-header ta-c">
+	            <h3 class="m-0">Hold Up</h3>
+	        </div>
+	        <div class="modal-body">
+	        	We're sorry Property Crunch isn't yet quite ready for desktops. 
+	        	You're more than welcome to use it but keep in mind it isn't yet finished.
+	        </div>
+	        <div class="modal-footer ta-c">
+	            <button class="btn btn-success" ng-click="ok()">Got It</button>
+	        </div>
+	    </script>	
+	    			
 	</body>
 </html>
