@@ -183,4 +183,9 @@ class AuthenticationLogic implements DataLogicInterface
         return $user->save();
     }
     
+    public function loginUser($user)
+    {
+        $this->authRepository->loginUser($user);
+    }
+    
 }

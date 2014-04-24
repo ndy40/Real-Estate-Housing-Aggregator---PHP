@@ -3,6 +3,7 @@ namespace models\datalogic;
 
 use models\interfaces\DataLogicInterface;
 use Illuminate\Support\Facades\App;
+use models\entities\County;
 
 /**
  * Property logic
@@ -21,5 +22,13 @@ class PropertyLogic implements DataLogicInterface
     public function fetchCountries ()
     {
         return $this->propertyRepo->fetchCountries();
+    }
+
+    public function fetchAllCounty(){
+        return $this->propertyRepo->fetchAllCounty();
+    }
+    
+    public function fetchCounty($id) {
+        return $this->propertyRepo->fetchCounty($id);
     }
 }

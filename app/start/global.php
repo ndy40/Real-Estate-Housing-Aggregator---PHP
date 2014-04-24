@@ -47,25 +47,28 @@ Log::useFiles(storage_path().'/logs/laravel.log');
 */
 
 App::error(function (Cartalyst\Sentry\Users\UserNotFoundException $ex, $code) {
+    $message = explode(".", $ex->getMessage());
     if (Request::isJson() || Request::isMethod('get')) {
         return Response::json(explode('\n', $ex->getMessage()), 400);
-    }
+    } else if (Request::is("admin/*")) {
+        return Redirect::route("adminLogin")->with("message", $message);
+    } 
+    
+    return Redirect::to("login")->with("message", $message);
 });
 
 App::error(function (\models\exceptions\UserCreationException $ex, $code){
     if (Request::isJson()) {
         return Response::json(explode('\n', $ex->getMessage()), 400);
+    } else if (Request::is("client/*")) {
+        $messages = explode(".", $ex->getMessage());
+        return Redirect::route("signup")->with("message", $messages);
     }
 });
 
 App::error(function (\Cartalyst\Sentry\Users\LoginRequiredException $ex, $code){
     $messages = explode('\n', $ex->getMessage());
-    
-    if (Request::isJson() && Request::isMethod('post')) {
-        return Response::json($messages, 400);
-    }
-    
-    return Response::make("admin.login", array("flash" => $messages));
+    return Redirect::route("login")->with("flash", $messages);
 });
 
 App::error(function (Cartalyst\Sentry\Users\UserExistsException $ex, $code){

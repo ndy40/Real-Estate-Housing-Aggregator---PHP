@@ -27,24 +27,21 @@
 					</section>
 
 					<section class="cl-r ta-r mt-1 forgot">
-						<a href="forgot.html">Forgot Password?</a>
+						<div class="fl-l">
+							<input type="checkbox" class="fl-l"> 
+							<span>Remember Me</span>
+						</div>
+						<div class="fl-r">
+							<a href="forgot.html">Forgot Password?</a>
+						</div>
 					</section>
+					
 				</form>
 			</section>
 		</main>
 		<script src="../../js/vendor/jquery.js"></script>
 		<script>
-			// Makeshift Login
-			// --------------------------------------------------
 
-			$(".l-temp").submit(function(e) {
-				e.preventDefault();
-				if ($('.usrname').val() == "test" && $('.pswrd').val() == "1234"){
-					window.location = "/"; 		
-				} else{
-					$('.login-error').show();
-				}
-			});		
 		</script>	
 	</body>
 </html>

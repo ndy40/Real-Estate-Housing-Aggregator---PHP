@@ -10,7 +10,9 @@ use LaravelBook\Ardent\Ardent;
  */
 class County extends Ardent
 {
+    protected $table = "county";
+    
     public function postCodes () {
-        return $this->hasMany('PostCode');
+        return $this->hasMany('\models\entities\PostCode');
     }
 }

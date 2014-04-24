@@ -113,6 +113,7 @@
                         $("#catalogue-table table tbody").append(content);
                     });
                     $("#add-catalogue").attr("data-agent", parseInt(data.agent));
+                    $("#remove-catalogue").attr("data-agent", parseInt(data.agent));
                     $("#catalogue-table").show();
                 } 
             } else {
@@ -124,13 +125,21 @@
             var agentId = parseInt($(this).attr("data-agent"));
             scrapeService.getUrls(agentId, loadUrl);
         });
-
-        $("#remove-catalogue").on("click", function (e){
-            alert("Removed");
+        //logic for deleting catalogue urls
+        $("#remove-catalogue").on("click", function (e) {
+            var agentId = parseInt($(this).attr("data-agent"));
+            //get all checked checkboxes
+            $(".checkboxurls:checked").each(function (i, e){
+                var id = $(e).attr("data-url");
+                scrapeService.deleteCatalogue(id, function (){
+                   scrapeService.getUrls(agentId, loadUrl);
+                });
+            });
         });
         
         $("#add-catalogue").on("click", function (e){
            $("#url-modal").alert(); 
+           $("$newUrl").val("");
         });
         
         $("#insert-url").on("click", function (e){

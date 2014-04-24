@@ -15,6 +15,7 @@ use models\entities\PropertyType;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Crypt;
 use models\entities\Country;
+use models\entities\County;
 /**
  * Description of PropertyRepository
  *
@@ -117,6 +118,15 @@ class PropertyRepository implements RepositoryInterface
     public function fetchCountries()
     {
         return Country::all();
+    }
+
+    public function fetchAllCounty(){
+        return County::orderBy("name", "asc")->get();
+    }
+    
+    public function fetchCounty($id)
+    {
+        return County::with("postCodes")->find($id);
     }
    
 }

@@ -35,4 +35,9 @@ class AgentLogic implements DataLogicInterface
         $catalogue->url = $url;
         return $agent->catalogues()->save($catalogue);
     }
+    
+    public function deleteCatalogue($id)
+    {
+        return $this->agentRepo->deleteCatalogue($id);
+    }
 }

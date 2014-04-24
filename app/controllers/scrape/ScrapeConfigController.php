@@ -61,4 +61,18 @@ class ScrapeConfigController extends BaseController
         
         return Response::json(array("data" => $saved->toArray()), $code);
     }
+    
+    public function getDeleteCatalogue($id)
+    {
+        $deleted = $this->agencyRepo->deleteCatalogue($id);
+
+        if ($deleted) {
+            $data = "deleted";
+            $code = 200;
+        } else {
+            $code = 400;
+        }
+        
+        return Response::json($data, $code);
+    }
 }

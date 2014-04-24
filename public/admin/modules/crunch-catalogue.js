@@ -31,4 +31,17 @@ ScrapeService.prototype.addUrl = function (id, catalogue, callback, callbackfail
     }, 'json');
 };
 
+ScrapeService.prototype.deleteCatalogue = function (id, callback, onfail) {
+    'use strict';
+    var url = this.config.baseUrl + "/admin/scrape/delete-catalogue/" + id;
+    $.get(url, function (data, status) {
+        if (status === "success") {
+            callback(data.data, status);
+        } else if (onfail) {
+            onfail(data.data, status);
+        }
+    });
+
+};
+
 

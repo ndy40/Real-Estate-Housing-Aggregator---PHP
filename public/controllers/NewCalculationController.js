@@ -1,4 +1,4 @@
-var NewCalculationController = function ($scope) {
+var NewCalculationController = function ($scope, $timeout) {
 	$scope.btl = {};
 	$scope.bts = {};
 
@@ -49,4 +49,26 @@ var NewCalculationController = function ($scope) {
 
 		$scope.roi = returnOfInv * 100;
 	};
+
+	$timeout(function() {
+
+		$('input.number').keyup(function(event) {
+
+			// if(event.which >= 37 && event.which <= 40){
+			// //event.preventDefault();
+			// }
+
+			$(this).val(function(index, value) {
+				return value
+				.replace(/\D/g, "")
+				.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+			});
+		});
+
+
+	}, 500);	
 };
+
+
+
+

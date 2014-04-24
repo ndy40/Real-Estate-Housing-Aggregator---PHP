@@ -120,5 +120,12 @@ class AuthRepository implements RepositoryInterface
     {
         return Sentry::register($credentials, $activate);
     }
+    
+     
+    public function loginUser($user)
+    {
+        return Sentry::login($user, false);
+    }
+    
 
 }

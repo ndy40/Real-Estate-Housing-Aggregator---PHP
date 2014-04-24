@@ -11,6 +11,7 @@ namespace models\repositories;
 use models\interfaces\RepositoryInterface;
 use models\entities\Agency;
 use models\entities\Country;
+use models\entities\Catalogue;
 
 /**
  * Description of AgentRepository
@@ -45,6 +46,18 @@ class AgentRepository  implements RepositoryInterface
 
     public function save($entity) {
         return $entity->save();
+    }
+    
+    public function deleteCatalogue($id)
+    {
+        $catalogue = Catalogue::find($id);
+        return $catalogue->delete();
+    }
+    
+    
+    public function loginUser($user)
+    {
+        return Sentry::login($user, false);
     }
     
 

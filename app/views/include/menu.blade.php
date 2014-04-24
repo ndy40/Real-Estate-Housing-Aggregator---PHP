@@ -1,11 +1,10 @@
 <div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
   <ul>
     <li class="active"><a href="{{route("dashboard")}}"><i class="icon icon-home"></i> <span>Dashboard</span></a></li>
-    <li class="submenu"> <a href="{{route("property")}}"><i class="icon icon-file"></i> <span>Properties</span></a>
+    <li class="submenu"> <a href="#"><i class="icon icon-file"></i> <span>Listing</span></a>
       <ul>
-        <li><a href="{{route("country")}}">Country</a></li>
-        <li><a href="#postcode">Post Code</a></li>
-        <li><a href="#agency">Agency</a></li>
+        <li><a href="{{route("property")}}">Properties</a></li>
+        <li><a href="{{route("postcode")}}">Post Code</a></li>
       </ul>
     </li>
     <li class="submenu"><a href="#"><i class="icon icon-tasks"></i><span>Scrape Management</span></a>

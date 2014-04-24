@@ -10,9 +10,13 @@
 |
 */
 
-//route for restful authenticatin countroller
-Route::controller('auth', '\controllers\service\RestAuthController');
+Route::get("/", array("as" => "home", function (){
+    return View::make("index");
+}));
 
+Route::get("login", array("as" => "login", function (){
+    return View::make("clientlogin");
+}));
 
 ////////////////////////
 ////// Admin routes ////
@@ -47,9 +51,14 @@ Route::group(array('prefix' => 'admin', "before" => "admin"), function () {
         "uses" => "controllers\property\PropertyController@country"
     ));
     
-    Route::get("property/", array(
+    Route::get("property", array(
         "as" => "property", 
         "uses" => "controllers\property\PropertyController@index"
+    ));
+
+    Route::get("property/postcode", array(
+        "as" => "postcode", 
+        "uses" => "controllers\property\PropertyController@getPostcode"
     ));
     
     Route::get("catalogue", array(
@@ -58,14 +67,17 @@ Route::group(array('prefix' => 'admin', "before" => "admin"), function () {
     ));
     
 });
-
 //define login rounte
-Route::any('login', array(
-    'uses' => 'controllers\auth\AuthenticationController@login', 
-    "as" => "adminLogin"
-));
+    Route::any('admin/login', array(
+        'uses' => 'controllers\auth\AuthenticationController@login', 
+        "as" => "adminLogin"
+    ));
 
-Route::get("logout", array(
-    "uses" => "controllers\auth\AuthenticationController@logout",
-    'as' => "logout",
-));
+    Route::get("admin/logout", array(
+        "uses" => "controllers\auth\AuthenticationController@logout",
+        'as' => "adminlogout",
+    ));
+
+ 
+
+
