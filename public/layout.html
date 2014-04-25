@@ -20,7 +20,8 @@
 				<li><a ui-sref="calculation"><i class="ion-calculator"></i> Recent Views</a></li> 
 				<li><a ui-sref="alerts"><i class="ion-alert-circled"></i> Alerts</a></li> 
 				<li><a ui-sref="settings"><i class="ion-gear-b"></i> Settings</a></li> 
-				<li class="logout-btn"><a href="/pc/views/login/index.html"><i class="ion-log-out"></i> Logout</a></li>                                          
+				<li class="logout-btn"><a href="/views/login/index.html"><i class="ion-log-out"></i> Logout</a></li>    
+				<li class="full-w ta-c tncs"><a href="">Terms &amp; Conditions</a> . <a href="">Private Policy</a></li>				                                      
 			</ul>
 		</nav>
 
@@ -57,13 +58,23 @@
 	            <h3 class="m-0">Hold Up</h3>
 	        </div>
 	        <div class="modal-body">
-	        	We're sorry Property Crunch isn't yet quite ready for desktops. 
-	        	You're more than welcome to use it but keep in mind it isn't yet finished.
+	        	You might notice a few glitches, We are working hard to get property crunch working well on desktop. For a better experience, please use property crunch on your mobile.
 	        </div>
 	        <div class="modal-footer ta-c">
 	            <button class="btn btn-success" ng-click="ok()">Got It</button>
 	        </div>
-	    </script>	
-	    			
+	    </script>		
+
+		<script>
+		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		  ga('create', 'UA-50377409-1', 'propertycrunch.co');
+		  ga('send', 'pageview');
+
+		</script>
+
 	</body>
 </html>

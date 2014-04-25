@@ -48,6 +48,11 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
             templateUrl: "views/settings/index.html"
         })  
 
+        .state('property details', {
+            url: "/property",
+            templateUrl: "views/property/show.html"
+        })          
+
 }]);
 
 
