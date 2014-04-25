@@ -7,6 +7,7 @@ use controllers\auth\AuthenticationController;
 use models\entities\User;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\View;
 /**
  * This is the resful controller for authentication.
  * 
@@ -35,24 +36,31 @@ class ClientAuthController extends AuthenticationController
      */
     public function postIndex()
     {
-        $credential = Input::get();
-        $route = "login";
-        
-        $response = array();
-        $responseCode = null;
+
+        if (Request::isMethod("post")) {
+            $credential = Input::get();
+            $route = "login";
             
-        $user = $this->authLogic->authenticateUser(
-            $credential['email'], 
-            $credential['password'], 
-            (isset($credential['remember'])? $credential['remember']: false)
-        );
-        if ($user instanceof User) {
-            $response = $user->toArray();
-            $responseCode = 200;
-            $route = "home";
-        }
-        
-        return Redirect::route($route)->with(array("status" => $responseCode, "user" => $response));
+            $response = array();
+            $responseCode = null;
+                
+            $user = $this->authLogic->authenticateUser(
+                $credential['email'], 
+                $credential['password'], 
+                (isset($credential['remember'])? $credential['remember']: false)
+            );
+            
+            if ($user instanceof User) {
+                $response = $user->toArray();
+                $responseCode = 200;
+                $route = "home";
+            }    
+
+            return Redirect::route($route)->with(array("status" => $responseCode, "user" => $response));
+        } else {
+
+            return View::make("clientlogin");
+        }    
     }
     
     /**

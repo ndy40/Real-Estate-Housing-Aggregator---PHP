@@ -11,7 +11,7 @@
 
 @section ("content")
 <div class="row-fluid">
-    <div class="span12">
+    <div class="span8">
         <form class="form-inline" role="form" id="postcodeform">
             <label class="control-label">County</label>
             {{Form::select("county", $counties, null, array("id" => "county"))}} &nbsp;
@@ -19,11 +19,9 @@
             {{Form::text("postcode")}}
             <button class="btn btn-primary">Add</button>
         </form>
-        <div class="row-fluid">
-            <ul id="postcodes-list" class="list-inline span12">
+        <ul id="postcodes-list" class="list-inline">
 
-            </ul>
-        </div>
+        </ul>
         
     </div>
     <div class="span4">

@@ -12,7 +12,7 @@ $(function (){
         
         if (data.length > 0) {
             data.forEach(function (e) {
-                var content = "<li class='span3'>" + e.area + " (" + e.code + ")</li>";
+                var content = "<li>" + e.area + " (" + e.code + ") <a href='#delete'><i class='icon-minus'></i></a></li>";
                 $("#postcodes-list").append(content);
             });
         } else {

@@ -5,3 +5,14 @@
     margin-left: -32px; /* -1 * image width / 2 */
     margin-top: -32px;  /* -1 * image height / 2 */
 }
+
+ul#postcodes-list li {
+    margin: 4px 6px;
+    padding: 3px 5px;
+    display: inline-block;
+    border: 1px solid #ccc;
+}
+
+ul#postcodes-list li:hover {
+    background-color: #cccccc;
+}

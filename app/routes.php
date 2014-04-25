@@ -14,9 +14,15 @@ Route::get("/", array("as" => "home", function (){
     return View::make("index");
 }));
 
-Route::get("login", array("as" => "login", function (){
-    return View::make("clientlogin");
-}));
+Route::any("login", array(
+    "as" => "login", 
+    "uses" => "controllers\auth\ClientAuthController@postIndex"
+));
+
+Route::get("logout", array(
+    "as" => "logout", 
+    "uses" => "controllers\auth\ClientAuthController@getLogout"
+));
 
 ////////////////////////
 ////// Admin routes ////
