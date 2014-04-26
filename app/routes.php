@@ -24,6 +24,7 @@ Route::get("logout", array(
     "uses" => "controllers\auth\ClientAuthController@getLogout"
 ));
 
+
 ////////////////////////
 ////// Admin routes ////
 ///////////////////////
@@ -85,5 +86,4 @@ Route::group(array('prefix' => 'admin', "before" => "admin"), function () {
     ));
 
  
-
 
