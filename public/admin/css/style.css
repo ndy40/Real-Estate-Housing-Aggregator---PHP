@@ -10,7 +10,6 @@ ul#postcodes-list li {
     margin: 4px 6px;
     padding: 3px 5px;
     display: inline-block;
-    border: 1px solid #ccc;
 }
 
 ul#postcodes-list li:hover {

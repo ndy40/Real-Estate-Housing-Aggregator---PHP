@@ -12,7 +12,7 @@ $(function (){
         
         if (data.length > 0) {
             data.forEach(function (e) {
-                var content = "<li>" + e.area + " (" + e.code + ") <a href='#delete'><i class='icon-minus'></i></a></li>";
+                var content = "<li class='delete-county'><input type='checkbox' value='" + e.id + "' class='county' name='toDeleteCounty'/> " + e.area + " (" + e.code + ")</li>";
                 $("#postcodes-list").append(content);
             });
         } else {
@@ -26,5 +26,21 @@ $(function (){
         var id = parseInt($(this).val());
         service.getPostCodes(id, loadPostCodes);
     });
+
+    $(".delete-county").on("click", function (e) {
+
+        if(confirm("Are you sure you want to delete the items?")) {
+            $("#postcodes-list input:checked").each(function (i, e) {
+                var id = $(e).val();
+                
+            });
+        }
+    });
+
+     //run init
+    $("#county").trigger("change");
+
+
+   
     
 });

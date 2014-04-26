@@ -18,6 +18,7 @@
             <label class="control-label">Post Code</label>
             {{Form::text("postcode")}}
             <button class="btn btn-primary">Add</button>
+            <button class="btn btn-primary delete-county">Delete</button>
         </form>
         <ul id="postcodes-list" class="list-inline">
 

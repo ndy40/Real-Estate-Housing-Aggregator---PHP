@@ -48,15 +48,19 @@ class PropertyController extends BaseController
     
     public function getPostCodesByCounty($id)
     {
-//        if (Cache::has("fetch_county_" . $id)) {
-//            $postcodes = Cache::get("fetch_county_" . $id);
-//        } else {
+       if (Cache::has("fetch_county_" . $id)) {
+           $postcodes = Cache::get("fetch_county_" . $id);
+       } else {
             $county = $this->propertyLogic->fetchCounty($id);
             $postcodes = $county->postCodes->toArray();
-//            Cache::put("fetch_county_" . $id, $postcodes, 3);
-//        }
+           Cache::put("fetch_county_" . $id, $postcodes, 3);
+       }
         
         return Response::json(array("data" => $postcodes), 200);
+    }
+
+    public function postDeletePostCode(){
+        
     }
     
 }
