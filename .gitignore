@@ -1,14 +1,14 @@
-.sass-cache/
+.sass-cache
 .DS_Store
 node_modules
 .npm-debug.log
 tmp
-/nbproject/private/
+nbproject/private
 app/config/database.php
-app/crawler/*
+app/crawler
 app/config/app.php
 vendor/autoload.php
-app/storage/scrape/
+app/storage/scrape
 Vgrantfile
-.vagrant/*
+.vagrant
 
