@@ -24,6 +24,15 @@ Route::get("logout", array(
     "uses" => "controllers\auth\ClientAuthController@getLogout"
 ));
 
+Route::get("signup", array("as" => "signup", function () {
+    return View::make("clientnew");
+}));
+
+Route::post("register", array(
+    "as"    => "register", 
+    "uses"  => "controllers\auth\ClientAuthController@postRegister"
+));
+
 ////////////////////////
 ////// Admin routes ////
 ///////////////////////

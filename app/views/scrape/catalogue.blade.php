@@ -38,6 +38,7 @@
                             <td>{{$agents[$i -1]->country->name}}</td>
                             <td colspan="3">
                                 <a href="#" class="catalogue-url" data-agent="{{$agents[$i - 1]->id}}" title="View cataglogue urls"><i class="icon-play"></i></a>
+                                <a href="#" class="add-catalogue" data-agent="{{$agents[$i - 1]->id}}" title="View cataglogue urls"><i class="icon-play"></i></a>
                             </td>
                         </tr>
                         @endfor
@@ -86,7 +87,7 @@
                     <div class="widget-content">
                         <div class="controls-row">
                             {{Form::text("url", null, array("class" => "input-lg", "placeholder" => "URL", "id" => "newUrl"))}}&nbsp;
-                            <button class="btn btn-primary" id="insert-url">Add</button>
+                            <button class="btn btn-primary" class="insert-url">Add</button>
                         </div>
                     </div>
                 </div>
@@ -107,7 +108,7 @@
         function loadUrl(data, status) {
             if (status === 'success') {
                 $("#catalogue-table table tbody").empty();
-                if (data.urls.length > 0) {
+                if (data.hasOwnProperty("agent")) {
                     data.urls.forEach(function (e){
                         var content = '<tr><td><input type="checkbox" data-url="' + e.id + '" class="checkboxurls" /></td><td><a href="'+ e.url + '" target="_blank" >' + e.url + '</a></td></tr>';
                         $("#catalogue-table table tbody").append(content);
@@ -124,6 +125,7 @@
         $(".catalogue-url").on("click", function (e) {
             var agentId = parseInt($(this).attr("data-agent"));
             scrapeService.getUrls(agentId, loadUrl);
+            return false;
         });
         //logic for deleting catalogue urls
         $("#remove-catalogue").on("click", function (e) {
@@ -137,12 +139,12 @@
             });
         });
         
-        $("#add-catalogue").on("click", function (e){
+        $(".add-catalogue").on("click", function (e){
            $("#url-modal").alert(); 
            $("$newUrl").val("");
         });
         
-        $("#insert-url").on("click", function (e){
+        $(".insert-url").on("click", function (e){
            var id = parseInt($("#add-catalogue").attr("data-agent")),
                url = $("#newUrl").val();
             scrapeService.addUrl(id, url, function (data, status){

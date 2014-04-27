@@ -35,9 +35,9 @@ class ScrapeConfigController extends BaseController
     
     public function getCatalogue($agencyId)
     {
-        $data = array();
         $agent = $this->agencyRepo->fetch($agencyId);
         if ($agent) {
+            $data = array();
             foreach($agent->catalogues as $catalogue) {
                 $data["agent"] = $agent->id;
                 $data["urls"][] = array("id" => $catalogue->id, "url" => $catalogue->url);

@@ -3,7 +3,6 @@ namespace models\datalogic;
 
 use models\interfaces\DataLogicInterface;
 use Illuminate\Support\Facades\App;
-use models\entities\County;
 
 /**
  * Property logic
@@ -30,5 +29,24 @@ class PropertyLogic implements DataLogicInterface
     
     public function fetchCounty($id) {
         return $this->propertyRepo->fetchCounty($id);
+    }
+    
+    public function deleteCounty($id) {
+        return $this->propertyRepo->deleteCounty($id);
+    }
+    
+    public function addPostCode ($countyId, $postcode, $area) {
+        $county = $this->propertyRepo->fetchCounty($countyId);
+
+        $postCode = new \models\entities\PostCode;
+        $postCode->code = $postcode;
+        $postCode->area = $area;
+        
+        $data = $postCode->county()->associate($county);
+        return $this->propertyRepo->save($data);
+    }
+    
+    public function deletePostCode($id) {
+        return $this->propertyRepo->deletePostCode($id);
     }
 }

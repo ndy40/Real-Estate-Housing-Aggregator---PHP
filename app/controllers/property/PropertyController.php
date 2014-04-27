@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Input;
 
 /**
  * Controller for managing properties.
@@ -53,14 +54,29 @@ class PropertyController extends BaseController
        } else {
             $county = $this->propertyLogic->fetchCounty($id);
             $postcodes = $county->postCodes->toArray();
-           Cache::put("fetch_county_" . $id, $postcodes, 3);
+           Cache::put("fetch_county_" . $id, $postcodes, 1);
        }
         
         return Response::json(array("data" => $postcodes), 200);
     }
 
     public function postDeletePostCode(){
+        $data = Input::get("data");
+        $id = $data["id"];
+        $deleted = $this->propertyLogic->deletePostCode($id);
         
+        return Response::json(array("data" => $deleted), 200);
+    }
+    
+    public function postAddPostCode()
+    {
+        $data = Input::get("data");
+        $countyId = $data["county"];
+        $area = $data["area"];
+        $code = $data["postcode"];
+        $postCode = $this->propertyLogic->addPostCode($countyId, $code, $area);
+        
+        return Response::json(array("data" => $postCode), 200);
     }
     
 }

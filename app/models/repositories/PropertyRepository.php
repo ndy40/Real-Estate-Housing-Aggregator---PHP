@@ -128,5 +128,16 @@ class PropertyRepository implements RepositoryInterface
     {
         return County::with("postCodes")->find($id);
     }
+    
+    public function deleteCounty($id)
+    {
+        $county = County::fetch($id);
+        return $county->delete();
+    }
+    
+    public function deletePostCode($id) {
+        $postCode = PostCode::find($id);
+        return $postCode->delete();
+    }
    
 }

@@ -21,7 +21,7 @@ class PostCode extends Ardent
     
     public function county () 
     {
-        return $this->belongsTo('County');
+        return $this->belongsTo('models\entities\County');
     }
     
     public function properties ()

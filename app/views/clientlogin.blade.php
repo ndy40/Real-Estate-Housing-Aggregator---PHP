@@ -23,7 +23,7 @@
 					<input type="submit" value="Login" class="btn btn-success pull-right fl-r mt-1 fw-b go">
 
 					<section class="mt-1">
-						<a href="new.html" class="btn btn-default fw-b">Sign Up</a>
+						<a href="{{route("signup")}}" class="btn btn-default fw-b">Sign Up</a>
 					</section>
 
 					<section class="cl-r ta-r mt-1 forgot">

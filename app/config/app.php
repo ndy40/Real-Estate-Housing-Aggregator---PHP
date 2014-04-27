@@ -26,7 +26,7 @@ return array(
 	|
 	*/
 
-	'url' => 'http://localhost/php/property-crunch-php/public',
+	'url' => 'http://192.168.33.4/crunch/public',
 
 	/*
 	|--------------------------------------------------------------------------

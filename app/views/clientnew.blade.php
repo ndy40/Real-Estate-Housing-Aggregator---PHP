@@ -22,7 +22,7 @@
 		</header>	
 
 		<main class="container" role="main">
-            <form action="client/register" class="mt-2 brad-4 reg-form" method="post">
+            <form action="register" class="mt-2 brad-4 reg-form" method="post">
 				<section>
 					<input type="text" placeholder="First name" name="firstName">
                     <input type="text" placeholder="Last name" name="lastName">

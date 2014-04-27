@@ -22,19 +22,28 @@ PropertyService.prototype.getPostCodes = function (countyId, callback, failcallb
 * @param Function onSuccess the function to call on success.
 * @param Function onFailure The function to call on failure. 
 */
-PropertyService.prototype.postDeletePostCodes = function (postCodeId, onSuccess, onFailure) {
+PropertyService.prototype.deletePostCodes = function (postCodeId, onSuccess, onFailure) {
     'use strict';
-    var url = this.config.baseUrl + "/admin/service/delete-post-code",
-        data = {data : {"id" : postCodeId}};
-
-    $.post(url, data, function (data, status){
+    var url = this.config.baseUrl + "/admin/service/delete-post-code";
+    $.post(url, {data : {id : postCodeId}}, function (data, status){
         if (status === "success") {
-
-
+            onSuccess(data.data, status);
         } else if (onFailure) {
-            onFailure(data, status);
+            onFailure(data.data, status);
         }
 
+    }, "json");
+};
+
+PropertyService.prototype.addPostCode = function (data, onSuccess, onFailure) {
+    'use strict';
+    var url = this.config.baseUrl + "/admin/service/add-post-code";
+    $.post(url, {data : data}, function (data, status) {
+       if (status === "success") {
+           onSuccess(data.data, status);
+       } else if (onFailure) {
+           onFailure(data.data, status);
+       }
     }, "json");
 };
 
