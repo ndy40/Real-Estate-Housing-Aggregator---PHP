@@ -26,8 +26,9 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
         }) 
             .state('New calculation', {
                 url: "/calculcations/new",
-                templateUrl: "views/calculations/show.html"
-            })                 
+                templateUrl: "views/calculations/new.html"
+            })   
+
                 
         .state('search', {
             url: "/search",
@@ -54,6 +55,19 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
         })          
 
 }]);
+
+app.directive('scrollTop', function() {
+  return {
+    restrict: 'A',
+    link: function(scope, $elm) {
+      $elm.on('click', function() {
+        $("html, body").animate({ scrollTop:0 }, "slow");
+        $(".calc-results").show();
+        $(".nav-tabs").hide();
+      });
+    }
+  }
+});
 
 
 

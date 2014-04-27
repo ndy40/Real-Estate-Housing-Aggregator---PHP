@@ -1,0 +1,9 @@
+	<main role="main" ng-controller="NewCalculationController">
+		<section class="mt-1 container new-calc">
+			<div>
+				Monthly Profit: <strong>£{{ mProfit | number:2 }} </strong><br>
+				Yearly Profit: <strong>£{{ yProfit | number:0 }} </strong><br>
+				Rate of Return: <strong>{{ rReturn | number:0 }}%</strong>
+			</div>				
+		</section>
+	</main>
