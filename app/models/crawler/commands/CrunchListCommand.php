@@ -50,24 +50,34 @@ class CrunchListCommand extends Command {
 	 */
 	public function fire()
 	{
+        $this->info("Configuring catalogue scrape.");
+
         $config = $this->argument();
         $config['type']       = 'type';
         $config['debug']      = $this->option('debug');
+        $config["proxy"]      = $this->option("proxy");
         $config['command']    = Config::get('crawler.command');
         $config['scriptName'] = Config::get('crawler.script_name');
         $config['configFile'] = Config::get('crawler.config_file');
-        
+
+        $this->info("Initializing scrape factory.");
+
         $scrape = $this->scrapeFactory->getScrape('list', $config);
+
+        $this->info("Initialization complete.");
+        $this->info("Executing scrape.");
+
         $output = $scrape->execute();
+
+        $this->info("Scrape complete");
+
         //generate xml document and start working
         $xmlDoc = new \DOMDocument();
         $xmlDoc->loadXML($output);
         
         //this is where you assign the schema and validate data.
         // TODO: Add xml schema and valiate record then handle error. 
-        
-        
-     
+
         //write output to file.
         $filePath = Config::get('crawler.output_path');
         $filePath .= '/' . $this->argument('country') .'-'
@@ -75,16 +85,20 @@ class CrunchListCommand extends Command {
         $file = fopen($filePath, 'w');
         fwrite($file, $output);
         fclose($file);
-        
+
+        $this->info("Generating output file. " . $file);
+
         $data = array (
             'country' => $this->argument('country'),
             'agent'  => $this->argument('agent'),
             'url'     => $this->argument('url'),
             'result'  => $filePath,
         );
-        
+        $this->info("Pushing to queue.");
+
         Queue::push('JobQueue@fetchDetails', $data);
-        
+
+        $this->info($this->name . " completed.");
 	}
 
 	/**
@@ -110,6 +124,7 @@ class CrunchListCommand extends Command {
 	{
 		return array(
             array('debug', null, InputOption::VALUE_NONE, 'Set scrape mode to debug'),
+            array('proxy', null, InputOption::VALUE_OPTIONAL, 'Set scrape mode to debug', "127.0.0.1:9050"),
 		);
 	}
 

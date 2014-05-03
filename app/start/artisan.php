@@ -2,6 +2,7 @@
 
 use crunch\CrunchItemCommand;
 use crunch\CrunchListCommand;
+use crunch\CrunchScrapeCommand;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +18,5 @@ use crunch\CrunchListCommand;
 Artisan::add(new CrunchListCommand);
 
 Artisan::add(new CrunchItemCommand);
+
+Artisan::add(new CrunchScrapeCommand);

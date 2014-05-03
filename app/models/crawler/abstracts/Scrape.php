@@ -35,8 +35,12 @@ abstract class Scrape
     protected $completionTime;
     
     protected $configFile;
-    
-    
+
+    protected $proxy;
+
+    protected $proxyType = "socks5";
+
+
     public function __construct($config = array ()) 
     {
         if (!is_array($config) || empty($config)) {
@@ -92,9 +96,10 @@ abstract class Scrape
             $this->type,
             $this->logLevel,
             $this->debug,
-            $this->configFile
+            $this->configFile,
+            $this->proxy
         );
-        
+
         $output = shell_exec($scrapeCommand);
        
         $this->checkForErrors($output);
@@ -120,7 +125,9 @@ abstract class Scrape
         $type,
         $logLevel = 'error',
         $debug = false,
-        $configFile = 'config.json'
+        $configFile = 'config.json',
+        $proxy = '',
+        $proxyType = 'socks5'
     ) 
     {
         $commandOutput = '';
@@ -132,6 +139,11 @@ abstract class Scrape
         
         if ($debug) {
             $commandOutput .= " --verbose=true";
+        }
+
+        if ($proxy !== '') {
+            $commandOutput .= " --proxy=" . $proxy;
+            $commandOutput .= " --proxy-type=" . $proxyType;
         }
         
         return $commandOutput;

@@ -40,4 +40,9 @@ class AgentLogic implements DataLogicInterface
     {
         return $this->agentRepo->deleteCatalogue($id);
     }
+    
+    public function fetchAgentByNameAndCountry($agent, $country)
+    {
+        return $this->agentRepo->fetchAgentByNameAndCountry($agent, $country);
+    }
 }

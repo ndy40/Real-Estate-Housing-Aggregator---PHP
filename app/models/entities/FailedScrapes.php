@@ -20,7 +20,7 @@ class FailedScrapes extends Ardent
     
     protected $table = 'failed_scrapes';
     
-    protected $fillable = array ('results');
+    protected $fillable = array ('results', "message");
     
     public function agency() {
         $this->belongsTo("Agency");

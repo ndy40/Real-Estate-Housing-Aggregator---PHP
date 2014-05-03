@@ -38,7 +38,7 @@ Route::post("register", array(
 ///////////////////////
 
 Route::group(array('prefix' => 'admin', "before" => "admin"), function () {
-    Route::get("/", array(
+    Route::get("dashboard", array(
         "uses" => "controllers\property\DashboardController@index",
         'as'   => "dashboard",
      ));
@@ -83,15 +83,15 @@ Route::group(array('prefix' => 'admin', "before" => "admin"), function () {
     
 });
 //define login rounte
-    Route::any('admin/login', array(
-        'uses' => 'controllers\auth\AuthenticationController@login', 
-        "as" => "adminLogin"
-    ));
+Route::any('login', array(
+    'uses' => 'controllers\auth\AuthenticationController@login', 
+    "as" => "adminLogin"
+));
 
-    Route::get("admin/logout", array(
-        "uses" => "controllers\auth\AuthenticationController@logout",
-        'as' => "adminlogout",
-    ));
+Route::get("logout", array(
+    "uses" => "controllers\auth\AuthenticationController@logout",
+    'as' => "adminlogout",
+));
 
  
 

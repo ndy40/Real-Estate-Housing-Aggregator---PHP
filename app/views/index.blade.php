@@ -20,7 +20,7 @@
 				<li><a ui-sref="calculation"><i class="ion-calculator"></i> Recent Views</a></li> 
 				<li><a ui-sref="alerts"><i class="ion-alert-circled"></i> Alerts</a></li> 
 				<li><a ui-sref="settings"><i class="ion-gear-b"></i> Settings</a></li> 
-				<li class="logout-btn"><a href="{{route("login")}}"><i class="ion-log-out"></i> Logout</a></li>                                          
+				<li class="logout-btn"><a href="{{route("logout")}}"><i class="ion-log-out"></i> Logout</a></li>                                          
 			</ul>
 		</nav>
 

@@ -86,6 +86,6 @@ Route::filter('csrf', function()
 Route::filter('admin', function () {
     $authLogic = App::make("AuthLogic");
     if (!$authLogic->isLoggedIn()) {
-        return Redirect::route("adminLogin");
+        return View::make("login");
     }
 });

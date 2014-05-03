@@ -17,7 +17,7 @@ class PropertyTypeSeed extends Seeder
     {
         $this->command->info("Seeding property types.");
         $type = array("Houses", "Flats", "Commercial", "Land",
-            "Bungalows", "Detached",
+            "Bungalows", "Detached", "Terraced", "Semi Detached", "Apartment", "Maisonette"
         );
         foreach ($type as $value) {
             DB::table("type")->insert(array("name" => $value));

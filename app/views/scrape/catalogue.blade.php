@@ -38,7 +38,6 @@
                             <td>{{$agents[$i -1]->country->name}}</td>
                             <td colspan="3">
                                 <a href="#" class="catalogue-url" data-agent="{{$agents[$i - 1]->id}}" title="View cataglogue urls"><i class="icon-play"></i></a>
-                                <a href="#" class="add-catalogue" data-agent="{{$agents[$i - 1]->id}}" title="View cataglogue urls"><i class="icon-play"></i></a>
                             </td>
                         </tr>
                         @endfor
@@ -54,7 +53,6 @@
                 <span class="icon"><i class="icon-bookmark"></i></span>
                 <h5 class="pull-left">Catalogue URL</h5>
                 <span class="pull-right" style="margin: 3px 3px;">
-                    <a href="#add-catalogue" id="addCatalogue" title="Add new url" data-toggle="modal"><i class="icon-plus"></i></a>
                     <a href="#" id="remove-catalogue" title="Delete url"><i class="icon-minus"></i></a>
                 </span>
             </div>
@@ -113,7 +111,7 @@
                         var content = '<tr><td><input type="checkbox" data-url="' + e.id + '" class="checkboxurls" /></td><td><a href="'+ e.url + '" target="_blank" >' + e.url + '</a></td></tr>';
                         $("#catalogue-table table tbody").append(content);
                     });
-                    $("#add-catalogue").attr("data-agent", parseInt(data.agent));
+//                    $(".addCatalogue").attr("data-agent", parseInt(data.agent));
                     $("#remove-catalogue").attr("data-agent", parseInt(data.agent));
                     $("#catalogue-table").show();
                 } 
@@ -139,7 +137,7 @@
             });
         });
         
-        $(".add-catalogue").on("click", function (e){
+        $(".addCatalogue").on("click", function (e){
            $("#url-modal").alert(); 
            $("$newUrl").val("");
         });

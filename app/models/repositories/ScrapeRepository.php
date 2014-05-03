@@ -14,6 +14,7 @@ use models\entities\FailedScrapes;
 use models\crawler\JobQueue;
 use models\entities\Property;
 use models\entities\PostCode;
+use Exception;
 
 /**
  * Description of ScrapeRepository
@@ -49,14 +50,16 @@ class ScrapeRepository implements RepositoryInterface
      * @param string $agent - Agency name.
      * @param mixed[] $data - Scrape job data
      */
-    public function saveFailedScrapes($agent, $country, $result)
+    public function saveFailedScrapes($agent, $country, $result, $messages = array())
     {
         $agency = $this->agentRepo->fetchAgentByNameAndCountry(
                 $agent,
                 $country
         );
-        $failedJob = new FailedScrapes;
-        $failedJob->results = $result;
+        $failedJob = new FailedScrapes(array(
+            "results" => $result,
+            "message" => $messages
+        ));
         $agency->failedScrapes()->save($failedJob);
 
         return $failedJob;
@@ -93,8 +96,11 @@ class ScrapeRepository implements RepositoryInterface
             case JobQueue::ITEM_NOT_AVAILABLE :
                 $property = $this->propertyRepo
                     ->fetchPropertyByHash($scrapedProperty->hash);
-                $property->available = false;
-                $property->save();
+
+                if (!is_null($property)) {
+                    $property->available = false;
+                    $property->save();
+                }
                 break;
             case JobQueue::ITEM_AVAILABLE:
                 $scrapedProperty->available = 1;
