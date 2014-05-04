@@ -52,10 +52,22 @@
 		<script src="{{asset('vendor/jquery.blockUI.js')}}"></script>
 		<script src="{{asset('vendor/custom.js')}}"></script>
 
-    <script type="text/javascript">
-      var heap=heap||[];heap.load=function(a){window._heapid=a;var b=document.createElement("script");b.type="text/javascript",b.async=!0,b.src=("https:"===document.location.protocol?"https:":"http:")+"//cdn.heapanalytics.com/js/heap.js";var c=document.getElementsByTagName("script")[0];c.parentNode.insertBefore(b,c);var d=function(a){return function(){heap.push([a].concat(Array.prototype.slice.call(arguments,0)))}},e=["identify","track"];for(var f=0;f<e.length;f++)heap[e[f]]=d(e[f])};
-      heap.load("1998172223");
-    </script>
-					
+	    <script type="text/ng-template" id="myModalContent.html">
+	        <div class="modal-header ta-c">
+	            <h3 class="m-0"><i class="ion-alert-circled"></i> Hold Up</h3>
+	        </div>
+	        <div class="modal-body">
+	        	You might notice a few glitches, We are working hard to get property crunch working well on desktop. For a better experience, please use property crunch on your mobile.
+	        </div>
+	        <div class="modal-footer ta-c">
+	            <button class="btn btn-success" ng-click="ok()">Got It</button>
+	        </div>
+	    </script>			
+
+	    <script type="text/javascript">
+	      var heap=heap||[];heap.load=function(a){window._heapid=a;var b=document.createElement("script");b.type="text/javascript",b.async=!0,b.src=("https:"===document.location.protocol?"https:":"http:")+"//cdn.heapanalytics.com/js/heap.js";var c=document.getElementsByTagName("script")[0];c.parentNode.insertBefore(b,c);var d=function(a){return function(){heap.push([a].concat(Array.prototype.slice.call(arguments,0)))}},e=["identify","track"];for(var f=0;f<e.length;f++)heap[e[f]]=d(e[f])};
+	      heap.load("1998172223");
+	    </script>
+
 	</body>
 </html>
