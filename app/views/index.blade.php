@@ -9,6 +9,22 @@
 		<link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
 		<!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 		<link rel="shortcut icon" href="{{asset('assets/ico/favicon.png')}}">
+
+<!-- Facebook Conversion Code for Landing Page Optimisation -->
+<script type="text/javascript">
+var fb_param = {};
+fb_param.pixel_id = '6018120466171';
+fb_param.value = '0.00';
+fb_param.currency = 'GBP';
+(function(){
+  var fpw = document.createElement('script');
+  fpw.async = true;
+  fpw.src = '//connect.facebook.net/en_US/fp.js';
+  var ref = document.getElementsByTagName('script')[0];
+  ref.parentNode.insertBefore(fpw, ref);
+})();
+</script>
+<noscript><img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/offsite_event.php?id=6018120466171&amp;value=0&amp;currency=GBP" /></noscript>		
 	</head>
 
 	<body>
