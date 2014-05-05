@@ -15,20 +15,25 @@
 		<header role="banner">
 
 			<div class="container ta-c">
-				<a href="index.html"><i class="ion-chevron-left fl-l"></i></a>
+				<!-- <a href="/"><i class="ion-chevron-left fl-l"></i></a> -->
 				Sign Up
 			</div>
 
 		</header>	
 
-		<main class="container" role="main">
+		<main class="container" role="main" style="max-width: 500px;">
+			<div class="ta-c">
+				<h1 class="m-0 mt-1 fw-n">Let's get you signed up</h1>
+				<span>It's quick and easy</span>
+			</div>
+
             <form action="client/register" class="mt-2 brad-4 reg-form" method="post">
 				<section>
-					<input type="text" placeholder="First name" name="firstName">
-                    <input type="text" placeholder="Last name" name="lastName">
-					<input type="text" placeholder="Email" name="email">
-					<input type="text" placeholder="Where are you looking to buy?" name="location">
-					<input type="password" placeholder="Password" name="password">
+					<input type="text" placeholder="First name" name="firstName" required>
+                    <input type="text" placeholder="Last name" name="lastName" required>
+					<input type="text" placeholder="Email" name="email" required>
+					<input type="text" placeholder="Where are you looking to buy?" name="location" required>
+					<input type="password" placeholder="Password" name="password" required>
 				</section>
 				<input type="submit" value="Done" class="mt-2 btn btn-default">
                 @if (Session::has("message"))
