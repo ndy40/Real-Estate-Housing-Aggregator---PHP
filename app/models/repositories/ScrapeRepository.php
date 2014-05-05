@@ -119,7 +119,6 @@ class ScrapeRepository implements RepositoryInterface
                         ->updateChangedFields($scrapedProperty, $property);
                     $scrapedProperty = $this->propertyRepo->save($scrapedProperty);
                 }
-
                 break;
         }
 
@@ -132,22 +131,26 @@ class ScrapeRepository implements RepositoryInterface
         $country = rawurldecode($data->getElementsByTagName('country')->item(0)->nodeValue);
         $agent = rawurldecode($data->getElementsByTagName('agent')->item(0)->nodeValue);
 
-        $scrapeProperty['marketer']
-            = $data->getElementsByTagName('marketer')->item(0)->nodeValue;
+        $marketer = $data->getElementsByTagName('marketer');
+        if ($marketer) {
+            $scrapeProperty['marketer'] = $marketer->item(0)->nodeValue;
+        }
 
-        $scrapeProperty['address']
-            = $data->getElementsByTagName('address')->item(0)->nodeValue;
+        $address = $data->getElementsByTagName('address');
+        $scrapeProperty['address'] = $address->item(0)->nodeValue;
 
-        $scrapeProperty['rooms']
-            = $data->getElementsByTagName('rooms')->item(0)->nodeValue;
+        $room = $data->getElementsByTagName('rooms');
+        if (!is_null($room->item(0))) {
+            $scrapeProperty['rooms'] = $room->item(0)->nodeValue;
+        }
 
-        $postcode = $data->getElementsByTagName('rooms')->item(0)->nodeValue;
+        $postcode = $data->getElementsByTagName('areacode')->item(0)->nodeValue;
 
-        $scrapeProperty['phone']
-            = $data->getElementsByTagName('phone')->item(0)->nodeValue;
+        $scrapeProperty['phone'] = $data->getElementsByTagName('phone')->item(0)->nodeValue;
 
-        $scrapeProperty['price']
-            = doubleval($data->getElementsByTagName('price')->item(0)->nodeValue);
+        $scrapeProperty['price'] = doubleval($data->getElementsByTagName('price')->item(0)->nodeValue);
+
+        $scrapeProperty["offer_type"] = $data->getElementsByTagName("offerType")->item(0)->nodeValue;
 
         $scrapeProperty['url'] = rawurldecode($data->getElementsByTagName('url')->item(0)->nodeValue);
 

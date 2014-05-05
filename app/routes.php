@@ -10,16 +10,23 @@
 |
 */
 
-Route::get("/", array("as" => "home", function (){
-    return View::make("index");
+Route::get("/", array("as" => "home", function () {
+    $repo = App::make("AuthLogic");
+    if ($repo->isLoggedIn()) {
+        return View::make("index");
+    } else {
+        return Redirect::route("login");
+    }
+
+
 }));
 
-Route::any("login", array(
+Route::any("signin", array(
     "as" => "login", 
     "uses" => "controllers\auth\ClientAuthController@postIndex"
 ));
 
-Route::get("logout", array(
+Route::get("signout", array(
     "as" => "logout", 
     "uses" => "controllers\auth\ClientAuthController@getLogout"
 ));

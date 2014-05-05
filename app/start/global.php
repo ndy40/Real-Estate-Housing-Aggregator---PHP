@@ -31,7 +31,11 @@ ClassLoader::addDirectories(array(
 |
 */
 
-Log::useFiles(storage_path().'/logs/laravel.log');
+//Log::useFiles(storage_path().'/logs/laravel.log');
+$logFile = 'log-'.php_sapi_name().'.txt';
+
+Log::useDailyFiles(storage_path().'/logs/'.$logFile);
+
 
 /*
 |--------------------------------------------------------------------------
@@ -122,3 +126,9 @@ App::down(function()
 require app_path().'/filters.php';
 require app_path() . '/ioc.php';
 require app_path() . '/viewcomposer.php';
+
+/**
+ * LogViewer configuration
+ */
+
+

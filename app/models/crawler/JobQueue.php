@@ -87,8 +87,12 @@ class JobQueue {
 
         echo "Country:\t" . $data['country'] . "\nAgent:\t" . $data['agency'] . PHP_EOL;
 
-        $doc = new \DOMDocument;
-        $doc->loadXML(file_get_contents($data['result']));
+        try {
+            $doc = new \DOMDocument;
+            $doc->loadXML(file_get_contents($data['result']));
+        }catch (\ErrorException $ex) {
+            $job->delete();
+        }
         $errorMessages = $doc->createElement('error');
 
         $hasErrors = false;
@@ -137,6 +141,16 @@ class JobQueue {
             } elseif(!$propertyRepo->fetchPostCode($areaCode->nodeValue)) {
                 $messages[] = "Post code not in DB";
                 $errorMessages->appendChild(new \DOMText('Post code not in DB'));
+                $hasErrors = true;
+            }
+
+            $offerType = $doc->getElementsByTagName("offerType")->item(0);
+            if (is_null($offerType)
+                || isset($offerType->nodeValue)
+                || $offerType->nodeValue == 'undefined')
+            {
+                $messages[] = "Offer type not specified";
+                $errorMessages->appendChild(new \DOMText("Offer type not specified"));
                 $hasErrors = true;
             }
 

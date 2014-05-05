@@ -44,6 +44,11 @@ class Property extends Ardent implements MassAssignInterface
         return $this->belongsTo('\models\entities\PropertyType', 'type_id');
     }
 
+    public function getOfferTypeAttribute($offerType)
+    {
+        $this->attributes["offer_type"] = ucwords($offerType);
+    }
+
     public function assignAttributes($attribute = array()) {
         foreach($attribute as $key => $value) {
             $this->setAttribute($key, $value);

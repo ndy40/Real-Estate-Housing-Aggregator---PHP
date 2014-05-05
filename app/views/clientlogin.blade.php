@@ -16,7 +16,7 @@
 				<img src="{{asset("assets/img/logo.png")}}" alt="Property Crunch Logo" class="full-w">
 			</section>
 			<section class="login-form">
-                <form action="/" class="l-temp" method="post">
+                <form action="{{route("login")}}" class="l-temp" method="post">
 					<div class="error ta-c mb-1 c-white login-error" style="background: #D42C2C; display:none;">Username/Password is incorrect</div>
                     <input type="text" class="full-w usrname" placeholder="Username or Email" name="email">
                     <input type="password" class="full-w mt-1 pswrd" placeholder="Password" name="password">

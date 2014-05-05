@@ -45,8 +45,20 @@ class PropertyLogic implements DataLogicInterface
         $data = $postCode->county()->associate($county);
         return $this->propertyRepo->save($data);
     }
-    
+
+    /**
+     * Delete post code
+     * @param $id Database ID of post code.
+     * @return mixed
+     */
     public function deletePostCode($id) {
         return $this->propertyRepo->deletePostCode($id);
     }
+
+    public function findProperty ($id)
+    {
+        return $this->propertyRepo->
+    }
+
+
 }

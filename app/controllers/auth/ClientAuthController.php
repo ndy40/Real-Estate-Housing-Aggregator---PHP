@@ -75,7 +75,7 @@ class ClientAuthController extends AuthenticationController
             $responseCode = 200;
         }
         
-        return Redirect::to("/login");
+        return Redirect::route("login");
     }
     
     public function getStatus()
