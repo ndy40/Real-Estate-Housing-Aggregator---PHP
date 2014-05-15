@@ -9,6 +9,22 @@
 		<link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
 		<!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 		<link rel="shortcut icon" href="{{asset('assets/ico/favicon.png')}}">
+
+<!-- Facebook Conversion Code for Landing Page Optimisation -->
+<script type="text/javascript">
+var fb_param = {};
+fb_param.pixel_id = '6018120466171';
+fb_param.value = '0.00';
+fb_param.currency = 'GBP';
+(function(){
+  var fpw = document.createElement('script');
+  fpw.async = true;
+  fpw.src = '//connect.facebook.net/en_US/fp.js';
+  var ref = document.getElementsByTagName('script')[0];
+  ref.parentNode.insertBefore(fpw, ref);
+})();
+</script>
+<noscript><img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/offsite_event.php?id=6018120466171&amp;value=0&amp;currency=GBP" /></noscript>		
 	</head>
 
 	<body>
@@ -50,6 +66,24 @@
 
 		<script src="{{asset('vendor/fastclick.js')}}"></script>
 		<script src="{{asset('vendor/jquery.blockUI.js')}}"></script>
-		<script src="{{asset('vendor/custom.js')}}"></script>			
+		<script src="{{asset('vendor/custom.js')}}"></script>
+
+	    <script type="text/ng-template" id="myModalContent.html">
+	        <div class="modal-header ta-c">
+	            <h3 class="m-0"><i class="ion-alert-circled"></i> Hold Up</h3>
+	        </div>
+	        <div class="modal-body">
+	        	You might notice a few glitches, We are working hard to get property crunch working well on desktop. For a better experience, please use property crunch on your mobile.
+	        </div>
+	        <div class="modal-footer ta-c">
+	            <button class="btn btn-success" ng-click="ok()">Got It</button>
+	        </div>
+	    </script>			
+
+	    <script type="text/javascript">
+	      var heap=heap||[];heap.load=function(a){window._heapid=a;var b=document.createElement("script");b.type="text/javascript",b.async=!0,b.src=("https:"===document.location.protocol?"https:":"http:")+"//cdn.heapanalytics.com/js/heap.js";var c=document.getElementsByTagName("script")[0];c.parentNode.insertBefore(b,c);var d=function(a){return function(){heap.push([a].concat(Array.prototype.slice.call(arguments,0)))}},e=["identify","track"];for(var f=0;f<e.length;f++)heap[e[f]]=d(e[f])};
+	      heap.load("1998172223");
+	    </script>
+
 	</body>
 </html>

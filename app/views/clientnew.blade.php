@@ -24,11 +24,11 @@
 		<main class="container" role="main">
             <form action="register" class="mt-2 brad-4 reg-form" method="post">
 				<section>
-					<input type="text" placeholder="First name" name="firstName">
-                    <input type="text" placeholder="Last name" name="lastName">
-					<input type="text" placeholder="Email" name="email">
-					<input type="text" placeholder="Where are you looking to buy?" name="location">
-					<input type="password" placeholder="Password" name="password">
+					<input type="text" placeholder="First name" name="firstName" required>
+                    <input type="text" placeholder="Last name" name="lastName" required>
+					<input type="text" placeholder="Email" name="email" required>
+					<input type="text" placeholder="Where are you looking to buy?" name="location" required>
+					<input type="password" placeholder="Password" name="password" required>
 				</section>
 				<input type="submit" value="Done" class="mt-2 btn btn-default">
                 @if (Session::has("message"))
