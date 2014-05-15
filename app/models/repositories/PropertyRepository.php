@@ -8,6 +8,8 @@
 
 namespace models\repositories;
 
+use models\entities\Agency;
+use models\entities\PropertyChangeLog;
 use models\interfaces\RepositoryInterface;
 use models\entities\PostCode;
 use models\entities\Property;
@@ -16,6 +18,7 @@ use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Crypt;
 use models\entities\Country;
 use models\entities\County;
+use Illuminate\Database\Eloquent\Builder;
 /**
  * Description of PropertyRepository
  *
@@ -95,8 +98,8 @@ class PropertyRepository implements RepositoryInterface
     /**
      * Method to update difference in values between scraped and db object.
      * 
-     * @param models\entities\Property $scrapedProperty Property being scraped
-     * @param models\entities\Property $dbProperty Property from DB that should be
+     * @param \models\entities\Property $scrapedProperty Property being scraped
+     * @param \models\entities\Property $dbProperty Property from DB that should be
      * compared against.
      * @return boolean True if something has been updated else false returned.
      */
@@ -139,5 +142,58 @@ class PropertyRepository implements RepositoryInterface
         $postCode = PostCode::find($id);
         return $postCode->delete();
     }
+
+    public function savePropertyChangelog(PropertyChangeLog $changeLog)
+    {
+        return $changeLog->save();
+    }
+
+    public function fetchAllProperty($filter = array(), $startIndex = 1, $size = 25)
+    {
+        $skip = $size * ($startIndex - 1);
+        if (empty($filter)) {
+            return Property::with("agency", "postCode", "type")
+                ->skip($skip)
+                ->take($size)
+                ->get();
+        }
+
+        if (array_key_exists("post_code_id", $filter)) {
+            return Property::with("agency", "postCode", "type")
+                ->where("post_code_id", "=", $filter["post_code_id"])
+                ->skip($skip)
+                ->take($size)
+                ->get();
+        } else if (array_key_exists("county", $filter)) {
+            return Property::with("agency", "postCode", "type")->whereHas("postCode", function ($query) use ($filter) {
+                    $query->where("county_id", "=", $filter["county"]);
+                })
+                ->skip($skip)
+                ->take($size)
+                ->get();
+        }
+    }
+
+    /**
+     * @param mixed[] $filter parameters to filter by
+     * @return int The count.
+     */
+    public function countAllProperty($filter)
+    {
+        if (empty($filter)) {
+            return Property::with("agency", "postCode", "type")->count();
+        }
+
+        if (array_key_exists("post_code_id", $filter)) {
+            return Property::with("agency", "postCode", "type")
+                ->where("post_code_id", "=", $filter["post_code_id"])->count();
+        } else if (array_key_exists("county", $filter)) {
+            return Property::with("agency", "postCode", "type")->whereHas("postCode", function ($query) use ($filter) {
+                $query->where("county_id", "=", $filter["county"]);
+            })->count();
+        }
+    }
+
+
    
 }

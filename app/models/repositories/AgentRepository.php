@@ -59,6 +59,9 @@ class AgentRepository  implements RepositoryInterface
     {
         return Sentry::login($user, false);
     }
-    
+
+    public function fetchCountries () {
+        return Country::orderBy("name")->get();
+    }
 
 }

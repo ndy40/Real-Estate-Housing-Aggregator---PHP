@@ -126,6 +126,7 @@ App::down(function()
 require app_path().'/filters.php';
 require app_path() . '/ioc.php';
 require app_path() . '/viewcomposer.php';
+require app_path() . "/systemevents.php";
 
 /**
  * LogViewer configuration

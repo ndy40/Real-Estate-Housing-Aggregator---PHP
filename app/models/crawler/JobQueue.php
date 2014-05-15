@@ -144,9 +144,9 @@ class JobQueue {
                 $hasErrors = true;
             }
 
-            $offerType = $doc->getElementsByTagName("offerType")->item(0);
+            $offerType = $doc->getElementsByTagName("offertype")->item(0);
             if (is_null($offerType)
-                || isset($offerType->nodeValue)
+                || !isset($offerType->nodeValue)
                 || $offerType->nodeValue == 'undefined')
             {
                 $messages[] = "Offer type not specified";
@@ -170,7 +170,8 @@ class JobQueue {
                     $data['agency'],
                     $data['country'],
                     $data['result'],
-                    implode("\n", $messages)
+                    implode("\n", $messages),
+                    $fileContent
                 );
                 $job->delete();
 

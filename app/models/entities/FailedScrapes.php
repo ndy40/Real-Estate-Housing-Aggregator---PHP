@@ -23,6 +23,6 @@ class FailedScrapes extends Ardent
     protected $fillable = array ('results', "message");
     
     public function agency() {
-        $this->belongsTo("Agency");
+        return $this->belongsTo("\models\entities\Agency");
     }
 }

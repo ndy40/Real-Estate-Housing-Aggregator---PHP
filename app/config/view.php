@@ -28,4 +28,9 @@ return array(
 
 	'pagination' => 'pagination::slider-3',
 
+    /*
+     * Default page size settings.
+     */
+    "pagination_size" => 25,
+
 );

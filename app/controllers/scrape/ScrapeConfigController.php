@@ -15,11 +15,20 @@ use Illuminate\Support\Facades\Input;
  */
 class ScrapeConfigController extends BaseController
 {
+    /**
+     * @var Instance of models\datalogic\AgencyLogic
+     */
     protected $agencyRepo;
+
+    /**
+     * @var Instance of models\datalogic\ScrapeLogic
+     */
+    protected $scrapeRepo;
     
     public function __construct() 
     {
         $this->agencyRepo = App::make("AgentLogic");
+        $this->scrapeRepo = App::make("ScrapeLogic");
     }
     public function index()
     {
@@ -74,5 +83,19 @@ class ScrapeConfigController extends BaseController
         }
         
         return Response::json($data, $code);
+    }
+
+    public function failedScrapes()
+    {
+        $failedScrapes = $this->scrapeRepo->fetchAllFailedScrapes();
+
+        return View::make("scrape.failed_scrapes", array("scrapes" => $failedScrapes));
+    }
+
+    public function postDeleteFailedScrape()
+    {
+        $id = Input::get("id");
+        $sucess = $this->scrapeRepo->deleteFailedScrape($id);
+        return Response::json($sucess);
     }
 }

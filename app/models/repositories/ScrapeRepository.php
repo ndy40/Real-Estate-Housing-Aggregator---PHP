@@ -50,7 +50,7 @@ class ScrapeRepository implements RepositoryInterface
      * @param string $agent - Agency name.
      * @param mixed[] $data - Scrape job data
      */
-    public function saveFailedScrapes($agent, $country, $result, $messages = array())
+    public function saveFailedScrapes($agent, $country, $result, $messages = array(), $data = null )
     {
         $agency = $this->agentRepo->fetchAgentByNameAndCountry(
                 $agent,
@@ -58,7 +58,8 @@ class ScrapeRepository implements RepositoryInterface
         );
         $failedJob = new FailedScrapes(array(
             "results" => $result,
-            "message" => $messages
+            "message" => $messages,
+            "data"    => $data
         ));
         $agency->failedScrapes()->save($failedJob);
 
@@ -150,7 +151,7 @@ class ScrapeRepository implements RepositoryInterface
 
         $scrapeProperty['price'] = doubleval($data->getElementsByTagName('price')->item(0)->nodeValue);
 
-        $scrapeProperty["offer_type"] = $data->getElementsByTagName("offerType")->item(0)->nodeValue;
+        $scrapeProperty["offer_type"] = $data->getElementsByTagName("offertype")->item(0)->nodeValue;
 
         $scrapeProperty['url'] = rawurldecode($data->getElementsByTagName('url')->item(0)->nodeValue);
 
@@ -169,6 +170,18 @@ class ScrapeRepository implements RepositoryInterface
 
     public function save($entity) {
         throw new Exception ('Not implemented yet');
+    }
+
+
+    public function fetchAllFailedScrapes()
+    {
+        return FailedScrapes::orderBy("created_at", "asc")->get();
+    }
+
+    public function deleteFailedScrape($id)
+    {
+        $failedScrape = FailedScrapes::find($id);
+        return $failedScrape->delete();
     }
 
 }

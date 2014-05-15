@@ -26,7 +26,7 @@ class PostCode extends Ardent
     
     public function properties ()
     {
-        return $this->hasMany('Property', 'post_code');
+        return $this->hasMany('models\entities\Property', 'post_code_id');
     }
     
 }

@@ -47,6 +47,19 @@ PropertyService.prototype.addPostCode = function (data, onSuccess, onFailure) {
     }, "json");
 };
 
+PropertyService.prototype.fetchProperties = function (filter, onSuccess, onFailure) {
+    'use strict';
+    var url = this.config.baseUrl + "/admin/service/fetch-properties",
+        data = { data : filter};
+    $.get(url, data, function (data, status) {
+        if (status === 'success') {
+            onSuccess(data, status);
+        } else if (onFailure) {
+            onFailure(data, status);
+        }
+    });
+};
+
 
 
 

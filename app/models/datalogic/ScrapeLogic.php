@@ -9,6 +9,7 @@
 namespace models\datalogic;
 
 use models\interfaces\DataLogicInterface;
+use Illuminate\Support\Facades\App;
 
 /**
  * Description of ScrapeLogic
@@ -17,8 +18,22 @@ use models\interfaces\DataLogicInterface;
  */
 class ScrapeLogic implements DataLogicInterface
 {
-    public function fetchAllAgents()
+    protected $scrapeRepo;
+
+    public function __construct()
     {
-        
+        $this->scrapeRepo = App::make("ScrapeRepository");
+
     }
+    public function fetchAllFailedScrapes ()
+    {
+        return $this->scrapeRepo->fetchAllFailedScrapes();
+    }
+
+    public function deleteFailedScrape($id)
+    {
+        return $this->scrapeRepo->deleteFailedScrape($id);
+    }
+
+
 }

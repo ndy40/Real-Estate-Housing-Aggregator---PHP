@@ -7,7 +7,10 @@
  */
 
 namespace models\entities\observers;
-
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use models\entities\PropertyChangeLog;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Log;
 /**
  * Observer for all property related events.
  * Class PropertyObserver
@@ -18,7 +21,26 @@ class PropertyObserver
     public function updating ($property)
     {
         $propRepo = App::make("PropertyLogic");
-        $property = $propRepo->fetch($property->id);
+        try {
+            $OldProperty = $propRepo->findProperty($property->id);
+
+            if ($property->price != $OldProperty->price) {
+                $changeLog = new PropertyChangeLog();
+                $changeLog->property()->associate($property);
+                $changeLog->old_price = $OldProperty->price;
+                $changeLog->new_price = $property->price;
+                $propRepo->savePropertyChangeLog($changeLog);
+
+                Log::info("Property price change " . $property->id . " Old-price:"
+                    . $changeLog->old_price . " New-price:" . $changeLog->new_price
+                );
+            }
+        } catch (ModelNotFoundException $ex) {
+            Log::warning("Cannot fnd model.");
+            return false;
+        }
+
+        return true;
     }
 
 } 

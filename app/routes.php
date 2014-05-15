@@ -17,18 +17,16 @@ Route::get("/", array("as" => "home", function () {
     } else {
         return Redirect::route("login");
     }
-
-
 }));
 
 Route::any("signin", array(
-    "as" => "login", 
-    "uses" => "controllers\auth\ClientAuthController@postIndex"
+    "as"    => "login",
+    "uses"  => "controllers\auth\ClientAuthController@postIndex"
 ));
 
 Route::get("signout", array(
-    "as" => "logout", 
-    "uses" => "controllers\auth\ClientAuthController@getLogout"
+    "as"    => "logout",
+    "uses"  => "controllers\auth\ClientAuthController@getLogout"
 ));
 
 Route::get("signup", array("as" => "signup", function () {
@@ -46,46 +44,52 @@ Route::post("register", array(
 
 Route::group(array('prefix' => 'admin', "before" => "admin"), function () {
     Route::get("dashboard", array(
-        "uses" => "controllers\property\DashboardController@index",
-        'as'   => "dashboard",
+        "uses"  => "controllers\property\DashboardController@index",
+        'as'    => "dashboard",
      ));
     
     Route::post("recovery", array(
-        "uses" => "controllers\auth\AuthenticationController@recovery",
-        "as" => "recovery",
+        "uses"  => "controllers\auth\AuthenticationController@recovery",
+        "as"    => "recovery",
     ));
     
     Route::any("profile", array(
-        "uses" => "controllers\auth\AuthenticationController@profile",
-        "as" => "profile",
+        "uses"  => "controllers\auth\AuthenticationController@profile",
+        "as"    => "profile",
     ));
     
     Route::any("changepassword", array(
-        "uses" => "controllers\auth\AuthenticationController@changePassword",
-        "as" => "changepassword",
+        "uses"  => "controllers\auth\AuthenticationController@changePassword",
+        "as"    => "changepassword",
     ));
     
     Route::controller("service", "controllers\property\PropertyController");
     Route::controller("scrape", "controllers\scrape\ScrapeConfigController");
     
     Route::get("property/country", array(
-        "as" => "country", 
-        "uses" => "controllers\property\PropertyController@country"
+        "as"    => "country",
+        "uses"  => "controllers\property\PropertyController@country"
     ));
     
     Route::get("property", array(
-        "as" => "property", 
-        "uses" => "controllers\property\PropertyController@index"
+        "as"    => "property",
+        "uses"  => "controllers\property\PropertyController@index"
     ));
 
     Route::get("property/postcode", array(
-        "as" => "postcode", 
-        "uses" => "controllers\property\PropertyController@getPostcode"
+        "as"    => "postcode",
+        "uses"  => "controllers\property\PropertyController@getPostcode"
     ));
     
     Route::get("catalogue", array(
-        "as" => "catalogue",
-        "uses" => "controllers\scrape\ScrapeConfigController@index",
+        "as"    => "catalogue",
+        "uses"  => "controllers\scrape\ScrapeConfigController@index",
+    ));
+
+    Route::get("failedscrapes", array(
+        "as"    => "failedScrapes",
+        "uses"  => "controllers\scrape\ScrapeConfigController@failedScrapes"
+
     ));
     
 });

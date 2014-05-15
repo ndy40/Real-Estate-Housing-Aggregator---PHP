@@ -11,69 +11,65 @@
 
 @section ("content")
 <div class="row-fluid">
-     <div class="span9">
-         <div class="widget-box">
-             <div class="widget-title">
-                 <span class="icon"><i class="icon-th-large"></i></span><h5>Properties</h5>
-             </div>
-             <div class="widget-content">
-                 <table class="table table-bordered table-striped">
-                     <thead>
-                         <tr>
-                             <th>Name</th>
-                             <th>Address</th>
-                             <th>Post Code</th>
-                             <th colspan="2">
-                                 Action
-                             </th>
-                         </tr>
-                     </thead>
-                 </table>
-             </div>
-         </div>
-    </div>
-    <div class="span3">
+    <div class="span12">
         <!-- filter form here -->
         <div class="widget-box">
             <div class="widget-title">
                 <h5>Filter</h5>
             </div>
             <div class="widget-content">
-                {{Form::open(array("role" => "form"))}}
-                <div class="control-group">
-                    <label class="control-label">Country</label>
-                        <div class="controls">
-                            {{Form::select("country", array("GB" => "UK"), null)}}
-                        </div>
-                    </div>
-                    <div class="control-group">
-                        <label class="control-label">County</label>
-                        <div class="controls">
-                            {{Form::select("county", array(), null)}}
-                        </div>
-                    </div>
-                    <div class="control-group">
-                        <label class="control-label">Agency</label>
-                        <div class="controls">
-                            {{Form::select("county", array(), null)}}
-                        </div>
-                    </div>
-                    <div class="control-group">
-                        <label class="control-label">Status</label>
-                        <div class="controls">
-                            {{Form::select("available", array("-1" => "All", "0" => "No", "1" => "Yes"), null)}}
-                        </div>
-                    </div>
-                    <div class="control-group">
-                        <div class="controls">
-                            <button class="btn btn-primary">Filter</button>
-                        </div>
-                    </div>
+                {{Form::open(array("class" => "form-inline"))}}
+                    {{Form::label("county", "County")}}
+                    {{Form::select("county", $county, null, array("class" => "input-medium", "id" => "countyFilter"))}}
+                    {{Form::label("postcode", "Post Codes")}}
+                    {{Form::select("postcodes", array(), null, array("class" => "input-medium", "id" => "postcodeFilter"))}}
+                    <button class="btn btn-primary" id="filterButton">Filter</button>
                 {{Form::close()}}
             </div>
         </div>
         <!-- end of filter form -->
     </div>
-    
 </div>
+
+<div class="row-fluid">
+     <div class="span12">
+         <div class="widget-box">
+             <div class="widget-title">
+                 <span class="icon"><i class="icon-th-large"></i></span><h5>Properties</h5>
+             </div>
+             <div class="widget-content">
+                 <table class="table table-bordered table-striped table-condensed" id="admin-property-tbl">
+                     <thead>
+                         <tr>
+                             <th>ID</th>
+                             <th>Agency</th>
+                             <th>Marketer</th>
+                             <th>Asking Price</th>
+                             <th>Prop. Address (click)</th>
+                             <th>Post Code</th>
+                             <th>Prop. Type</th>
+                             <th>Offer Type</th>
+                             <th>Available</th>
+                             <th>Date Added</th>
+                             <th>Last Updated</th>
+                             <th>Action</th>
+                         </tr>
+                     </thead>
+                     <tbody></tbody>
+                 </table>
+                 <div class="pagination pagination-small" id="pagination">
+
+                 </div>
+             </div>
+         </div>
+    </div>
+  </div>
+
+@stop
+
+@section ("scripts")
+    @parent
+    <script type="text/javascript" src="{{asset('admin/js/jquery.dataTables.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('admin/modules/crunch-property.js')}}"></script>
+    <script type="text/javascript" src="{{asset('admin/modules/crunch-property-event.js')}}"></script>
 @stop

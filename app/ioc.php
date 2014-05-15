@@ -50,3 +50,7 @@ App::bind("PropertyLogic", function ($app) {
 App::bind("AgentLogic", function ($app) {
     return new models\datalogic\AgentLogic;
 });
+
+App::bind("ScrapeLogic", function ($app) {
+    return new \models\datalogic\ScrapeLogic;
+});

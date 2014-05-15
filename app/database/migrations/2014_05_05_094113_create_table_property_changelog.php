@@ -12,7 +12,7 @@ class CreateTablePropertyChangelog extends Migration {
 	 */
 	public function up()
 	{
-	    Schema::create("property_changelog", function (Blueprint $table) {
+	    Schema::create("property_change_logs", function (Blueprint $table) {
             $table->bigIncrements("id");
             $table->bigInteger("property_id")->unsigned();
             $table->double("old_price");
@@ -20,7 +20,7 @@ class CreateTablePropertyChangelog extends Migration {
             $table->timestamps();
         });
 
-        Schema::table("property_changelog", function (Blueprint $table) {
+        Schema::table("property_change_logs", function (Blueprint $table) {
            $table->foreign("property_id")->references("id")->on("properties");
         });
 	}

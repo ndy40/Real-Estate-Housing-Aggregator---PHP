@@ -98,7 +98,7 @@
 
 @section ("scripts")
     @parent
-    <script type="text/javascript" src="{{asset("admin/modules/crunch-catalogue.js")}}"></script>
+    <script type="text/javascript" src='{{asset("admin/modules/crunch-catalogue.js")}}'></script>
     <script type="text/javascript">
     $(function () {
         var scrapeService = new ScrapeService(config);

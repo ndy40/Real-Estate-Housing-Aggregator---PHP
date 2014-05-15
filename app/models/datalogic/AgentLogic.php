@@ -45,4 +45,9 @@ class AgentLogic implements DataLogicInterface
     {
         return $this->agentRepo->fetchAgentByNameAndCountry($agent, $country);
     }
+
+    public function fetchCountries()
+    {
+        return $this->agentRepo->fetchCountries();
+    }
 }

@@ -1,6 +1,7 @@
 <?php
 namespace models\datalogic;
 
+use models\entities\PropertyChangeLog;
 use models\interfaces\DataLogicInterface;
 use Illuminate\Support\Facades\App;
 
@@ -57,8 +58,21 @@ class PropertyLogic implements DataLogicInterface
 
     public function findProperty ($id)
     {
-        return $this->propertyRepo->
+        return $this->propertyRepo->fetch($id);
     }
 
+    public function savePropertyChangeLog (PropertyChangeLog $prop)
+    {
+        $this->propertyRepo->savePropertyChangelog($prop);
+    }
+
+    public function fetchAllProperty($filter = array (), $startIndex, $size)
+    {
+        return $this->propertyRepo->fetchAllProperty($filter, $startIndex, $size);
+    }
+
+    public function countAllProperty($filter = array()) {
+        return $this->propertyRepo->countAllProperty($filter);
+    }
 
 }

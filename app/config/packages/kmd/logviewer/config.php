@@ -2,7 +2,7 @@
 
 return array(
 
-    'base_url'   => 'logviewer',
+    'base_url'   => 'admin/logviewer',
     'filters'    => array(
         'global' => array("before" => "admin"),
         'view'   => array(),
