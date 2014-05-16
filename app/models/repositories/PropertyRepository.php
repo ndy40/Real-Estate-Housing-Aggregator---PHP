@@ -8,17 +8,14 @@
 
 namespace models\repositories;
 
-use models\entities\Agency;
 use models\entities\PropertyChangeLog;
 use models\interfaces\RepositoryInterface;
 use models\entities\PostCode;
 use models\entities\Property;
 use models\entities\PropertyType;
 use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Crypt;
 use models\entities\Country;
 use models\entities\County;
-use Illuminate\Database\Eloquent\Builder;
 /**
  * Description of PropertyRepository
  *
@@ -193,7 +190,22 @@ class PropertyRepository implements RepositoryInterface
             })->count();
         }
     }
-
+    
+    public function searchLocationByCountyAndPostCode($location)
+    {
+        return PostCode::with("county")
+            ->where("code", "like", "%{$location}%", "or")
+            ->orWhere("area", "like", "%{$location}%")
+            ->orWhereHas("county", function ($query) use ($location){
+                $query->where("name", "like", "%{$location}%");
+            })
+            ->orderBy("code")->get();
+    }
+    
+    public function searchLocation($name)
+    {
+        return County::where("name", "like", "%{$name}%")->orderBy("name")->get();
+    }
 
    
 }

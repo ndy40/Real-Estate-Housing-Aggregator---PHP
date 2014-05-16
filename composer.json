@@ -18,6 +18,7 @@
             "app/controllers/scrape",
             "app/controllers/property",
             "app/controllers/service",
+            "app/controllers/search",
 			"app/models",
             "app/models/datalogic",
             "app/models/crawler",

@@ -74,5 +74,16 @@ class PropertyLogic implements DataLogicInterface
     public function countAllProperty($filter = array()) {
         return $this->propertyRepo->countAllProperty($filter);
     }
+    
+    public function searchLocationByCountyAndPostCode($location)
+    {
+        return $this->propertyRepo->searchLocationByCountyAndPostCode($location);
+    }
+    
+    public function searchLocation($name)
+    {
+        return $this->propertyRepo->searchLocation($name);
+    }
+      
 
 }

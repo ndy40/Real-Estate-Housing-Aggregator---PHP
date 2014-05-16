@@ -89,3 +89,16 @@ Route::filter('admin', function () {
         return View::make("login");
     }
 });
+
+Route::filter("client", function () {
+     $authLogic = App::make("AuthLogic");
+     if (!$authLogic->isLoggedIn()) {
+         return View::make("clientlogin");
+     } else if ($authLogic->isLoggedIn()){
+         $user = $authLogic->getCurrentUser();
+         $group = $authLogic->findGroupByName("user");
+         if (!$user->inGroup($group)) {
+             throw new Exception("Only logged in client can access service. ");
+         }
+     }
+});

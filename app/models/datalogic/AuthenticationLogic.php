@@ -188,4 +188,9 @@ class AuthenticationLogic implements DataLogicInterface
         $this->authRepository->loginUser($user);
     }
     
+    public function findGroupByName($groupname)
+    {
+        return $this->authRepository->findGroupByName($groupname);
+    }
+    
 }

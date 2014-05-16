@@ -11,7 +11,9 @@ use LaravelBook\Ardent\Ardent;
 class County extends Ardent
 {
     protected $table = "county";
-    
+    protected $hidden = array("created_at", "updated_at");
+
+
     public function postCodes () {
         return $this->hasMany('\models\entities\PostCode');
     }

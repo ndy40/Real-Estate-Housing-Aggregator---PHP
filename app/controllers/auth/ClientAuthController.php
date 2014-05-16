@@ -123,5 +123,8 @@ class ClientAuthController extends AuthenticationController
         return Redirect::to("/");
     }
     
-
+    public function forgotPassword()
+    {
+        
+    }
 }

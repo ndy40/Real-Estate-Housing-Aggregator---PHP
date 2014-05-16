@@ -29,6 +29,11 @@ Route::get("signout", array(
     "uses"  => "controllers\auth\ClientAuthController@getLogout"
 ));
 
+Route::get("forgot", array(
+    "as"    => "forgot",
+    "uses"  => "controllers\auth\ClientAuthController@forgot"
+));
+
 Route::get("signup", array("as" => "signup", function () {
     return View::make("clientnew");
 }));
@@ -104,5 +109,12 @@ Route::get("logout", array(
     'as' => "adminlogout",
 ));
 
+///////////////////////////////
+//////// Client Service //////
+/////////////////////////////
+
+Route::group(array("prefix" => "client"), function (){
+    Route::controller("search", "controllers\search\SearchController");
+});
  
 
