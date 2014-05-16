@@ -29,9 +29,9 @@ Route::get("signout", array(
     "uses"  => "controllers\auth\ClientAuthController@getLogout"
 ));
 
-Route::get("forgot", array(
-    "as"    => "forgot",
-    "uses"  => "controllers\auth\ClientAuthController@forgot"
+Route::any("forgot", array(
+    "as"    => "forgotpassword",
+    "uses"  => "controllers\auth\ClientAuthController@forgotPassword"
 ));
 
 Route::get("signup", array("as" => "signup", function () {

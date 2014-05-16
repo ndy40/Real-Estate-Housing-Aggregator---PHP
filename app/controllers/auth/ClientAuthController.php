@@ -3,11 +3,13 @@ namespace controllers\auth;
 
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Response;
-use controllers\auth\AuthenticationController;
 use models\entities\User;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Config;
+
 /**
  * This is the resful controller for authentication.
  * 
@@ -125,6 +127,42 @@ class ClientAuthController extends AuthenticationController
     
     public function forgotPassword()
     {
+        if (Request::isMethod("get")) {
+            return View::make("clientforgot");
+        } else {
+            $email = Input::get("email");
+            $user = $this->authLogic->findUserByLogin($email);
+            if ($user) {
+                $resetCode = $user->getResetPasswordCode();
+                $data = array(
+                    "code"      => $resetCode,
+                    "user"      => $user,
+                    "baseUrl"   => Config::get("app.url"),
+                );
+                Mail::send(array("emails.passwordreset", "emails.passwordresettext"), 
+                    $data, function ($message) use ($user){
+                        $message->to($user->email, $user->getFullName())
+                            ->subject("Password reset");
+                    }
+                );
+                return View::make("clientforgot")->with("message", "Password reset email sent.");
+                
+            } else {
+                return View::make("clientforgot")->with("message", "Email not found.");
+            }
+        }
         
+    }
+    
+    /**
+     * method for reseting password
+     */
+    public function resetPassword($code)
+    {
+        /**
+         * This will accept a reset password code from the URL
+         * Fetch the user by the reset code and then show the reset form. 
+         * Change the password accordingly. 
+         */
     }
 }

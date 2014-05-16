@@ -27,7 +27,7 @@
 					</section>
 
 					<section class="cl-r ta-r mt-1 forgot">
-						<a href="forgot.html">Forgot Password?</a>
+						{{link_to_route("forgotpassword", "Forgot Password")}}
 					</section>
 				</form>
 			</section>

@@ -127,5 +127,10 @@ class AuthRepository implements RepositoryInterface
         return Sentry::login($user, false);
     }
     
+    public function findUserByLogin($email)
+    {
+        return Sentry::findUserByLogin($email);
+    }
+    
 
 }

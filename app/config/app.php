@@ -53,6 +53,10 @@ return array(
 	*/
 
 	'locale' => 'en',
+    /**
+     * Application Master Email
+     */
+    "email"  => "ndy40.ekott@gmail.com",
 
 	/*
 	|--------------------------------------------------------------------------
