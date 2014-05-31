@@ -19,12 +19,15 @@
                     <input type="text" class="full-w usrname" placeholder="Username or Email" name="email" required>
                     <input type="password" class="full-w mt-1 pswrd" placeholder="Password" name="password" required>
                     <input type="submit" value="Login" class="btn btn-success pull-right fl-r mt-1 fw-b go">
-
                     <section class="mt-1">
                         <a href="/signup" class="btn btn-default fw-b">Sign Up</a>
                     </section>
 
-                    <section class="cl-r ta-r mt-1 forgot">
+                    <section class="cl-r ta-l mt-1 forgot fl-l">
+                        <a href="http://propertycrunch.co/">Back to Main Site</a>
+                    </section>
+
+                    <section class="cl-r ta-r mt-1 forgot" style="margin-top: 1em;">
                         {{link_to_route("forgotpassword", "Forgot Password")}}
                     </section>
                 </form>

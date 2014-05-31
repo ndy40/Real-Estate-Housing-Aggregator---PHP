@@ -16,13 +16,13 @@
 		<header role="banner">
 
 			<div class="container ta-c">
-				<a href="index.html"><i class="ion-chevron-left fl-l"></i></a>
+				<a href="/signin"><i class="ion-chevron-left fl-l"></i></a>
 				Reset Password
 			</div>
 
 		</header>	
 
-		<main class="container" role="main">
+		<main class="container" role="main" style="max-width: 500px;">
             {{Form::open(array("route" => "forgotpassword", "class" => "mt-2 brad-4 reg-form"))}}
 				<section>
                     {{Form::text("email", null, array("placeholder" => "Email"))}}
