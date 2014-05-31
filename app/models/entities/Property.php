@@ -6,11 +6,10 @@ use models\interfaces\MassAssignInterface;
 use Illuminate\Database\Eloquent\Model;
 
 
-
-
 /**
  * Description of Property
  *
+ * @property string address
  * @author ndy40
  */
 class Property extends Ardent implements MassAssignInterface
@@ -27,8 +26,10 @@ class Property extends Ardent implements MassAssignInterface
     );
     
     protected $fillable = array('marketer', 'rooms', 'url', 'address', 'price',
-        'hash', 'available', 'published'
+        'hash', 'available', 'published',
     );
+
+    protected $hidden = array("hash");
     
     public function postCode () {
         return $this->belongsTo('\models\entities\PostCode');

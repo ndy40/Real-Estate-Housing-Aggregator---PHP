@@ -8,6 +8,8 @@
 
 namespace models\repositories;
 
+use Illuminate\Support\Facades\Log;
+use models\entities\Country;
 use models\interfaces\RepositoryInterface;
 use Illuminate\Support\Facades\App;
 use models\entities\FailedScrapes;
@@ -15,6 +17,7 @@ use models\crawler\JobQueue;
 use models\entities\Property;
 use models\entities\PostCode;
 use Exception;
+use Illuminate\Support\Facades\Cache;
 
 /**
  * Description of ScrapeRepository
@@ -59,7 +62,7 @@ class ScrapeRepository implements RepositoryInterface
         $failedJob = new FailedScrapes(array(
             "results" => $result,
             "message" => $messages,
-            "data"    => $data
+            "data"    => $data,
         ));
         $agency->failedScrapes()->save($failedJob);
 
@@ -83,15 +86,48 @@ class ScrapeRepository implements RepositoryInterface
         $agency = $this->agentRepo->fetchAgentByNameAndCountry($agent, $country);
         $scrapedProperty->agency()->associate($agency);
 
-
         if (is_null($postCode)) {
-            $postCode = $data->getElementsByTagName('areacode')->item(0)->nodeValue;
             $postCode = new PostCode(array('code' => strtoupper($postCode)));
             $postCode->save();
         }
 
-        $postCode = $this->propertyRepo->fetchPostCode($postCode);
-        $scrapedProperty->postCode()->associate($postCode);
+        $postCodes = $this->propertyRepo->fetchPostCode($postCode);
+        if (!$postCodes->isEmpty() && $postCodes->count() == 1) {
+            $scrapedProperty->postCode()->associate($postCodes->first());
+        } else if (!$postCodes->isEmpty() && $postCodes->count() > 0){
+            $regex = $this->getPostCodeAreaRegex($postCode);
+            if ($regex) {
+                $area = $this->extractAreaName($scrapedProperty->address, $regex);
+                $postCode = $this->propertyRepo->fetchPostCodeByName($area);
+                $scrapedProperty->postCode()->associate($postCode);
+            } else {
+                return;
+            }
+        } else {
+            //then we probably have county listed there. Insert new post code against county.
+            $regex = $this->getCountyRegex($agency->country->id);
+            if ($regex) {
+                $area = $this->extractAreaName($scrapedProperty->address, $regex);
+                if (isset($area)) {
+                    $postCode = $this->propertyRepo->createPostCode(
+                        $agency->country->id,
+                        $postCode,
+                        $area
+                    );
+                    if ($postCode) {
+                        $scrapedProperty->postCode()->associate($postCode);
+                    }
+
+                } else {
+                    $format = sprintf(
+                        "Cannot find county in address - %s in scrape address",
+                        $scrapedProperty->address
+                    );
+                    Log::error($format);
+                    return;
+                }
+            }
+        }
 
         switch ($status) {
             case JobQueue::ITEM_NOT_AVAILABLE :
@@ -182,6 +218,52 @@ class ScrapeRepository implements RepositoryInterface
     {
         $failedScrape = FailedScrapes::find($id);
         return $failedScrape->delete();
+    }
+
+    public function getPostCodeAreaRegex($postCode) {
+        $key = "county_area_regex_{$postCode}";
+        if (Cache::has($key)) {
+            $regex =  Cache::get($key);
+        } else {
+            $postCodes = $this->propertyRepo->fetchPostCode($postCode);
+            $areas = array();
+            foreach($postCodes as $postCode) {
+                $areas[] = str_replace(" ", "\s", strtolower($postCode->area));
+            }
+            $regex = implode("|", $areas);
+            Cache::put($key, $regex, 10);
+        }
+
+        return $regex;
+    }
+
+    public function extractAreaName ($address = '', $regex) {
+        if (preg_match("/{$regex}/i", $address, $matches)) {
+            return trim($matches[0]);
+        }
+
+        return false;
+    }
+
+    public function getCountyRegex($country)
+    {
+        $key = "county_regex_" . $country;
+        if (Cache::has($key)) {
+            $result = Cache::get($key);
+        } else {
+            $country = $this->agentRepo->fetchCountry($country);
+            $countyList = array();
+            if ($country) {
+                $counties = $country->counties;
+                foreach($counties as $county) {
+                    $countyList[] = str_replace(" ", "\s", strtolower($county->name));
+                }
+                $result = implode("|", $countyList);
+                Cache::put($key, $result, 60);
+            }
+        }
+
+        return $result;
     }
 
 }

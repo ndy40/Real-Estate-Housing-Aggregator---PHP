@@ -34,6 +34,11 @@ Route::any("forgot", array(
     "uses"  => "controllers\auth\ClientAuthController@forgotPassword"
 ));
 
+Route::any("resetpassword/{code?}", array(
+   "as"     => "resetpassword",
+    "uses"  => "controllers\auth\ClientAuthController@resetPassword",
+));
+
 Route::get("signup", array("as" => "signup", function () {
     return View::make("clientnew");
 }));

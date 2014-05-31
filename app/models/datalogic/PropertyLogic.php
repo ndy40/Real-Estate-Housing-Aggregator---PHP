@@ -84,6 +84,39 @@ class PropertyLogic implements DataLogicInterface
     {
         return $this->propertyRepo->searchLocation($name);
     }
+
+    public function findPropertyTypes($columnName = "name", $direction = "asc")
+    {
+        return $this->propertyRepo->findPropertyTypes($columnName, $direction);
+    }
+
+    public function searchProperty(
+        $filter,
+        $isPublished = true,
+        $orderColumn = "updated_at",
+        $direction = "asc",
+        $startIndex = 1,
+        $size = 25
+    ){
+        return $this->propertyRepo->searchProperty($filter, $isPublished, $orderColumn, $direction, $startIndex, $size);
+    }
+
+    public function searchPropertyCount(
+        $filter,
+        $isPublished = true
+    ){
+        return $this->propertyRepo->searchPropertyCount($filter, $isPublished);
+    }
+
+    public function getAvgRoomPricesByCounty($countyId)
+    {
+        return $this->propertyRepo->getAvgRoomPricesByCounty($countyId);
+    }
+
+    public function fetchPostCodeByName($areaName)
+    {
+        return $this->propertyRepo->fetchPostCodeByName($areaName);
+    }
       
 
 }

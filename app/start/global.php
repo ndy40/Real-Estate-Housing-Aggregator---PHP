@@ -55,10 +55,12 @@ App::error(function (Cartalyst\Sentry\Users\UserNotFoundException $ex, $code) {
     if (Request::isJson() || Request::isMethod('get')) {
         return Response::json(explode('\n', $ex->getMessage()), 400);
     } else if (Request::is("admin/*")) {
-        return Redirect::route("adminLogin")->with("message", $message);
-    } 
+        return Redirect::route("adminLogin")->withErrors($message);
+    } else if (Request::is("resetpassword")) {
+        return Redirect::route("resetpassword")->withErrors($message);
+    }
     
-    return Redirect::to("login")->with("message", $message);
+    return Redirect::route("login")->with("message", $message);
 });
 
 App::error(function (\models\exceptions\UserCreationException $ex, $code){

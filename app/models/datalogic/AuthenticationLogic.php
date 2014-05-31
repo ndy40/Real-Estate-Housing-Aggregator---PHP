@@ -197,5 +197,10 @@ class AuthenticationLogic implements DataLogicInterface
     {
         return $this->authRepository->findUserByLogin($email);
     }
+
+    public function findUserByResetCode($code)
+    {
+        return $this->authRepository->findUserByResetCode($code);
+    }
     
 }

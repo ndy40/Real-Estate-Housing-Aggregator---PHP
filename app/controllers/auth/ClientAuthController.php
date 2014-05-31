@@ -3,12 +3,14 @@ namespace controllers\auth;
 
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\Validator;
 use models\entities\User;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Config;
+use Symfony\Component\Security\Acl\Exception\Exception;
 
 /**
  * This is the resful controller for authentication.
@@ -157,12 +159,26 @@ class ClientAuthController extends AuthenticationController
     /**
      * method for reseting password
      */
-    public function resetPassword($code)
+    public function resetPassword($code = "")
     {
-        /**
-         * This will accept a reset password code from the URL
-         * Fetch the user by the reset code and then show the reset form. 
-         * Change the password accordingly. 
-         */
+       if (Request::isMethod("get")) {
+           return View::make("clientresetpassword")->with("code", $code);
+       } else {
+           $validator = Validator::make(Input::all(), array(
+               "password" => "required|min:8|confirmed"));
+           $authcode = Input::get("code");
+           $password = Input::get("password");
+           if ($validator->fails()) {
+               return Redirect::route("resetpassword")->with("code", $authcode)->withErrors($validator);
+           }
+
+           $user = $this->authLogic->findUserByResetCode($authcode);
+           if ($user->attemptResetPassword($authcode, $password)) {
+               return View::make("clientresetpassword")->with("message", "Password has been updated.");
+           } else {
+               return Redirect::route("resetpassword")->with("code", $authcode)->with("message", "Failed to update password. Try again.");
+           }
+
+       }
     }
 }

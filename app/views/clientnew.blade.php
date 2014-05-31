@@ -20,11 +20,6 @@
 			</div>
 
 		</header>	
-
-<<<<<<< HEAD
-		<main class="container" role="main">
-            <form action="register" class="mt-2 brad-4 reg-form" method="post">
-=======
 		<main class="container" role="main" style="max-width: 500px;">
 			<div class="ta-c">
 				<h1 class="m-0 mt-1 fw-n">Let's get you signed up</h1>
@@ -32,7 +27,6 @@
 			</div>
 
             <form action="client/register" class="mt-2 brad-4 reg-form" method="post">
->>>>>>> f8199eff87fe7198ffd6770bb426cb25aac96868
 				<section>
 					<input type="text" placeholder="First name" name="firstName" required>
                     <input type="text" placeholder="Last name" name="lastName" required>

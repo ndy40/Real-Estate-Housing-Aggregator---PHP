@@ -85,6 +85,7 @@ class CrunchListCommand extends Command {
         $file = fopen($filePath, 'w');
         fwrite($file, $output);
         fclose($file);
+        chmod($filePath, 0666);
 
         $this->info("Generating output file. " . $file);
 

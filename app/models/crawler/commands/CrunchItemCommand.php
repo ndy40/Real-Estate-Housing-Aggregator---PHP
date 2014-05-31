@@ -78,6 +78,7 @@ class CrunchItemCommand extends Command {
             . $this->argument('agent') . date('dmYHis') . '.xml';
         $file = fopen($filePath, 'w');
         fwrite($file, $output);
+        chmod($filePath, 0666);
         fclose($file);
         
         $data = array (

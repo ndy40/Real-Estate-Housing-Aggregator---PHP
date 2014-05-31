@@ -4,6 +4,8 @@ namespace controllers\search;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Description of SearchController
@@ -46,6 +48,52 @@ class SearchController extends \BaseController
         }
         
         return Response::json(array("data" => $data));
-        
+    }
+
+    public function getPropertyTypes()
+    {
+        $data = null;
+        if (Cache::has("property_types")) {
+            $data = Cache::get("property_types");
+        } else {
+            $properties = $this->propertyLogic->findPropertyTypes("name");
+            if (!$properties->isEmpty()) {
+                $data = $properties->toArray();
+            }
+        }
+
+        return Response::json(array("data" => $data));
+    }
+
+    public function getSearchProperties($filter, $startIndex = 1, $size = 25) {
+        $cacheKey = "search_prop_" . $filter . $startIndex . $size;
+        $data = null;
+        if (Cache::has($cacheKey)) {
+            $data = Cache::get($cacheKey);
+        } else {
+//            $filter = Input::get("search");
+            $column = Input::has("column") ? Input::get("column") : "updated_at";
+            $direction = Input::has("direction") ? Input::get("direction") : "asc";
+
+            $data = $this->propertyLogic->searchProperty($filter, false, $column, $direction, $startIndex, $size)->toArray();
+            $count = $this->propertyLogic->searchPropertyCount($filter, false);
+            if (!isset($count)) {
+                $startIndex = null;
+                $size = null;
+            }
+        }
+
+        return Response::json(array("count" => $count, "page" => $startIndex, "size" => $size, "data" => $data));
+    }
+
+    public function getAvgRoomPrices($countyId)
+    {
+        $data = $this->propertyLogic->getAvgRoomPricesByCounty($countyId);
+
+        if (isset($data)) {
+            $response = $data;
+        }
+
+        return Response::json(array("data" => $response));
     }
 }

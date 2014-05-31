@@ -27,6 +27,7 @@ $app = new Illuminate\Foundation\Application;
 $env = $app->detectEnvironment(array(
 
 	'local' => array('ndifrekes-mbp'),
+    'production' => array("www.propertycrunch.co"),
 
 ));
 

@@ -64,4 +64,16 @@ class AgentRepository  implements RepositoryInterface
         return Country::orderBy("name")->get();
     }
 
+    public function fetchCountry($country)
+    {
+        if (is_int($country)) {
+            $result = Country::find($country);
+        } else {
+            $result = Country::where("code", "=", strtolower($country))->orWhere("name", "=", ucwords($country))
+                ->first();
+        }
+
+        return $result;
+    }
+
 }
