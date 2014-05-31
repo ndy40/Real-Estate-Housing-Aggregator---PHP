@@ -20,11 +20,14 @@
 			</div>
 
 		</header>	
+<<<<<<< HEAD
 
 <<<<<<< HEAD
 		<main class="container" role="main">
             <form action="register" class="mt-2 brad-4 reg-form" method="post">
 =======
+=======
+>>>>>>> edited signup page
 		<main class="container" role="main" style="max-width: 500px;">
 			<div class="ta-c">
 				<h1 class="m-0 mt-1 fw-n">Let's get you signed up</h1>
@@ -40,7 +43,9 @@
 					<input type="text" placeholder="Where are you looking to buy?" name="location" required>
 					<input type="password" placeholder="Password" name="password" required>
 				</section>
-				<input type="submit" value="Done" class="mt-2 btn btn-default">
+				<input type="submit" value="Signin" class="mt-2 btn btn-success">
+				<a href="/signin" class="btn btn-default full-w">Go Back</a>
+
                 @if (Session::has("message"))
                     <ul>
                     @foreach (Session::get("message") as $message)
