@@ -13,3 +13,4 @@ app/storage/scrape
 Vgrantfile
 .vagrant
 
+.idea/
