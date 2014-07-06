@@ -17,11 +17,13 @@ use \models\events\ModelEventObserverAbstract;
  */
 class PropertyObserver extends ModelEventObserverAbstract
 {
-    public function saving($model) {
+    public function saving($model)
+    {
         parent::saving($model);
     }
     
-    public function updating($model) {
+    public function updating($model)
+    {
         parent::updating($model);
     }
 }

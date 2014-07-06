@@ -1,0 +1,17 @@
+<job>
+    <country>gb</country>
+    <agent>zooplar</agent>
+    <scrapetype>item</scrapetype>
+    <url>http://www.zoopla.co.uk/for-sale/details/32405854</url>
+    <results>
+        <item>
+            <address>Footscray Road, London SE9</address>
+            <areacode>SE9</areacode>
+            <marketer>Chattertons</marketer>
+            <name>3 bedroom terraced house for sale</name>
+            <price>399995</price>
+            <rooms>3</rooms>
+            <type>TERRACED</type>
+        </item>
+    </results>
+</job>

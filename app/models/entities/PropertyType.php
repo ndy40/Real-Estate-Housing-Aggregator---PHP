@@ -11,6 +11,4 @@ use LaravelBook\Ardent\Ardent;
 class PropertyType extends Ardent
 {
     protected $table = 'type';
-    
-    
 }

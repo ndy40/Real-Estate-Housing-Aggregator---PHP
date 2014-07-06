@@ -5,7 +5,6 @@ use LaravelBook\Ardent\Ardent;
 use models\interfaces\MassAssignInterface;
 use Illuminate\Database\Eloquent\Model;
 
-
 /**
  * Description of Property
  *
@@ -23,15 +22,17 @@ class Property extends Ardent implements MassAssignInterface
         'address'   => 'required',
         'price'     => 'numeric',
         'url'       => 'required|url',
+        'offer_type'=> 'required|in:sale,rent'
     );
     
     protected $fillable = array('marketer', 'rooms', 'url', 'address', 'price',
-        'hash', 'available', 'published',
+        'hash', 'available', 'published', "offer_type"
     );
 
     protected $hidden = array("hash");
     
-    public function postCode () {
+    public function postCode()
+    {
         return $this->belongsTo('\models\entities\PostCode');
     }
     
@@ -45,15 +46,15 @@ class Property extends Ardent implements MassAssignInterface
         return $this->belongsTo('\models\entities\PropertyType', 'type_id');
     }
 
-    public function getOfferTypeAttribute($offerType)
+    public function history()
     {
-        $this->attributes["offer_type"] = ucwords($offerType);
+        return $this->hasMany("\models\entities\PropertyChangeLog");
     }
 
-    public function assignAttributes($attribute = array()) {
-        foreach($attribute as $key => $value) {
+    public function assignAttributes($attribute = array())
+    {
+        foreach ($attribute as $key => $value) {
             $this->setAttribute($key, $value);
         }
     }
-
 }

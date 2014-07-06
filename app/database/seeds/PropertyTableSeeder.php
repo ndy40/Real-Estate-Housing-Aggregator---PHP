@@ -14,9 +14,9 @@ class PropertyTableSeeder extends Seeder
             ->pluck('id');
         $dataFile = storage_path() . '/data/county.csv';
         $countyNames = $this->readDataFile($dataFile);
-        foreach($countyNames as $name) {
+        foreach($countyNames as $name => $value) {
             DB::table('county')->insert(array(
-                array('name' => trim($name), 'country_id' => $countryId),
+                array('name' => trim($value), 'country_id' => $countryId),
             ));
         }
         $this->command->info('Finished county table seeding.');

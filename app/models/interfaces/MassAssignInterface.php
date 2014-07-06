@@ -12,6 +12,7 @@ namespace models\interfaces;
  *
  * @author ndy40
  */
-interface MassAssignInterface {
+interface MassAssignInterface
+{
     public function assignAttributes ($attribute = array());
 }

@@ -1,4 +1,4 @@
-<?php 
+<?php
 namespace crunch;
 
 use Illuminate\Console\Command;
@@ -8,48 +8,47 @@ use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Queue;
 
+class CrunchListCommand extends Command
+{
+    /**
+     * The console command name.
+     *
+     * @var string
+     */
+    protected $name = 'crunch:list';
 
-class CrunchListCommand extends Command {
+    /**
+     * The console command description.
+     *
+     * @var string
+     */
+    protected $description = 'Scrape a list of products from a provided url.';
 
-	/**
-	 * The console command name.
-	 *
-	 * @var string
-	 */
-	protected $name = 'crunch:list';
-
-	/**
-	 * The console command description.
-	 *
-	 * @var string
-	 */
-	protected $description = 'Scrape a list of products from a provided url.';
-    
     /**
      * An instance of the scrape factory.
-     * 
+     *
      * @var \models\crawler\ScrapeFactory
      */
     private $scrapeFactory;
 
-	/**
-	 * Create a new command instance.
-	 *
-	 * @return void
-	 */
-	public function __construct()
-	{
-		parent::__construct();
+    /**
+     * Create a new command instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        parent::__construct();
         $this->scrapeFactory = App::make('ScrapeFactory');
-	}
+    }
 
-	/**
-	 * Execute the console command.
-	 *
-	 * @return mixed
-	 */
-	public function fire()
-	{
+    /**
+     * Execute the console command.
+     *
+     * @return mixed
+     */
+    public function fire()
+    {
         $this->info("Configuring catalogue scrape.");
 
         $config = $this->argument();
@@ -74,9 +73,9 @@ class CrunchListCommand extends Command {
         //generate xml document and start working
         $xmlDoc = new \DOMDocument();
         $xmlDoc->loadXML($output);
-        
+
         //this is where you assign the schema and validate data.
-        // TODO: Add xml schema and valiate record then handle error. 
+        // TODO: Add xml schema and valiate record then handle error.
 
         //write output to file.
         $filePath = Config::get('crawler.output_path');
@@ -100,33 +99,32 @@ class CrunchListCommand extends Command {
         Queue::push('JobQueue@fetchDetails', $data);
 
         $this->info($this->name . " completed.");
-	}
+    }
 
-	/**
-	 * Get the console command arguments.
-	 *
-	 * @return array
-	 */
-	protected function getArguments()
-	{
-		return array(
-			array('country', InputArgument::REQUIRED, 'Country code'),
+    /**
+     * Get the console command arguments.
+     *
+     * @return array
+     */
+    protected function getArguments()
+    {
+        return array(
+            array('country', InputArgument::REQUIRED, 'Country code'),
             array('agent', InputArgument::REQUIRED, 'Agent Name'),
             array('url', InputArgument::REQUIRED, 'Url to crawl'),
-		);
-	}
+        );
+    }
 
-	/**
-	 * Get the console command options.
-	 *
-	 * @return array
-	 */
-	protected function getOptions()
-	{
-		return array(
+    /**
+     * Get the console command options.
+     *
+     * @return array
+     */
+    protected function getOptions()
+    {
+        return array(
             array('debug', null, InputOption::VALUE_NONE, 'Set scrape mode to debug'),
             array('proxy', null, InputOption::VALUE_OPTIONAL, 'Set scrape mode to debug', "127.0.0.1:9050"),
-		);
-	}
-
+        );
+    }
 }

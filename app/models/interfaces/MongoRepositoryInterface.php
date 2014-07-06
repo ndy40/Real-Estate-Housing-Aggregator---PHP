@@ -12,6 +12,6 @@ namespace models\interfaces;
  *
  * @author ndy40
  */
-interface MongoRepositoryInterface {
-    //put your code here
+interface MongoRepositoryInterface
+{
 }

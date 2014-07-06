@@ -12,12 +12,10 @@ namespace models\interfaces;
  *
  * @author ndy40
  */
-interface RestInterfaceController {
+interface RestInterfaceController
+{
     /**
      * Method to authenticate user
      */
     public function authenticate ();
-    
-    
-    
 }

@@ -9,9 +9,9 @@
 namespace models\interfaces;
 
 /**
- * Base class for all data logic classes. 
+ * Base class for all data logic classes.
  * @author ndy40
  */
-interface DataLogicInterface {
-    
+interface DataLogicInterface
+{
 }

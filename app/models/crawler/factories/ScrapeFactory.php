@@ -6,20 +6,21 @@ namespace models\crawler\factories;
  *
  * @author ndy40
  */
-class ScrapeFactory {
-    
-
-    public function getScrape ($type, $config = array()) {
+class ScrapeFactory
+{
+    public function getScrape ($type, $config = array())
+    {
         if (empty($type)) {
             throw new Exception("Invalid scrape type supplied");
         }
-        
+
         $scrape = "models\\crawler\\scrape\\" . ucfirst($type) . "Scrape";
-       
+
         return new $scrape($config);
     }
-    
-    public function getName () {
+
+    public function getName()
+    {
         return "Name";
     }
 }

@@ -15,20 +15,21 @@ use LaravelBook\Ardent\Ardent;
  *
  * @author ndy40
  */
-class PostCode extends Ardent 
+class PostCode extends Ardent
 {
     protected $table = "post_codes";
-    
+
     protected $hidden = array("created_at", "updated_at");
-    
-    public function county () 
+
+    protected $fillable = array("area", "code");
+
+    public function county ()
     {
         return $this->belongsTo('models\entities\County');
     }
-    
+
     public function properties ()
     {
         return $this->hasMany('models\entities\Property', 'post_code_id');
     }
-    
 }

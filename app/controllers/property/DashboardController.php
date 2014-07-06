@@ -11,7 +11,8 @@ use Illuminate\Support\Facades\View;
  */
 class DashboardController extends BaseController
 {
-    public function index(){
+    public function index()
+    {
         return View::make("dashboard");
     }
 }

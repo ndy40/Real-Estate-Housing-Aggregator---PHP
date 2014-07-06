@@ -7,10 +7,12 @@
  */
 
 namespace models\entities\observers;
+
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use models\entities\PropertyChangeLog;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Log;
+
 /**
  * Observer for all property related events.
  * Class PropertyObserver
@@ -22,17 +24,19 @@ class PropertyObserver
     {
         $propRepo = App::make("PropertyLogic");
         try {
-            $OldProperty = $propRepo->findProperty($property->id);
+            $oldProperty = $propRepo->findProperty($property->id);
 
-            if ($property->price != $OldProperty->price) {
+            if ($property->price != $oldProperty->price) {
                 $changeLog = new PropertyChangeLog();
                 $changeLog->property()->associate($property);
-                $changeLog->old_price = $OldProperty->price;
+                $changeLog->old_price = $oldProperty->price;
                 $changeLog->new_price = $property->price;
                 $propRepo->savePropertyChangeLog($changeLog);
 
-                Log::info("Property price change " . $property->id . " Old-price:"
-                    . $changeLog->old_price . " New-price:" . $changeLog->new_price
+                Log::info(
+                    "Property price change " . $property->id
+                    . " Old-price:" . $changeLog->old_price
+                    . " New-price:" . $changeLog->new_price
                 );
             }
         } catch (ModelNotFoundException $ex) {
@@ -42,5 +46,4 @@ class PropertyObserver
 
         return true;
     }
-
-} 
+}

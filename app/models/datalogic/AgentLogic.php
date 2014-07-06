@@ -6,7 +6,6 @@ use models\entities\Catalogue;
 use Illuminate\Support\Facades\App;
 use models\repositories\AgentRepository;
 
-
 /**
  * Description of AgentLogic
  *
@@ -25,11 +24,13 @@ class AgentLogic implements DataLogicInterface
         return $this->agentRepo->fetchAllAgents($column, $direction);
     }
     
-    public function fetch($id) {
+    public function fetch($id)
+    {
         return $this->agentRepo->fetch($id);
     }
     
-    public function addCatalogue($agentId, $url) {
+    public function addCatalogue($agentId, $url)
+    {
         $agent = $this->agentRepo->fetch($agentId);
         $catalogue = new Catalogue();
         $catalogue->url = $url;

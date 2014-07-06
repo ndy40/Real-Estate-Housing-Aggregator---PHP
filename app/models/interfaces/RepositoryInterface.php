@@ -11,13 +11,13 @@ namespace models\interfaces;
  *
  * @author ndy40
  */
-interface RepositoryInterface 
+interface RepositoryInterface
 {
     public function fetch($id);
-    
+
     public function delete($id);
-    
+
     public function update($entity);
-    
+
     public function save($entity);
 }

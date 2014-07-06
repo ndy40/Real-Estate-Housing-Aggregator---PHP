@@ -13,6 +13,6 @@ namespace models\crawler\factories;
  *
  * @author ndy40
  */
-class JobQueueFactory {
-    //put your code here
+class JobQueueFactory
+{
 }

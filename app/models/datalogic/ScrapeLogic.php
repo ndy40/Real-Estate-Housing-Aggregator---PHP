@@ -34,6 +34,4 @@ class ScrapeLogic implements DataLogicInterface
     {
         return $this->scrapeRepo->deleteFailedScrape($id);
     }
-
-
 }

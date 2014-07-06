@@ -25,7 +25,8 @@ class Country extends Ardent
         'currency'  => 'required|alpha',
     );
     
-    public function agencies() {
+    public function agencies()
+    {
         return $this->hasMany('\models\entities\Agency');
     }
 
@@ -33,6 +34,4 @@ class Country extends Ardent
     {
         return $this->hasMany("\models\entities\County");
     }
-    
-    
 }

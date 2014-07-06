@@ -18,49 +18,55 @@ use models\entities\Catalogue;
  *
  * @author ndy40
  */
-class AgentRepository  implements RepositoryInterface
+class AgentRepository implements RepositoryInterface
 {
-    public function delete($id) {
-        Agency::destroy($ids);
+    public function delete($id)
+    {
+        Agency::destroy($id);
     }
 
-    public function fetch($id) {
+    public function fetch($id)
+    {
         return Agency::find($id);
     }
 
-    public function update($id, $attributes = array()) {
+    public function update($id, $attributes = array())
+    {
         $entity = Agency::find($id);
         $entity->assignAttributes($attributes);
         $entity->save();
     }
-    
-    public function fetchAgentByNameAndCountry($agency, $country) {
+
+    public function fetchAgentByNameAndCountry($agency, $country)
+    {
         return Country::where('code', '=', $country)->first()
             ->agencies()->where('crawler', '=', $agency)->first();
     }
-    
+
     public function fetchAllAgents($orderBy = "name", $direction = "asc")
     {
         return Agency::all();
     }
 
-    public function save($entity) {
+    public function save($entity)
+    {
         return $entity->save();
     }
-    
+
     public function deleteCatalogue($id)
     {
         $catalogue = Catalogue::find($id);
         return $catalogue->delete();
     }
-    
-    
+
+
     public function loginUser($user)
     {
         return Sentry::login($user, false);
     }
 
-    public function fetchCountries () {
+    public function fetchCountries()
+    {
         return Country::orderBy("name")->get();
     }
 
@@ -75,5 +81,4 @@ class AgentRepository  implements RepositoryInterface
 
         return $result;
     }
-
 }

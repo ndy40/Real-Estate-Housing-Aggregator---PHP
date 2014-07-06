@@ -101,6 +101,7 @@ $(function (){
                 row += "<td>" + e.price + "</td>";
                 row += '<td><a href="' + e.url + '" target="_blank">' + e.address + "</a></td>";
                 row += "<td>" + e.post_code.code + "</td>";
+                row += "<td>" + e.post_code.area + "</td>";
                 row += "<td>" + e.type.name + "</td>";
                 row += "<td>" + (e.offer_type !== null ? e.offer_type : "N/A") + "</td>";
                 row += "<td>" + (e.available == 1? "Yes" : "No") + "</td>";

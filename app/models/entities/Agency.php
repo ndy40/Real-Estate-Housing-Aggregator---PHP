@@ -4,7 +4,6 @@ namespace models\entities;
 use LaravelBook\Ardent\Ardent;
 use models\interfaces\MassAssignInterface;
 
-
 /**
  * Description of Agency
  *
@@ -19,19 +18,23 @@ class Agency extends Ardent implements MassAssignInterface
         'crawler'   => 'required|alpha_num'
     );
     
-    public function country () {
+    public function country()
+    {
         return $this->belongsTo('\models\entities\Country', 'country_id');
     }
     
-    public function catalogues () {
+    public function catalogues()
+    {
         return $this->hasMany('\models\entities\Catalogue');
     }
     
-    public function failedScrapes () {
+    public function failedScrapes()
+    {
         return $this->hasMany('\models\entities\FailedScrapes');
     }
 
-    public function assignAttributes($attribute = array()) {
+    public function assignAttributes($attribute = array())
+    {
         if (!is_array($attribute)) {
             throw new \Exception(
                 "Mass assign attribute must be an array." . get_class($this)
@@ -42,5 +45,4 @@ class Agency extends Ardent implements MassAssignInterface
             $this->setAttribute($key, $value);
         }
     }
-
 }

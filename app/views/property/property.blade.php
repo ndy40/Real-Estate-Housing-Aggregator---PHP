@@ -47,6 +47,7 @@
                              <th>Asking Price</th>
                              <th>Prop. Address (click)</th>
                              <th>Post Code</th>
+                             <th>Town/Area</th>
                              <th>Prop. Type</th>
                              <th>Offer Type</th>
                              <th>Available</th>

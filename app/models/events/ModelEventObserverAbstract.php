@@ -13,7 +13,7 @@ namespace models\events;
  *
  * @author ndy40
  */
-abstract class ModelEventObserverAbstract 
+abstract class ModelEventObserverAbstract
 {
     /**
      * Event method that is called when an entity is about to be saved.
@@ -21,7 +21,7 @@ abstract class ModelEventObserverAbstract
      */
     public function saving($model)
     {
-    
+
     }
     /**
      * Event method called when an entity is about to be updated.
@@ -29,6 +29,6 @@ abstract class ModelEventObserverAbstract
      */
     public function updating($model)
     {
-    
-    } 
+
+    }
 }

@@ -60,8 +60,8 @@ class PostCodeTableSeeder extends Seeder
     protected function insertPostCode($countyId, $postcode, $area) {
         DB::table('post_codes')->insert(array(
             array(
-                'code' => trim($postcode), 
-                'area' => trim($area), 
+                'code' => strtoupper(trim($postcode)),
+                'area' => ucwords(strtolower(trim($area))),
                 'county_id' => $countyId
             ),
         ));

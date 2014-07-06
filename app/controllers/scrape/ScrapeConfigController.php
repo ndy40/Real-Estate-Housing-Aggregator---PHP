@@ -24,8 +24,8 @@ class ScrapeConfigController extends BaseController
      * @var Instance of models\datalogic\ScrapeLogic
      */
     protected $scrapeRepo;
-    
-    public function __construct() 
+
+    public function __construct()
     {
         $this->agencyRepo = App::make("AgentLogic");
         $this->scrapeRepo = App::make("ScrapeLogic");
@@ -38,23 +38,23 @@ class ScrapeConfigController extends BaseController
         } else {
             $data['agents'] = $this->agencyRepo->fetchAllAgents();
         }
-        
+
         return View::make("scrape.catalogue", $data);
     }
-    
+
     public function getCatalogue($agencyId)
     {
         $agent = $this->agencyRepo->fetch($agencyId);
         if ($agent) {
             $data = array();
-            foreach($agent->catalogues as $catalogue) {
+            foreach ($agent->catalogues as $catalogue) {
                 $data["agent"] = $agent->id;
                 $data["urls"][] = array("id" => $catalogue->id, "url" => $catalogue->url);
             }
         }
         return Response::json(array("data" => $data), 200);
     }
-    
+
     public function postInsertCatalogue()
     {
         $data = Input::get("data");
@@ -67,10 +67,10 @@ class ScrapeConfigController extends BaseController
         } else {
             $code = 400;
         }
-        
+
         return Response::json(array("data" => $saved->toArray()), $code);
     }
-    
+
     public function getDeleteCatalogue($id)
     {
         $deleted = $this->agencyRepo->deleteCatalogue($id);
@@ -81,7 +81,7 @@ class ScrapeConfigController extends BaseController
         } else {
             $code = 400;
         }
-        
+
         return Response::json($data, $code);
     }
 

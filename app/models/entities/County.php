@@ -14,7 +14,8 @@ class County extends Ardent
     protected $hidden = array("created_at", "updated_at");
 
 
-    public function postCodes () {
+    public function postCodes()
+    {
         return $this->hasMany('\models\entities\PostCode');
     }
 }

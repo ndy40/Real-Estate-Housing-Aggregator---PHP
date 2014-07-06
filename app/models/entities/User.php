@@ -19,14 +19,20 @@ class User extends \Cartalyst\Sentry\Users\Eloquent\User implements MassAssignIn
 {
 //    protected $hidden = array('password');
     
-    public function assignAttributes($attribute = array()) {
+    public function assignAttributes($attribute = array())
+    {
         foreach ($attribute as $key => $value) {
             $this->setAttribute($key, $value);
         }
     }
     
-    public function getFullName () {
+    public function getFullName ()
+    {
         return $this->first_name . " " . $this->last_name;
     }
-    
+
+    public function savedProperties()
+    {
+        return $this->hasMany("\models\entities\SavedProperties");
+    }
 }

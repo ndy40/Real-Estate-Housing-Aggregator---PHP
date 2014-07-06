@@ -7,19 +7,13 @@ return array (
     'command' => 'casperjs',
     
     //name of the script to use for initiating crawls.
-    "script_name" => "/var/www/crunchcrawler/crunch.js",
+    "script_name" => app_path() . "/crawlers/crunch.js",
     
-    "config_file" => "/var/www/crunchcrawler/config.json",
-    
-    "crawler_list_schema" => "somefile.xsd",
-    
-    "cralwer_item_schema" => 'somefile.xsd',
+    "config_file" => app_path() . "/crawlers/config.json",
     
     "output_path" => storage_path() . "/scrape",
-
-    "property_regex" => "/house|semi-detached|"
     
-    
+    "crawler_dir" => app_path() . "crawlers",
     
 );
 

@@ -1,0 +1,82 @@
+Starting scrape engine...
+
+Building agent
+
+[36m[info][0m [phantom] Starting...
+[36m[info][0m [phantom] Running suite: 2 steps
+[32;1m[debug][0m [phantom] opening url: http://www.zoopla.co.uk/for-sale/property/london/?include_retirement_homes=true&q=London&new_homes=include&include_shared_ownership=true&radius=0&pn=1, HTTP GET
+[32;1m[debug][0m [phantom] Navigation requested: url=http://www.zoopla.co.uk/for-sale/property/london/?include_retirement_homes=true&q=London&new_homes=include&include_shared_ownership=true&radius=0&pn=1, type=Other, willNavigate=true, isMainFrame=true
+[32;1m[debug][0m [phantom] url changed to "http://www.zoopla.co.uk/for-sale/property/london/?include_retirement_homes=true&q=London&new_homes=include&include_shared_ownership=true&radius=0&pn=1"
+[32;1m[debug][0m [phantom] Successfully injected Casper client-side utilities
+[36m[info][0m [phantom] Step anonymous 2/2 http://www.zoopla.co.uk/for-sale/property/london/?include_retirement_homes=true&q=London&new_homes=include&include_shared_ownership=true&radius=0&pn=1 (HTTP 200)
+[36m[info][0m [phantom] Step anonymous 2/2: done in 3823ms.
+[36m[info][0m [phantom] Step _step 3/4 http://www.zoopla.co.uk/for-sale/property/london/?include_retirement_homes=true&q=London&new_homes=include&include_shared_ownership=true&radius=0&pn=1 (HTTP 200)
+[36m[info][0m [phantom] Step _step 3/4: done in 3843ms.
+[36m[info][0m [phantom] waitFor() finished in 41ms.
+[36m[info][0m [phantom] Step anonymous 4/5 http://www.zoopla.co.uk/for-sale/property/london/?include_retirement_homes=true&q=London&new_homes=include&include_shared_ownership=true&radius=0&pn=1 (HTTP 200)
+[36m[info][0m [phantom] Step anonymous 4/5: done in 3904ms.
+[32;1m[debug][0m [phantom] Navigation requested: url=about:blank, type=Other, willNavigate=true, isMainFrame=false
+[32;1m[debug][0m [phantom] Navigation requested: url=about:blank, type=Other, willNavigate=true, isMainFrame=false
+[32;1m[debug][0m [phantom] Navigation requested: url=about:blank, type=Other, willNavigate=true, isMainFrame=false
+[32;1m[debug][0m [phantom] Navigation requested: url=about:blank, type=Other, willNavigate=true, isMainFrame=false
+[32;1m[debug][0m [phantom] Navigation requested: url=about:blank, type=Other, willNavigate=true, isMainFrame=false
+[36m[info][0m [phantom] Step anonymous 5/6 http://www.zoopla.co.uk/for-sale/property/london/?include_retirement_homes=true&q=London&new_homes=include&include_shared_ownership=true&radius=0&pn=1 (HTTP 200)
+[36m[info][0m [phantom] Step anonymous 5/6: done in 3947ms.
+[36m[info][0m [phantom] Step _step 6/7 http://www.zoopla.co.uk/for-sale/property/london/?include_retirement_homes=true&q=London&new_homes=include&include_shared_ownership=true&radius=0&pn=1 (HTTP 200)
+[36m[info][0m [phantom] Step _step 6/7: done in 3959ms.
+[36m[info][0m [phantom] waitFor() finished in 40ms.
+[36m[info][0m [phantom] Step anonymous 7/8 http://www.zoopla.co.uk/for-sale/property/london/?include_retirement_homes=true&q=London&new_homes=include&include_shared_ownership=true&radius=0&pn=1 (HTTP 200)
+[36m[info][0m [phantom] Step anonymous 7/8: done in 4022ms.
+[36m[info][0m [phantom] Step anonymous 8/8 http://www.zoopla.co.uk/for-sale/property/london/?include_retirement_homes=true&q=London&new_homes=include&include_shared_ownership=true&radius=0&pn=1 (HTTP 200)
+[36m[info][0m [phantom] Step anonymous 8/8: done in 4040ms.
+[32;1m[debug][0m [phantom] Navigation requested: url=about:blank, type=Other, willNavigate=true, isMainFrame=false
+[36m[info][0m [phantom] Step _step 9/9 http://www.zoopla.co.uk/for-sale/property/london/?include_retirement_homes=true&q=London&new_homes=include&include_shared_ownership=true&radius=0&pn=1 (HTTP 200)
+[36m[info][0m [phantom] Step _step 9/9: done in 4064ms.
+[36m[info][0m [phantom] waitFor() finished in 40ms.
+[36m[info][0m [phantom] Step anonymous 10/10 http://www.zoopla.co.uk/for-sale/property/london/?include_retirement_homes=true&q=London&new_homes=include&include_shared_ownership=true&radius=0&pn=1 (HTTP 200)
+[36m[info][0m [phantom] Step anonymous 10/10: done in 4124ms.
+[32;1m[debug][0m [phantom] Navigation requested: url=about:blank, type=Other, willNavigate=true, isMainFrame=false
+[32;1m[debug][0m [phantom] Navigation requested: url=http://optimized-by.rubiconproject.com/a/9208/15756/52661-15.html?&cb=0.6610714620910585&tk_st=1&rf=http://www.zoopla.co.uk/for-sale/property/london/?include_retirement_homes=true&q=London&new_homes=include&include_shared_ownership=true&radius=0&pn=1&rp_s=l&p_pos=btf&p_screen_res=1280x800, type=Other, willNavigate=true, isMainFrame=false
+[32;1m[debug][0m [phantom] Navigation requested: url=http://optimized-by.rubiconproject.com/a/9208/15756/52661-9.html?&cb=0.40568427206017077&tk_st=1&rf=http://www.zoopla.co.uk/for-sale/property/london/?include_retirement_homes=true&q=London&new_homes=include&include_shared_ownership=true&radius=0&pn=1&rp_s=l&p_pos=btf&p_screen_res=1280x800, type=Other, willNavigate=true, isMainFrame=false
+[32;1m[debug][0m [phantom] Navigation requested: url=about:blank, type=Other, willNavigate=true, isMainFrame=false
+[32;1m[debug][0m [phantom] Navigation requested: url=http://optimized-by.rubiconproject.com/a/9208/15756/52661-2.html?&cb=0.9466507835313678&tk_st=1&rf=http://www.zoopla.co.uk/for-sale/property/london/?include_retirement_homes=true&q=London&new_homes=include&include_shared_ownership=true&radius=0&pn=1&rp_s=l&p_pos=btf&p_screen_res=1280x800, type=Other, willNavigate=true, isMainFrame=false
+[32;1m[debug][0m [phantom] Navigation requested: url=about:blank, type=Other, willNavigate=true, isMainFrame=false
+[36m[info][0m [phantom] Step _step 11/13 http://www.zoopla.co.uk/for-sale/property/london/?include_retirement_homes=true&q=London&new_homes=include&include_shared_ownership=true&radius=0&pn=1 (HTTP 200)
+[32;1m[debug][0m [phantom] Mouse event 'mousedown' on selector: .paginate a[href]:last-child
+[32;1m[debug][0m [phantom] Mouse event 'mouseup' on selector: .paginate a[href]:last-child
+[32;1m[debug][0m [phantom] Mouse event 'click' on selector: .paginate a[href]:last-child
+[32;1m[debug][0m [phantom] Navigation requested: url=http://www.zoopla.co.uk/for-sale/property/london/?include_retirement_homes=true&q=London&new_homes=include&include_shared_ownership=true&radius=0&pn=2, type=LinkClicked, willNavigate=true, isMainFrame=true
+[36m[info][0m [phantom] Step _step 11/13: done in 4310ms.
+[32;1m[debug][0m [phantom] url changed to "http://www.zoopla.co.uk/for-sale/property/london/?include_retirement_homes=true&q=London&new_homes=include&include_shared_ownership=true&radius=0&pn=2"
+[32;1m[debug][0m [phantom] Successfully injected Casper client-side utilities
+[32;1m[debug][0m [phantom] Navigation requested: url=about:blank, type=Other, willNavigate=true, isMainFrame=false
+[32;1m[debug][0m [phantom] Navigation requested: url=about:blank, type=Other, willNavigate=true, isMainFrame=false
+[32;1m[debug][0m [phantom] Navigation requested: url=about:blank, type=Other, willNavigate=true, isMainFrame=false
+[32;1m[debug][0m [phantom] Navigation requested: url=about:blank, type=Other, willNavigate=true, isMainFrame=false
+[36m[info][0m [phantom] Step anonymous 12/13 http://www.zoopla.co.uk/for-sale/property/london/?include_retirement_homes=true&q=London&new_homes=include&include_shared_ownership=true&radius=0&pn=2 (HTTP 200)
+[36m[info][0m [phantom] Step anonymous 12/13: done in 5252ms.
+[36m[info][0m [phantom] Step anonymous 13/14 http://www.zoopla.co.uk/for-sale/property/london/?include_retirement_homes=true&q=London&new_homes=include&include_shared_ownership=true&radius=0&pn=2 (HTTP 200)
+[36m[info][0m [phantom] Step anonymous 13/14: done in 5257ms.
+[36m[info][0m [phantom] Step _step 14/15 http://www.zoopla.co.uk/for-sale/property/london/?include_retirement_homes=true&q=London&new_homes=include&include_shared_ownership=true&radius=0&pn=2 (HTTP 200)
+[36m[info][0m [phantom] Step _step 14/15: done in 5277ms.
+[36m[info][0m [phantom] waitFor() finished in 41ms.
+[36m[info][0m [phantom] Step anonymous 15/16 http://www.zoopla.co.uk/for-sale/property/london/?include_retirement_homes=true&q=London&new_homes=include&include_shared_ownership=true&radius=0&pn=2 (HTTP 200)
+[36m[info][0m [phantom] Step anonymous 15/16: done in 5340ms.
+[32;1m[debug][0m [phantom] Navigation requested: url=http://optimized-by.rubiconproject.com/a/9208/15756/70823-9.html?&cb=0.719643663149327&tk_st=1&rf=http://www.zoopla.co.uk/for-sale/property/london/?include_retirement_homes=true&q=London&new_homes=include&include_shared_ownership=true&radius=0&pn=2&rp_s=l&tg_v.price_min=120000&tg_v.price_max=2300000&p_pos=btf&p_screen_res=1280x800, type=Other, willNavigate=true, isMainFrame=false
+[32;1m[debug][0m [phantom] Navigation requested: url=about:blank, type=Other, willNavigate=true, isMainFrame=false
+[36m[info][0m [phantom] Step anonymous 16/16 http://www.zoopla.co.uk/for-sale/property/london/?include_retirement_homes=true&q=London&new_homes=include&include_shared_ownership=true&radius=0&pn=2 (HTTP 200)
+[36m[info][0m [phantom] Step anonymous 16/16: done in 5364ms.
+[32;1m[debug][0m [phantom] Navigation requested: url=about:blank, type=Other, willNavigate=true, isMainFrame=false
+[36m[info][0m [phantom] Step _step 17/17 http://www.zoopla.co.uk/for-sale/property/london/?include_retirement_homes=true&q=London&new_homes=include&include_shared_ownership=true&radius=0&pn=2 (HTTP 200)
+[36m[info][0m [phantom] Step _step 17/17: done in 5405ms.
+[32;1m[debug][0m [phantom] Navigation requested: url=http://optimized-by.rubiconproject.com/a/9208/15756/70823-2.html?&cb=0.43456050381064415&tk_st=1&rf=http://www.zoopla.co.uk/for-sale/property/london/?include_retirement_homes=true&q=London&new_homes=include&include_shared_ownership=true&radius=0&pn=2&rp_s=l&tg_v.price_min=120000&tg_v.price_max=2300000&p_pos=btf&p_screen_res=1280x800, type=Other, willNavigate=true, isMainFrame=false
+[32;1m[debug][0m [phantom] Navigation requested: url=about:blank, type=Other, willNavigate=true, isMainFrame=false
+[36m[info][0m [phantom] waitFor() finished in 54ms.
+[36m[info][0m [phantom] Step anonymous 18/18 http://www.zoopla.co.uk/for-sale/property/london/?include_retirement_homes=true&q=London&new_homes=include&include_shared_ownership=true&radius=0&pn=2 (HTTP 200)
+[36m[info][0m [phantom] Step anonymous 18/18: done in 5508ms.
+[36m[info][0m [phantom] Step _step 19/21 http://www.zoopla.co.uk/for-sale/property/london/?include_retirement_homes=true&q=London&new_homes=include&include_shared_ownership=true&radius=0&pn=2 (HTTP 200)
+[32;1m[debug][0m [phantom] Mouse event 'mousedown' on selector: .paginate a[href]:last-child
+[32;1m[debug][0m [phantom] Mouse event 'mouseup' on selector: .paginate a[href]:last-child
+[32;1m[debug][0m [phantom] Mouse event 'click' on selector: .paginate a[href]:last-child
+[32;1m[debug][0m [phantom] Navigation requested: url=http://www.zoopla.co.uk/for-sale/property/london/?include_retirement_homes=true&q=London&new_homes=include&include_shared_ownership=true&radius=0&pn=3, type=LinkClicked, willNavigate=true, isMainFrame=true
+[36m[info][0m [phantom] Step _step 19/21: done in 5542ms.

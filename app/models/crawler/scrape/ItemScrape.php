@@ -10,12 +10,13 @@ use models\crawler\abstracts\Scrape;
  */
 class ItemScrape extends Scrape
 {
-    protected function checkForErrors($result) {
+    protected function checkForErrors($result)
+    {
         return $result;
     }
 
-    protected function handleResult($result) {
+    protected function handleResult($result)
+    {
         return $result;
     }
-
 }
