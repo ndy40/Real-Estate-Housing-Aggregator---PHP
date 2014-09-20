@@ -15,6 +15,6 @@ class PropertyChangeLog extends Ardent
 
     public function property()
     {
-        return $this->belongsTo("\models\entities\Property");
+        return $this->belongsTo("\\models\\entities\\Property");
     }
 }

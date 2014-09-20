@@ -95,8 +95,10 @@ Pager.NextBtnPager.prototype.run = function (casperjs, callback, onCompletion) {
     }
 
     casperjs.waitForSelector(btnPath, function () {
+        this.wait(1500);
         casperjs.thenClick(btnPath, callback)
         .then(function () {
+           this.wait(1500);
            self.run(casperjs, callback, onCompletion);
         });
     }, function () {

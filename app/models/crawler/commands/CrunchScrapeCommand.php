@@ -2,9 +2,10 @@
 namespace crunch;
 
 use Illuminate\Console\Command;
-use Symfony\Component\Console\Input\InputOption;
-use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Config;
+use models\interfaces\DataLogicInterface;
 use Symfony\Component\Console\Input\InputArgument;
+use Symfony\Component\Console\Input\InputOption;
 
 class CrunchScrapeCommand extends Command
 {
@@ -30,10 +31,10 @@ class CrunchScrapeCommand extends Command
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(DataLogicInterface $agentLogic)
     {
         parent::__construct();
-        $this->agentLogic = App::make("AgentLogic");
+        $this->agentLogic = $agentLogic;
     }
 
     /**
@@ -46,7 +47,6 @@ class CrunchScrapeCommand extends Command
         $country = $this->argument("country");
         $agent   = $this->argument("agent");
         $debug   = $this->option("debug");
-
 
         $agency  = $this->agentLogic->fetchAgentByNameAndCountry(
             $agent,
@@ -98,7 +98,7 @@ class CrunchScrapeCommand extends Command
     {
         return array(
             array('debug', null, InputOption::VALUE_NONE, 'Enable debug mode'),
-            array('proxy', null, InputOption::VALUE_OPTIONAL, 'Enable proxy mode', "127.0.0.1:9050"),
+            array('proxy', null, InputOption::VALUE_OPTIONAL, 'Enable proxy mode', Config::get("crawler.tor_port")),
         );
     }
 }

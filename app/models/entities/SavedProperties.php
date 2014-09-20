@@ -18,11 +18,11 @@ class SavedProperties extends Ardent
 
     public function property()
     {
-        return $this->belongsTo("\models\entities\Property");
+        return $this->belongsTo("\\models\\entities\\Property");
     }
 
     public function user()
     {
-        return $this->belongsTo("\models\entities\User");
+        return $this->belongsTo("\\models\\entities\\User");
     }
 }

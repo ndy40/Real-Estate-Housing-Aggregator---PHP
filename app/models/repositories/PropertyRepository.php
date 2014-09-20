@@ -10,20 +10,21 @@ namespace models\repositories;
 
 use Illuminate\Support\Facades\DB;
 use models\entities\PropertyChangeLog;
-use models\interfaces\RepositoryInterface;
+use models\interfaces\PropertyRespositoryInterface;
 use models\entities\PostCode;
 use models\entities\Property;
 use models\entities\PropertyType;
 use Illuminate\Support\Facades\App;
 use models\entities\Country;
 use models\entities\County;
+use \models\entities\Image;
 
 /**
  * Description of PropertyRepository
  *
  * @author ndy40
  */
-class PropertyRepository implements RepositoryInterface
+class PropertyRepository implements PropertyRespositoryInterface
 {
     public function delete($id)
     {
@@ -37,12 +38,16 @@ class PropertyRepository implements RepositoryInterface
 
     public function update($entity)
     {
-
+        throw new \Exception("Not implemented yet");
     }
 
     public function save($entity)
     {
-        return $entity->save();
+        if ($entity->save()) {
+            return $entity;
+        }
+        
+        return false;
     }
 
 
@@ -68,17 +73,6 @@ class PropertyRepository implements RepositoryInterface
         return PostCode::where("area", "=", ucwords(strtolower(trim($areaName))))
             ->where("code", "=", strtoupper($code))
             ->first();
-    }
-
-    public function generatePropertyHash()
-    {
-        $parmeters = func_get_args();
-        $hashString = '';
-        foreach ($parmeters as $parmeter) {
-            $hashString .= strtolower($parmeter);
-        }
-
-        return hash("md5", $hashString);
     }
 
     public function insertProperty($agencyId, $data = array())
@@ -247,7 +241,7 @@ class PropertyRepository implements RepositoryInterface
     ) {
         $index = $size * ($startIndex -1);
 
-        return Property::with(array("agency", "postCode", "type"))
+        return Property::with(array("agency", "postCode", "type", "images"))
             ->where("published", "=", $isPublished, "and")
             ->whereHas("type", function ($query) use ($filter) {
                 $query->Where("name", 'like', "%{$filter}%");
@@ -332,5 +326,45 @@ class PropertyRepository implements RepositoryInterface
     public function deleteSavedProperty($userid, $propertyid)
     {
         $auth = App::make("AuthLogic");
+    }
+    
+    /**
+     * This should be deprecated soon.
+     * 
+     * @return string The hash string generated.
+     */
+    public function generatePropertyHash()
+    {
+        $parmeters = func_get_args();
+        $hashString = '';
+        foreach ($parmeters as $parmeter) {
+            $hashString .= strtolower($parmeter);
+        }
+
+        return hash("md5", $hashString);
+    }
+    
+    public function savePropertyImages($id, $images = null) {
+        if (is_null($images) || empty($images)) {
+            return false;
+        }
+        try {
+            $property = Property::findOrFail($id);
+            foreach($images as $image) {
+                $property->images()->save($image);
+            }
+            
+            return true;
+            
+        } catch (Exception $ex) {
+            return false;
+        }
+        
+        return false;
+    }
+    
+    public function deleteImage($id)
+    {
+        return Image::find($id)->delete();
     }
 }

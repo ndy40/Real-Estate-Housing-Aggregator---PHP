@@ -5,6 +5,7 @@ use models\entities\PropertyChangeLog;
 use models\entities\SavedProperties;
 use models\interfaces\DataLogicInterface;
 use Illuminate\Support\Facades\App;
+use models\interfaces\RepositoryInterface;
 
 /**
  * Property logic
@@ -15,9 +16,9 @@ class PropertyLogic implements DataLogicInterface
 {
     protected $propertyRepo;
 
-    public function __construct()
+    public function __construct(RepositoryInterface $repository)
     {
-        $this->propertyRepo = App::make("PropertyRepository");
+        $this->propertyRepo = $repository;
     }
 
     public function fetchCountries ()
@@ -140,5 +141,9 @@ class PropertyLogic implements DataLogicInterface
         $savedProperty->property()->associate($property);
 
         return $this->propertyRepo->save($savedProperty);
+    }
+    
+    public function deleteImage($id) {
+        $this->propertyRepo->deleteImage($id);
     }
 }

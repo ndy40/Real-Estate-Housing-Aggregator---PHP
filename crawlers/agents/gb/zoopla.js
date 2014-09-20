@@ -53,13 +53,13 @@ Zoopla.prototype.itemListing = function (casperjs, url) {
     };
 
     casperjs.start(url, function () {
-        this.waitUntilVisible(".listing-results *[id*=listing_]", callback)
-        .then(function () {
-            pager.run(
-                casperjs,
-                callback
-            );
-        });
+        this.waitUntilVisible(".listing-results *[id*=listing_]", callback);
+//        .then(function () {
+//            pager.run(
+//                casperjs,
+//                callback
+//            );
+//        });
 
         if (completed) {
             casperjs.echo("Scrape completed");
@@ -86,22 +86,13 @@ Zoopla.prototype.scrapeItems = function () {
 
 Zoopla.prototype.itemDetail = function (casperjs, url) {
     'use strict';
-    var cssPaths,
-        self = this,
+    var self = this,
         dataType = require('library/DataType').create();
-    
-    cssPaths = {
-        name     : ".listing-details-h1[itemprop=name]",
-        type     : ".listing-details-h1[itemprop=name]",
-        rooms    : ".listing-details-h1[itemprop=name]",
-        areaCode : "*[itemprop=streetAddress]",
-        price    : "*.listing-details-price *"
-    };
     
     casperjs.start(url, function () {
         this.waitForSelector(".listing-details-h1[itemprop=name]", function () {
             var property =  this.evaluate(function () {
-                return {
+                var obj = {
                     'name'      : __utils__.findOne(".listing-details-h1[itemprop=name]").textContent,
                     'type'      : __utils__.findOne(".listing-details-h1[itemprop=name]").textContent,
                     'rooms'     : __utils__.findOne(".listing-details-h1[itemprop=name]").textContent,
@@ -111,7 +102,19 @@ Zoopla.prototype.itemDetail = function (casperjs, url) {
                     'marketer'  : __utils__.findOne('.sidebar.sbt p strong a').textContent,
                     'phone'     : __utils__.findOne('.sidebar .agent_phone a').textContent
                 };
-            });
+                
+                
+                if (__utils__.exists(".listing-details-h1[itemprop=name]")) {
+                    obj.rooms      = __utils__.findOne(".listing-details-h1[itemprop=name]").textContent;
+                    obj.offerType  = __utils__.findOne(".listing-details-h1[itemprop=name]").textContent;
+                }
+                
+                if (__utils__.exists('.wrap #splash h1, .price-modifier, #listings-agent p.top')) {
+                    obj.status  = __utils__.findOne('.wrap #splash h1, .price-modifier, #listings-agent p.top').textContent;
+                }
+                
+                return obj;
+        });
             
             property.price    = property.price !== undefined 
                 ? dataType.currency(property.price) : null;
@@ -122,12 +125,37 @@ Zoopla.prototype.itemDetail = function (casperjs, url) {
             property.address  = dataType.string(property.address);
             property.marketer = dataType.string(property.marketer);
             property.phone    = dataType.string(property.phone);
-
+            property.status     = self.isAvailable(property.status);
+            property.offerType  = dataType.offerType(property.offerType);
+            
+            property.images = this.evaluate(function () {
+                var images = __utils__.findAll("a.images-thumb");
+                return Array.prototype.map.call(images, function (e) {
+                    return e.getAttribute("data-photo");
+                });
+            });
+            
             self.results.push(property);
         });
     });
     
     return this;
+};
+
+Zoopla.prototype.isAvailable = function (text) {
+    'use strict';
+    var property,
+        removedPattern = /can't\sbe\sfound$/i,
+        notAvailable   = /offers\sover/i,
+        status = 'available';
+
+    if (removedPattern.test(text)) {
+        status = 'removed';
+    } else if (notAvailable.test(text)) {
+        status = 'notAvailable';
+    }
+    
+    return status;
 };
 
 exports.create = function () { return new Zoopla("Zoopla"); };

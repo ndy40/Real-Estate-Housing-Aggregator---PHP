@@ -26,7 +26,7 @@ return array(
 	|
 	*/
 
-	'url' => 'http://192.168.33.4/crunch/public',
+	'url' => 'http://property-crunch.local/',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -105,9 +105,9 @@ return array(
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
-        'Cartalyst\Sentry\SentryServiceProvider',
-        'Kmd\Logviewer\LogviewerServiceProvider',
-
+                'Cartalyst\Sentry\SentryServiceProvider',
+                'Kmd\Logviewer\LogviewerServiceProvider',
+                "Intervention\Image\ImageServiceProvider",
 	),
 
 	/*
@@ -173,7 +173,8 @@ return array(
 		'URL'             => 'Illuminate\Support\Facades\URL',
 		'Validator'       => 'Illuminate\Support\Facades\Validator',
 		'View'            => 'Illuminate\Support\Facades\View',
-        'Sentry'          => 'Cartalyst\Sentry\Facades\Laravel\Sentry',
+                'Sentry'          => 'Cartalyst\Sentry\Facades\Laravel\Sentry',
+                'Image'           => "Intervention\Image\Facades\Image"
 	),
 
 );

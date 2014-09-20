@@ -2,9 +2,9 @@
 namespace crunch;
 
 use Illuminate\Console\Command;
+use models\interfaces\FactoryInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
-use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Queue;
 
@@ -36,10 +36,10 @@ class CrunchListCommand extends Command
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(FactoryInterface $scrapeFactory)
     {
         parent::__construct();
-        $this->scrapeFactory = App::make('ScrapeFactory');
+        $this->scrapeFactory = $scrapeFactory;
     }
 
     /**
@@ -96,7 +96,7 @@ class CrunchListCommand extends Command
         );
         $this->info("Pushing to queue.");
 
-        Queue::push('JobQueue@fetchDetails', $data);
+        Queue::push('ListingQueue', $data);
 
         $this->info($this->name . " completed.");
     }
@@ -124,7 +124,7 @@ class CrunchListCommand extends Command
     {
         return array(
             array('debug', null, InputOption::VALUE_NONE, 'Set scrape mode to debug'),
-            array('proxy', null, InputOption::VALUE_OPTIONAL, 'Set scrape mode to debug', "127.0.0.1:9050"),
+            array('proxy', null, InputOption::VALUE_OPTIONAL, 'Set scrape mode to debug', Config::get("crawler.tor_port")),
         );
     }
 }

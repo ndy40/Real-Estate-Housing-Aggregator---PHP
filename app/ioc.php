@@ -11,15 +11,19 @@
 /////////////////////////////////////////
 
 App::singleton('ScrapeFactory', function ($app) {
-    return new models\crawler\factories\ScrapeFactory;
+    return new models\factory\ScrapeFactory;
 });
 
-App::bind('JobQueue', function ($app) {
-    return new models\crawler\JobQueue;
+App::bind('ListingQueue', function ($app) {
+    return new models\crawler\queue\ListingQueue;
 });
 
-App::bind('ScrapeRepository', function ($app) {
-    return new models\repositories\ScrapeRepository;
+App::bind('DetailsQueue', function ($app) {
+    return new models\crawler\queue\DetailsQueue;
+});
+
+App::bind('ImageProcessingQueue', function ($app) {
+    return new models\crawler\queue\ImageProcessingQueue;
 });
 
 App::bind('AgentRespository', function ($app) {
@@ -34,23 +38,43 @@ App::bind('AuthRepository', function ($app) {
     return new \models\repositories\AuthRepository;
 });
 
+App::singleton('EntityFactory', function ($app) {
+    return new \models\factory\EntityFactory;
+});
+
+App::bind('ScrapeRepository', function ($app) {
+    return new \models\repositories\ScrapeRepository(
+        App::make("PropertyRepository"),
+        App::make("AgentRespository")
+    );
+});
+
 
 /////////////////////////////
 ///// Data Logic Binding ////
 /////////////////////////////
 
 App::bind("AuthLogic", function ($app) {
-    return new \models\datalogic\AuthenticationLogic;
+    return new \models\datalogic\AuthenticationLogic(
+        new \models\repositories\AuthRepository
+    );
 });
 
 App::bind("PropertyLogic", function ($app) {
-    return new \models\datalogic\PropertyLogic;
+    return new \models\datalogic\PropertyLogic(
+        new \models\repositories\PropertyRepository
+    );
 });
 
 App::bind("AgentLogic", function ($app) {
-    return new models\datalogic\AgentLogic;
+    return new models\datalogic\AgentLogic(
+        new models\repositories\AgentRepository
+    );
 });
 
 App::bind("ScrapeLogic", function ($app) {
-    return new \models\datalogic\ScrapeLogic;
+    return new \models\datalogic\ScrapeLogic(
+        App::make("ScrapeRepository"),
+        App::make("EntityFactory")
+    );
 });

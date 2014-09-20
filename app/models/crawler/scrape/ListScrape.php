@@ -1,14 +1,14 @@
 <?php
 namespace models\crawler\scrape;
 
-use models\crawler\abstracts\Scrape;
-use Exception;
+use models\crawler\abstracts\ScrapeAbstract;
+
 /**
  * Description of ListScrape
  *
  * @author ndy40
  */
-class ListScrape extends Scrape
+class ListScrape extends ScrapeAbstract
 {
     protected function checkForErrors($result) 
     {

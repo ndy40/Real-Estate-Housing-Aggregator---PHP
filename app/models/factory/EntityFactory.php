@@ -52,4 +52,6 @@ class EntityFactory implements FactoryInterface
         
         return $failedScrape;
     }
+
+
 }

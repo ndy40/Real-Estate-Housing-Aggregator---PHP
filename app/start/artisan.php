@@ -15,8 +15,8 @@ use crunch\CrunchScrapeCommand;
 |
 */
 
-Artisan::add(new CrunchListCommand);
+Artisan::add(new CrunchListCommand(App::make("ScrapeFactory")));
 
-Artisan::add(new CrunchItemCommand);
+Artisan::add(new CrunchItemCommand(App::make("ScrapeFactory")));
 
-Artisan::add(new CrunchScrapeCommand);
+Artisan::add(new CrunchScrapeCommand(App::make("AgentLogic")));

@@ -1,7 +1,7 @@
 <?php
 namespace models\repositories;
 
-use models\interfaces\RepositoryInterface;
+use models\interfaces\AgentRepositoryInterface;
 use Cartalyst\Sentry\Facades\Laravel\Sentry;
 
 /**
@@ -9,7 +9,7 @@ use Cartalyst\Sentry\Facades\Laravel\Sentry;
  *
  * @author ndy40
  */
-class AuthRepository implements RepositoryInterface
+class AuthRepository implements AgentRepositoryInterface
 {
     public function delete($id)
     {

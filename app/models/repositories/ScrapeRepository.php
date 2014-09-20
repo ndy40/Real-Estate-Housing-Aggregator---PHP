@@ -8,30 +8,38 @@
 
 namespace models\repositories;
 
-use Illuminate\Support\Facades\Log;
-use models\interfaces\RepositoryInterface;
-use Illuminate\Support\Facades\App;
-use models\entities\FailedScrapes;
-use models\crawler\JobQueue;
-use models\entities\Property;
-use Exception;
+use models\interfaces\AgentRepositoryInterface;
 use Illuminate\Support\Facades\Cache;
-
+use models\entities\FailedScrapes;
+use models\crawler\abstracts\JobQueue;
+use Illuminate\Support\Facades\Log;
+use models\entities\Property;
+use models\interfaces\PropertyRespositoryInterface;
+use models\interfaces\ScrapeRepositoryInterface;
+use Illuminate\Support\Facades\Queue;
 /**
  * Description of ScrapeRepository
  *
  * @author ndy40
  */
-class ScrapeRepository implements RepositoryInterface
+class ScrapeRepository implements ScrapeRepositoryInterface
 {
     protected $propertyRepo;
 
     protected $agentRepo;
-
-    public function __construct()
-    {
-        $this->propertyRepo = $propertyRepo =  App::make('PropertyRepository');
-        $this->agentRepo = App::make('AgentRespository');
+    
+    /**
+     * Constructor to create ScrapeRepository Insteance. 
+     * 
+     * @param \models\interfaces\PropertyRespositoryInterface $propRepo
+     * @param \models\interfaces\AgentRepositoryInterface $agentRepo
+     */
+    public function __construct(
+        PropertyRespositoryInterface $propRepo,
+        AgentRepositoryInterface $agentRepo
+    ){
+        $this->propertyRepo = $propRepo;
+        $this->agentRepo = $agentRepo;
     }
 
     public function delete($id)
@@ -48,23 +56,24 @@ class ScrapeRepository implements RepositoryInterface
 
     /**
      * This saves failed scrape jobs into the
-     * @param string $country - Country code
+     * 
+     * @param string $country - Country code.
      * @param string $agent - Agency name.
-     * @param mixed[] $data - Scrape job data
+     * @param FailedScrapes $failedScrape An insteance of the FailedScrape class.
      */
-    public function saveFailedScrapes($agent, $country, $result, $messages = array())
-    {
+    public function saveFailedScrapes(
+        $agent, 
+        $country, 
+        FailedScrapes $failedScrape
+    ){
         $agency = $this->agentRepo->fetchAgentByNameAndCountry(
             $agent,
             $country
         );
-        $failedJob = new FailedScrapes(array(
-            "results" => $result,
-            "message" => $messages,
-        ));
-        $agency->failedScrapes()->save($failedJob);
 
-        return $failedJob;
+        $agency->failedScrapes()->save($failedScrape);
+
+        return $failedScrape;
     }
 
     public function saveProperty(\DOMDocument $data)
@@ -146,14 +155,26 @@ class ScrapeRepository implements RepositoryInterface
 
                 if ($property === null) {
                     $scrapedProperty = $this->propertyRepo->save($scrapedProperty);
+                    $action = "create";
                 } else {
                     //perform proper test on data insert/update of property.
                     $count = $this->propertyRepo->updateChangedFields($scrapedProperty, $property);
                     $scrapedProperty = $this->propertyRepo->save($property);
+                    $action = "update";
                 }
-                if (!$scrapedProperty) {
+                
+                if ($scrapedProperty === false) {
                     Log::warning("Failed to save property " . $scrapedProperty);
+                } else {
+                    $images = $this->createImagesArray($data);
+                    $jobData = array (
+                        "property_id" => $scrapedProperty->id,
+                        "images"      => $images,
+                        "action"      => $action
+                    );
+                    Queue::push("ImageProcessingQueue", $jobData, "scrape_images");
                 }
+                
                 break;
         }
 
@@ -205,13 +226,15 @@ class ScrapeRepository implements RepositoryInterface
         );
         $property = new Property();
         $property->assignAttributes($scrapeProperty);
+        
+        
 
         return $property;
     }
 
     public function save($entity)
     {
-        throw new Exception('Not implemented yet');
+        return $entity->save();
     }
 
     public function fetchAllFailedScrapes()
@@ -245,6 +268,7 @@ class ScrapeRepository implements RepositoryInterface
 
     public function extractAreaName($address = '', $regex = '')
     {
+        $matches = null;
         if (preg_match("/{$regex}/i", $address, $matches)) {
             return trim($matches[0]);
         }
@@ -271,5 +295,16 @@ class ScrapeRepository implements RepositoryInterface
         }
 
         return $result;
+    }
+    
+    public function createImagesArray(\DOMDocument $dom)
+    { 
+        $imgs = $dom->getElementsByTagName("src");
+        $images = array();
+        foreach($imgs as $image) {
+            $images[] = $image->nodeValue;
+        }
+        
+        return $images;
     }
 }

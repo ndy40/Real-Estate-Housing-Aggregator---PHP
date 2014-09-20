@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Validator;
 use models\exceptions\UserCreationException;
 use Illuminate\Support\Facades\Config;
 use Cartalyst\Sentry\Hashing\BcryptHasher;
+use models\interfaces\RepositoryInterface;
 
 /**
  * Description of AuthenticationLogic
@@ -30,9 +31,9 @@ class AuthenticationLogic implements DataLogicInterface
         'activated' => 'in:1,0',
     );
 
-    public function __construct()
+    public function __construct(RepositoryInterface $repository)
     {
-        $this->authRepository = App::make('AuthRepository');
+        $this->authRepository = $repository;
     }
 
     protected function getErrorMessages($messages)

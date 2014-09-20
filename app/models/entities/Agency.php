@@ -20,17 +20,17 @@ class Agency extends Ardent implements MassAssignInterface
     
     public function country()
     {
-        return $this->belongsTo('\models\entities\Country', 'country_id');
+        return $this->belongsTo('\\models\\entities\\Country', 'country_id');
     }
     
     public function catalogues()
     {
-        return $this->hasMany('\models\entities\Catalogue');
+        return $this->hasMany('\\models\\entities\\Catalogue');
     }
     
     public function failedScrapes()
     {
-        return $this->hasMany('\models\entities\FailedScrapes');
+        return $this->hasMany('\\models\\entities\\FailedScrapes');
     }
 
     public function assignAttributes($attribute = array())

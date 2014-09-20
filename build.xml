@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Property Crunch" default="build">
+    <target name="build" depends="prepare"/>
+    <target name="prepare" description="Run composer update..">
+        <exec executable="composer.phar">
+            <arg value="update"/>
+        </exec>
+    </target>
+</project>

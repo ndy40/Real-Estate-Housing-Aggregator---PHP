@@ -16,6 +16,6 @@ class County extends Ardent
 
     public function postCodes()
     {
-        return $this->hasMany('\models\entities\PostCode');
+        return $this->hasMany('\\models\\entities\\PostCode');
     }
 }

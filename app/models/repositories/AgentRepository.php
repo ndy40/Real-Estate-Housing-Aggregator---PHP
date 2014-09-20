@@ -8,7 +8,7 @@
 
 namespace models\repositories;
 
-use models\interfaces\RepositoryInterface;
+use models\interfaces\AgentRepositoryInterface;
 use models\entities\Agency;
 use models\entities\Country;
 use models\entities\Catalogue;
@@ -18,7 +18,7 @@ use models\entities\Catalogue;
  *
  * @author ndy40
  */
-class AgentRepository implements RepositoryInterface
+class AgentRepository implements AgentRepositoryInterface
 {
     public function delete($id)
     {

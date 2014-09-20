@@ -20,6 +20,6 @@ class Catalogue extends Ardent
     
     public function agency()
     {
-        return $this->belongsTo("Agency");
+        return $this->belongsTo("\\models\\entities\\Agency");
     }
 }

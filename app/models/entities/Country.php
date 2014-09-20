@@ -27,11 +27,11 @@ class Country extends Ardent
     
     public function agencies()
     {
-        return $this->hasMany('\models\entities\Agency');
+        return $this->hasMany('\\models\\entities\\Agency');
     }
 
     public function counties()
     {
-        return $this->hasMany("\models\entities\County");
+        return $this->hasMany("\\models\\entities\\County");
     }
 }

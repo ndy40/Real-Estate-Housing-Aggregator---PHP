@@ -47,6 +47,9 @@ Route::post("register", array(
     "uses"  => "controllers\auth\ClientAuthController@postRegister"
 ));
 
+
+Route::get("images", "controllers\ImageTestController@index");
+
 ///////////////////////////////
 //////// Client Service //////
 /////////////////////////////

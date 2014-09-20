@@ -1,14 +1,14 @@
 <?php
 namespace models\crawler\scrape;
 
-use models\crawler\abstracts\Scrape;
+use models\crawler\abstracts\ScrapeAbstract;
 
 /**
  * Description of ItemScrape
  *
  * @author ndy40
  */
-class ItemScrape extends Scrape
+class ItemScrape extends ScrapeAbstract
 {
     protected function checkForErrors($result)
     {

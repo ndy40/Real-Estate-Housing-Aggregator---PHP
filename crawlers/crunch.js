@@ -20,8 +20,6 @@ var casperjs = require('casper').create(),
     results = [],
     configFile;
 
-utils.dump(casperjs.cli.options);
-
 if (casperjs.cli.args.length === 0) {
     throw "No argument provided for executio.";
 } else if (casperjs.cli.args.length !== 4) {

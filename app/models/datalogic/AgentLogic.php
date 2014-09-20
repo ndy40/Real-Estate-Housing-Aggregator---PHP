@@ -3,8 +3,8 @@ namespace models\datalogic;
 
 use models\interfaces\DataLogicInterface;
 use models\entities\Catalogue;
-use Illuminate\Support\Facades\App;
 use models\repositories\AgentRepository;
+use models\interfaces\RepositoryInterface;
 
 /**
  * Description of AgentLogic
@@ -15,9 +15,9 @@ class AgentLogic implements DataLogicInterface
 {
     protected $agentRepo;
     
-    public function __construct()
+    public function __construct(RepositoryInterface $respository)
     {
-        $this->agentRepo = new AgentRepository;
+        $this->agentRepo = $respository;
     }
     public function fetchAllAgents($column = "name", $direction = "asc")
     {

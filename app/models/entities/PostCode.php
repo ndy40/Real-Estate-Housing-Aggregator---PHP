@@ -25,11 +25,11 @@ class PostCode extends Ardent
 
     public function county ()
     {
-        return $this->belongsTo('models\entities\County');
+        return $this->belongsTo('\\models\\entities\\County');
     }
 
     public function properties ()
     {
-        return $this->hasMany('models\entities\Property', 'post_code_id');
+        return $this->hasMany('\\models\\entities\\Property', 'post_code_id');
     }
 }

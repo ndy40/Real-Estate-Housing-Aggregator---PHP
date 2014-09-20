@@ -113,7 +113,16 @@ CrunchUtility.buildListingOutput = function (casperjs, scrapeJob) {
         var item = document.createElement('item');
         for(var prop in element) {
             var property = document.createElement(prop);
-            property.appendChild(document.createTextNode(element[prop]));
+            if (utils.isArray(element[prop])) {
+                Array.prototype.forEach.call(element[prop], function (e) {
+                    var imageTag = document.createElement("src");
+                    imageTag.appendChild(document.createTextNode(e));
+                    property.appendChild(imageTag);
+                });
+            } else {
+                property.appendChild(document.createTextNode(element[prop]));
+            }
+            
             item.appendChild(property);
         }
         results.appendChild(item);
