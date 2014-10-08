@@ -20,7 +20,7 @@ Route::get("/", array("as" => "home", function () {
 
 Route::any("signin", array(
     "as"    => "login",
-    "uses"  => "controllers\auth\ClientAuthController@postIndex"
+    "uses"  => "controllers\\auth\\ClientAuthController@postIndex"
 ));
 
 Route::get("signout", array(
