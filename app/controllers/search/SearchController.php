@@ -66,8 +66,12 @@ class SearchController extends BaseController
         return Response::json(array("data" => $data));
     }
 
-    public function getSearchProperties($filter, $startIndex = 1, $size = 25)
+    public function getSearchProperties($filter = "", $startIndex = 1, $size = 25)
     {
+        if (!isset($filter) || empty($filter)) {
+            return Response::json("false", 400);
+        }
+        
         $cacheKey = "search_prop_" . $filter . $startIndex . $size;
         $data = null;
         if (Cache::has($cacheKey)) {
@@ -144,5 +148,15 @@ class SearchController extends BaseController
         }
 
         return Response::json(array("data" => $data));
+    }
+    
+    public function getProperty($id)
+    {
+        $property = $this->propertyLogic->find($id);
+        
+        if ($property) {
+            return Response::json($property->toArray(), 401);
+        }
+        return Response::json(array("flash" => "Property not found."), 401);
     }
 }

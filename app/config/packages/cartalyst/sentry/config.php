@@ -46,7 +46,7 @@ return array(
 	|
 	*/
 
-	'hasher' => 'bcrypt',
+	'hasher' => 'native',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -70,7 +70,7 @@ return array(
 		|
 		*/
 
-		'key' => 'property_crunch',
+		'key' => 'cartalyst_sentry',
 
  	),
 
@@ -120,7 +120,7 @@ return array(
 		|
 		*/
 
-		'model' => 'models\entities\User',
+		'model' => 'Cartalyst\Sentry\Users\Eloquent\User',
 
 		/*
 		|--------------------------------------------------------------------------
@@ -200,7 +200,7 @@ return array(
 		|
 		*/
 
-		'attempt_limit' => 7,
+		'attempt_limit' => 5,
 
 		/*
 		|--------------------------------------------------------------------------

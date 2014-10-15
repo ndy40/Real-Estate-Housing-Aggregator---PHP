@@ -31,7 +31,7 @@ class PropertyRepository implements PropertyRespositoryInterface {
     }
 
     public function fetch($id) {
-        return Property::find($id);
+        return Property::with("images")->find($id);
     }
 
     public function update($entity) {
