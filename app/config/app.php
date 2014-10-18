@@ -26,7 +26,7 @@ return array(
 	|
 	*/
 
-	'url' => 'http://property-crunch.local/',
+	'url' => 'http://propertycrunch.local/',
 
 	/*
 	|--------------------------------------------------------------------------

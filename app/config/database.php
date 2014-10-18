@@ -54,7 +54,7 @@ return array(
 
 		'mysql' => array(
 			'driver'    => 'mysql',
-			'host'      => '192.168.33.4',
+			'host'      => 'localhost',
 			'database'  => 'propertycrunch',
 			'username'  => 'root',
 			'password'  => 'mysql',

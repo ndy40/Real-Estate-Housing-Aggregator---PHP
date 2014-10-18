@@ -155,7 +155,7 @@ class SearchController extends BaseController
         $property = $this->propertyLogic->find($id);
         
         if ($property) {
-            return Response::json($property->toArray(), 401);
+            return Response::json($property->toArray(), 200);
         }
         return Response::json(array("flash" => "Property not found."), 401);
     }
