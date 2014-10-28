@@ -2,63 +2,828 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="96b11836-6a19-4e2a-83c1-9506f06a3c68" name="Default" comment="Created production specifi">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/config/testing/database.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/models/crawler/abstracts/Scrape.php" afterPath="$PROJECT_DIR$/app/models/crawler/abstracts/ScrapeAbstract.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/models/crawler/factories/JobQueueFactory.php" afterPath="$PROJECT_DIR$/app/models/factory/JobQueueFactory.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/models/crawler/factories/ScrapeFactory.php" afterPath="$PROJECT_DIR$/app/models/factory/ScrapeFactory.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/.name" afterPath="$PROJECT_DIR$/.idea/.name" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/datalogic/AgentLogic.php" afterPath="$PROJECT_DIR$/app/models/datalogic/AgentLogic.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/repositories/AgentRepository.php" afterPath="$PROJECT_DIR$/app/models/repositories/AgentRepository.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/datalogic/AuthenticationLogic.php" afterPath="$PROJECT_DIR$/app/models/datalogic/AuthenticationLogic.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/crawlers/library/BaseAgent.js" afterPath="$PROJECT_DIR$/crawlers/library/BaseAgent.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/crawler/commands/CrunchItemCommand.php" afterPath="$PROJECT_DIR$/app/models/crawler/commands/CrunchItemCommand.php" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/100_1_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/100_2_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/100_3_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/100_4_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/100_5_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/100_6_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/100_7_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/101_1_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/101_2_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/101_3_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/101_4_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/101_5_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/101_6_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/101_7_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/105_1_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/105_2_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/105_3_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/105_4_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/105_5_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/105_6_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/106_1_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/106_2_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/106_3_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/106_4_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/106_5_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/106_6_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/106_7_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/106_8_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/106_9_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/107_10_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/107_1_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/107_2_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/107_3_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/107_4_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/107_5_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/107_6_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/107_7_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/107_8_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/107_9_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/111_10_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/111_11_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/111_12_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/111_13_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/111_1_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/111_2_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/111_3_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/111_4_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/111_5_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/111_6_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/111_7_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/111_8_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/111_9_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/113_1_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/113_2_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/113_3_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/113_4_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/114_10_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/114_11_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/114_12_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/114_13_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/114_14_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/114_1_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/114_2_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/114_3_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/114_4_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/114_5_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/114_6_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/114_7_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/114_8_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/114_9_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/115_10_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/115_11_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/115_12_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/115_13_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/115_14_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/115_15_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/115_16_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/115_17_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/115_1_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/115_2_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/115_3_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/115_4_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/115_5_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/115_6_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/115_7_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/115_8_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/115_9_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/116_10_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/116_11_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/116_12_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/116_13_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/116_14_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/116_15_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/116_1_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/116_2_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/116_3_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/116_4_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/116_5_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/116_6_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/116_7_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/116_8_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/116_9_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/118_1_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/118_2_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/118_3_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/118_4_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/118_5_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/118_6_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/118_7_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/119_1_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/119_2_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/119_3_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/119_4_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/119_5_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/119_6_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/120_1_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/120_2_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/120_3_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/120_4_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/120_5_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/121_10_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/121_1_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/121_2_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/121_3_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/121_4_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/121_5_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/121_6_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/121_7_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/121_8_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/121_9_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/122_1_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/122_2_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/122_3_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/122_4_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/122_5_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/122_6_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/122_7_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/122_8_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/124_1_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/124_2_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/124_3_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/124_4_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/124_5_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/124_6_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/125_1_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/125_2_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/125_3_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/125_4_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/125_5_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/125_6_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/126_1_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/126_2_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/126_3_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/126_4_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/126_5_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/126_6_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/127_10_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/127_1_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/127_2_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/127_3_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/127_4_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/127_5_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/127_6_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/127_7_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/127_8_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/127_9_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/128_1_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/128_2_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/128_3_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/128_4_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/128_5_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/128_6_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/129_10_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/129_11_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/129_12_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/129_13_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/129_14_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/129_15_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/129_16_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/129_1_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/129_2_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/129_3_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/129_4_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/129_5_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/129_6_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/129_7_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/129_8_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/129_9_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/130_1_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/130_2_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/130_3_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/130_4_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/130_5_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/130_6_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/131_1_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/131_2_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/131_3_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/131_4_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/131_5_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/131_6_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/132_1_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/132_2_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/132_3_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/132_4_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/132_5_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/132_6_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/133_10_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/133_11_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/133_1_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/133_2_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/133_3_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/133_4_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/133_5_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/133_6_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/133_7_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/133_8_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/133_9_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/134_1_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/134_2_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/134_3_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/134_4_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/134_5_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/134_6_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/134_7_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/134_8_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/134_9_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/135_1_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/135_2_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/135_3_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/135_4_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/135_5_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/135_6_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/138_1_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/138_2_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/138_3_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/138_4_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/138_5_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/138_6_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/138_7_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/138_8_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/138_9_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/80_1_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/80_2_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/80_3_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/80_4_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/80_5_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/80_6_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/80_7_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/80_8_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/81_1_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/81_2_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/81_3_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/81_4_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/81_5_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/81_6_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/81_7_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/83_1_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/83_2_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/83_3_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/83_4_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/83_5_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/83_6_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/83_7_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/83_8_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/84_1_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/84_2_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/84_3_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/84_4_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/84_5_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/84_6_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/84_7_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/84_8_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/84_9_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/85_10_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/85_1_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/85_2_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/85_3_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/85_4_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/85_5_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/85_6_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/85_7_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/85_8_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/85_9_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/86_10_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/86_11_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/86_12_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/86_13_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/86_14_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/86_15_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/86_16_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/86_1_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/86_2_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/86_3_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/86_4_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/86_5_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/86_6_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/86_7_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/86_8_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/86_9_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/87_1_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/87_2_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/87_3_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/87_4_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/87_5_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/87_6_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/87_7_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/87_8_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/87_9_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/90_1_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/90_2_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/90_3_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/90_4_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/91_1_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/91_2_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/91_3_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/91_4_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/92_1_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/92_2_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/92_3_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/92_4_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/93_10_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/93_11_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/93_1_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/93_2_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/93_3_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/93_4_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/93_5_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/93_6_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/93_7_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/93_8_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/93_9_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/94_10_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/94_1_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/94_2_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/94_3_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/94_4_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/94_5_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/94_6_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/94_7_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/94_8_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/94_9_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/95_1_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/95_2_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/95_3_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/95_4_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/95_5_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/95_6_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/95_7_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/95_8_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/95_9_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/96_1_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/96_2_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/96_3_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/96_4_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/97_1_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/97_2_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/97_3_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/97_4_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/97_5_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/97_6_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/97_7_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/97_8_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/97_9_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/98_10_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/98_11_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/98_12_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/98_13_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/98_14_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/98_15_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/98_1_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/98_2_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/98_3_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/98_4_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/98_5_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/98_6_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/98_7_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/98_8_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/98_9_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/99_1_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/99_2_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/99_3_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/99_4_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/full/99_5_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/100_1_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/100_2_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/100_3_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/100_4_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/100_5_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/100_6_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/100_7_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/101_1_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/101_2_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/101_3_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/101_4_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/101_5_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/101_6_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/101_7_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/105_1_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/105_2_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/105_3_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/105_4_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/105_5_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/105_6_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/106_1_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/106_2_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/106_3_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/106_4_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/106_5_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/106_6_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/106_7_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/106_8_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/106_9_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/107_10_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/107_1_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/107_2_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/107_3_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/107_4_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/107_5_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/107_6_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/107_7_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/107_8_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/107_9_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/111_10_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/111_11_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/111_12_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/111_13_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/111_1_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/111_2_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/111_3_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/111_4_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/111_5_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/111_6_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/111_7_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/111_8_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/111_9_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/113_1_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/113_2_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/113_3_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/113_4_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/114_10_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/114_11_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/114_12_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/114_13_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/114_14_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/114_1_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/114_2_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/114_3_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/114_4_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/114_5_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/114_6_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/114_7_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/114_8_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/114_9_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/115_10_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/115_11_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/115_12_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/115_13_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/115_14_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/115_15_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/115_16_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/115_17_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/115_1_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/115_2_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/115_3_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/115_4_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/115_5_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/115_6_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/115_7_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/115_8_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/115_9_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/116_10_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/116_11_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/116_12_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/116_13_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/116_14_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/116_15_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/116_1_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/116_2_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/116_3_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/116_4_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/116_5_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/116_6_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/116_7_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/116_8_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/116_9_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/118_1_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/118_2_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/118_3_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/118_4_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/118_5_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/118_6_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/118_7_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/119_1_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/119_2_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/119_3_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/119_4_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/119_5_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/119_6_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/120_1_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/120_2_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/120_3_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/120_4_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/120_5_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/121_10_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/121_1_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/121_2_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/121_3_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/121_4_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/121_5_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/121_6_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/121_7_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/121_8_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/121_9_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/122_1_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/122_2_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/122_3_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/122_4_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/122_5_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/122_6_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/122_7_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/122_8_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/124_1_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/124_2_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/124_3_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/124_4_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/124_5_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/124_6_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/125_1_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/125_2_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/125_3_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/125_4_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/125_5_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/125_6_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/126_1_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/126_2_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/126_3_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/126_4_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/126_5_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/126_6_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/127_10_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/127_1_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/127_2_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/127_3_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/127_4_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/127_5_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/127_6_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/127_7_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/127_8_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/127_9_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/128_1_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/128_2_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/128_3_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/128_4_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/128_5_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/128_6_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/129_10_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/129_11_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/129_12_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/129_13_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/129_14_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/129_15_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/129_16_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/129_1_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/129_2_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/129_3_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/129_4_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/129_5_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/129_6_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/129_7_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/129_8_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/129_9_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/130_1_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/130_2_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/130_3_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/130_4_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/130_5_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/130_6_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/131_1_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/131_2_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/131_3_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/131_4_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/131_5_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/131_6_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/132_1_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/132_2_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/132_3_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/132_4_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/132_5_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/132_6_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/133_10_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/133_11_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/133_1_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/133_2_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/133_3_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/133_4_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/133_5_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/133_6_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/133_7_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/133_8_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/133_9_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/134_1_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/134_2_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/134_3_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/134_4_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/134_5_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/134_6_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/134_7_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/134_8_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/134_9_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/135_1_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/135_2_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/135_3_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/135_4_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/135_5_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/135_6_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/138_1_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/138_2_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/138_3_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/138_4_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/138_5_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/138_6_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/138_7_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/138_8_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/138_9_19-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/80_1_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/80_2_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/80_3_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/80_4_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/80_5_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/80_6_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/80_7_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/80_8_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/81_1_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/81_2_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/81_3_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/81_4_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/81_5_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/81_6_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/81_7_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/83_1_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/83_2_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/83_3_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/83_4_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/83_5_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/83_6_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/83_7_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/83_8_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/84_1_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/84_2_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/84_3_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/84_4_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/84_5_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/84_6_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/84_7_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/84_8_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/84_9_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/85_10_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/85_1_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/85_2_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/85_3_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/85_4_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/85_5_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/85_6_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/85_7_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/85_8_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/85_9_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/86_10_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/86_11_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/86_12_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/86_13_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/86_14_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/86_15_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/86_16_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/86_1_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/86_2_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/86_3_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/86_4_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/86_5_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/86_6_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/86_7_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/86_8_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/86_9_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/87_1_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/87_2_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/87_3_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/87_4_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/87_5_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/87_6_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/87_7_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/87_8_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/87_9_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/90_1_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/90_2_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/90_3_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/90_4_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/91_1_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/91_2_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/91_3_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/91_4_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/92_1_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/92_2_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/92_3_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/92_4_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/93_10_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/93_11_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/93_1_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/93_2_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/93_3_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/93_4_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/93_5_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/93_6_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/93_7_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/93_8_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/93_9_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/94_10_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/94_1_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/94_2_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/94_3_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/94_4_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/94_5_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/94_6_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/94_7_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/94_8_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/94_9_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/95_1_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/95_2_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/95_3_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/95_4_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/95_5_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/95_6_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/95_7_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/95_8_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/95_9_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/96_1_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/96_2_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/96_3_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/96_4_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/97_1_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/97_2_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/97_3_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/97_4_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/97_5_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/97_6_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/97_7_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/97_8_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/97_9_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/98_10_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/98_11_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/98_12_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/98_13_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/98_14_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/98_15_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/98_1_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/98_2_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/98_3_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/98_4_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/98_5_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/98_6_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/98_7_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/98_8_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/98_9_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/99_1_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/99_2_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/99_3_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/99_4_18-09-2014.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/properties/thumb/99_5_18-09-2014.jpg" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/crawler/commands/CrunchListCommand.php" afterPath="$PROJECT_DIR$/app/models/crawler/commands/CrunchListCommand.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/crawler/commands/CrunchScrapeCommand.php" afterPath="$PROJECT_DIR$/app/models/crawler/commands/CrunchScrapeCommand.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/property/DashboardController.php" afterPath="$PROJECT_DIR$/app/controllers/property/DashboardController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/crawlers/library/DataType.js" afterPath="$PROJECT_DIR$/crawlers/library/DataType.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/factory/EntityFactory.php" afterPath="$PROJECT_DIR$/app/models/factory/EntityFactory.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/entities/FailedScrapes.php" afterPath="$PROJECT_DIR$/app/models/entities/FailedScrapes.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/crawler/scrape/ItemScrape.php" afterPath="$PROJECT_DIR$/app/models/crawler/scrape/ItemScrape.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/crawler/JobQueue.php" afterPath="$PROJECT_DIR$/app/models/crawler/JobQueue.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/crawler/scrape/ListScrape.php" afterPath="$PROJECT_DIR$/app/models/crawler/scrape/ListScrape.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/crawlers/library/Pagers.js" afterPath="$PROJECT_DIR$/crawlers/library/Pagers.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/crawlers/library/PropertyClass.js" afterPath="$PROJECT_DIR$/crawlers/library/PropertyClass.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/datalogic/PropertyLogic.php" afterPath="$PROJECT_DIR$/app/models/datalogic/PropertyLogic.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/repositories/PropertyRepository.php" afterPath="$PROJECT_DIR$/app/models/repositories/PropertyRepository.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/datalogic/ScrapeLogic.php" afterPath="$PROJECT_DIR$/app/models/datalogic/ScrapeLogic.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/repositories/ScrapeRepository.php" afterPath="$PROJECT_DIR$/app/models/repositories/ScrapeRepository.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/tests/ScrapeRepositoryTest.php" afterPath="$PROJECT_DIR$/app/tests/ScrapeRepositoryTest.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/tests/TestCase.php" afterPath="$PROJECT_DIR$/app/tests/TestCase.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/crawlers/library/Utility.js" afterPath="$PROJECT_DIR$/crawlers/library/Utility.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/config/app.php" afterPath="$PROJECT_DIR$/app/config/app.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/start/artisan.php" afterPath="$PROJECT_DIR$/app/start/artisan.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" afterPath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/composer.json" afterPath="$PROJECT_DIR$/composer.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/composer.lock" afterPath="$PROJECT_DIR$/composer.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/crawlers/config.json" afterPath="$PROJECT_DIR$/crawlers/config.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/crawler/abstracts/ScrapeAbstract.php" afterPath="$PROJECT_DIR$/app/models/crawler/abstracts/ScrapeAbstract.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/search/SearchController.php" afterPath="$PROJECT_DIR$/app/controllers/search/SearchController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/config/cache.php" afterPath="$PROJECT_DIR$/app/config/cache.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/config/crawler.php" afterPath="$PROJECT_DIR$/app/config/crawler.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/crawlers/crunch.js" afterPath="$PROJECT_DIR$/crawlers/crunch.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/config/database.php" afterPath="$PROJECT_DIR$/app/config/database.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/ioc.php" afterPath="$PROJECT_DIR$/app/ioc.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/storage/data/postcode.csv" afterPath="$PROJECT_DIR$/app/storage/data/postcode.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/crawlers/nbproject/private/private.properties" afterPath="$PROJECT_DIR$/crawlers/nbproject/private/private.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/config/production/database.php" afterPath="$PROJECT_DIR$/app/config/production/database.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/crawlers/nbproject/private/private.xml" afterPath="$PROJECT_DIR$/crawlers/nbproject/private/private.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/crawlers/nbproject/project.properties" afterPath="$PROJECT_DIR$/crawlers/nbproject/project.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/nbproject/project.properties" afterPath="$PROJECT_DIR$/nbproject/project.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/crawlers/nbproject/project.xml" afterPath="$PROJECT_DIR$/crawlers/nbproject/project.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/property-crunch-php.iml" afterPath="$PROJECT_DIR$/.idea/property-crunch-php.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/scopes/scope_settings.xml" afterPath="$PROJECT_DIR$/.idea/scopes/scope_settings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/crawlers/output/scrape.xml" afterPath="$PROJECT_DIR$/crawlers/output/scrape.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/crawlers/agents/gb/zoopla.js" afterPath="$PROJECT_DIR$/crawlers/agents/gb/zoopla.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/crawlers/output/zooplar.log" afterPath="$PROJECT_DIR$/crawlers/output/zooplar.log" />
     </list>
     <ignored path="property-crunch-php.iws" />
     <ignored path=".idea/workspace.xml" />
+    <ignored path="$PROJECT_DIR$/vendor/cartalyst/sentry/" />
+    <ignored path="$PROJECT_DIR$/vendor/classpreloader/classpreloader/" />
+    <ignored path="$PROJECT_DIR$/vendor/composer/" />
+    <ignored path="$PROJECT_DIR$/vendor/d11wtq/boris/" />
+    <ignored path="$PROJECT_DIR$/vendor/filp/whoops/" />
+    <ignored path="$PROJECT_DIR$/vendor/ircmaxell/password-compat/" />
+    <ignored path="$PROJECT_DIR$/vendor/jeremeamia/SuperClosure/" />
+    <ignored path="$PROJECT_DIR$/vendor/kmd/logviewer/" />
+    <ignored path="$PROJECT_DIR$/vendor/laravel/framework/" />
+    <ignored path="$PROJECT_DIR$/vendor/laravelbook/ardent/" />
+    <ignored path="$PROJECT_DIR$/vendor/monolog/monolog/" />
+    <ignored path="$PROJECT_DIR$/vendor/nesbot/carbon/" />
+    <ignored path="$PROJECT_DIR$/vendor/nikic/php-parser/" />
+    <ignored path="$PROJECT_DIR$/vendor/patchwork/utf8/" />
+    <ignored path="$PROJECT_DIR$/vendor/pda/pheanstalk/" />
+    <ignored path="$PROJECT_DIR$/vendor/pdepend/pdepend/" />
+    <ignored path="$PROJECT_DIR$/vendor/phpmd/phpmd/" />
+    <ignored path="$PROJECT_DIR$/vendor/phpseclib/phpseclib/" />
+    <ignored path="$PROJECT_DIR$/vendor/predis/predis/" />
+    <ignored path="$PROJECT_DIR$/vendor/psr/log/" />
+    <ignored path="$PROJECT_DIR$/vendor/stack/builder/" />
+    <ignored path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/" />
+    <ignored path="$PROJECT_DIR$/vendor/symfony/browser-kit/" />
+    <ignored path="$PROJECT_DIR$/vendor/symfony/config/" />
+    <ignored path="$PROJECT_DIR$/vendor/symfony/console/" />
+    <ignored path="$PROJECT_DIR$/vendor/symfony/css-selector/" />
+    <ignored path="$PROJECT_DIR$/vendor/symfony/debug/" />
+    <ignored path="$PROJECT_DIR$/vendor/symfony/dependency-injection/" />
+    <ignored path="$PROJECT_DIR$/vendor/symfony/dom-crawler/" />
+    <ignored path="$PROJECT_DIR$/vendor/symfony/event-dispatcher/" />
+    <ignored path="$PROJECT_DIR$/vendor/symfony/filesystem/" />
+    <ignored path="$PROJECT_DIR$/vendor/symfony/finder/" />
+    <ignored path="$PROJECT_DIR$/vendor/symfony/http-foundation/" />
+    <ignored path="$PROJECT_DIR$/vendor/symfony/http-kernel/" />
+    <ignored path="$PROJECT_DIR$/vendor/symfony/process/" />
+    <ignored path="$PROJECT_DIR$/vendor/symfony/routing/" />
+    <ignored path="$PROJECT_DIR$/vendor/symfony/security-core/" />
+    <ignored path="$PROJECT_DIR$/vendor/symfony/translation/" />
+    <ignored path=".idea/dataSources.local.xml" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,51 +847,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ScrapeRepository.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/models/repositories/ScrapeRepository.php">
+      <file leaf-file-name="PropertyLogic.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/models/datalogic/PropertyLogic.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="208" column="40" selection-start="7446" selection-end="7446" vertical-scroll-proportion="-19.25" vertical-offset="1128" max-vertical-offset="2820">
-              <folding>
-                <element signature="e#1870#5857#0" expanded="false" />
-              </folding>
+            <state vertical-scroll-proportion="1.345092" vertical-offset="1148" max-vertical-offset="3105">
+              <caret line="139" column="0" selection-start-line="139" selection-start-column="0" selection-end-line="139" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PropertyRepository.php" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="PropertyRepository.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/models/repositories/PropertyRepository.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="72" column="0" selection-start="1637" selection-end="1637" vertical-scroll-proportion="-12.5" vertical-offset="600" max-vertical-offset="4815">
+            <state vertical-scroll-proportion="-30.291666" vertical-offset="2903" max-vertical-offset="5205">
+              <caret line="255" column="37" selection-start-line="255" selection-start-column="37" selection-end-line="255" selection-end-column="37" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EntityFactory.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/models/factory/EntityFactory.php">
+      <file leaf-file-name="SearchController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/search/SearchController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="26" column="34" selection-start="797" selection-end="811" vertical-scroll-proportion="-8.0" vertical-offset="108" max-vertical-offset="855">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ScrapeLogic.php" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/models/datalogic/ScrapeLogic.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="87" column="4" selection-start="2385" selection-end="2385" vertical-scroll-proportion="1.8949772" vertical-offset="0" max-vertical-offset="1620">
-              <folding>
-                <element signature="e#220#254#0" expanded="true" />
-                <element signature="e#2390#4232#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Property.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/models/entities/Property.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="48" column="27" selection-start="1181" selection-end="1188" vertical-scroll-proportion="-19.0" vertical-offset="234" max-vertical-offset="960">
+            <state vertical-scroll-proportion="-16.541666" vertical-offset="953" max-vertical-offset="2610">
+              <caret line="94" column="91" selection-start-line="94" selection-start-column="79" selection-end-line="94" selection-end-column="91" />
               <folding />
             </state>
           </provider>
@@ -150,15 +895,9 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/views/clientforgot.blade.php" />
-        <option value="$PROJECT_DIR$/app/models/repositories/AuthRepository.php" />
-        <option value="$PROJECT_DIR$/app/start/global.php" />
-        <option value="$PROJECT_DIR$/app/controllers/auth/ClientAuthController.php" />
         <option value="$PROJECT_DIR$/app/views/clientresetpassword.blade.php" />
-        <option value="$PROJECT_DIR$/app/models/crawler/commands/CrunchListCommand.php" />
         <option value="$PROJECT_DIR$/public/admin/app.js" />
         <option value="$PROJECT_DIR$/app/models/entities/FailedScrapes.php" />
-        <option value="$PROJECT_DIR$/app/config/production/database.php" />
         <option value="$PROJECT_DIR$/app/models/entities/Country.php" />
         <option value="$PROJECT_DIR$/app/views/clientlogin.blade.php" />
         <option value="$PROJECT_DIR$/app/views/clientnew.blade.php" />
@@ -189,18 +928,24 @@
         <option value="$PROJECT_DIR$/app/models/entities/PropertyChangeLog.php" />
         <option value="$PROJECT_DIR$/app/models/datalogic/AuthenticationLogic.php" />
         <option value="$PROJECT_DIR$/app/models/entities/SavedProperties.php" />
-        <option value="$PROJECT_DIR$/app/models/datalogic/PropertyLogic.php" />
-        <option value="$PROJECT_DIR$/app/controllers/search/SearchController.php" />
         <option value="$PROJECT_DIR$/app/views/emails/signupemail.blade.php" />
         <option value="$PROJECT_DIR$/composer.json" />
         <option value="$PROJECT_DIR$/app/start/artisan.php" />
         <option value="$PROJECT_DIR$/app/ioc.php" />
         <option value="$PROJECT_DIR$/app/config/app.php" />
-        <option value="$PROJECT_DIR$/app/config/crawler.php" />
-        <option value="$PROJECT_DIR$/app/models/crawler/abstracts/ScrapeAbstract.php" />
         <option value="$PROJECT_DIR$/app/models/factory/EntityFactory.php" />
-        <option value="$PROJECT_DIR$/app/models/repositories/PropertyRepository.php" />
         <option value="$PROJECT_DIR$/app/models/datalogic/ScrapeLogic.php" />
+        <option value="$PROJECT_DIR$/app/models/crawler/abstracts/ScrapeAbstract.php" />
+        <option value="$PROJECT_DIR$/app/config/crawler.php" />
+        <option value="$PROJECT_DIR$/app/storage/logs/crunchlogs.log" />
+        <option value="$PROJECT_DIR$/crawlers/agents/gb/zoopla.js" />
+        <option value="$PROJECT_DIR$/app/models/crawler/commands/CrunchListCommand.php" />
+        <option value="$PROJECT_DIR$/app/config/cache.php" />
+        <option value="$PROJECT_DIR$/app/config/database.php" />
+        <option value="$PROJECT_DIR$/app/config/production/database.php" />
+        <option value="$PROJECT_DIR$/app/controllers/search/SearchController.php" />
+        <option value="$PROJECT_DIR$/app/models/repositories/PropertyRepository.php" />
+        <option value="$PROJECT_DIR$/app/models/datalogic/PropertyLogic.php" />
       </list>
     </option>
   </component>
@@ -244,12 +989,14 @@
       <path value="$PROJECT_DIR$/vendor/symfony/dependency-injection" />
       <path value="$PROJECT_DIR$/vendor/pdepend/pdepend" />
       <path value="$PROJECT_DIR$/vendor/phpmd/phpmd" />
+      <path value="$PROJECT_DIR$/vendor/squizlabs/php_codesniffer" />
+      <path value="$PROJECT_DIR$/vendor/intervention/image" />
     </include_path>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="y" value="22" />
+    <option name="y" value="23" />
     <option name="width" value="1276" />
-    <option name="height" value="778" />
+    <option name="height" value="773" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -265,7 +1012,7 @@
     <option name="STATE" value="0" />
   </component>
   <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
+    <navigator currentView="ProjectPane" proportions="" version="1">
       <flattenPackages />
       <showMembers />
       <showModules />
@@ -277,7 +1024,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -306,7 +1052,83 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="crawlers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="property-crunch-php" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="property-crunch-php" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="crawlers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="agents" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gb" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="property-crunch-php" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="property-crunch-php" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="property-crunch-php" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="property-crunch-php" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="storage" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="property-crunch-php" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="property-crunch-php" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="storage" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="data" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -390,7 +1212,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="entities" />
+              <option name="myItemId" value="datalogic" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -412,12 +1234,197 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="datalogic" />
+              <option name="myItemId" value="crawler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scrape" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="property-crunch-php" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="property-crunch-php" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="models" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="crawler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="queue" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="property-crunch-php" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="property-crunch-php" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="models" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="crawler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="property-crunch-php" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="property-crunch-php" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="models" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="crawler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="commands" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="property-crunch-php" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="property-crunch-php" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="models" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="crawler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="abstracts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="property-crunch-php" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="property-crunch-php" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controllers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="property-crunch-php" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="property-crunch-php" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controllers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="search" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="property-crunch-php" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="property-crunch-php" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="property-crunch-php" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="property-crunch-php" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="production" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -425,7 +1432,7 @@
     <property name="FullScreen" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/app/tests" />
     <property name="SearchEverywhereHistory" value="arr&#10;a&#10;data" />
-    <property name="options.lastSelected" value="Configurable.PHP.MessDetector" />
+    <property name="options.lastSelected" value="editor" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
@@ -448,7 +1455,14 @@
     <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
       <method />
     </configuration>
-    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug" singleton="true">
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpBehatConfigurationType" factoryName="Behat">
+      <BehatRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
       <method />
     </configuration>
     <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
@@ -485,10 +1499,13 @@
     <task active="true" id="Default" summary="Default task">
       <changelist id="96b11836-6a19-4e2a-83c1-9506f06a3c68" name="Default" comment="" />
       <created>1398896939344</created>
+      <option name="number" value="Default" />
       <updated>1398896939344</updated>
     </task>
     <task id="LOCAL-00001" summary="New Factory class for creating Enitities.">
       <created>1405187778399</created>
+      <option name="number" value="00001" />
+      <option name="project" value="LOCAL" />
       <updated>1405187778399</updated>
     </task>
     <option name="localTasksCounter" value="2" />
@@ -515,28 +1532,29 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="22" width="1276" height="778" extended-state="6" />
-    <editor active="true" />
+    <frame x="0" y="23" width="1276" height="773" extended-state="6" />
+    <editor active="false" />
     <layout>
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295129" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.42979944" sideWeight="0.49960598" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295129" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22884013" sideWeight="0.4047955" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22884013" sideWeight="0.59379405" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22884013" sideWeight="0.40625" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22884013" sideWeight="0.59375" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34383956" sideWeight="0.500394" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32863188" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295129" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295129" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Command Line Tools Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32808024" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -565,6 +1583,9 @@
     <option name="RECENTLY_FILTERED_USER_GROUPS">
       <collection />
     </option>
+    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+      <collection />
+    </option>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -578,310 +1599,384 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
+    <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/models/repositories/AuthRepository.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="67" column="20" selection-start="1631" selection-end="1631" vertical-scroll-proportion="-8.625" vertical-offset="753" max-vertical-offset="2145" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/database/migrations/2014_06_05_024226_create_saved_properties_pivot_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="41" selection-start="1133" selection-end="1133" vertical-scroll-proportion="0.79614764" vertical-offset="119" max-vertical-offset="765" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/start/local.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="393" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/scrape/ScrapeConfigController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1530" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/entities/observers/PropertyObserver.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="49" selection-start="889" selection-end="898" vertical-scroll-proportion="0.52969503" vertical-offset="0" max-vertical-offset="645" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/systemevents.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="29" selection-start="184" selection-end="184" vertical-scroll-proportion="0.072231136" vertical-offset="0" max-vertical-offset="623" />
+        <state vertical-scroll-proportion="0.072231136" vertical-offset="0" max-vertical-offset="623">
+          <caret line="10" column="29" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/models/crawler/scrape/ItemScrape.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="647" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/crawler/JobQueue.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="0" selection-start="350" selection-end="350" vertical-scroll-proportion="0.2260062" vertical-offset="4" max-vertical-offset="3060" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="647">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/admin/modules/crunch-property.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1065" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1065">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/database/seeds/PropertyTypeSeed.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="647" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="647">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/database/seeds/PropertyTableSeeder.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="54" selection-start="417" selection-end="417" vertical-scroll-proportion="-9.375" vertical-offset="0" max-vertical-offset="690" />
+        <state vertical-scroll-proportion="-9.375" vertical-offset="0" max-vertical-offset="690">
+          <caret line="15" column="54" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/database/seeds/PostCodeTableSeeder.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="63" column="58" selection-start="1981" selection-end="1981" vertical-scroll-proportion="-20.333334" vertical-offset="142" max-vertical-offset="810" />
+        <state vertical-scroll-proportion="-20.333334" vertical-offset="142" max-vertical-offset="810">
+          <caret line="63" column="58" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/database/seeds/DatabaseSeeder.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="43" selection-start="287" selection-end="287" vertical-scroll-proportion="0.3611557" vertical-offset="0" max-vertical-offset="623" />
+        <state vertical-scroll-proportion="0.3611557" vertical-offset="0" max-vertical-offset="623">
+          <caret line="15" column="43" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/storage/data/county.csv">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="180" column="16" selection-start="2337" selection-end="2352" vertical-scroll-proportion="1.2044777" vertical-offset="1893" max-vertical-offset="6405" />
+        <state vertical-scroll-proportion="1.2044777" vertical-offset="1893" max-vertical-offset="6405">
+          <caret line="180" column="16" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/storage/data/postcode.csv">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1500" column="28" selection-start="84653" selection-end="84660" vertical-scroll-proportion="0.33278146" vertical-offset="22299" max-vertical-offset="46455" />
-      </provider>
-      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
-        <state />
+        <state vertical-scroll-proportion="0.33278146" vertical-offset="22299" max-vertical-offset="46455">
+          <caret line="1500" column="28" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/property/property.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="42" selection-start="1894" selection-end="1894" vertical-scroll-proportion="0.670947" vertical-offset="2" max-vertical-offset="915" />
+        <state vertical-scroll-proportion="0.670947" vertical-offset="2" max-vertical-offset="915">
+          <caret line="49" column="42" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/admin/modules/crunch-property-event.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="103" column="48" selection-start="3336" selection-end="3336" vertical-scroll-proportion="1.6210046" vertical-offset="450" max-vertical-offset="2640" />
+        <state vertical-scroll-proportion="1.6210046" vertical-offset="450" max-vertical-offset="2640">
+          <caret line="103" column="48" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/auth/AuthenticationController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="45.291668" vertical-offset="1087" max-vertical-offset="1725" />
+        <state vertical-scroll-proportion="45.291668" vertical-offset="1087" max-vertical-offset="1725">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/service/AuthService.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="40" selection-start="417" selection-end="417" vertical-scroll-proportion="0.4574639" vertical-offset="0" max-vertical-offset="623" />
+        <state vertical-scroll-proportion="0.4574639" vertical-offset="0" max-vertical-offset="623">
+          <caret line="24" column="40" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/property/PropertyController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="133" column="37" selection-start="4018" selection-end="4018" vertical-scroll-proportion="-16.583334" vertical-offset="1507" max-vertical-offset="2130" />
+        <state vertical-scroll-proportion="-16.583334" vertical-offset="1507" max-vertical-offset="2130">
+          <caret line="133" column="37" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/models/entities/PropertyChangeLog.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="62" selection-start="251" selection-end="251" vertical-scroll-proportion="0.0" vertical-offset="195" max-vertical-offset="390" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="195" max-vertical-offset="390">
+          <caret line="13" column="62" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/models/entities/User.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="64" selection-start="896" selection-end="896" vertical-scroll-proportion="0.75342464" vertical-offset="0" max-vertical-offset="657" />
+        <state vertical-scroll-proportion="0.75342464" vertical-offset="0" max-vertical-offset="657">
+          <caret line="33" column="64" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/models/entities/SavedProperties.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="10" selection-start="270" selection-end="270" vertical-scroll-proportion="0.34246576" vertical-offset="0" max-vertical-offset="657" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/search/SearchController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="110" column="58" selection-start="3485" selection-end="3485" vertical-scroll-proportion="0.26940638" vertical-offset="1128" max-vertical-offset="1785" />
+        <state vertical-scroll-proportion="0.34246576" vertical-offset="0" max-vertical-offset="657">
+          <caret line="15" column="10" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/models/datalogic/AuthenticationLogic.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="64" column="20" selection-start="1607" selection-end="1607" vertical-scroll-proportion="0.0" vertical-offset="960" max-vertical-offset="3255" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="960" max-vertical-offset="3255">
+          <caret line="64" column="20" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/routes.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="0" selection-start="392" selection-end="392" vertical-scroll-proportion="-0.625" vertical-offset="15" max-vertical-offset="1155" />
+        <state vertical-scroll-proportion="-0.625" vertical-offset="15" max-vertical-offset="1155">
+          <caret line="11" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/auth/ClientAuthController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="102" column="13" selection-start="2698" selection-end="2698" vertical-scroll-proportion="2.1232877" vertical-offset="0" max-vertical-offset="2775" />
+        <state vertical-scroll-proportion="2.1232877" vertical-offset="0" max-vertical-offset="2775">
+          <caret line="102" column="13" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/frontend_route.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="57" column="0" selection-start="1453" selection-end="1453" vertical-scroll-proportion="0.8630137" vertical-offset="288" max-vertical-offset="945" />
+        <state vertical-scroll-proportion="0.8630137" vertical-offset="288" max-vertical-offset="945">
+          <caret line="57" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/clientnew.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="51" column="7" selection-start="1899" selection-end="1899" vertical-scroll-proportion="0.8630137" vertical-offset="198" max-vertical-offset="855" />
+        <state vertical-scroll-proportion="0.8630137" vertical-offset="198" max-vertical-offset="855">
+          <caret line="51" column="7" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/emails/signupemail.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="82" column="0" selection-start="8040" selection-end="8040" vertical-scroll-proportion="0.9736025" vertical-offset="603" max-vertical-offset="1335" />
+        <state vertical-scroll-proportion="0.9736025" vertical-offset="603" max-vertical-offset="1335">
+          <caret line="82" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/models/crawler/commands/CrunchItemCommand.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="58" column="55" selection-start="1381" selection-end="1381" vertical-scroll-proportion="-20.625" vertical-offset="285" max-vertical-offset="1605">
-          <folding />
+        <state vertical-scroll-proportion="-20.625" vertical-offset="285" max-vertical-offset="1605">
+          <caret line="58" column="55" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/composer.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="31" selection-start="358" selection-end="358" vertical-scroll-proportion="-6.875" vertical-offset="0" max-vertical-offset="960">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/datalogic/PropertyLogic.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="20" selection-start="381" selection-end="381" vertical-scroll-proportion="-8.75" vertical-offset="0" max-vertical-offset="2205">
-          <folding />
+        <state vertical-scroll-proportion="-6.875" vertical-offset="0" max-vertical-offset="960">
+          <caret line="11" column="31" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/ioc.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="69" column="32" selection-start="1831" selection-end="1831" vertical-scroll-proportion="1.3075709" vertical-offset="146" max-vertical-offset="1110">
-          <folding />
+        <state vertical-scroll-proportion="1.3075709" vertical-offset="146" max-vertical-offset="1110">
+          <caret line="69" column="32" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/start/artisan.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="59" selection-start="549" selection-end="562" vertical-scroll-proportion="0.34246576" vertical-offset="0" max-vertical-offset="657">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/crawler/commands/CrunchListCommand.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="39" column="63" selection-start="894" selection-end="908" vertical-scroll-proportion="0.29680365" vertical-offset="300" max-vertical-offset="1965">
-          <folding />
+        <state vertical-scroll-proportion="0.34246576" vertical-offset="0" max-vertical-offset="657">
+          <caret line="17" column="59" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/config.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="1" selection-start="478" selection-end="478" vertical-scroll-proportion="0.456621" vertical-offset="0" max-vertical-offset="657">
-          <folding />
+        <state vertical-scroll-proportion="0.456621" vertical-offset="0" max-vertical-offset="657">
+          <caret line="20" column="1" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/crawlers/config.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="681">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/crawler/commands/CrunchScrapeCommand.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="92" column="7" selection-start="2216" selection-end="2216" vertical-scroll-proportion="1.1598173" vertical-offset="543" max-vertical-offset="1590">
-          <folding />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="681">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/start/global.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="57" column="57" selection-start="2005" selection-end="2005" vertical-scroll-proportion="1.0958904" vertical-offset="0" max-vertical-offset="2010">
-          <folding />
+        <state vertical-scroll-proportion="1.0958904" vertical-offset="0" max-vertical-offset="2010">
+          <caret line="57" column="57" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/config/app.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="43" selection-start="880" selection-end="880" vertical-scroll-proportion="-1.826484" vertical-offset="1620" max-vertical-offset="2775">
-          <folding />
+        <state vertical-scroll-proportion="-1.826484" vertical-offset="1620" max-vertical-offset="2775">
+          <caret line="28" column="43" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/filters.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.7762557" vertical-offset="510" max-vertical-offset="1515">
-          <folding />
+        <state vertical-scroll-proportion="-0.7762557" vertical-offset="510" max-vertical-offset="1515">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/config/view.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="681">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/config/crawler.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="30" selection-start="501" selection-end="501" vertical-scroll-proportion="0.29680365" vertical-offset="0" max-vertical-offset="657">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/crawler/abstracts/ScrapeAbstract.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="156" column="0" selection-start="3277" selection-end="3277" vertical-scroll-proportion="0.5022831" vertical-offset="1980" max-vertical-offset="3495">
-          <folding />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="681">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/models/datalogic/AgentLogic.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="8.25" vertical-offset="198" max-vertical-offset="855">
-          <folding />
+        <state vertical-scroll-proportion="8.25" vertical-offset="198" max-vertical-offset="855">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/models/repositories/ScrapeRepository.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="208" column="40" selection-start="7446" selection-end="7446" vertical-scroll-proportion="-19.25" vertical-offset="1128" max-vertical-offset="2820">
-          <folding>
-            <element signature="e#1870#5857#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/repositories/PropertyRepository.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="72" column="0" selection-start="1637" selection-end="1637" vertical-scroll-proportion="-12.5" vertical-offset="600" max-vertical-offset="4815">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/factory/EntityFactory.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="34" selection-start="797" selection-end="811" vertical-scroll-proportion="-8.0" vertical-offset="108" max-vertical-offset="855">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2940" max-vertical-offset="4560">
+          <caret line="208" column="0" selection-start-line="208" selection-start-column="0" selection-end-line="208" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/models/entities/Property.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="48" column="27" selection-start="1181" selection-end="1188" vertical-scroll-proportion="-19.0" vertical-offset="234" max-vertical-offset="960">
+        <state vertical-scroll-proportion="0.0" vertical-offset="705" max-vertical-offset="1020">
+          <caret line="48" column="5" selection-start-line="48" selection-start-column="5" selection-end-line="48" selection-end-column="5" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/models/datalogic/ScrapeLogic.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="87" column="4" selection-start="2385" selection-end="2385" vertical-scroll-proportion="1.8949772" vertical-offset="0" max-vertical-offset="1620">
+        <state vertical-scroll-proportion="0.09146342" vertical-offset="1245" max-vertical-offset="2385">
+          <caret line="91" column="34" selection-start-line="91" selection-start-column="34" selection-end-line="91" selection-end-column="34" />
           <folding>
-            <element signature="e#220#254#0" expanded="true" />
-            <element signature="e#2390#4232#0" expanded="false" />
+            <element signature="e#220#254#0#PHP" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/factory/EntityFactory.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.29268292" vertical-offset="108" max-vertical-offset="855">
+          <caret line="26" column="34" selection-start-line="26" selection-start-column="34" selection-end-line="26" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/crawler/abstracts/ScrapeAbstract.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-20.916666" vertical-offset="3038" max-vertical-offset="3690">
+          <caret line="238" column="36" selection-start-line="238" selection-start-column="20" selection-end-line="238" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/storage/logs/crunchlogs.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.770291" vertical-offset="817" max-vertical-offset="1470">
+          <caret line="88" column="0" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/storage/logs/crunchqueue.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-74.24408" vertical-offset="64709" max-vertical-offset="65430">
+          <caret line="968" column="0" selection-start-line="968" selection-start-column="0" selection-end-line="968" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/config/crawler.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6671779" vertical-offset="0" max-vertical-offset="652">
+          <caret line="31" column="28" selection-start-line="31" selection-start-column="28" selection-end-line="31" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/crawler/commands/CrunchScrapeCommand.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.2352941" vertical-offset="543" max-vertical-offset="1590">
+          <caret line="92" column="7" selection-start-line="92" selection-start-column="7" selection-end-line="92" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/crawler/commands/CrunchListCommand.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33282208" vertical-offset="143" max-vertical-offset="1965">
+          <caret line="29" column="27" selection-start-line="29" selection-start-column="27" selection-end-line="29" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/crawlers/agents/gb/zoopla.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.68786985" vertical-offset="360" max-vertical-offset="2505">
+          <caret line="55" column="76" selection-start-line="55" selection-start-column="76" selection-end-line="55" selection-end-column="76" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/config/cache.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-21.541666" vertical-offset="773" max-vertical-offset="1425">
+          <caret line="86" column="19" selection-start-line="86" selection-start-column="19" selection-end-line="86" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/config/database.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-19.666666" vertical-offset="1298" max-vertical-offset="1950">
+          <caret line="118" column="29" selection-start-line="118" selection-start-column="29" selection-end-line="118" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/config/production/database.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.0416665" vertical-offset="458" max-vertical-offset="1110">
+          <caret line="37" column="44" selection-start-line="37" selection-start-column="44" selection-end-line="37" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/repositories/PropertyRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-30.291666" vertical-offset="2903" max-vertical-offset="5205">
+          <caret line="255" column="37" selection-start-line="255" selection-start-column="37" selection-end-line="255" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/search/SearchController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-16.541666" vertical-offset="953" max-vertical-offset="2610">
+          <caret line="94" column="91" selection-start-line="94" selection-start-column="79" selection-end-line="94" selection-end-column="91" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/datalogic/PropertyLogic.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.345092" vertical-offset="1148" max-vertical-offset="3105">
+          <caret line="139" column="0" selection-start-line="139" selection-start-column="0" selection-end-line="139" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

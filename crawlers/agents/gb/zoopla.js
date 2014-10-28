@@ -53,13 +53,13 @@ Zoopla.prototype.itemListing = function (casperjs, url) {
     };
 
     casperjs.start(url, function () {
-        this.waitUntilVisible(".listing-results *[id*=listing_]", callback)
-        .then(function () {
-            pager.run(
-                casperjs,
-                callback
-            );
-        });
+        this.waitUntilVisible(".listing-results *[id*=listing_]", callback);
+        //.then(function () {
+        //    pager.run(
+        //        casperjs,
+        //        callback
+        //    );
+        //});
 
         if (completed) {
             casperjs.echo("Scrape completed");

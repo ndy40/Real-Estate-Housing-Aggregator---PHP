@@ -7,6 +7,7 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/composer" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/d11wtq/boris" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/filp/whoops" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/intervention/image" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/ircmaxell/password-compat" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/jeremeamia/SuperClosure" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/kmd/logviewer" />
@@ -22,6 +23,7 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/phpseclib/phpseclib" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/predis/predis" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/psr/log" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/squizlabs/php_codesniffer" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/stack/builder" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/swiftmailer/swiftmailer" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/browser-kit" />
@@ -61,8 +63,10 @@
           <root url="file://$MODULE_DIR$/vendor/classpreloader/classpreloader" />
           <root url="file://$MODULE_DIR$/vendor/filp/whoops" />
           <root url="file://$MODULE_DIR$/vendor/nesbot/carbon" />
+          <root url="file://$MODULE_DIR$/vendor/squizlabs/php_codesniffer" />
           <root url="file://$MODULE_DIR$/vendor/symfony/console" />
           <root url="file://$MODULE_DIR$/vendor/nikic/php-parser" />
+          <root url="file://$MODULE_DIR$/vendor/intervention/image" />
           <root url="file://$MODULE_DIR$/vendor/phpseclib/phpseclib" />
           <root url="file://$MODULE_DIR$/vendor/pda/pheanstalk" />
           <root url="file://$MODULE_DIR$/vendor/cartalyst/sentry" />
@@ -101,8 +105,10 @@
           <root url="file://$MODULE_DIR$/vendor/classpreloader/classpreloader" />
           <root url="file://$MODULE_DIR$/vendor/filp/whoops" />
           <root url="file://$MODULE_DIR$/vendor/nesbot/carbon" />
+          <root url="file://$MODULE_DIR$/vendor/squizlabs/php_codesniffer" />
           <root url="file://$MODULE_DIR$/vendor/symfony/console" />
           <root url="file://$MODULE_DIR$/vendor/nikic/php-parser" />
+          <root url="file://$MODULE_DIR$/vendor/intervention/image" />
           <root url="file://$MODULE_DIR$/vendor/phpseclib/phpseclib" />
           <root url="file://$MODULE_DIR$/vendor/pda/pheanstalk" />
           <root url="file://$MODULE_DIR$/vendor/cartalyst/sentry" />

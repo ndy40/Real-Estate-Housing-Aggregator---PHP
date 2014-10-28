@@ -210,14 +210,27 @@ class PropertyRepository implements PropertyRespositoryInterface {
     }
 
     public function searchProperty(
-    $filter, $isPublished = true, $orderColumn = "updated_at", $direction = "asc", $startIndex = 1, $size = 25
+        $filter,
+        $isPublished = true,
+        $orderColumn = "updated_at",
+        $direction = "asc",
+        $startIndex = 1,
+        $size = 25,
+        $queryString = ''
     ) {
         $index = $size * ($startIndex - 1);
 
-        return Property::with(array("agency", "postCode", "type", "images"))
+        $query =  Property::with(array("agency", "postCode", "type", "images"))
             ->where("published", "=", $isPublished, "and")
-            ->where("address", 'like', "%$filter%")
-            ->orWhereHas("type", function ($query) use ($filter) {
+            ->where("address", 'like', "%$filter%");
+
+        if (is_array($queryString)) {
+            foreach ($queryString as $key => $value) {
+                $query->where($value[0], $value[1], $value[2]);
+            }
+        }
+
+        return $query ->orWhereHas("type", function ($query) use ($filter, $queryString) {
                 $query->where("name", "like", "$filter%");
             })
             ->orWhereHas("postCode", function ($query)  use ($filter) {
@@ -232,27 +245,32 @@ class PropertyRepository implements PropertyRespositoryInterface {
             ->skip($index)
             ->take($size)
             ->get();
-        return $properties;
     }
 
     public function searchPropertyCount(
-    $filter, $isPublished = true
+        $filter, $isPublished = true, $queryString = ''
     ) {
-        return Property::with(array("agency", "postCode", "type", "images"))
+        $query =  Property::with(array("agency", "postCode", "type", "images"))
             ->where("published", "=", $isPublished, "and")
-            ->where("address", 'like', "%$filter%")
-            ->orWhereHas("type", function ($query) use ($filter) {
+            ->where("address", 'like', "%$filter%");
+        if (is_array($queryString)) {
+            foreach ($queryString as $key => $value) {
+                $query->where($value[0], $value[1], $value[2]);
+            }
+        }
+
+        return $query->orWhereHas("type", function ($query) use ($filter) {
                 $query->where("name", "like", "$filter%");
-            })
-            ->orWhereHas("postCode", function ($query)  use ($filter) {
-                $query->join("county", "county.id", "=", "post_codes.id")
-                    ->whereNested(function ($q) use ($filter) {
-                    $q->where("area", "like", "%$filter%")
-                        ->where("code", "=", $filter)
-                        ->where("county.name", "like", "%$filter%");
-                });
-            })
-            ->count();
+        })
+        ->orWhereHas("postCode", function ($query)  use ($filter) {
+            $query->join("county", "county.id", "=", "post_codes.id")
+                ->whereNested(function ($q) use ($filter) {
+                $q->where("area", "like", "%$filter%")
+                    ->where("code", "=", $filter)
+                    ->where("county.name", "like", "%$filter%");
+            });
+        })
+        ->count();
     }
 
     /**

@@ -71,13 +71,14 @@ class SearchController extends BaseController
         if (!isset($filter) || empty($filter)) {
             return Response::json("false", 400);
         }
-        
-        $cacheKey = "search_prop_" . $filter . $startIndex . $size;
+
+        $queryString = Input::query();
+
+        $cacheKey = "search_prop_" . $filter . $startIndex . $size . preg_replace("/\s/", '%', implode("_", $queryString));
         $data = null;
         if (Cache::has($cacheKey)) {
-            $data = Cache::get($cacheKey);
+            $response = Cache::get($cacheKey);
         } else {
-//            $filter = Input::get("search");
             $column = Input::has("column") ? Input::get("column") : "updated_at";
             $direction = Input::has("direction") ? Input::get("direction") : "asc";
 
@@ -87,16 +88,25 @@ class SearchController extends BaseController
                 $column,
                 $direction,
                 $startIndex,
-                $size
+                $size,
+                $queryString
             )->toArray();
-            $count = $this->propertyLogic->searchPropertyCount($filter, false);
+
+            $count = $this->propertyLogic->searchPropertyCount($filter, false, $queryString);
+
             if (!isset($count)) {
                 $startIndex = null;
                 $size = null;
             }
+            $response = array("count" => $count, "page" => $startIndex, "size" => $size, "data" => $data);
+
+            if (isset($data) && !empty($data)) {
+                //add to cache
+                Cache::put($cacheKey, $response, 3);
+            }
         }
 
-        return Response::json(array("count" => $count, "page" => $startIndex, "size" => $size, "data" => $data));
+        return Response::json($response, 200);
     }
 
     public function getAvgRoomPrices($countyId)

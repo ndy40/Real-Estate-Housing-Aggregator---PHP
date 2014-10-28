@@ -98,22 +98,78 @@ class PropertyLogic implements DataLogicInterface
         return $this->propertyRepo->findPropertyTypes($columnName, $direction);
     }
 
+    /**
+     * Method that searches the database for Properties. Will later user a SearchEngine.
+     *
+     * @param $filter
+     * @param bool $isPublished
+     * @param string $orderColumn
+     * @param string $direction
+     * @param int $startIndex
+     * @param int $size
+     * @param string $queryString
+     * @return mixed
+     */
     public function searchProperty(
         $filter,
         $isPublished = true,
         $orderColumn = "updated_at",
         $direction = "asc",
         $startIndex = 1,
-        $size = 25
+        $size = 25,
+        $queryString = array()
     ) {
-        return $this->propertyRepo->searchProperty($filter, $isPublished, $orderColumn, $direction, $startIndex, $size);
+        $query = array();
+
+        // Build query string array before passing to PropertyResponsitory class.
+        if (!empty($queryString)) {
+            foreach ($queryString as $key => $value) {
+                if ($key === 'price_min') {
+                    $query[] = array ("price", ">=", $value);
+                } else if ($key === 'price_max') {
+                    $query[] = array("price", "<", $value);
+                } else if ($key == 'sort') {
+                    $sort = explode(" ", $value);
+                    $orderColumn = $sort[0];
+                    $direction   = $sort[1];
+                } else {
+                    $query[] = array($key, "=", $value);
+                }
+            }
+        }
+
+        return $this->propertyRepo->searchProperty(
+            $filter,
+            $isPublished,
+            $orderColumn,
+            $direction,
+            $startIndex,
+            $size,
+            $query
+        );
     }
 
     public function searchPropertyCount(
         $filter,
-        $isPublished = true
+        $isPublished = true,
+        $queryString = array()
     ) {
-        return $this->propertyRepo->searchPropertyCount($filter, $isPublished);
+        $query = array();
+
+        // Build query string array before passing to PropertyResponsitory class.
+        if (!empty($queryString)) {
+            unset($queryString["sort"]);
+            foreach ($queryString as $key => $value) {
+                if ($key === 'price_min') {
+                    $query[] = array ("price", ">=", $value);
+                } else if ($key === 'price_max') {
+                    $query[] = array("price", "<", $value);
+                } else {
+                    $query[] = array($key, "=", $value);
+                }
+            }
+        }
+        return $this->propertyRepo->searchPropertyCount($filter, $isPublished, $query);
     }
 
     public function getAvgRoomPricesByCounty($countyId)
@@ -142,7 +198,7 @@ class PropertyLogic implements DataLogicInterface
 
         return $this->propertyRepo->save($savedProperty);
     }
-    
+
     public function deleteImage($id) {
         $this->propertyRepo->deleteImage($id);
     }

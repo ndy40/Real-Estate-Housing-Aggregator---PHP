@@ -90,6 +90,14 @@ abstract class ScrapeAbstract
     
     protected $scrapeCommand;
 
+    /**
+     * @return string
+     */
+    public function getAgent()
+    {
+        return $this->agent;
+    }
+
 
     public function __construct($config = array ())
     {

@@ -27,7 +27,7 @@ class CrunchListCommand extends Command
     /**
      * An instance of the scrape factory.
      *
-     * @var \models\crawler\ScrapeFactory
+     * @var \models\factory\ScrapeFactory
      */
     private $scrapeFactory;
 

@@ -29,7 +29,7 @@ return array (
     
     "image_filename_template" => "%d_%d_%s.jpg", // property ID_Serial_Number_timestamp
     
-    "tor_port" => "192.168.33.4:9050", 
+    "tor_port" => "localhost:9050",
     
 );
 
