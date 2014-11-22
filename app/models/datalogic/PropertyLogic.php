@@ -111,7 +111,7 @@ class PropertyLogic implements DataLogicInterface
      * @return mixed
      */
     public function searchProperty(
-        $filter,
+        $filter = '',
         $isPublished = true,
         $orderColumn = "updated_at",
         $direction = "asc",
@@ -124,20 +124,24 @@ class PropertyLogic implements DataLogicInterface
         // Build query string array before passing to PropertyResponsitory class.
         if (!empty($queryString)) {
             foreach ($queryString as $key => $value) {
-                if ($key === 'price_min') {
-                    $query[] = array ("price", ">=", $value);
-                } else if ($key === 'price_max') {
-                    $query[] = array("price", "<", $value);
-                } else if ($key == 'sort') {
-                    $sort = explode(" ", $value);
-                    $orderColumn = $sort[0];
-                    $direction   = $sort[1];
-                } else {
-                    $query[] = array($key, "=", $value);
+                switch ($key) {
+                    case 'price_min':
+                        $query[] = array ("price", ">=", $value);
+                        break;
+                    case 'price_max':
+                        $query[] = array("price", "<", $value);
+                        break;
+                    case 'sort':
+                        $sort = explode(" ", $value);
+                        $orderColumn = $sort[0];
+                        $direction   = $sort[1];
+                        break;
+                    default:
+                       $query[] = array($key, "=", $value); 
                 }
             }
         }
-
+        
         return $this->propertyRepo->searchProperty(
             $filter,
             $isPublished,
@@ -150,7 +154,7 @@ class PropertyLogic implements DataLogicInterface
     }
 
     public function searchPropertyCount(
-        $filter,
+        $filter = '',
         $isPublished = true,
         $queryString = array()
     ) {
@@ -169,6 +173,7 @@ class PropertyLogic implements DataLogicInterface
                 }
             }
         }
+
         return $this->propertyRepo->searchPropertyCount($filter, $isPublished, $query);
     }
 
@@ -186,6 +191,10 @@ class PropertyLogic implements DataLogicInterface
     {
         return $this->propertyRepo->fetch($id);
     }
+    
+    public function save($entity) {
+        return $this->propertyRepo->save($entity);
+    }
 
     public function saveUserProperty($userId, $propertyId, $calculations)
     {
@@ -201,5 +210,67 @@ class PropertyLogic implements DataLogicInterface
 
     public function deleteImage($id) {
         $this->propertyRepo->deleteImage($id);
+    }
+    
+    /**
+     * Compute the Rental Yield for Property in a Post Code Area. 
+     * 
+     * @param integer $post_code_id
+     * @param integer $type_id
+     * @param double $num_rooms
+     */
+    public function getAreaRentalYield($post_code_id, $rooms, $type_id)
+    {
+        $avgRental = $this->getAveragePrice($post_code_id, $rooms, $type_id, "rent");
+        $avgSalesPrice = $this->getAveragePrice($post_code_id, $rooms, $type_id, "sale");
+        
+        $yield = (($avgRental * 12)/$avgSalesPrice) * 100;
+        
+        return $yield;
+    }
+    
+    /**
+     * Compute the Rental Yield of a Property. 
+     * 
+     * @param int $id
+     * @return float
+     */
+    public function getRentalYieldOfProperty($id)
+    {
+        $property = $this->propertyRepo->fetch($id);
+        
+        $post_code_id = $property->postCode->id;
+        $rooms = $property->rooms;
+        $type_id = $property->type_id;
+        
+        //compute annual rental yiled
+        $avg = $this->getAveragePrice($post_code_id, $rooms, $type_id, "rent") * 12;
+        
+        $yield = ($avg/$property->price) * 100;
+        
+        return $yield;
+    }
+    
+    /**
+     * This computes the average price on a property. OfferType parameter defaults to Sale.
+     * Rent can be sent passed to compute average rental price. 
+     * 
+     * @param int $post_code_id - Post Code Id
+     * @param int $rooms - Number of rooms
+     * @param int $type_id - The Type ID for the property
+     * @param string $offerType - The Offer type to compute asking price on e.g sale|rent. Optional
+     */
+    public function getAveragePrice(
+        $post_code_id, 
+        $rooms, 
+        $type_id, 
+        $offerType = 'sale'
+    ) {
+        return $this->propertyRepo->getAveragePrice(
+            $post_code_id, 
+            $rooms,
+            $type_id, 
+            $offerType
+        );
     }
 }
