@@ -27,10 +27,10 @@ class ScrapeRepository implements ScrapeRepositoryInterface
     protected $propertyRepo;
 
     protected $agentRepo;
-    
+
     /**
-     * Constructor to create ScrapeRepository Insteance. 
-     * 
+     * Constructor to create ScrapeRepository Insteance.
+     *
      * @param \models\interfaces\PropertyRespositoryInterface $propRepo
      * @param \models\interfaces\AgentRepositoryInterface $agentRepo
      */
@@ -56,14 +56,14 @@ class ScrapeRepository implements ScrapeRepositoryInterface
 
     /**
      * This saves failed scrape jobs into the
-     * 
+     *
      * @param string $country - Country code.
      * @param string $agent - Agency name.
      * @param FailedScrapes $failedScrape An insteance of the FailedScrape class.
      */
     public function saveFailedScrapes(
-        $agent, 
-        $country, 
+        $agent,
+        $country,
         FailedScrapes $failedScrape
     ){
         $agency = $this->agentRepo->fetchAgentByNameAndCountry(
@@ -154,18 +154,20 @@ class ScrapeRepository implements ScrapeRepositoryInterface
                 }
 
                 if ($property === null) {
-                    $scrapedProperty = $this->propertyRepo->save($scrapedProperty);
+                    $saved = $this->propertyRepo->save($scrapedProperty);
                     $action = "create";
                 } else {
                     //perform proper test on data insert/update of property.
                     $count = $this->propertyRepo->updateChangedFields($scrapedProperty, $property);
-                    $scrapedProperty = $this->propertyRepo->save($property);
+                    $saved = $this->propertyRepo->save($property);
                     $action = "update";
                 }
-                
-                if ($scrapedProperty === false) {
+
+                if ($saved === false) {
                     Log::warning("Failed to save property " . $scrapedProperty);
                 } else {
+                    $scrapedProperty = $property = $this->propertyRepo
+                        ->fetchPropertyByHash($scrapedProperty->hash);
                     $images = $this->createImagesArray($data);
                     $jobData = array (
                         "property_id" => $scrapedProperty->id,
@@ -174,7 +176,7 @@ class ScrapeRepository implements ScrapeRepositoryInterface
                     );
                     Queue::push("ImageProcessingQueue", $jobData, "scrape_images");
                 }
-                
+
                 break;
         }
 
@@ -209,7 +211,7 @@ class ScrapeRepository implements ScrapeRepositoryInterface
 
         $scrapeProperty['price'] = doubleval($data->getElementsByTagName('price')->item(0)->nodeValue);
 
-        $scrapeProperty["offer_type"] = $data->getElementsByTagName("offertype")->item(0)->nodeValue;
+        $scrapeProperty["offer_type"] = ucfirst($data->getElementsByTagName("offertype")->item(0)->nodeValue);
         $type = $data->getElementsByTagName("type")->item(0)->nodeValue;
 
         $scrapeProperty['url'] = rawurldecode($data->getElementsByTagName('url')->item(0)->nodeValue);
@@ -226,8 +228,8 @@ class ScrapeRepository implements ScrapeRepositoryInterface
         );
         $property = new Property();
         $property->assignAttributes($scrapeProperty);
-        
-        
+
+
 
         return $property;
     }
@@ -296,15 +298,15 @@ class ScrapeRepository implements ScrapeRepositoryInterface
 
         return $result;
     }
-    
+
     public function createImagesArray(\DOMDocument $dom)
-    { 
+    {
         $imgs = $dom->getElementsByTagName("src");
         $images = array();
         foreach($imgs as $image) {
             $images[] = $image->nodeValue;
         }
-        
+
         return $images;
     }
 }
