@@ -3,6 +3,7 @@
 use crunch\CrunchItemCommand;
 use crunch\CrunchListCommand;
 use crunch\CrunchScrapeCommand;
+use crunch\ComputeYieldCommand;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +21,5 @@ Artisan::add(new CrunchListCommand(App::make("ScrapeFactory")));
 Artisan::add(new CrunchItemCommand(App::make("ScrapeFactory")));
 
 Artisan::add(new CrunchScrapeCommand(App::make("AgentLogic")));
+
+Artisan::add(new ComputeYieldCommand(App::make("PropertyLogic")));
