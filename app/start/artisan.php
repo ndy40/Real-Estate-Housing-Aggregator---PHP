@@ -2,7 +2,11 @@
 
 use crunch\CrunchItemCommand;
 use crunch\CrunchListCommand;
+use crunch\CrunchDataCommand;
 use crunch\CrunchScrapeCommand;
+use crunch\CrunchRemoveCommand;
+use crunch\ClearBeanstalkdQueueCommand;
+use models\repositories\PropertyRepository;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,4 +23,10 @@ Artisan::add(new CrunchListCommand(App::make("ScrapeFactory")));
 
 Artisan::add(new CrunchItemCommand(App::make("ScrapeFactory")));
 
+Artisan::add(new CrunchDataCommand(App::make("ScrapeFactory")));
+
 Artisan::add(new CrunchScrapeCommand(App::make("AgentLogic")));
+
+Artisan::add(new CrunchRemoveCommand(App::make("PropertyRepository")));
+
+Artisan::add(new ClearBeanstalkdQueueCommand());

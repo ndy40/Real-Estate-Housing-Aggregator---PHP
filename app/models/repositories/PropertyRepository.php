@@ -85,6 +85,24 @@ class PropertyRepository implements PropertyRespositoryInterface {
         }
         return $type;
     }
+	
+	public function fetchAndInsertPropertyType($type) {
+		$types = array();
+        if (is_string($type)) {
+            $types = PropertyType::where('name', 'like', "%{$type}%")->get();
+        } else {
+            $types = PropertyType::find($type);
+        }
+		
+		if ($types->isEmpty()) {
+			$property_type = new PropertyType;
+			$property_type->name = $type; 
+			$property_type->save();
+			return $property_type;
+		}
+
+        return $types[0];
+    }	
 
     /**
      * Method to update difference in values between scraped and db object.
@@ -350,5 +368,10 @@ class PropertyRepository implements PropertyRespositoryInterface {
     public function deleteImage($id) {
         return Image::find($id)->delete();
     }
+	
+	public function deleteOldProperty($date) {
+		$oldproperties = Property::where('updated_at', '<', $date);
+		$oldproperties->delete();
+	}
 
 }

@@ -26,10 +26,10 @@ CrunchUtility.validateArguments = function (parameters) {
     } else if (parameters[2] === undefined) {
         throw "Url to scrape must be passed";
     } else if (parameters[2]) {
-        var urlexp = new RegExp('(http|ftp|https)://[\\w-]+(\\.[\\w-]+)+([\\w-.,@?^=%&:/~+#-]*[\\w@?^=%&;/~+#-])?');
-        if (!urlexp.test(parameters[2])) {
-            throw "Invalid URL format passed.";
-        }
+        //var urlexp = new RegExp('(http|ftp|https)://[\\w-]+(\\.[\\w-]+)+([\\w-.,@?^=%&:/~+#-]*[\\w@?^=%&;/~+#-])?');
+        //if (!urlexp.test(parameters[2])) {
+        //    throw "Invalid URL format passed.";
+        //}
     } else if (parameters[3] === undefined || !/scrape|item/i.test(parameters[3])) {
         throw "Scrape type must be specified. Possible values list/item";
     }
@@ -105,7 +105,7 @@ CrunchUtility.buildListingOutput = function (casperjs, scrapeJob) {
     type.appendChild(document.createTextNode(scrapeJob.type));
     job.appendChild(type);
     
-    url.appendChild(document.createTextNode(scrapeJob.url));
+    url.appendChild(document.createTextNode(scrapeJob.results[0]));
     job.appendChild(url);
     
     //generate results
@@ -130,8 +130,8 @@ CrunchUtility.buildListingOutput = function (casperjs, scrapeJob) {
     
     job.appendChild(results);
     
-   doc.appendChild(job);
-    
+   	doc.appendChild(job);
+       
     return doc.innerHTML;
 };
 

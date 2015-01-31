@@ -60,7 +60,9 @@ class CrunchListCommand extends Command
         $config['configFile'] = Config::get('crawler.config_file');
 
         $this->info("Initializing scrape factory.");
-
+		
+        $scrape = null;
+		
         $scrape = $this->scrapeFactory->getScrape('list', $config);
 
         $this->info("Initialization complete.");
@@ -88,15 +90,17 @@ class CrunchListCommand extends Command
 
         $this->info("Generating output file. " . $file);
 
+        $this->info("Pushing to queue.");
+		
         $data = array (
             'country' => $this->argument('country'),
             'agent'  => $this->argument('agent'),
             'url'     => $this->argument('url'),
             'result'  => $filePath,
         );
-        $this->info("Pushing to queue.");
 
-        Queue::push('ListingQueue', $data);
+        $this->info($this->name . " before push.");
+	    Queue::push('ListingQueue', $data);
 
         $this->info($this->name . " completed.");
     }

@@ -17,6 +17,10 @@ use models\entities\Property;
 use models\interfaces\PropertyRespositoryInterface;
 use models\interfaces\ScrapeRepositoryInterface;
 use Illuminate\Support\Facades\Queue;
+
+use models\entities\PropertyType;
+
+use postcode\Postcode;
 /**
  * Description of ScrapeRepository
  *
@@ -27,10 +31,10 @@ class ScrapeRepository implements ScrapeRepositoryInterface
     protected $propertyRepo;
 
     protected $agentRepo;
-    
+
     /**
-     * Constructor to create ScrapeRepository Insteance. 
-     * 
+     * Constructor to create ScrapeRepository Insteance.
+     *
      * @param \models\interfaces\PropertyRespositoryInterface $propRepo
      * @param \models\interfaces\AgentRepositoryInterface $agentRepo
      */
@@ -56,14 +60,14 @@ class ScrapeRepository implements ScrapeRepositoryInterface
 
     /**
      * This saves failed scrape jobs into the
-     * 
+     *
      * @param string $country - Country code.
      * @param string $agent - Agency name.
      * @param FailedScrapes $failedScrape An insteance of the FailedScrape class.
      */
     public function saveFailedScrapes(
-        $agent, 
-        $country, 
+        $agent,
+        $country,
         FailedScrapes $failedScrape
     ){
         $agency = $this->agentRepo->fetchAgentByNameAndCountry(
@@ -75,6 +79,116 @@ class ScrapeRepository implements ScrapeRepositoryInterface
 
         return $failedScrape;
     }
+
+	public function savePropertyForDataexport(\DOMDocument $data) {
+		$scrapedProperty = $this->buildPropertyClassPart($data);
+
+        $status = $data->getElementsByTagName('status')->item(0)->nodeValue;
+        $agent = $data->getElementsByTagName('agent')->item(0)->nodeValue;
+        $country = $data->getElementsByTagName('country')->item(0)->nodeValue;
+
+        $type = $data->getElementsByTagName('type')->item(0)->nodeValue;
+		$type = $this->propertyRepo->fetchAndInsertPropertyType($type);
+		//var_dump($type);
+		$scrapedProperty->type()->associate($type);
+
+        $postCode = $data->getElementsByTagName('areacode')->item(0)->nodeValue;
+
+        $agency = $this->agentRepo->fetchAgentByNameAndCountry($agent, $country);
+        $scrapedProperty->agency()->associate($agency);
+
+        //echo $postCode.'-';
+        $postCodes = $this->propertyRepo->fetchPostCode($postCode);
+		//$postTown = Postcode::getDistrict($postCode);
+
+        if (!$postCodes->isEmpty() && $postCodes->count() == 1) {
+            $scrapedProperty->postCode()->associate($postCodes->first());
+        } elseif (!$postCodes->isEmpty() && $postCodes->count() > 0) {
+            $regex = $this->getPostCodeAreaRegex($postCode);
+            $area = $this->extractAreaName($scrapedProperty->address, $regex);
+
+            //Since we couldn't find the area name No choice but to use county
+            if (empty($area)) {
+                //then we probably have county listed there. Insert new post code against county.
+                $regex = $this->getCountyRegex($agency->country->id);
+
+                $area = $this->extractAreaName($scrapedProperty->address, $regex);
+
+                $existingPostCode = $this->propertyRepo->fetchPostCodeByName($postCode, $area);
+
+                if (empty($existingPostCode)) {
+                    $isSaved = $this->propertyRepo->createPostCode(
+                        $agency->country->id,
+                        $postCode,
+                        $area
+                    );
+                } elseif (empty($area)) {
+                    //echo $scrapedProperty->address.'---';
+                    $format = sprintf(
+                        "Cannot find county in address - %s in scrape address",
+                        $scrapedProperty->address
+                    );
+                    Log::error($format);
+                    return;
+                }
+            }
+            $postCode = $this->propertyRepo->fetchPostCodeByName($postCode, $area);
+            $scrapedProperty->postCode()->associate($postCode);
+        } else {
+            $format = sprintf("Cannot find post code in database %s", $postCode);
+            Log::error($format);
+            return;
+        }
+
+        switch ($status) {
+            case JobQueue::ITEM_NOT_AVAILABLE:
+                $property = $this->propertyRepo
+                    ->fetchPropertyByHash($scrapedProperty->hash);
+
+                if (!is_null($property)) {
+                    $property->available = false;
+                    $property->save();
+                }
+                break;
+            case JobQueue::ITEM_AVAILABLE:
+                $scrapedProperty->available = 1;
+                $property = $this->propertyRepo
+                    ->fetchPropertyByHash($scrapedProperty->hash);
+                //check if agency has been configured for auto-approval. If true then
+                //set available to 1.
+
+                if ($agency->auto_publish) {
+                    $scrapedProperty->published = 1;
+                }
+
+                if ($property === null) {
+                    $scrapedProperty = $this->propertyRepo->save($scrapedProperty);
+                    $action = "create";
+                } else {
+                    //perform proper test on data insert/update of property.
+                    //echo $scrapedProperty->marketer;
+                    $count = $this->propertyRepo->updateChangedFields($scrapedProperty, $property);
+                    $scrapedProperty = $this->propertyRepo->save($property);
+                    $action = "update";
+                }
+
+                if ($scrapedProperty === false) {
+                    Log::warning("Failed to save property " . $scrapedProperty);
+                } else {
+                    $images = $this->createImagesArray($data);
+                    $jobData = array (
+                        "property_id" => $scrapedProperty->id,
+                        "images"      => $images,
+                        "action"      => $action
+                    );
+                    Queue::push("ImageProcessingQueue", $jobData, "scrape_images");
+                }
+
+                break;
+        }
+
+        return $scrapedProperty;
+	}
 
     public function saveProperty(\DOMDocument $data)
     {
@@ -162,7 +276,7 @@ class ScrapeRepository implements ScrapeRepositoryInterface
                     $scrapedProperty = $this->propertyRepo->save($property);
                     $action = "update";
                 }
-                
+
                 if ($scrapedProperty === false) {
                     Log::warning("Failed to save property " . $scrapedProperty);
                 } else {
@@ -174,7 +288,7 @@ class ScrapeRepository implements ScrapeRepositoryInterface
                     );
                     Queue::push("ImageProcessingQueue", $jobData, "scrape_images");
                 }
-                
+
                 break;
         }
 
@@ -184,6 +298,7 @@ class ScrapeRepository implements ScrapeRepositoryInterface
     protected function buildPropertyClassPart(\DOMDocument $data)
     {
         $scrapeProperty = array();
+
         $country = rawurldecode($data->getElementsByTagName('country')->item(0)->nodeValue);
         $agent = rawurldecode($data->getElementsByTagName('agent')->item(0)->nodeValue);
 
@@ -209,6 +324,8 @@ class ScrapeRepository implements ScrapeRepositoryInterface
 
         $scrapeProperty['price'] = doubleval($data->getElementsByTagName('price')->item(0)->nodeValue);
 
+//        $offe = $data->getElementsByTagName("offertype")->item(0)->nodeValue;
+        //print_r($data);
         $scrapeProperty["offer_type"] = $data->getElementsByTagName("offertype")->item(0)->nodeValue;
         $type = $data->getElementsByTagName("type")->item(0)->nodeValue;
 
@@ -226,8 +343,9 @@ class ScrapeRepository implements ScrapeRepositoryInterface
         );
         $property = new Property();
         $property->assignAttributes($scrapeProperty);
-        
-        
+        $rules = Property::$rules;
+        $rules['url'] = '';
+        Property::$rules = $rules;
 
         return $property;
     }
@@ -257,7 +375,10 @@ class ScrapeRepository implements ScrapeRepositoryInterface
             $postCodes = $this->propertyRepo->fetchPostCode($postCode);
             $areas = array();
             foreach ($postCodes as $postCode) {
-                $areas[] = str_replace(" ", "\s", strtolower($postCode->area));
+                //$areas[] = str_replace(" ", "\s", strtolower($postCode->area));
+                $area_str = str_replace(" ", "\s", strtolower($postCode->area));
+                $area_str = str_replace("/", "\/", $area_str);
+                $areas[] = $area_str;
             }
             $regex = implode("|", $areas);
             Cache::put($key, $regex, 10);

@@ -11,7 +11,9 @@
             "kmd/logviewer": "1.1.*",
             "phpmd/phpmd" : "1.4.*",
             "squizlabs/php_codesniffer": "1.*",
-            "intervention/image": "2.*"
+            "intervention/image": "2.*",
+		    "stilliard/blmreader": "dev-master",
+            "Chumper/Zipper": "dev-master"
 	},
 	"autoload": {
             "classmap": [
@@ -27,7 +29,6 @@
                 "app/models/crawler",
                 "app/models/crawler/abstracts",
                 "app/models/crawler/commands",
-                "app/models/crawler/factories",
                 "app/models/crawler/queue",
                 "app/models/crawler/scrape",
                 "app/models/entities",
