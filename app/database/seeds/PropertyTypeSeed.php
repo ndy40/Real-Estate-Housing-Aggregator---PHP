@@ -16,13 +16,17 @@ class PropertyTypeSeed extends Seeder
     public function run()
     {
         $this->command->info("Seeding property types.");
-        $type = array("Houses", "Flats", "Commercial", "Land",
-            "Bungalows", "Detached", "Terraced", "Semi Detached", "Apartment", "Maisonette"
+        $type = array(
+            "Houses", 
+            "Flats",
+            "Bungalows", 
+            "Detached", 
+            "Terraced", 
+            "Semi Detached", 
+            "Apartment", 
         );
         foreach ($type as $value) {
             DB::table("type")->insert(array("name" => $value));
         }
-        
-        
     }
 }

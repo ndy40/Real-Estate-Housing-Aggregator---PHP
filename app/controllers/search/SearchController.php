@@ -102,7 +102,7 @@ class SearchController extends BaseController
 
             if (isset($data) && !empty($data)) {
                 //add to cache
-                Cache::put($cacheKey, $response, 3);
+                Cache::put($cacheKey, $response, 1);
             }
         }
 
@@ -159,14 +159,47 @@ class SearchController extends BaseController
 
         return Response::json(array("data" => $data));
     }
-    
+
     public function getProperty($id)
     {
         $property = $this->propertyLogic->find($id);
-        
+
         if ($property) {
             return Response::json($property->toArray(), 200);
         }
         return Response::json(array("flash" => "Property not found."), 401);
+    }
+
+    public function getPropertiesByIds($property_ids) {
+        $ids = explode(",", $property_ids);
+        $responseCode = 400;
+        if (is_array($ids)) {
+            $properties = $this->propertyLogic->getPropertyByIds($ids);
+            if ($properties) {
+                $data = $properties->toArray();
+                $responseCode = 200;
+            }
+        } else {
+            $data = false;
+        }
+
+        return Response::json($data, $responseCode);
+    }
+
+    public function getAverageRentalYield(
+        $postCodeId,
+        $numOfRooms,
+        $typeId,
+        $offerType = 'Sale'
+    ){
+
+        $avg_price = $this->propertyLogic->getAveragePrice(
+            $postCodeId,
+            $numOfRooms,
+            $typeId,
+            $offerType
+        );
+
+        return Response::json(array("data" => $avg_price));
     }
 }

@@ -59,7 +59,7 @@ DataType.roomType = function (text) {
     'use strict';
     var content = text,
         pattern =
-            /detached|apartment?|flat?|terraced|semi\-?\s?detached|terraced|bungalow|bedroom\sproperty|house?/i,
+            /detached|apartment?|flat?|terraced|semi\-?\s?detached|terrace\shouse|bungalow|bedroom\sproperty|house?/i,
         result;
 
     if (text !== undefined && !_.isArray(text)) {
@@ -81,7 +81,10 @@ DataType.roomType = function (text) {
         result = "notSupported";
     } else if (/semi\-?\s?detached/ig.test(result)) {
         result = "Semi Detached";
+    } else if (/terrace\shouse/ig.test(result)) {
+        result = "Terraced";
     }
+    
     return result;
 };
 

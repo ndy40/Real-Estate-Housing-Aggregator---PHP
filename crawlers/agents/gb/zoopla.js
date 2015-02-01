@@ -29,6 +29,17 @@ Zoopla.prototype.initialize = function (casperjs) {
         address : "a[itemprop=streetAddress]",
         url     : "a[data-ga-category*='More details']"
     };
+    
+    //block some requests
+    casperjs.on('resource.requested', function (requestedData, request) {
+        var pattern = /adsystem|revsci|google|criteo/gi;
+        if (pattern.test(requestedData.url)) {
+            this.log("Skipped " + requestedData.url , "info");
+            request.abort();
+        } else {
+            this.emit('page.resource.requested', requestData, request);
+        }
+    });
 
     return this;
 };
@@ -53,13 +64,13 @@ Zoopla.prototype.itemListing = function (casperjs, url) {
     };
 
     casperjs.start(url, function () {
-        this.waitUntilVisible(".listing-results *[id*=listing_]", callback);
-        //.then(function () {
-        //    pager.run(
-        //        casperjs,
-        //        callback
-        //    );
-        //});
+        this.waitUntilVisible(".listing-results *[id*=listing_]", callback)
+        .then(function () {
+            pager.run(
+                casperjs,
+                callback
+            );
+        });
 
         if (completed) {
             casperjs.echo("Scrape completed");
@@ -134,7 +145,7 @@ Zoopla.prototype.itemDetail = function (casperjs, url) {
                     return e.getAttribute("data-photo");
                 });
             });
-            
+
             self.results.push(property);
         });
     });

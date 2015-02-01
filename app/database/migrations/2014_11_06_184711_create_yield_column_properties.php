@@ -4,7 +4,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Support\Facades\Schema;
 
-class AddImageBasename extends Migration {
+class CreateYieldColumnProperties extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -13,8 +13,8 @@ class AddImageBasename extends Migration {
 	 */
 	public function up()
 	{
-            Schema::table("images", function (Blueprint $table) {
-                $table->string("basename", 50);
+            Schema::table("property", function (Blueprint $table) {
+                $table->float("yield")->default(0.0);
             });
 	}
 
@@ -25,8 +25,8 @@ class AddImageBasename extends Migration {
 	 */
 	public function down()
 	{
-            Schema::table("images", function (Blueprint $table) {
-                $table->dropColumn("basename");
+            Schema::table("property", function (Blueprint $table) {
+                $table->dropColumn("yield");
             });
 	}
 

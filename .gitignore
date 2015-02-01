@@ -2,15 +2,15 @@
 .DS_Store
 node_modules
 .npm-debug.log
-.idea/
 tmp
 nbproject/private
-app/config/database.php
-app/crawler
-app/config/app.php
+database.php
+app.php
 vendor/
 app/storage/scrape
 Vgrantfile
 .vagrant
 
 .idea/
+!/.idea
+public/assets/properties/*

@@ -36,7 +36,7 @@ return array(
 			'host'      => 'localhost',
 			'database'  => 'propertycrunch',
 			'username'  => 'propertycrunch',
-			'password'  => 'rcx2gbAQFe1Uv9Fb66oaTz2zziBj9Y55VUjFvC7lf1fD2s2iPS',
+			'password'  => 'oEgYhwNeeFvP',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
