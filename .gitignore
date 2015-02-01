@@ -10,7 +10,5 @@ vendor/
 app/storage/scrape
 Vgrantfile
 .vagrant
-
-.idea/
-!/.idea
+!/.idea/
 public/assets/properties/*
