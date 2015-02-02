@@ -65,9 +65,9 @@ class DataQueue extends JobQueue
 			$dom->appendChild($node);
 			//file_put_contents('/opt/lampp/htdocs/ndy1/app/models/crawler/queue/abc.txt', $dom->saveXML());
 
-            $scrapeRespository = App::make('ScrapeRepository');
+            $feedRespository = App::make('FeedRepository');
 	
-			$scrapeRespository->savePropertyForDataexport($dom);
+			$feedRespository->saveProperty($dom);
 
             $numberOfItems++; //increment for each items processed.
         }

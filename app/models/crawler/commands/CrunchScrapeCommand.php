@@ -56,7 +56,7 @@ class CrunchScrapeCommand extends Command
         $count = 0;
 		
 		if ($agent == "dataexport")
-			$artisan_command = "crunch:data";
+			$artisan_command = "crunch:feed";
 		else if ($agent == "zoopla")
 			$artisan_command = "crunch:list";
 		

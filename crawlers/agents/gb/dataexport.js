@@ -24,24 +24,22 @@ Dataexport.prototype.initialize = function (casperjs) {
     return this;
 };
 
-Dataexport.prototype.itemDetail = function (casperjs, url) {
+Dataexport.prototype.itemListing = function (casperjs, url) {
     'use strict';
     var self = this, dataType = require('library/DataType').create();
 
-    casperjs.start(url, function () {;
-        var xmlhttp = new XMLHttpRequest();
-        xmlhttp.open("GET", url, false);
-        xmlhttp.send();
-        var xmlProperty = xmlhttp.responseXML;
+    casperjs.start(url, function () {
+        var xmltext = fs.open(url, 'r').read();
+        var parser = new DOMParser();
+        var xmlProperty = parser.parseFromString (xmltext, "text/xml");
 
-        xmlhttp = new XMLHttpRequest();
         var arr = url.split('/');
         var filename = arr.pop();
         filename = filename.split('.');
         arr.pop();
-        xmlhttp.open('GET', arr.join('/')+'/XML/'+filename[0]+'_AGENT.XML', false);
-        xmlhttp.send();
-        var xmlAgent = xmlhttp.responseXML;
+
+        xmltext = fs.open(arr.join('/')+'/XML/'+filename[0]+'_AGENT.XML', 'r').read();
+        var xmlAgent = parser.parseFromString(xmltext, "text/xml");
 
         var properties = xmlProperty.getElementsByTagName('property');
         var property_data = [];
@@ -53,14 +51,14 @@ Dataexport.prototype.itemDetail = function (casperjs, url) {
                 img_arr[j] = images[j].childNodes[0].nodeValue;
             }
             property_data[i] = {
-                type: properties[i].getElementsByTagName('type')[0].childNodes[0].nodeValue,
-                rooms: properties[i].getElementsByTagName('rooms')[0].childNodes[0].nodeValue,
-                areaCode: properties[i].getElementsByTagName('areacode')[0].childNodes[0].nodeValue,
-                address: properties[i].getElementsByTagName('address')[0].childNodes[0].nodeValue,
-                price: properties[i].getElementsByTagName('price')[0].childNodes[0].nodeValue,
-                marketer: xmlAgent.getElementsByTagName('contact')[0].childNodes[0].nodeValue,
-                phone: xmlAgent.getElementsByTagName('telephone')[0].childNodes[0].nodeValue,
-                offertype: properties[i].getElementsByTagName('offertype')[0].childNodes[0].nodeValue,
+                type: dataType.roomType(properties[i].getElementsByTagName('type')[0].childNodes[0].nodeValue),
+                rooms: dataType.integer(properties[i].getElementsByTagName('rooms')[0].childNodes[0].nodeValue),
+                areaCode: dataType.areaCode(properties[i].getElementsByTagName('areacode')[0].childNodes[0].nodeValue),
+                address: dataType.string(properties[i].getElementsByTagName('address')[0].childNodes[0].nodeValue),
+                price: dataType.currency(properties[i].getElementsByTagName('price')[0].childNodes[0].nodeValue),
+                marketer: dataType.string(xmlAgent.getElementsByTagName('contact')[0].childNodes[0].nodeValue),
+                phone: dataType.string(xmlAgent.getElementsByTagName('telephone')[0].childNodes[0].nodeValue),
+                offertype: dataType.offerType(properties[i].getElementsByTagName('offertype')[0].childNodes[0].nodeValue),
                 status: 'available',
                 url: '',
                 images: img_arr

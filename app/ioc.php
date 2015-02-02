@@ -53,6 +53,13 @@ App::bind('ScrapeRepository', function ($app) {
     );
 });
 
+App::bind('FeedRepository', function ($app) {
+    return new \models\repositories\FeedRepository(
+        App::make("PropertyRepository"),
+        App::make("AgentRespository")
+    );
+});
+
 
 /////////////////////////////
 ///// Data Logic Binding ////
