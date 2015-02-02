@@ -6,9 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="96b11836-6a19-4e2a-83c1-9506f06a3c68" name="Default" comment="Created production specifi">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/crawler/commands/CrunchFeedCommand.php" afterPath="$PROJECT_DIR$/app/models/crawler/commands/CrunchFeedCommand.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/crawler/queue/DataQueue.php" afterPath="$PROJECT_DIR$/app/models/crawler/queue/DataQueue.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/crawler/feed/DataexportFeed.php" afterPath="$PROJECT_DIR$/app/models/crawler/feed/DataexportFeed.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/repositories/FeedRepository.php" afterPath="$PROJECT_DIR$/app/models/repositories/FeedRepository.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/crawler/queue/ImageProcessingQueue.php" afterPath="$PROJECT_DIR$/app/models/crawler/queue/ImageProcessingQueue.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/crawlers/agents/gb/dataexport.js" afterPath="$PROJECT_DIR$/crawlers/agents/gb/dataexport.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/repositories/ScrapeRepository.php" afterPath="$PROJECT_DIR$/app/models/repositories/ScrapeRepository.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="property-crunch-php.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -75,11 +77,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
+      <file leaf-file-name="DataQueue.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/models/crawler/queue/DataQueue.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-12.166667" vertical-offset="248" max-vertical-offset="1185">
+              <caret line="40" column="19" selection-start-line="40" selection-start-column="19" selection-end-line="40" selection-end-column="19" />
+              <folding>
+                <element signature="e#226#264#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="ScrapeRepository.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/models/repositories/ScrapeRepository.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.75" vertical-offset="0" max-vertical-offset="6420">
-              <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="22" selection-end-column="22" />
+            <state vertical-scroll-proportion="22.208334" vertical-offset="908" max-vertical-offset="4770">
+              <caret line="29" column="1" selection-start-line="29" selection-start-column="1" selection-end-line="29" selection-end-column="1" />
               <folding>
                 <element signature="e#225#272#0#PHP" expanded="true" />
               </folding>
@@ -87,33 +101,41 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="dataexport.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/crawlers/agents/gb/dataexport.js">
+      <file leaf-file-name="ItemScrape.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/models/crawler/scrape/ItemScrape.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="194" max-vertical-offset="1155">
-              <caret line="33" column="15" selection-start-line="33" selection-start-column="15" selection-end-line="33" selection-end-column="15" />
+            <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="420">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CrunchFeedCommand.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/models/crawler/commands/CrunchFeedCommand.php">
+      <file leaf-file-name="ListScrape.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/models/crawler/scrape/ListScrape.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-20.625" vertical-offset="0" max-vertical-offset="3315">
-              <caret line="33" column="27" selection-start-line="33" selection-start-column="27" selection-end-line="33" selection-end-column="27" />
-              <folding>
-                <element signature="e#25#56#0#PHP" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="-5.625" vertical-offset="0" max-vertical-offset="435">
+              <caret line="9" column="3" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="3" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ScrapeAbstract.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/models/crawler/abstracts/ScrapeAbstract.php">
+      <file leaf-file-name="dataexport.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/crawlers/agents/gb/dataexport.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="2.353255" vertical-offset="915" max-vertical-offset="3690">
-              <caret line="210" column="54" selection-start-line="210" selection-start-column="4" selection-end-line="210" selection-end-column="54" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1155">
+              <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ListingQueue.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/models/crawler/queue/ListingQueue.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-20.041666" vertical-offset="89" max-vertical-offset="1050">
+              <caret line="45" column="9" selection-start-line="45" selection-start-column="9" selection-end-line="45" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -122,8 +144,8 @@
       <file leaf-file-name="FeedRepository.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/models/repositories/FeedRepository.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-18.416666" vertical-offset="1163" max-vertical-offset="2145">
-              <caret line="107" column="0" selection-start-line="107" selection-start-column="0" selection-end-line="107" selection-end-column="0" />
+            <state vertical-scroll-proportion="-9.041667" vertical-offset="278" max-vertical-offset="2295">
+              <caret line="33" column="31" selection-start-line="33" selection-start-column="31" selection-end-line="33" selection-end-column="31" />
               <folding>
                 <element signature="e#38#79#0#PHP" expanded="true" />
               </folding>
@@ -131,23 +153,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ImageProcessingQueue.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/models/crawler/queue/ImageProcessingQueue.php">
+      <file leaf-file-name="CrunchFeedCommand.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/models/crawler/commands/CrunchFeedCommand.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.5416665" vertical-offset="1808" max-vertical-offset="2985">
-              <caret line="136" column="35" selection-start-line="136" selection-start-column="35" selection-end-line="136" selection-end-column="35" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FeedAbstract.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/models/crawler/abstracts/FeedAbstract.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.625" vertical-offset="0" max-vertical-offset="360">
-              <caret line="17" column="62" selection-start-line="17" selection-start-column="62" selection-end-line="17" selection-end-column="62" />
+            <state vertical-scroll-proportion="0.3276414" vertical-offset="983" max-vertical-offset="2595">
+              <caret line="86" column="8" selection-start-line="86" selection-start-column="8" selection-end-line="86" selection-end-column="8" />
               <folding>
-                <element signature="e#6#82#0#PHP" expanded="true" />
+                <element signature="e#25#56#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -156,28 +168,18 @@
       <file leaf-file-name="DataexportFeed.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/models/crawler/feed/DataexportFeed.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.0" vertical-offset="0" max-vertical-offset="1020">
-              <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+            <state vertical-scroll-proportion="-2.1666667" vertical-offset="98" max-vertical-offset="1035">
+              <caret line="10" column="41" selection-start-line="10" selection-start-column="41" selection-end-line="10" selection-end-column="41" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="JobQueue.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/models/crawler/abstracts/JobQueue.php">
+      <file leaf-file-name="CrunchItemCommand.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/models/crawler/commands/CrunchItemCommand.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.0" vertical-offset="0" max-vertical-offset="495">
-              <caret line="20" column="29" selection-start-line="20" selection-start-column="29" selection-end-line="20" selection-end-column="29" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FeedScrape.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/models/crawler/scrape/FeedScrape.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="435">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+            <state vertical-scroll-proportion="-36.875" vertical-offset="0" max-vertical-offset="1605">
+              <caret line="64" column="38" selection-start-line="64" selection-start-column="38" selection-end-line="64" selection-end-column="38" />
               <folding />
             </state>
           </provider>
@@ -224,8 +226,6 @@
         <option value="$USER_HOME$/dataexport/uploads/xmlfromblm/DE000000001.xml" />
         <option value="$PROJECT_DIR$/app/models/crawler/commands/CrunchDataCommand.php" />
         <option value="$PROJECT_DIR$/crawlers/crunch.js" />
-        <option value="$PROJECT_DIR$/app/models/repositories/ScrapeRepository.php" />
-        <option value="$PROJECT_DIR$/app/models/crawler/queue/DataQueue.php" />
         <option value="$PROJECT_DIR$/vendor/stilliard/blmreader/src/Reader.php" />
         <option value="$PROJECT_DIR$/app/models/crawler/scrape/FeedScrape.php" />
         <option value="$USER_HOME$/dataexport/uploads/xmlfromblm/DE000000332.xml" />
@@ -238,10 +238,12 @@
         <option value="$PROJECT_DIR$/crawlers/agents/gb/dataexport.js" />
         <option value="$PROJECT_DIR$/app/models/crawler/feed/dataexport.php" />
         <option value="$PROJECT_DIR$/app/models/crawler/abstracts/FeedAbstract.php" />
+        <option value="$PROJECT_DIR$/app/models/crawler/queue/ImageProcessingQueue.php" />
+        <option value="$PROJECT_DIR$/app/models/crawler/queue/DataQueue.php" />
+        <option value="$PROJECT_DIR$/app/models/repositories/ScrapeRepository.php" />
+        <option value="$PROJECT_DIR$/app/models/repositories/FeedRepository.php" />
         <option value="$PROJECT_DIR$/app/models/crawler/feed/DataexportFeed.php" />
         <option value="$PROJECT_DIR$/app/models/crawler/commands/CrunchFeedCommand.php" />
-        <option value="$PROJECT_DIR$/app/models/repositories/FeedRepository.php" />
-        <option value="$PROJECT_DIR$/app/models/crawler/queue/ImageProcessingQueue.php" />
       </list>
     </option>
   </component>
@@ -423,29 +425,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="start" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="property-crunch-php" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ndy1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="models" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="utility" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -468,24 +448,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="repositories" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="property-crunch-php" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ndy1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="models" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -586,6 +548,10 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="crawler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="commands" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -773,13 +739,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/public/admin/modules/crunch-property-event.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.5157233" vertical-offset="1873" max-vertical-offset="2640">
-          <caret line="105" column="35" selection-start-line="105" selection-start-column="35" selection-end-line="105" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/composer.lock">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.665236" vertical-offset="17423" max-vertical-offset="33525">
@@ -869,29 +828,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/crawler/commands/CrunchItemCommand.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="578" max-vertical-offset="1605">
-          <caret line="64" column="38" selection-start-line="64" selection-start-column="38" selection-end-line="64" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/crawler/queue/DetailsQueue.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1298" max-vertical-offset="2235">
-          <caret line="105" column="51" selection-start-line="105" selection-start-column="51" selection-end-line="105" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/crawler/queue/ListingQueue.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="89" max-vertical-offset="1050">
-          <caret line="45" column="9" selection-start-line="45" selection-start-column="9" selection-end-line="45" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/dataexport/uploads/xmlfromblm/DE000000001.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3326087" vertical-offset="5529" max-vertical-offset="11340">
@@ -918,21 +854,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="961">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/crawler/scrape/ItemScrape.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="420">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/crawler/scrape/ListScrape.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="135" max-vertical-offset="435">
-          <caret line="9" column="3" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="3" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1001,16 +922,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/crawler/queue/DataQueue.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-22.166666" vertical-offset="263" max-vertical-offset="1200">
-          <caret line="57" column="43" selection-start-line="57" selection-start-column="43" selection-end-line="57" selection-end-column="43" />
-          <folding>
-            <element signature="e#226#264#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/models/crawler/commands/CrunchScrapeCommand.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="495" max-vertical-offset="1680">
@@ -1067,14 +978,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/crawlers/agents/gb/dataexport.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="194" max-vertical-offset="1155">
-          <caret line="33" column="15" selection-start-line="33" selection-start-column="15" selection-end-line="33" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/models/datalogic/AgentLogic.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.1280683" vertical-offset="0" max-vertical-offset="937">
@@ -1091,59 +994,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/crawler/commands/CrunchFeedCommand.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-20.625" vertical-offset="0" max-vertical-offset="3315">
-          <caret line="33" column="27" selection-start-line="33" selection-start-column="27" selection-end-line="33" selection-end-column="27" />
-          <folding>
-            <element signature="e#25#56#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/ioc.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.34640524" vertical-offset="463" max-vertical-offset="1380">
           <caret line="49" column="36" selection-start-line="49" selection-start-column="36" selection-end-line="49" selection-end-column="36" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/crawler/abstracts/FeedAbstract.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.625" vertical-offset="0" max-vertical-offset="360">
-          <caret line="17" column="62" selection-start-line="17" selection-start-column="62" selection-end-line="17" selection-end-column="62" />
-          <folding>
-            <element signature="e#6#82#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/crawler/abstracts/JobQueue.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.0" vertical-offset="0" max-vertical-offset="495">
-          <caret line="20" column="29" selection-start-line="20" selection-start-column="29" selection-end-line="20" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/repositories/ScrapeRepository.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.75" vertical-offset="0" max-vertical-offset="6420">
-          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="22" selection-end-column="22" />
-          <folding>
-            <element signature="e#225#272#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/repositories/FeedRepository.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-18.416666" vertical-offset="1163" max-vertical-offset="2145">
-          <caret line="107" column="0" selection-start-line="107" selection-start-column="0" selection-end-line="107" selection-end-column="0" />
-          <folding>
-            <element signature="e#38#79#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1155,19 +1010,133 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/crawler/feed/DataexportFeed.php">
+    <entry file="file://$PROJECT_DIR$/app/models/crawler/abstracts/ScrapeAbstract.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.0" vertical-offset="0" max-vertical-offset="1020">
-          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+        <state vertical-scroll-proportion="-5.9166665" vertical-offset="2618" max-vertical-offset="3690">
+          <caret line="186" column="28" selection-start-line="186" selection-start-column="28" selection-end-line="186" selection-end-column="28" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/crawler/abstracts/ScrapeAbstract.php">
+    <entry file="file://$PROJECT_DIR$/app/models/crawler/abstracts/JobQueue.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.353255" vertical-offset="915" max-vertical-offset="3690">
-          <caret line="210" column="54" selection-start-line="210" selection-start-column="4" selection-end-line="210" selection-end-column="54" />
+        <state vertical-scroll-proportion="-10.0" vertical-offset="0" max-vertical-offset="495">
+          <caret line="20" column="29" selection-start-line="20" selection-start-column="29" selection-end-line="20" selection-end-column="29" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/interfaces/ScrapeRepositoryInterface.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.5" vertical-offset="0" max-vertical-offset="300">
+          <caret line="16" column="24" selection-start-line="16" selection-start-column="24" selection-end-line="16" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/crawler/abstracts/FeedAbstract.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.0" vertical-offset="0" max-vertical-offset="360">
+          <caret line="16" column="1" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
+          <folding>
+            <element signature="e#6#82#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/crawler/queue/DetailsQueue.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.5416665" vertical-offset="1274" max-vertical-offset="2235">
+          <caret line="105" column="51" selection-start-line="105" selection-start-column="51" selection-end-line="105" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/crawler/scrape/ItemScrape.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="420">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/crawler/scrape/ListScrape.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.625" vertical-offset="0" max-vertical-offset="435">
+          <caret line="9" column="3" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/crawler/queue/ListingQueue.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-20.041666" vertical-offset="89" max-vertical-offset="1050">
+          <caret line="45" column="9" selection-start-line="45" selection-start-column="9" selection-end-line="45" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/crawler/commands/CrunchItemCommand.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-36.875" vertical-offset="0" max-vertical-offset="1605">
+          <caret line="64" column="38" selection-start-line="64" selection-start-column="38" selection-end-line="64" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/repositories/ScrapeRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="22.208334" vertical-offset="908" max-vertical-offset="4770">
+          <caret line="29" column="1" selection-start-line="29" selection-start-column="1" selection-end-line="29" selection-end-column="1" />
+          <folding>
+            <element signature="e#225#272#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/crawler/feed/DataexportFeed.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.1666667" vertical-offset="98" max-vertical-offset="1035">
+          <caret line="10" column="41" selection-start-line="10" selection-start-column="41" selection-end-line="10" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/repositories/FeedRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.041667" vertical-offset="278" max-vertical-offset="2295">
+          <caret line="33" column="31" selection-start-line="33" selection-start-column="31" selection-end-line="33" selection-end-column="31" />
+          <folding>
+            <element signature="e#38#79#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/crawlers/agents/gb/dataexport.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1155">
+          <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/crawler/queue/DataQueue.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-12.166667" vertical-offset="248" max-vertical-offset="1185">
+          <caret line="40" column="19" selection-start-line="40" selection-start-column="19" selection-end-line="40" selection-end-column="19" />
+          <folding>
+            <element signature="e#226#264#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/crawler/commands/CrunchFeedCommand.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3276414" vertical-offset="983" max-vertical-offset="2595">
+          <caret line="86" column="8" selection-start-line="86" selection-start-column="8" selection-end-line="86" selection-end-column="8" />
+          <folding>
+            <element signature="e#25#56#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -54,7 +54,8 @@ class DataexportFeed extends FeedAbstract
                 $images->appendChild($image[$i]);
             $property->appendChild($images);
         }
-//        $savedir = $upload_dir.'/xmlfromblm/'.$blmname.'.xml';
+
+
         if ($doc->save($xmlpath) != false)
             return true;
         return false;

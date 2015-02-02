@@ -63,7 +63,6 @@ class DataQueue extends JobQueue
 			$node->appendChild($country_ele);
 			$node->appendChild($agent_ele);
 			$dom->appendChild($node);
-			//file_put_contents('/opt/lampp/htdocs/ndy1/app/models/crawler/queue/abc.txt', $dom->saveXML());
 
             $feedRespository = App::make('FeedRepository');
 	
