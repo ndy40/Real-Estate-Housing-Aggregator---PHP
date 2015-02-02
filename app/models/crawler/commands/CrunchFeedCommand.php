@@ -8,7 +8,7 @@ use Symfony\Component\Console\Input\InputArgument;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Queue;
 use DOMDocument;
-use models\crawler\abstracts\FeedBLM;
+use models\crawler\feed\DataexportFeed;
 
 class CrunchFeedCommand extends Command
 {
@@ -63,7 +63,15 @@ class CrunchFeedCommand extends Command
 
         $this->info("Unzipping property detail files.");
 
-        $config['url'] = $this->saveXMLfromBLM($config['url']);
+        $upload_dir = Config::get('crawler.upload_data_path');
+        $recent_filename = $this->getRecentFileName($upload_dir, $config['url']);
+
+        $feed = new \models\crawler\feed\DataexportFeed();
+        $feed->saveXMLfromBLM($upload_dir.'/extract/'.$recent_filename.'.BLM', $upload_dir.'/xmlfromblm/'.$config['url'].'.xml');
+
+        $config['url'] = $upload_dir.'/xmlfromblm/'.$config['url'].'.xml';
+
+//        $config['url'] = $this->saveXMLfromBLM($config['url']);
 
         $this->info("Extracted files into ".Config::get('crawler.upload_data_path').'/xmlfromblm/');
 
@@ -77,9 +85,6 @@ class CrunchFeedCommand extends Command
         $this->info("Executing scrape.");
 
         $output = $scrape->execute();
-
-//        $output = $this->getXMLfromBLM(storage_path().'/data/dataexport');
-//        print_r($output);
 
         $this->info("Scrape complete");
 
@@ -146,8 +151,10 @@ class CrunchFeedCommand extends Command
     private function saveXMLfromBLM($blmname) {
         $upload_dir = Config::get('crawler.upload_data_path');
         $recent_file = $this->getRecentFileName($upload_dir, $blmname);
+
         $zipper = new \Chumper\Zipper\Zipper;;
         $zipper->make($upload_dir.'/'.$recent_file.'.zip')->folder('')->extractTo($upload_dir.'/extract');
+
         $blm_reader = new \BLM\Reader($upload_dir.'/extract/'.$recent_file.'.BLM');
         $blm_arr = $blm_reader->toArray();
 

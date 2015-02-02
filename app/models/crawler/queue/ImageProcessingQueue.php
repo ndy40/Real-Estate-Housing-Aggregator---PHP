@@ -147,6 +147,7 @@ class ImageProcessingQueue extends JobQueue
                     $this->dimensions_config["image_full"]["width"],
                     $this->dimensions_config["image_full"]["height"]
                 );
+                echo public_path().$full;
                 $image->save(public_path() . $full, 60);
 
                 //create thumbnail

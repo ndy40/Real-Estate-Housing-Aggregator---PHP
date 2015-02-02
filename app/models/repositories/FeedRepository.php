@@ -2,6 +2,19 @@
 namespace models\repositories;
 
 use models\repositories\ScrapeRepository;
+use models\interfaces\AgentRepositoryInterface;
+use Illuminate\Support\Facades\Cache;
+use models\entities\FailedScrapes;
+use models\crawler\abstracts\JobQueue;
+use Illuminate\Support\Facades\Log;
+use models\entities\Property;
+use models\interfaces\PropertyRespositoryInterface;
+use models\interfaces\ScrapeRepositoryInterface;
+use Illuminate\Support\Facades\Queue;
+
+use models\entities\PropertyType;
+
+use postcode\Postcode;
 
 /**
  * Description of ScrapeRepository

@@ -56,7 +56,7 @@ Dataexport.prototype.itemListing = function (casperjs, url) {
                 areaCode: dataType.areaCode(properties[i].getElementsByTagName('areacode')[0].childNodes[0].nodeValue),
                 address: dataType.string(properties[i].getElementsByTagName('address')[0].childNodes[0].nodeValue),
                 price: dataType.currency(properties[i].getElementsByTagName('price')[0].childNodes[0].nodeValue),
-                marketer: dataType.string(xmlAgent.getElementsByTagName('contact')[0].childNodes[0].nodeValue),
+                marketer: dataType.string(xmlAgent.getElementsByTagName('agentname')[0].childNodes[0].nodeValue),
                 phone: dataType.string(xmlAgent.getElementsByTagName('telephone')[0].childNodes[0].nodeValue),
                 offertype: dataType.offerType(properties[i].getElementsByTagName('offertype')[0].childNodes[0].nodeValue),
                 status: 'available',
