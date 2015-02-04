@@ -20,6 +20,17 @@ class DataexportFeed extends FeedAbstract
         $root = $doc->createElement('properties');
         $root = $doc->appendChild($root);
 
+        $property_type = array('Not Specified','Terraced','End of Terrace','Semi-Detached','Detached','Mews','Cluster House','Ground Flat','Flat','Studio','Ground Maisonette','Maisonette','Bungalow','Terraced Bungalow',
+            'Semi-Detached Bungalow','Detached Bungalow','Mobile Home',20=>'Land','Link Detached House','Town House','Cottage','Chalet',27=>'Villa','Apartment','Penthouse','Finca',43=>'Barn Conversion','Serviced Apartments',
+            'Parking','Sheltered Housing','Retirement Property','House Share','Flat Share','Park Home','Garages','Farm House','Equestrian Facility',56=>'Duplex',59=>'Triplex',62=>'Longere',65=>'Gite',68=>'Barn',
+            71=>'Trulli',74=>'Mill',77=>'Ruins',80=>'Restaurant',83=>'Cafe',86=>'Mill',92=>'Castle',95=>'Village House',101=>'Cave House',104=>'Cortijo',107=>'Farm Land',110=>'Plot',113=>'Country House',116=>'Stone House',
+            'Caravan','Lodge','Log Cabin','Manor House','Stately Home',125=>'Off-Plan',128=>'Semi-detached Villa',131=>'Detached Villa',134=>'Bar / Nightclub',137=>'Shop',140=>'Riad','House Boat','Hotel Room','Block of Apartments',
+            'Private Halls',178=>'Office',181=>'Business Park',184=>'Serviced Office',187=>'Retail Property (high street)',190=>'Retail Property (out of town)',193=>'Convenience Store',196=>'Garage',199=>'Hairdresser / Barber Shop',
+            202=>'Hotel',205=>'Petrol Station',208=>'Post Office',211=>'Pub',214=>'Workshop',217=>'Distribution Warehouse',220=>'Factory',223=>'Heavy Industrial',226=>'Industrial Park',229=>'Light Industrial',232=>'Storage',
+            235=>'Showroom',238=>'Warehouse',241=>'Land',244=>'Commercial Development',247=>'Industrial Development',250=>'Residential Development',253=>'Commercial Property',256=>'Data Centre',259=>'Farm',262=>'Healthcare Facility',
+            265=>'Marine Property',268=>'Mixed Use',271=>'Research & Development Facility',274=>'Science Park',277=>'Guest House',280=>'Hospitality',283=>'Leisure Facility',298=>'Takeaway',301=>'Childcare Facility',
+            304=>'Smallholding',307=>'Place of Worship',310=>'Trade Counter',511=>'Coach House');
+
         foreach ($blm_arr as $blm) {
             $property = $doc->createElement('property');
             $property = $root->appendChild($property);
@@ -30,7 +41,7 @@ class DataexportFeed extends FeedAbstract
             $price = $doc->createElement('price', $blm['PRICE']);
             $rooms = $doc->createElement('rooms', $blm['BEDROOMS']);
             $status = $doc->createElement('status', 'available');
-            $type = $doc->createElement('type', 'House');
+            $type = $doc->createElement('type', $property_type[$blm['PROP_SUB_ID']]);
             $url = $doc->createElement('url', '');
             $images = $doc->createElement('images');
             $image = array();

@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Queue;
 use DOMDocument;
 use models\crawler\feed\DataexportFeed;
+use Illuminate\Support\Facades\Artisan;
 
 class CrunchFeedCommand extends Command
 {
