@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+ <agent>
+  <branch_id>001313282</branch_id>
+  <firstproperty_id>001313282</firstproperty_id>
+  <agentname>GSPC Ltd - Estate Agency Scotland</agentname>
+  <contact>Branch Manager</contact>
+  <telephone>0141 412 1726</telephone>
+  <email>13282@propertyfinder.gspc.co.uk</email>
+  <altmail>13282@propertyfinder.gspc.co.uk</altmail>
+  <agentaddress><![CDATA[1 Duke Street, Glasgow, Lanarkshire]]></agentaddress>
+  <postcode>G4 0UL</postcode>
+  <profile><![CDATA[]]></profile>
+  <logo></logo>
+  <logolink></logolink>
+  <website>gspc.co.uk</website>
+  <students>0</students>
+  <studentproperties>0</studentproperties>
+  <cleardata>0</cleardata>
+  <updateagent>0</updateagent>
+ </agent>

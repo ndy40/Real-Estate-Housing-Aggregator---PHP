@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+ <agent>
+  <branch_id>000029572</branch_id>
+  <firstproperty_id>000029572</firstproperty_id>
+  <agentname>Seymours Estate Agents - Farnham</agentname>
+  <contact></contact>
+  <telephone>01252 719896</telephone>
+  <email>Nicholas@seymours-farnham.co.uk</email>
+  <altmail>Nicholas@seymours-farnham.co.uk</altmail>
+  <agentaddress><![CDATA[69 Castle Street, Farnham]]></agentaddress>
+  <postcode>GU9 7LP</postcode>
+  <profile><![CDATA[]]></profile>
+  <logo></logo>
+  <logolink></logolink>
+  <website></website>
+  <students>0</students>
+  <studentproperties>0</studentproperties>
+  <cleardata>0</cleardata>
+  <updateagent>0</updateagent>
+ </agent>

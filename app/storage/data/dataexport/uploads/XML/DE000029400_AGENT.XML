@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+ <agent>
+  <branch_id>000029400</branch_id>
+  <firstproperty_id>000029400</firstproperty_id>
+  <agentname>Lets Make Homes</agentname>
+  <contact></contact>
+  <telephone>0333 1234 655</telephone>
+  <email>info@letsmakehomes.co.uk</email>
+  <altmail>info@letsmakehomes.co.uk</altmail>
+  <agentaddress><![CDATA[]]></agentaddress>
+  <postcode>G72 0BN</postcode>
+  <profile><![CDATA[]]></profile>
+  <logo></logo>
+  <logolink></logolink>
+  <website></website>
+  <students>0</students>
+  <studentproperties>0</studentproperties>
+  <cleardata>0</cleardata>
+  <updateagent>0</updateagent>
+ </agent>

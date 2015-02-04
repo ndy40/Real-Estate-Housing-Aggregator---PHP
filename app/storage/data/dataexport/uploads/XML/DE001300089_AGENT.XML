@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+ <agent>
+  <branch_id>001300089</branch_id>
+  <firstproperty_id>001300089</firstproperty_id>
+  <agentname>GSPC Ltd - Hasties</agentname>
+  <contact>Branch Manager</contact>
+  <telephone>0141 332 1454</telephone>
+  <email>89@propertyfinder.gspc.co.uk</email>
+  <altmail>89@propertyfinder.gspc.co.uk</altmail>
+  <agentaddress><![CDATA[20 Lynedoch Crescent, Glasgow]]></agentaddress>
+  <postcode>G3 6EQ</postcode>
+  <profile><![CDATA[]]></profile>
+  <logo></logo>
+  <logolink></logolink>
+  <website>gspc.co.uk</website>
+  <students>0</students>
+  <studentproperties>0</studentproperties>
+  <cleardata>0</cleardata>
+  <updateagent>0</updateagent>
+ </agent>

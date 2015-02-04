@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+ <agent>
+  <branch_id>000021790</branch_id>
+  <firstproperty_id>000021790</firstproperty_id>
+  <agentname>Ness Gallagher</agentname>
+  <contact>Branch Manager</contact>
+  <telephone>01698 319021</telephone>
+  <email>lc@nessgallagher.co.uk</email>
+  <altmail>lc@nessgallagher.co.uk</altmail>
+  <agentaddress><![CDATA[95 Stewarton Street]]></agentaddress>
+  <postcode>ML2 8EG</postcode>
+  <profile><![CDATA[]]></profile>
+  <logo></logo>
+  <logolink></logolink>
+  <website></website>
+  <students>0</students>
+  <studentproperties>0</studentproperties>
+  <cleardata>0</cleardata>
+  <updateagent>0</updateagent>
+ </agent>

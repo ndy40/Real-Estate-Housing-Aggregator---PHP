@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+ <agent>
+  <branch_id>000020936</branch_id>
+  <firstproperty_id>000020936</firstproperty_id>
+  <agentname>Ealing Broadway Sales</agentname>
+  <contact></contact>
+  <telephone>020 8840 6666</telephone>
+  <email>steve.clements@northfields.co.uk</email>
+  <altmail>steve.clements@northfields.co.uk</altmail>
+  <agentaddress><![CDATA[Northfields, Ealing, ]]></agentaddress>
+  <postcode>W5</postcode>
+  <profile><![CDATA[]]></profile>
+  <logo></logo>
+  <logolink></logolink>
+  <website></website>
+  <students>0</students>
+  <studentproperties>0</studentproperties>
+  <cleardata>0</cleardata>
+  <updateagent>0</updateagent>
+ </agent>
