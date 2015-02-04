@@ -5,7 +5,7 @@
 
 var casperjs = require('casper').create(),
     utils   = require('utils'),
-    _ = require("../node_modules/underscore"),
+    _ = require("node_modules/underscore"),
     fs = require('fs'),
     config,
     scriptArgs, //holds a collection of arguments for the scrape.
