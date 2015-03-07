@@ -22,6 +22,10 @@ App::bind('DetailsQueue', function ($app) {
     return new models\crawler\queue\DetailsQueue;
 });
 
+App::bind('DataQueue', function ($app) {
+    return new models\crawler\queue\DataQueue;
+});
+
 App::bind('ImageProcessingQueue', function ($app) {
     return new models\crawler\queue\ImageProcessingQueue;
 });
@@ -44,6 +48,13 @@ App::singleton('EntityFactory', function ($app) {
 
 App::bind('ScrapeRepository', function ($app) {
     return new \models\repositories\ScrapeRepository(
+        App::make("PropertyRepository"),
+        App::make("AgentRespository")
+    );
+});
+
+App::bind('FeedRepository', function ($app) {
+    return new \models\repositories\FeedRepository(
         App::make("PropertyRepository"),
         App::make("AgentRespository")
     );

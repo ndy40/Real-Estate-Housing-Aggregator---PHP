@@ -14,6 +14,7 @@ use models\interfaces\PropertyRespositoryInterface;
 use models\entities\PostCode;
 use models\entities\Property;
 use models\entities\PropertyType;
+use models\entities\PropertySearchType;
 use Illuminate\Support\Facades\App;
 use models\entities\Country;
 use models\entities\County;
@@ -24,21 +25,23 @@ use \models\entities\Image;
  *
  * @author ndy40
  */
-class PropertyRepository implements PropertyRespositoryInterface {
+class PropertyRepository implements PropertyRespositoryInterface
+{
 
-    public function delete($id) {
-        
-    }
+    public function delete($id) {}
 
-    public function fetch($id) {
+    public function fetch($id)
+    {
         return Property::with("images")->find($id);
     }
 
-    public function update($entity) {
+    public function update($entity)
+    {
         throw new \Exception("Not implemented yet");
     }
 
-    public function save($entity) {
+    public function save($entity)
+    {
         if ($entity->save()) {
             return $entity;
         }
@@ -46,13 +49,15 @@ class PropertyRepository implements PropertyRespositoryInterface {
         return false;
     }
 
-    public function fetchPropertyByHash($hash) {
+    public function fetchPropertyByHash($hash)
+    {
         return Property::where('hash', '=', $hash)->first();
     }
 
-    public function fetchPostCode($postcode) {
+    public function fetchPostCode($postcode)
+    {
         $postCode = null;
-        if (is_numeric($postCode)) {
+        if (is_numeric($postcode)) {
             $postCode = PostCode::find($postcode);
         } else {
             $postCode = PostCode::where('code', '=', strtoupper($postcode))
@@ -61,30 +66,52 @@ class PropertyRepository implements PropertyRespositoryInterface {
         return $postCode;
     }
 
-    public function fetchPostCodeByName($code, $areaName) {
+    public function fetchPostCodeByName($code, $areaName)
+    {
         return PostCode::where("area", "=", ucwords(strtolower(trim($areaName))))
                 ->where("code", "=", strtoupper($code))
                 ->first();
     }
 
-    public function insertProperty($agencyId, $data = array()) {
+    //TODO: Investigate.
+    public function insertProperty($agencyId, $data = array())
+    {
         $agencyRepo = App::make('AgentRepository');
         $agency = $agencyRepo->fetch($agencyId);
         if (empty($data)) {
             throw new Exception("No initial data provided");
         }
+
         $property = new Property($data);
     }
 
     public function fetchPropertyType($type) {
-        if (is_string($type)) {
+        if (is_numeric($type)) {
+            $type = PropertyType::find($type);
+        } else {
             $type = PropertyType::where('name', 'like', "%{$type}%")
                 ->firstOrFail();
-        } else {
-            $type = PropertyType::find($type);
         }
         return $type;
     }
+
+    public function fetchAndInsertPropertyType($type) {
+	$types = array();
+        if (is_string($type)) {
+            $types = PropertyType::where('name', 'like', "%{$type}%")->get();
+        } else {
+            $types = PropertyType::find($type);
+        }
+		
+		if ($types->isEmpty()) {
+			$property_type = new PropertyType;
+			$property_type->name = $type; 
+			$property_type->save();
+			return $property_type;
+		}
+
+        return $types[0];
+    }	
 
     /**
      * Method to update difference in values between scraped and db object.
@@ -147,6 +174,14 @@ class PropertyRepository implements PropertyRespositoryInterface {
         return $changeLog->save();
     }
 
+    /**
+     * Get all properties and filter accordingly.
+     *
+     * @param mixed[] $filter
+     * @param type $startIndex
+     * @param type $size
+     * @return type
+     */
     public function fetchAllProperty($filter = array(), $startIndex = 1, $size = 25) {
         $skip = $size * ($startIndex - 1);
         if (empty($filter)) {
@@ -205,24 +240,49 @@ class PropertyRepository implements PropertyRespositoryInterface {
         return County::where("name", "like", "%{$name}%")->orderBy("name")->get();
     }
 
-    public function findPropertyTypes($columnName, $direction) {
-        return PropertyType::orderBy($columnName, $direction)->get();
+    public function findPropertyDetailTypes($search_type_id) {
+        return PropertyType::where("search_type_id", "=", $search_type_id)->get();
+    }
+
+    public function findPropertySearchTypes($type_id) {
+        $type = $this->fetchPropertyType($type_id);
+        return PropertySearchType::find($type->search_type_id);
+    }
+
+	public function findPropertyTypes($columnName, $direction) {
+        return PropertySearchType::orderBy($columnName, $direction)->get();
     }
 
     public function searchProperty(
         $filter,
-        $isPublished = true,
+        $isPublished = false,
         $orderColumn = "updated_at",
         $direction = "asc",
         $startIndex = 1,
         $size = 25,
         $queryString = ''
     ) {
-        $index = $size * ($startIndex - 1);
+        $startIndex = ($startIndex - 1);
+        $index = $size * $startIndex;
 
         $query =  Property::with(array("agency", "postCode", "type", "images"))
-            ->where("published", "=", $isPublished, "and")
-            ->where("address", 'like', "%$filter%");
+            ->where("published", "=", $isPublished, "and");
+        if (!empty($filter)) {
+            $query->where(function ($query) use ($filter) {
+                $query->orWhere("address", 'like', "%$filter%")
+                    ->orWhereHas("type", function ($query) use ($filter) {
+                        $query->where("name", "like", "%$filter%");
+                    })
+                    ->orWhereHas("postCode", function ($query)  use ($filter) {
+                        $query->join("county", "county.id", "=", "post_codes.id")
+                            ->whereNested(function ($q) use ($filter) {
+                                $q->where("area", "like", "%$filter%")
+                                    ->orWhere("code", "=", $filter)
+                                    ->orWhere("county.name", "like", "%$filter%");
+                    });
+                });
+            });
+        }
 
         if (is_array($queryString)) {
             foreach ($queryString as $key => $value) {
@@ -230,47 +290,53 @@ class PropertyRepository implements PropertyRespositoryInterface {
             }
         }
 
-        return $query ->orWhereHas("type", function ($query) use ($filter, $queryString) {
-                $query->where("name", "like", "$filter%");
-            })
-            ->orWhereHas("postCode", function ($query)  use ($filter) {
-                $query->join("county", "county.id", "=", "post_codes.id")
-                    ->whereNested(function ($q) use ($filter) {
-                    $q->where("area", "like", "%$filter%")
-                        ->where("code", "=", $filter)
-                        ->where("county.name", "like", "%$filter%");
-                });
-            })
-            ->orderBy($orderColumn, $direction)
-            ->skip($index)
-            ->take($size)
-            ->get();
+		if ($direction === "") {
+            $output =  $query->skip($index)
+            	->take($size)
+            	->get();
+        }
+		else {        
+	    	$output =  $query->orderBy($orderColumn, $direction)
+            	->skip($index)
+            	->take($size)
+            	->get();
+		}
+
+        return $output;
     }
 
     public function searchPropertyCount(
-        $filter, $isPublished = true, $queryString = ''
+        $filter,
+        $isPublished = true,
+        $queryString = ''
     ) {
         $query =  Property::with(array("agency", "postCode", "type", "images"))
-            ->where("published", "=", $isPublished, "and")
-            ->where("address", 'like', "%$filter%");
+            ->where("published", "=", $isPublished, "and");
+        if (!empty($filter)) {
+            $query->where(function ($query) use ($filter) {
+                $query->orWhere("address", 'like', "%$filter%")
+                    ->orWhereHas("type", function ($query) use ($filter) {
+                        $query->where("name", "like", "%$filter%");
+                    })
+                    ->orWhereHas("postCode", function ($query)  use ($filter) {
+                        $query->join("county", "county.id", "=", "post_codes.id")
+                            ->whereNested(function ($q) use ($filter) {
+                                $q->where("area", "like", "%$filter%")
+                                    ->orWhere("code", "=", $filter)
+                                    ->orWhere("county.name", "like", "%$filter%");
+                    });
+                });
+            });
+
+        }
+
         if (is_array($queryString)) {
             foreach ($queryString as $key => $value) {
                 $query->where($value[0], $value[1], $value[2]);
             }
         }
 
-        return $query->orWhereHas("type", function ($query) use ($filter) {
-                $query->where("name", "like", "$filter%");
-        })
-        ->orWhereHas("postCode", function ($query)  use ($filter) {
-            $query->join("county", "county.id", "=", "post_codes.id")
-                ->whereNested(function ($q) use ($filter) {
-                $q->where("area", "like", "%$filter%")
-                    ->where("code", "=", $filter)
-                    ->where("county.name", "like", "%$filter%");
-            });
-        })
-        ->count();
+        return $query->count();
     }
 
     /**
@@ -316,7 +382,7 @@ class PropertyRepository implements PropertyRespositoryInterface {
 
     /**
      * This should be deprecated soon.
-     * 
+     *
      * @return string The hash string generated.
      */
     public function generatePropertyHash() {
@@ -351,4 +417,49 @@ class PropertyRepository implements PropertyRespositoryInterface {
         return Image::find($id)->delete();
     }
 
+    public function deleteOldProperty($date) {
+        $oldproperties = Property::where('updated_at', '<', $date);
+        $oldproperties->delete();
+    }
+
+    /**
+     * This computes the average price on a property. OfferType parameter defaults to Sale.
+     * Rent can be sent passed to compute average rental price.
+     *
+     * @param int $post_code_id - Post Code Id
+     * @param int $rooms - Number of rooms
+     * @param int $type_id - The Type ID for the property
+     * @param string $offerType - The Offer type to compute asking price on e.g sale|rent. Optional
+     */
+    public function getAveragePrice(
+        $post_code_id,
+        $rooms,
+        $type_id,
+        $offerType = 'sale'
+    ) {
+        $sql ="SELECT convert(coalesce(avg(price), 0), DECIMAL(15,2)) as avg_price"
+            . " FROM properties WHERE type_id = ? and rooms = ? and post_code_id = ?"
+            . " and offer_type = ?";
+        $params = array ($type_id, $rooms, $post_code_id, $offerType);
+        $average = DB::selectOne($sql, $params);
+
+        if (!empty($average)) {
+            return $average->avg_price;
+        }
+
+        return null;
+    }
+
+    /**
+     * Get Properties by passing a set of Ids.
+     * @param array $ids
+     */
+    public function getPropertyByIds(array $ids)
+    {
+        if (!is_array($ids)) {
+            throw new \InvalidArgumentException("Array parameter expected.");
+        }
+
+        return Property::whereIn("id", $ids)->get();
+     }
 }

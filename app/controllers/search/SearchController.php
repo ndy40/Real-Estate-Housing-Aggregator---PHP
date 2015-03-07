@@ -66,6 +66,14 @@ class SearchController extends BaseController
         return Response::json(array("data" => $data));
     }
 
+    public function getPropertyDetailTypes($property_type) {
+        $properties = $this->propertyLogic->findPropertyDetailTypes($property_type);
+        if (!$properties->isEmpty()) {
+            $data = $properties->toArray();
+        }
+        return Response::json(array("data" => $data));
+    }
+
     public function getSearchProperties($filter = "", $startIndex = 1, $size = 25)
     {
         if (!isset($filter) || empty($filter)) {
@@ -74,7 +82,7 @@ class SearchController extends BaseController
 
         $queryString = Input::query();
 
-        $cacheKey = "search_prop_" . $filter . $startIndex . $size . preg_replace("/\s/", '%', implode("_", $queryString));
+        $cacheKey = "search_prop_" . $filter . $startIndex . $size . implode("_", array_keys($queryString)) . preg_replace("/\s/", '%', implode("_", $queryString));
         $data = null;
         if (Cache::has($cacheKey)) {
             $response = Cache::get($cacheKey);
@@ -84,7 +92,7 @@ class SearchController extends BaseController
 
             $data = $this->propertyLogic->searchProperty(
                 $filter,
-                false,
+                true,
                 $column,
                 $direction,
                 $startIndex,
@@ -92,7 +100,7 @@ class SearchController extends BaseController
                 $queryString
             )->toArray();
 
-            $count = $this->propertyLogic->searchPropertyCount($filter, false, $queryString);
+            $count = $this->propertyLogic->searchPropertyCount($filter, true, $queryString);
 
             if (!isset($count)) {
                 $startIndex = null;
@@ -102,7 +110,7 @@ class SearchController extends BaseController
 
             if (isset($data) && !empty($data)) {
                 //add to cache
-                Cache::put($cacheKey, $response, 3);
+                Cache::put($cacheKey, $response, 1);
             }
         }
 
@@ -159,14 +167,55 @@ class SearchController extends BaseController
 
         return Response::json(array("data" => $data));
     }
-    
+
     public function getProperty($id)
     {
         $property = $this->propertyLogic->find($id);
-        
+
         if ($property) {
-            return Response::json($property->toArray(), 200);
+        	$result = $property->toArray();
+		$type = $this->propertyLogic->findPropertySearchTypes($property->type_id);
+		$result['type'] = $type->name;
+		return Response::json($result, 200);
         }
         return Response::json(array("flash" => "Property not found."), 401);
+    }
+
+    public function getPropertiesByIds($property_ids) {
+        $ids = explode(",", $property_ids);
+        $responseCode = 400;
+        if (is_array($ids)) {
+            $properties = $this->propertyLogic->getPropertyByIds($ids);
+            if ($properties) {
+                $data = $properties->toArray();
+                $responseCode = 200;
+            }
+        } else {
+            $data = false;
+        }
+
+        return Response::json($data, $responseCode);
+    }
+
+    public function getAverageRentalYield(
+        $postCodeId,
+        $numOfRooms,
+        $typeId,
+        $offerType = 'Sale'
+    ){
+
+        $avg_price = $this->propertyLogic->getAveragePrice(
+            $postCodeId,
+            $numOfRooms,
+            $typeId,
+            $offerType
+        );
+
+        return Response::json(array("data" => $avg_price));
+    }
+
+    public function getComparableProperties($propertyId) {
+	$comparables = $this->propertyLogic->getComparableProperties($propertyId);
+        return Response::json($comparables);
     }
 }

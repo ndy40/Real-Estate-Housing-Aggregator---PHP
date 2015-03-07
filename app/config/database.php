@@ -116,9 +116,12 @@ return array(
 		'default' => array(
 			'host'     => 'localhost',
 			'port'     => 6379,
-			'database' => "pc",
+			'database' => 0,
 		),
 
 	),
 
 );
+
+
+

@@ -7,6 +7,8 @@ use models\interfaces\DataLogicInterface;
 use Illuminate\Support\Facades\App;
 use models\interfaces\RepositoryInterface;
 
+require_once("sparqllib.php");
+
 /**
  * Property logic
  *
@@ -93,7 +95,17 @@ class PropertyLogic implements DataLogicInterface
         return $this->propertyRepo->searchLocation($name);
     }
 
-    public function findPropertyTypes($columnName = "name", $direction = "asc")
+    public function findPropertySearchTypes($type_id)
+    {
+	return $this->propertyRepo->findPropertySearchTypes($type_id);
+    }
+
+    public function findPropertyDetailTypes($search_type_id)
+    {
+        return $this->propertyRepo->findPropertyDetailTypes($search_type_id);
+    }
+
+	public function findPropertyTypes($columnName = "name", $direction = "asc")
     {
         return $this->propertyRepo->findPropertyTypes($columnName, $direction);
     }
@@ -111,7 +123,7 @@ class PropertyLogic implements DataLogicInterface
      * @return mixed
      */
     public function searchProperty(
-        $filter,
+        $filter = '',
         $isPublished = true,
         $orderColumn = "updated_at",
         $direction = "asc",
@@ -124,16 +136,32 @@ class PropertyLogic implements DataLogicInterface
         // Build query string array before passing to PropertyResponsitory class.
         if (!empty($queryString)) {
             foreach ($queryString as $key => $value) {
-                if ($key === 'price_min') {
-                    $query[] = array ("price", ">=", $value);
-                } else if ($key === 'price_max') {
-                    $query[] = array("price", "<", $value);
-                } else if ($key == 'sort') {
-                    $sort = explode(" ", $value);
-                    $orderColumn = $sort[0];
-                    $direction   = $sort[1];
-                } else {
-                    $query[] = array($key, "=", $value);
+                switch ($key) {
+                    case 'price_min':
+                        $query[] = array ("price", ">=", $value);
+                        break;
+                    case 'price_max':
+                        $query[] = array("price", "<=", $value);
+                        break;
+                    case 'yield_min':
+                        $query[] = array ("yield", ">=", $value);
+                        break;
+                    case 'yield_max':
+                        $query[] = array("yield", "<=", $value);
+                        break;
+		    case 'rooms_min':
+			$query[] = array("rooms", ">=", $value);
+			break;
+		    case 'rooms_max':
+			$query[] = array("rooms", "<=", $value);
+			break;
+                    case 'sort':
+                        $sort = explode(" ", $value);
+                        $orderColumn = $sort[0];
+                        $direction   = $sort[1];
+                        break;
+                    default:
+                       $query[] = array($key, "=", $value);
                 }
             }
         }
@@ -150,7 +178,7 @@ class PropertyLogic implements DataLogicInterface
     }
 
     public function searchPropertyCount(
-        $filter,
+        $filter = '',
         $isPublished = true,
         $queryString = array()
     ) {
@@ -163,12 +191,21 @@ class PropertyLogic implements DataLogicInterface
                 if ($key === 'price_min') {
                     $query[] = array ("price", ">=", $value);
                 } else if ($key === 'price_max') {
-                    $query[] = array("price", "<", $value);
+                    $query[] = array("price", "<=", $value);
+                } else if ($key === 'yield_max') {
+                    $query[] = array("yield", ">=", $value);
+                } else if ($key === 'yield_min') {
+                    $query[] = array("yield", "<=", $value);
+                } else if ($key === 'rooms_min') {
+                	$query[] = array("rooms", ">=", $value);
+                } else if ($key === 'rooms_max') {
+                	$query[] = array("rooms", "<=", $value);
                 } else {
                     $query[] = array($key, "=", $value);
                 }
             }
         }
+
         return $this->propertyRepo->searchPropertyCount($filter, $isPublished, $query);
     }
 
@@ -182,9 +219,17 @@ class PropertyLogic implements DataLogicInterface
         return $this->propertyRepo->fetchPostCodeByName($areaName);
     }
 
+    public function fetchPostCode($postcode) {
+        return $this->propertyRepo->fetchPostCode($postcode);
+    }
+
     public function find($id)
     {
         return $this->propertyRepo->fetch($id);
+    }
+
+    public function save($entity) {
+        return $this->propertyRepo->save($entity);
     }
 
     public function saveUserProperty($userId, $propertyId, $calculations)
@@ -201,5 +246,215 @@ class PropertyLogic implements DataLogicInterface
 
     public function deleteImage($id) {
         $this->propertyRepo->deleteImage($id);
+    }
+
+    /**
+     * Compute the Rental Yield for Property in a Post Code Area.
+     *
+     * @param integer $post_code_id
+     * @param integer $type_id
+     * @param double $num_rooms
+     */
+    public function getAreaRentalYield($post_code_id, $rooms, $type_id)
+    {
+        $avgRental = $this->getAveragePrice($post_code_id, $rooms, $type_id, "rent");
+        $avgSalesPrice = $this->getAveragePrice($post_code_id, $rooms, $type_id, "sale");
+
+        $yield = (($avgRental * 12)/$avgSalesPrice) * 100;
+
+        return $yield;
+    }
+
+    /**
+     * Compute the Rental Yield of a Property.
+     *
+     * @param int $id
+     * @return float
+     */
+    public function getRentalYieldOfProperty($id)
+    {
+        $property = $this->propertyRepo->fetch($id);
+
+        $post_code_id = $property->postCode->id;
+        $rooms = $property->rooms;
+        $type_id = $property->type_id;
+
+        //compute annual rental yiled
+        $avg = $this->getAveragePrice($post_code_id, $rooms, $type_id, "rent") * 12;
+
+        $yield = ($avg/$property->price) * 100;
+
+        return $yield;
+    }
+
+    /**
+     * This computes the average price on a property. OfferType parameter defaults to Sale.
+     * Rent can be sent passed to compute average rental price.
+     *
+     * @param int $post_code_id - Post Code Id
+     * @param int $rooms - Number of rooms
+     * @param int $type_id - The Type ID for the property
+     * @param string $offerType - The Offer type to compute asking price on e.g sale|rent. Optional
+     */
+    public function getAveragePrice(
+        $post_code_id,
+        $rooms,
+        $type_id,
+        $offerType = 'sale'
+    ) {
+        return $this->propertyRepo->getAveragePrice(
+            $post_code_id,
+            $rooms,
+            $type_id,
+            $offerType
+        );
+    }
+
+
+    public function getPropertyByIds(array $ids) {
+        return $this->propertyRepo->getPropertyByIds($ids);
+    }
+
+    public function getComparableProperties($propertyId) {
+    	$address = $this->getGooAddressById($propertyId);
+
+        $county = strtoupper($address['county']);
+        $town = strtoupper($address['town']);
+		$locality = strtoupper($address['locality']);
+        $street = strtoupper($address['street']);
+		$postcode = $address['postcode'];
+		$location = $address['location'];
+
+        $db = sparql_connect( "http://landregistry.data.gov.uk/landregistry/query" );
+        if( !$db ) { print sparql_errno() . ": " . sparql_error(). "\n"; exit; }
+
+        
+        sparql_ns( "common","http://landregistry.data.gov.uk/def/common/" );
+        sparql_ns( "ppi","http://landregistry.data.gov.uk/def/ppi/" );
+        sparql_ns( "rdf","http://www.w3.org/1999/02/22-rdf-syntax-ns#" );
+        sparql_ns( "xsd","http://www.w3.org/2001/XMLSchema#" );
+		
+		if (strlen($postcode)<=4)
+			$sparql_postcode = '';
+		else
+			$sparql_postcode = '?___propertyAddress_0 common:postcode "'.$postcode.'"^^<http://www.w3.org/2001/XMLSchema#string> .';
+
+        $sparql = 'SELECT ?item
+            WHERE {
+            {
+                ?___propertyAddress_0 common:town "'.$town.'"^^<http://www.w3.org/2001/XMLSchema#string> .
+                ?___propertyAddress_0 common:locality "'.$locality.'"^^<http://www.w3.org/2001/XMLSchema#string> .'.
+                '?item ppi:propertyAddress ?___propertyAddress_0 .
+                ?item ppi:transactionDate ?___transactionDate .
+                ?item rdf:type ppi:TransactionRecord .
+            } } ORDER BY DESC(?___transactionDate) OFFSET 0 LIMIT 5';
+		//FILTER (REGEX(SUBSTR(?___postcode,1,4) , "' . $postcode . '", "i"))
+		// UNION {
+                // ?___propertyAddress_0 common:town "'.$town.'"^^<http://www.w3.org/2001/XMLSchema#string> .
+                // ?___propertyAddress_0 common:street "'.$street.'"^^<http://www.w3.org/2001/XMLSchema#string> .'.
+                // $sparql_postcode .
+                // '?item ppi:propertyAddress ?___propertyAddress_0 .
+                // ?item ppi:transactionDate ?___transactionDate .
+                // ?item rdf:type ppi:TransactionRecord .
+            // }
+        $result = sparql_query($sparql);
+
+        $comparables = array();
+        while( $row = sparql_fetch_array( $result ) )
+        {
+            $comparables[] = $row['item'];
+        }
+		
+		// return $comparables;
+        
+		$data = array();
+        foreach ($comparables as $comparable) {
+        	try {
+	            $arr = array();
+	            $comparable_info = file_get_contents($comparable.'.json');
+	            $json = json_decode($comparable_info, true);
+	
+	            $arr['price'] = $json['result']['primaryTopic']['pricePaid'];
+	
+	            $addr = $json['result']['primaryTopic']['propertyAddress'];
+	            $paon = array_key_exists('paon', $addr) ? $addr['paon'].' ' : '';
+	            $street = array_key_exists('street', $addr) ? $addr['street'].',' : '';
+	            $town = array_key_exists('town', $addr) ? $addr['town'].',' : '';
+	            $locality = array_key_exists('locality', $addr) ? $addr['locality'].',' : '';
+	            $district = array_key_exists('district', $addr) ? $addr['district'].',' : '';
+	            $county = array_key_exists('county', $addr) ? $addr['county'] : '';
+	            $arr['address'] = $paon.$street.$town.$locality.$district.$county;
+	
+	            $arr['transactionDate'] = $json['result']['primaryTopic']['transactionDate'];
+	
+	            $postcode = $addr['postcode'];
+	            // $addr = str_replace(',', ' ', $arr['address']);
+	            $latlng = $this->getLatLngByAddr($arr['address']);
+	            if ($latlng === 'ZERO_RESULTS')
+					$latlng = $this->getLatLngByAddr($street.$town.$locality.$district.$county);
+	            $arr['distance'] = $this->Haversine($location, $latlng);
+	
+	            $data[] = $arr;
+	    	} catch (\Exception $ex) {
+	    		return $data;
+	    	}
+        }
+
+        return $data;
+    }
+
+    public function getGooAddressById($propertyId) {
+    	$property = $this->propertyRepo->fetch($propertyId);
+        $address = str_replace(" ", "+", $property->address);
+		
+		$location = $this->getLatLngByAddr($address);
+				
+		$json = file_get_contents("http://maps.google.com/maps/api/geocode/json?latlng=".$location[0].",".$location[1]."&sensor=false");
+		$json = json_decode($json);
+		
+		$addr_comp = $json->results[0]->address_components;
+		$street = $locality = $town = $county = '';
+		foreach ($addr_comp as $addr) {
+			$addr_type = $addr->types;
+			$addr_name = $addr->long_name; 
+			if (in_array('route', $addr_type))
+				$street = $addr_name;
+			else if (in_array('locality', $addr_type))
+				$locality = $addr_name;
+			else if (in_array('postal_town', $addr_type))
+				$town = $addr_name;
+			else if (in_array('administrative_area_level_1', $addr_type) || in_array('administrative_area_level_2', $addr_type))
+				$county = $addr_name;
+			else if (in_array('postal_code', $addr_type))
+				$postcode = $addr_name;
+		}
+		
+		return array('street' => $street, 'locality' => $locality, 'town' => $town, 'county' => $county, 'postcode' => $postcode, 'location' => $location);
+    }
+
+	public function getLatLngByAddr($address) {
+		$address = str_replace(" ", "+", $address);
+		$json = file_get_contents("http://maps.google.com/maps/api/geocode/json?address=".$address."&sensor=false");
+	    $json = json_decode($json);
+		
+		if ($json->status === "ZERO_RESULTS")
+			return "ZERO_RESULTS";
+		
+		$lat = $json->results[0]->geometry->location->lat;
+		$lng = $json->results[0]->geometry->location->lng;
+		
+		return array($lat, $lng);
+	}
+
+    public function Haversine($start, $finish) {
+
+        $theta = $start[1] - $finish[1];
+        $distance = (sin(deg2rad($start[0])) * sin(deg2rad($finish[0]))) + (cos(deg2rad($start[0])) * cos(deg2rad($finish[0])) * cos(deg2rad($theta)));
+        $distance = acos($distance);
+        $distance = rad2deg($distance);
+        $distance = $distance * 60 * 1.1515;
+
+        return round($distance, 2)*1.609344;
+
     }
 }

@@ -3,6 +3,8 @@ namespace crunch;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Config;
+use models\entities\Catalogue;
+use models\entities\Property;
 use models\interfaces\DataLogicInterface;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
@@ -54,6 +56,12 @@ class CrunchScrapeCommand extends Command
         );
         $catalogues = $agency->catalogues;
         $count = 0;
+		
+		if ($agent == "dataexport")
+			$artisan_command = "crunch:feed";
+		else if ($agent == "zoopla")
+			$artisan_command = "crunch:list";
+		
         foreach ($catalogues as $catalogue) {
             $this->info("Scraping Url " . $catalogue->url);
             $scrapeData = array(
@@ -70,7 +78,7 @@ class CrunchScrapeCommand extends Command
                 $scrapeData["--proxy"] = $this->option("proxy");
             }
 
-            $this->call("crunch:list", $scrapeData);
+            $this->call($artisan_command, $scrapeData);
             $this->info("Finished scraping " . $catalogue->url);
         }
 

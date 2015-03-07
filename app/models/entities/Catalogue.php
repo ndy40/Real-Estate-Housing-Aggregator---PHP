@@ -15,7 +15,7 @@ class Catalogue extends Ardent
     public $timestamps = false;
     
     public static $rules = array (
-        'url' => 'required|url',
+        //'url' => 'required|url',
     );
     
     public function agency()

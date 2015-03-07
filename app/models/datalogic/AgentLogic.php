@@ -32,6 +32,8 @@ class AgentLogic implements DataLogicInterface
     public function addCatalogue($agentId, $url)
     {
         $agent = $this->agentRepo->fetch($agentId);
+	if (count(Catalogue::where('url', '=', $url)->get()))
+		return;
         $catalogue = new Catalogue();
         $catalogue->url = $url;
         return $agent->catalogues()->save($catalogue);

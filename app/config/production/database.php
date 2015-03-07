@@ -33,10 +33,10 @@ return array(
 	'connections' => array(
 		'mysql' => array(
 			'driver'    => 'mysql',
-			'host'      => 'localhost',
+			'host'      => '10.129.128.217',
 			'database'  => 'propertycrunch',
-			'username'  => 'propertycrunch',
-			'password'  => 'rcx2gbAQFe1Uv9Fb66oaTz2zziBj9Y55VUjFvC7lf1fD2s2iPS',
+			'username'  => 'pc_backend',
+			'password'  => 'faxUbviglujNececsIvdawwobZowkyofvocvatPafWajyaHycleygeikBaft',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
@@ -59,7 +59,7 @@ return array(
 		'cluster' => false,
 
 		'default' => array(
-			'host'     => 'localhost',
+			'host'     => '10.129.128.217',
 			'port'     => 6379,
 			'database' => "pc",
 		),

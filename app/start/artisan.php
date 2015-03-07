@@ -2,7 +2,12 @@
 
 use crunch\CrunchItemCommand;
 use crunch\CrunchListCommand;
+use crunch\CrunchFeedCommand;
 use crunch\CrunchScrapeCommand;
+use crunch\CrunchRemoveCommand;
+use crunch\ComputeYieldCommand;
+use crunch\CrunchUpdateCommand;
+use models\repositories\PropertyRepository;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,4 +24,12 @@ Artisan::add(new CrunchListCommand(App::make("ScrapeFactory")));
 
 Artisan::add(new CrunchItemCommand(App::make("ScrapeFactory")));
 
+Artisan::add(new CrunchFeedCommand(App::make("ScrapeFactory")));
+
 Artisan::add(new CrunchScrapeCommand(App::make("AgentLogic")));
+
+Artisan::add(new CrunchRemoveCommand(App::make("PropertyRepository")));
+
+Artisan::add(new ComputeYieldCommand(App::make("PropertyLogic")));
+
+Artisan::add(new CrunchUpdateCommand(App::make("AgentLogic")));

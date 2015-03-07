@@ -8,7 +8,7 @@ return array (
     
     //name of the script to use for initiating crawls.
     "script_name" => base_path() . "/crawlers/crunch.js",
-    
+
     "config_file" => base_path() . "/crawlers/config.json",
     
     "output_path" => storage_path() . "/scrape",
@@ -30,6 +30,8 @@ return array (
     "image_filename_template" => "%d_%d_%s.jpg", // property ID_Serial_Number_timestamp
     
     "tor_port" => "localhost:9050",
+
+    "dataexport_upload_path" => "/home/dataexport/uploads",
     
 );
 

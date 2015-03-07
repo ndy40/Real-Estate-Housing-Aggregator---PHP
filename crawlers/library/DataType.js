@@ -28,7 +28,8 @@ DataType.integer = function (text) {
 
 DataType.currency = function (text) {
     'use strict';
-    var pattern = /(\d{1,3})(,\d{3})*(\.\d{2,3})?/i,
+    //var pattern = /(\d{1,3})(,\d{3})*(\.\d{2,3})?/i,
+    var pattern = /\$?([0-9]{1,3},([0-9]{3},)*[0-9]{3}|[0-9]+)(.[0-9]*)?$/i,
         content = text,
         result = null,
         temp;

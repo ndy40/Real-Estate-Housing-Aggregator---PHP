@@ -77,7 +77,7 @@ Zoopla.prototype.scrapeItems = function () {
                return {
                    url  : e.querySelector('a[itemprop=url]').href,
                    name : e.querySelector('a[itemprop=name]').textContent
-               } 
+               };
             });
         });
     self.results.push(_.flatten(products));
@@ -133,7 +133,7 @@ Zoopla.prototype.itemDetail = function (casperjs, url) {
                 return Array.prototype.map.call(images, function (e) {
                     return e.getAttribute("data-photo");
                 });
-            });
+            });	
             
             self.results.push(property);
         });

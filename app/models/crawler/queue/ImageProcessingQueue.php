@@ -24,6 +24,8 @@ class ImageProcessingQueue extends JobQueue
     protected $filename_template;
 
     protected $image_dir;
+	
+	protected $container;
 
     protected function init()
     {
@@ -48,10 +50,12 @@ class ImageProcessingQueue extends JobQueue
 
         $this->dimensions_config["image_thumb"]
             = Config::get("crawler.image_thumb");
+			
+		$this->container = 'PropertyCrunch';
     }
 
     public function fire($job, $data) 
-    {   
+    {
         $this->init();
         //Get Property ID and Fetch property from DB.
         $property = $this->propertyRepo->findProperty($data["property_id"]);
@@ -103,8 +107,9 @@ class ImageProcessingQueue extends JobQueue
 
             if (hash("md5", $hashString) != hash("md5", $hashStringSrc)) {
                 $property->images->each(function ($image) {
-                    unlink($image->image);
-                    unlink($image->thumb);
+                	echo basename($image->image);
+                	\OpenCloud::delete($this->container, basename($image->image));
+					\OpenCloud::delete($this->container, basename($image->thumb));
                     $this->propertyRepo->deleteImage($image->id);
                 });
                 $this->savePropertyImages($property, $data["images"]);
@@ -130,9 +135,15 @@ class ImageProcessingQueue extends JobQueue
         try {
             $image_number = 0;
             $imageObject = array();
+            $filenames = array();
+            $basenames = array();
             //Loop over images, create image classes Thumbnail etc.
             foreach($images as $src) {
-                $image = ImageLib::make($src);
+				try {
+                	$image = ImageLib::make($src);
+				} catch (\Exception $ex) {
+					continue;
+				}
                 $basename = pathinfo($src, PATHINFO_BASENAME);
                 $filename = sprintf(
                     $this->filename_template,
@@ -140,6 +151,8 @@ class ImageProcessingQueue extends JobQueue
                     ++$image_number,
                     date("d-m-Y")
                 );
+                $filenames[] = $filename;
+                $basenames[] = $basename;
                 $full  = $this->image_dir["full"] . "/" . $filename;
 
                 //create full image
@@ -158,19 +171,59 @@ class ImageProcessingQueue extends JobQueue
                 );
                 $thumb = $this->image_dir["thumb"] . "/" . $filename;
                 $image->save(public_path() . $thumb, 20);
+            }
 
+			// create tar.gz file to upload to rackspace
+			$tmp_full = new \PharData(public_path() . $this->image_dir["full"] . '/' . $property->id . '-image-full.tar');
+			$files = glob(public_path() . $this->image_dir["full"] . '/' . $property->id . '_*.jpg');
+			if (empty($files))
+				return null;
+			foreach($files as $file){
+            	if(is_file($file)) {
+            		$tmp_full->addFile($file, 'full-' . basename($file));
+					unlink($file);
+				}
+            }
+			$tmp_full->compress(\Phar::GZ);
+			
+			$tmp_thumb = new \PharData(public_path() . $this->image_dir["thumb"] . '/' .$property->id. '-image-thumb.tar');
+			$files = glob(public_path() . $this->image_dir["thumb"] . '/' . $property->id . '_*.jpg');
+			foreach($files as $file){
+            	if(is_file($file)) {
+            		$tmp_thumb->addFile($file, 'thumb-' . basename($file));
+					unlink($file);
+				}
+            }
+			$tmp_thumb->compress(\Phar::GZ);
+
+            // upload tar.gz files to rackspace
+            $file = \OpenCloud::uploadZip($this->container, public_path() . $this->image_dir["full"] . '/' . $property->id . '-image-full.tar.gz');
+			$file = \OpenCloud::uploadZip($this->container, public_path() . $this->image_dir["thumb"] . '/' . $property->id . '-image-thumb.tar.gz');
+            $cdnUrl = $file->PublicURL();
+			
+			// remove tar and tar.gz files
+			foreach (glob(public_path() . $this->image_dir["full"] . '/' . $property->id . '-image-full*') as $file) {
+				unlink($file);
+			}
+			foreach (glob(public_path() . $this->image_dir["thumb"] . '/' . $property->id . '-image-thumb*') as $file) {
+				unlink($file);
+			}
+
+            $image_number = 0;
+            foreach($filenames as $filename) {
                 $img = new Image();
-                $img->image = Config::get("app.url") . $full;
-                $img->thumb = Config::get("app.url") . $thumb;
+                $img->image = $cdnUrl . '/full-' . $filename;
+                $img->thumb = $cdnUrl . '/thumb-' . $filename;
                 $img->enabled = 1;
-                $img->basename = $basename;
+                $img->basename = $basenames[$image_number++];
 
-                $imageObject[] = $img;    
+                $imageObject[] = $img;
             }
             
             return $imageObject;
             
         } catch (\Exception $ex) {
+            echo "   image save exception  ";
             Log::error($ex->getMessage());
         }
         
@@ -185,6 +238,7 @@ class ImageProcessingQueue extends JobQueue
                 $property->images()->save($img);
             }
         } catch (\Exception $ex) {
+
             Log::error($ex->getMessage());
             return false;
         }

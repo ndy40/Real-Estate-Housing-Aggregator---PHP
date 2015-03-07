@@ -71,11 +71,3 @@ casperjs.run(function () {
     casperjs.echo(output);
     this.exit(0);
 });
-
-
-
-
-
-
-
-

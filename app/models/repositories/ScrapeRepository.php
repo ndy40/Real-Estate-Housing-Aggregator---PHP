@@ -17,6 +17,10 @@ use models\entities\Property;
 use models\interfaces\PropertyRespositoryInterface;
 use models\interfaces\ScrapeRepositoryInterface;
 use Illuminate\Support\Facades\Queue;
+
+use models\entities\PropertyType;
+
+use postcode\Postcode;
 /**
  * Description of ScrapeRepository
  *
@@ -27,10 +31,10 @@ class ScrapeRepository implements ScrapeRepositoryInterface
     protected $propertyRepo;
 
     protected $agentRepo;
-    
+
     /**
-     * Constructor to create ScrapeRepository Insteance. 
-     * 
+     * Constructor to create ScrapeRepository Insteance.
+     *
      * @param \models\interfaces\PropertyRespositoryInterface $propRepo
      * @param \models\interfaces\AgentRepositoryInterface $agentRepo
      */
@@ -56,14 +60,14 @@ class ScrapeRepository implements ScrapeRepositoryInterface
 
     /**
      * This saves failed scrape jobs into the
-     * 
+     *
      * @param string $country - Country code.
      * @param string $agent - Agency name.
      * @param FailedScrapes $failedScrape An insteance of the FailedScrape class.
      */
     public function saveFailedScrapes(
-        $agent, 
-        $country, 
+        $agent,
+        $country,
         FailedScrapes $failedScrape
     ){
         $agency = $this->agentRepo->fetchAgentByNameAndCountry(
@@ -162,7 +166,7 @@ class ScrapeRepository implements ScrapeRepositoryInterface
                     $scrapedProperty = $this->propertyRepo->save($property);
                     $action = "update";
                 }
-                
+
                 if ($scrapedProperty === false) {
                     Log::warning("Failed to save property " . $scrapedProperty);
                 } else {
@@ -174,7 +178,7 @@ class ScrapeRepository implements ScrapeRepositoryInterface
                     );
                     Queue::push("ImageProcessingQueue", $jobData, "scrape_images");
                 }
-                
+
                 break;
         }
 
@@ -184,6 +188,7 @@ class ScrapeRepository implements ScrapeRepositoryInterface
     protected function buildPropertyClassPart(\DOMDocument $data)
     {
         $scrapeProperty = array();
+
         $country = rawurldecode($data->getElementsByTagName('country')->item(0)->nodeValue);
         $agent = rawurldecode($data->getElementsByTagName('agent')->item(0)->nodeValue);
 
@@ -214,6 +219,8 @@ class ScrapeRepository implements ScrapeRepositoryInterface
 
         $scrapeProperty['url'] = rawurldecode($data->getElementsByTagName('url')->item(0)->nodeValue);
 
+        $scrapeProperty['description'] = $data->getElementsByTagName('description')->item(0)->nodeValue;
+
         $scrapeProperty['hash'] = $this->propertyRepo->generatePropertyHash(
             $country,
             $agent,
@@ -226,8 +233,6 @@ class ScrapeRepository implements ScrapeRepositoryInterface
         );
         $property = new Property();
         $property->assignAttributes($scrapeProperty);
-        
-        
 
         return $property;
     }
@@ -257,7 +262,10 @@ class ScrapeRepository implements ScrapeRepositoryInterface
             $postCodes = $this->propertyRepo->fetchPostCode($postCode);
             $areas = array();
             foreach ($postCodes as $postCode) {
-                $areas[] = str_replace(" ", "\s", strtolower($postCode->area));
+                //$areas[] = str_replace(" ", "\s", strtolower($postCode->area));
+                $area_str = str_replace(" ", "\s", strtolower($postCode->area));
+                $area_str = str_replace("/", "\/", $area_str);
+                $areas[] = $area_str;
             }
             $regex = implode("|", $areas);
             Cache::put($key, $regex, 10);

@@ -26,7 +26,7 @@ return array(
 	|
 	*/
 
-	'url' => 'http://propertycrunch.local/',
+	'url' => 'http://property-crunch.local/',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -108,6 +108,7 @@ return array(
                 'Cartalyst\Sentry\SentryServiceProvider',
                 'Kmd\Logviewer\LogviewerServiceProvider',
                 "Intervention\Image\ImageServiceProvider",
+        	'Thomaswelton\LaravelRackspaceOpencloud\LaravelRackspaceOpencloudServiceProvider',
 	),
 
 	/*
@@ -174,7 +175,8 @@ return array(
 		'Validator'       => 'Illuminate\Support\Facades\Validator',
 		'View'            => 'Illuminate\Support\Facades\View',
                 'Sentry'          => 'Cartalyst\Sentry\Facades\Laravel\Sentry',
-                'Image'           => "Intervention\Image\Facades\Image"
+                'Image'           => "Intervention\Image\Facades\Image",
+        	'OpenCloud' => 'Thomaswelton\LaravelRackspaceOpencloud\Facades\OpenCloud'
 	),
 
 );
