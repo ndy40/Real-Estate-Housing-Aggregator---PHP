@@ -57,7 +57,7 @@ return array(
 			'host'      => 'localhost',
 			'database'  => 'propertycrunch',
 			'username'  => 'root',
-			'password'  => 'mysql',
+			'password'  => 'sourcefuse',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',

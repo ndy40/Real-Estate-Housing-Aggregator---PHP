@@ -1,4 +1,5 @@
 <?php
+
 namespace controllers\search;
 
 use Illuminate\Support\Facades\Response;
@@ -12,17 +13,15 @@ use BaseController;
  *
  * @author ndy40
  */
-class SearchController extends BaseController
-{
+class SearchController extends BaseController {
+
     protected $propertyLogic;
 
-    public function __construct()
-    {
+    public function __construct() {
         $this->propertyLogic = App::make("PropertyLogic");
     }
 
-    public function getPostCodes($location)
-    {
+    public function getPostCodes($location) {
         $data = null;
         $cacheIndex = "postcodes_" . $location;
 
@@ -30,15 +29,14 @@ class SearchController extends BaseController
             $data = Cache::get("location_" . $location);
         } else {
             $data = $this->propertyLogic
-                ->searchLocationByCountyAndPostCode($location)->toArray();
+                            ->searchLocationByCountyAndPostCode($location)->toArray();
             Cache::put($cacheIndex, $data, 10);
         }
 
         return Response::json(array("data" => $data));
     }
 
-    public function getLocation($name)
-    {
+    public function getLocation($name) {
         $data = null;
         $cacheIndex = "location_" . $name;
         if (Cache::has($cacheIndex)) {
@@ -51,8 +49,7 @@ class SearchController extends BaseController
         return Response::json(array("data" => $data));
     }
 
-    public function getPropertyTypes()
-    {
+    public function getPropertyTypes() {
         $data = null;
         if (Cache::has("property_types")) {
             $data = Cache::get("property_types");
@@ -74,8 +71,7 @@ class SearchController extends BaseController
         return Response::json(array("data" => $data));
     }
 
-    public function getSearchProperties($filter = "", $startIndex = 1, $size = 25)
-    {
+    public function getSearchProperties($filter = "", $startIndex = 1, $size = 25) {
         if (!isset($filter) || empty($filter)) {
             return Response::json("false", 400);
         }
@@ -91,14 +87,8 @@ class SearchController extends BaseController
             $direction = Input::has("direction") ? Input::get("direction") : "asc";
 
             $data = $this->propertyLogic->searchProperty(
-                $filter,
-                true,
-                $column,
-                $direction,
-                $startIndex,
-                $size,
-                $queryString
-            )->toArray();
+                            $filter, true, $column, $direction, $startIndex, $size, $queryString
+                    )->toArray();
 
             $count = $this->propertyLogic->searchPropertyCount($filter, true, $queryString);
 
@@ -117,8 +107,7 @@ class SearchController extends BaseController
         return Response::json($response, 200);
     }
 
-    public function getAvgRoomPrices($countyId)
-    {
+    public function getAvgRoomPrices($countyId) {
         $data = $this->propertyLogic->getAvgRoomPricesByCounty($countyId);
 
         if (isset($data)) {
@@ -128,8 +117,7 @@ class SearchController extends BaseController
         return Response::json(array("data" => $response));
     }
 
-    public function getUserProperties()
-    {
+    public function getUserProperties() {
         $authLogic = App::make("AuthLogic");
         $user = $authLogic->getCurrentUser();
         $data = $user->savedProperties()->with("property")->get()->toArray();
@@ -137,8 +125,7 @@ class SearchController extends BaseController
         return Response::json(array("data" => $data));
     }
 
-    public function postSaveUserProperty()
-    {
+    public function postSaveUserProperty() {
         $data = Input::get("data");
         $propertyId = $data["property_id"];
         $calculations = json_encode($data["calculations"]);
@@ -151,12 +138,11 @@ class SearchController extends BaseController
         return Response::json($saved);
     }
 
-    public function getRemoveSavedProperty($userId, $propertyId)
-    {
+    public function getRemoveSavedProperty($userId, $propertyId) {
+        
     }
 
-    public function getPropertyHistory($id)
-    {
+    public function getPropertyHistory($id) {
         $property = $this->propertyLogic->find($id);
 
         if ($property) {
@@ -168,15 +154,14 @@ class SearchController extends BaseController
         return Response::json(array("data" => $data));
     }
 
-    public function getProperty($id)
-    {
+    public function getProperty($id) {
         $property = $this->propertyLogic->find($id);
 
         if ($property) {
-        	$result = $property->toArray();
-		$type = $this->propertyLogic->findPropertySearchTypes($property->type_id);
-		$result['type'] = $type->name;
-		return Response::json($result, 200);
+            $result = $property->toArray();
+            $type = $this->propertyLogic->findPropertySearchTypes($property->type_id);
+            $result['type'] = $type->name;
+            return Response::json($result, 200);
         }
         return Response::json(array("flash" => "Property not found."), 401);
     }
@@ -197,25 +182,27 @@ class SearchController extends BaseController
         return Response::json($data, $responseCode);
     }
 
-    public function getAverageRentalYield(
-        $postCodeId,
-        $numOfRooms,
-        $typeId,
-        $offerType = 'Sale'
-    ){
+    public function getAverageRentalYield($postCodeId, $numOfRooms, $typeId, $offerType = 'Sale') {
 
         $avg_price = $this->propertyLogic->getAveragePrice(
-            $postCodeId,
-            $numOfRooms,
-            $typeId,
-            $offerType
+                $postCodeId, $numOfRooms, $typeId, $offerType
         );
 
         return Response::json(array("data" => $avg_price));
     }
 
     public function getComparableProperties($propertyId) {
-	$comparables = $this->propertyLogic->getComparableProperties($propertyId);
+        $comparables = $this->propertyLogic->getComparableProperties($propertyId);
         return Response::json($comparables);
     }
+
+    public function getSearchAutoCompleteOptions($search, $recordCount = 10) {
+        $suggestions = $this->propertyLogic->getAutoCompleteSuggestion($search, $recordCount);
+        $count = count($suggestions);
+        if (count($suggestions) > 0) {
+            $suggestions = $suggestions->toArray();
+        }
+        return Response::json(array("count" => $count, "data" => $suggestions));
+    }
+
 }

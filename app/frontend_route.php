@@ -58,3 +58,7 @@ Route::group(array("prefix" => "client"), function (){
     Route::controller("search", "controllers\search\SearchController");
     Route::controller("auth", "controllers\service\AuthService");
 });
+
+Route::any('client/sendemailtofriend/{property_id}', "controllers\property\PropertyController@sendPropertyEmailToFriend")->where('property_id', '[0-9]+');
+Route::any('client/sendrequestdetail/{property_id}', "controllers\property\PropertyController@sendPropertyRequestDetail")->where('property_id', '[0-9]+');
+Route::any('client/sendretentionemail', "controllers\property\PropertyController@sendRetentionWeeklyEmailToUsers");
