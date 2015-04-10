@@ -1,3 +1,6 @@
+<html>
+    <head><title>Email To Friend</title></head>
+    <body>
 <style>
     @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600);
 </style>
@@ -56,7 +59,7 @@
                                         <tbody>
                                             <tr>
                                                 <td align="center" style="font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:20px;font-weight:400;color:#818181">
-                                                    {{ $message }}:
+                                                    {{ $messages }}:
                                                 </td>
                                             </tr>
                                             <tr>
@@ -108,3 +111,5 @@
         </tbody>
     </table>
 </div>
+</body>
+</html>

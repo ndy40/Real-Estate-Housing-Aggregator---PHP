@@ -149,7 +149,7 @@ class PropertyController extends BaseController {
         $friendemails = explode(',', Input::get("friendemail"));
         $message = Input::get("message");
 
-        $data = array('name' => $name, 'email' => $email, 'message' => $message, 'property_id' => $property_id);
+        $data = array('name' => $name, 'email' => $email, 'messages' => $message, 'property_id' => $property_id);
         //return View::make("emails.emailtofriend", $data);exit;
         \Mail::queue("emails.emailtofriend", $data, function ($message) use ($name, $email, $friendemails) {
                     $message->from($email, $name)->to($friendemails)->subject("Property Crunch | Property Detail");
@@ -175,19 +175,19 @@ class PropertyController extends BaseController {
 
         // send to agent..
         $data = array(
-            'name' => $name, 'email' => $email, 'message' => $message,
+            'name' => $name, 'email' => $email, 'messages' => $message,
             'phone' => $phone, 'property_id' => $property_id, 'recepientemail' => $agentemail, 'recepientname' => $agentname);
         \Mail::send("emails.requestdetail", $data, function ($message) use ($name, $email, $agentemail) {
                     $message->from($email, $name)->to($agentemail)->subject("Property Crunch | Property Request Detail");
                 }
         );
         // send to default emails..
-        if (!empty(Config::get('mail.default_email'))) {
+        if (Config::get('mail.default_email')!='') {
             foreach (Config::get('mail.default_email') as $defaultEmailKey => $defaultEmail) {
                 $defaultEmailNameArray = Config::get('mail.default_email_name');
                 $defaultEmailName = $defaultEmailNameArray[$defaultEmailKey];
                 $dataDefault = array(
-                    'name' => $name, 'email' => $email, 'message' => $message, 'phone' => $phone, 'property_id' => $property_id,
+                    'name' => $name, 'email' => $email, 'messages' => $message, 'phone' => $phone, 'property_id' => $property_id,
                     'recepientemail' => $defaultEmail, 'recepientname' => $defaultEmailName);
                 \Mail::send("emails.requestdetail", $dataDefault, function ($message) use ($name, $email, $defaultEmail, $defaultEmailName) {
                             $message->from($email, $name)->to($defaultEmail, $defaultEmailName)
