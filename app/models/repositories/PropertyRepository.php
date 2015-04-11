@@ -477,7 +477,7 @@ class PropertyRepository implements PropertyRespositoryInterface {
                             pcl.`new_price` IS NOT NULL AND (p.yield > 0 AND p.yield IS NOT NULL)
                             ORDER BY pcl.property_id, p.`updated_at` DESC
                     ) AS t 
-                    WHERE t.old_price > t.new_price 
+                    WHERE t.old_price > t.new_price AND redpercent > 0.1
                     GROUP BY t.id ORDER BY priceDiff LIMIT ?";
         }
 
