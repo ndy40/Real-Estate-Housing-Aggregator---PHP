@@ -96,12 +96,12 @@
                                                                                                     </tr>
                                                                                                     <tr>
                                                                                                         <td width="100%" align="left" style="font-size:18px;font-family:helvetica,sans-serif;padding:8px 10px 8px 10px;background-color:#ffffff;border-bottom:1px solid #d9d9d9;border-bottom-left-radius:2px;border-bottom-right-radius:2px">
-                                                                                                            <a href="{{ Config::get('app.frontend_url') }}/#!/property/{{ $highYieldProperty->id }}" style="font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif; text-decoration:none;font-weight:700;font-size:18px;color:#2A96C2;" target="_blank">&pound;{{ $highYieldProperty->new_price }}</a>
+                                                                                                            <a href="{{ Config::get('app.frontend_url') }}/#!/property/{{ $highYieldProperty->id }}" style="font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif; text-decoration:none;font-weight:700;font-size:18px;color:#2A96C2;" target="_blank">&pound;{{ $highYieldProperty->price }}</a>
                                                                                                         </td>                                                                         </td>
                                                                                                     </tr>
                                                                                                     <tr>
                                                                                                         <td width="100%" align="left" style="font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif; padding:10px;
-                                                                                                            background-color:#ffffff;font-size: 12px">{{ substr($highYieldProperty->address, 0,30) }}</td>
+                                                                                                            background-color:#ffffff;font-size: 12px">{{ substr(str_replace(',', ', ',$highYieldProperty->address), 0,30) }}</td>
                                                                                                     </tr>
                                                                                                     <tr>
                                                                                                         <td width="153px" align="right" style="border-top:1px solid #d9d9d9;padding:6px 10px 6px 10px;background-color:#ededed">
@@ -111,7 +111,7 @@
                                                                                                                     <tr>
                                                                                                                         <td align="left" style="font-size:11px;font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif">
                                                                                                                             <div style="font-size:16px; font-weight: 700">
-                                                                                                                                &pound;850
+                                                                                                                                &pound;{{ number_format($highYieldProperty->rent, 2, '.',',') }}
                                                                                                                             </div>
                                                                                                                             <div style="font-weight:400;font-size:11px;">
                                                                                                                                 Rental Income
@@ -191,11 +191,13 @@
                                                                                                     </tr>
                                                                                                     <tr>
                                                                                                         <td width="100%" align="left" style="font-size:18px;font-family:helvetica,sans-serif;padding:8px 10px 8px 10px;background-color:#ffffff;border-bottom:1px solid #d9d9d9;border-bottom-left-radius:2px;border-bottom-right-radius:2px">
-                                                                                                            <a href="{{ Config::get('app.frontend_url') }}/#!/property/{{ $highReducedProperty->id }}" style="font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif; text-decoration:none;font-weight:700;font-size:18px;color:#2A96C2;" target="_blank">&pound;{{ $highReducedProperty->new_price }}</a>                                                                         </td>
+                                                                                                            <a href="{{ Config::get('app.frontend_url') }}/#!/property/{{ $highReducedProperty->id }}" style="font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif; text-decoration:none;font-weight:700;font-size:18px;color:#2A96C2;" target="_blank">
+                                                                                                                &pound;{{ $highReducedProperty->price }}</a>                                                                         
                                                                                                         </td>
                                                                                                     </tr>
                                                                                                     <tr>
-                                                                                                        <td width="100%" align="left" style="font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif; padding:10px;background-color:#ffffff;font-size: 12px">{{ substr($highReducedProperty->address, 0,30) }}</td>
+                                                                                                        <td width="100%" align="left" style="font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif; padding:10px;background-color:#ffffff;font-size: 12px">
+                                                                                                            {{ substr(str_replace(',', ', ', $highReducedProperty->address), 0,30) }}</td>
                                                                                                     </tr>
                                                                                                     <tr>
                                                                                                         <td width="153px" align="right" style="border-top:1px solid #d9d9d9;padding:6px 10px 6px 10px;background-color:#ededed">
@@ -205,7 +207,7 @@
                                                                                                                     <tr>
                                                                                                                         <td align="left" style="font-size:11px;font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif">
                                                                                                                             <div style="font-size:16px; font-weight: 700">
-                                                                                                                                &pound;850
+                                                                                                                                &pound;{{ number_format($highYieldProperty->rent, 2, '.',',') }}
                                                                                                                             </div>
                                                                                                                             <div style="font-weight:400;font-size:11px;">
                                                                                                                                 Rental Income
@@ -213,7 +215,7 @@
                                                                                                                         </td>
                                                                                                                         <td align="right" style="font-size:11px;font-family:'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif">
                                                                                                                             <div style="font-size:16px; font-weight: 700">
-                                                                                                                                {{ $highReducedProperty->yield }} %
+                                                                                                                                {{ number_format($highReducedProperty->yield, 2, '.',',') }} %
                                                                                                                             </div>
                                                                                                                             <div style="font-weight:400;font-size:11px;">
                                                                                                                                 Yield
@@ -225,7 +227,9 @@
                                                                                                         </td>
                                                                                                     </tr>
                                                                                                     <tr>
-                                                                                                        <td width="100%" align="left" style="font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif; padding:10px;background-color:#ffffff;font-size: 13px; font-weight: 700;color:#F44647;border-top:1px solid #d9d9d9;">{{ $highReducedProperty->redpercent }}% reduction in price</td>
+                                                                                                        <td width="100%" align="left" style="font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif; padding:10px;background-color:#ffffff;font-size: 13px; font-weight: 700;color:#F44647;border-top:1px solid #d9d9d9;">
+                                                                                                            {{ number_format($highReducedProperty->redpercent, 2, '.',',') }}% reduction in price
+                                                                                                        </td>
                                                                                                     </tr>
                                                                                                 </tbody>
                                                                                             </table>

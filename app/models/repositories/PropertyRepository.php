@@ -458,27 +458,27 @@ class PropertyRepository implements PropertyRespositoryInterface {
 
     public function getPropertiesByType($type, $recordCount = 3) {
         if ($type == 'HighestYield')
-            $sql = "SELECT * FROM (
-                        SELECT p.id, i.`image` image, p.rooms, p.address, p.yield, p.phone, pcl.`new_price`
-                        FROM properties p
-                        LEFT JOIN property_change_logs pcl ON p.`id` = pcl.`property_id` 
-                        LEFT JOIN images i ON p.`id` = i.`property_id` 
-                        WHERE p.offer_type = ? AND pcl.`new_price` IS NOT NULL
-                        ORDER BY p.yield DESC, pcl.`updated_at` DESC
-                    ) AS t GROUP BY t.id ORDER BY t.yield DESC LIMIT ?";
+            $sql = "SELECT p.id, i.`image` image, p.rooms, p.address, p.yield, p.phone, p.`price`, (p.yield * p.`price`)/(12*100) rent
+                    FROM properties p
+                        JOIN images i ON p.`id` = i.`property_id` 
+                    WHERE p.offer_type = ? 
+                    GROUP BY p.id
+                    ORDER BY p.yield DESC, p.updated_at DESC 	
+                    LIMIT ?";
         elseif ($type == 'HighReduction') {
             $sql = "SELECT * FROM (
-                        SELECT p.id, i.`image` image, p.rooms, p.address, p.yield, (100-(pcl.`new_price`/pcl.`old_price`)*100) AS redpercent,
-                        pcl.`old_price`, pcl.`new_price`, pcl.`updated_at`
-                        FROM properties p
-                        LEFT JOIN property_change_logs pcl ON p.`id` = pcl.`property_id` 
-                        LEFT JOIN images i ON p.`id` = i.`property_id` 
-                        WHERE p.offer_type = ? AND 
-                        pcl.`new_price` IS NOT NULL 
-                        ORDER BY pcl.property_id, pcl.`updated_at` DESC
+                            SELECT p.id, i.`image` image, p.rooms, p.address, p.yield, ((pcl.`old_price`- pcl.`new_price`)/pcl.`old_price`)*100 AS redpercent,
+                            pcl.`old_price`, pcl.`new_price`, (p.yield * p.`price`)/(12*100) rent, p.`price`, p.`updated_at`,
+                            (pcl.`old_price`- pcl.`new_price`) AS priceDiff
+                            FROM properties p
+                            LEFT JOIN property_change_logs pcl ON p.`id` = pcl.`property_id` 
+                            JOIN images i ON p.`id` = i.`property_id` 
+                            WHERE p.offer_type = ? AND 
+                            pcl.`new_price` IS NOT NULL AND (p.yield > 0 AND p.yield IS NOT NULL)
+                            ORDER BY pcl.property_id, p.`updated_at` DESC
                     ) AS t 
                     WHERE t.old_price > t.new_price 
-                    GROUP BY t.id ORDER BY t.redpercent DESC LIMIT ?";
+                    GROUP BY t.id ORDER BY priceDiff LIMIT ?";
         }
 
         $params = array('sale', $recordCount);

@@ -182,7 +182,7 @@ class PropertyController extends BaseController {
                 }
         );
         // send to default emails..
-        if (Config::get('mail.default_email')!='') {
+        if (Config::get('mail.default_email') != '') {
             foreach (Config::get('mail.default_email') as $defaultEmailKey => $defaultEmail) {
                 $defaultEmailNameArray = Config::get('mail.default_email_name');
                 $defaultEmailName = $defaultEmailNameArray[$defaultEmailKey];
@@ -214,12 +214,12 @@ class PropertyController extends BaseController {
                 $name = $user->first_name . ' ' . $user->last_name;
                 $userEmail = $user->email;
                 $data = array('name' => $name, 'highestYieldProperties' => $highestYieldProperties, 'highReductionProperties' => $highReductionProperties);
-                return View::make("emails.retentionweekly", $data);
-                exit;
-                \Mail::send("emails.retentionweekly", $data, function ($message) use ($userEmail) {
-                            $message->to($userEmail, $name)->subject("Property Crunch | Properties matching your preference");
-                        }
-                );
+                if (count($highestYieldProperties) > 0 || count($highReductionProperties) > 0) {
+                    \Mail::send("emails.retentionweekly", $data, function ($message) use ($userEmail) {
+                                $message->to($userEmail, $name)->subject("Property Crunch | Properties matching your preference");
+                            }
+                    );
+                }
             }
         }
     }
