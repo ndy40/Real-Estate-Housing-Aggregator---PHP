@@ -187,8 +187,8 @@ abstract class ScrapeAbstract
         $commandOutput = '';
 
         $commandOutput .= $command. " '" . $scriptName . "' "
-            . $country . " " . $agent . " " . $url
-            . " ". $type . " --log-level=" . $logLevel . " "
+            . $country . " " . $agent . " '" . $url
+            . "' ". $type . " --log-level=" . $logLevel . " "
             . "--config=" . "'$configFile'";
 
         if ($debug) {

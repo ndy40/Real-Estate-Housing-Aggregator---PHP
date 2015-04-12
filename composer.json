@@ -4,14 +4,16 @@
 	"keywords": ["framework", "laravel"],
 	"license": "MIT",
 	"require": {
-            "laravel/framework": "4.1.*",
+            "laravel/framework": "4.2.*",
             "cartalyst/sentry": "2.1.*",
             "laravelbook/ardent": "dev-master",
             "pda/pheanstalk": "v2.1.0",
             "kmd/logviewer": "1.1.*",
             "phpmd/phpmd" : "1.4.*",
             "squizlabs/php_codesniffer": "1.*",
-            "intervention/image": "2.*"
+            "intervention/image": "2.*",
+		    "stilliard/blmreader": "dev-master",
+            "Chumper/Zipper": "dev-master"
 	},
 	"autoload": {
             "classmap": [
@@ -27,7 +29,6 @@
                 "app/models/crawler",
                 "app/models/crawler/abstracts",
                 "app/models/crawler/commands",
-                "app/models/crawler/factories",
                 "app/models/crawler/queue",
                 "app/models/crawler/scrape",
                 "app/models/entities",

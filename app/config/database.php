@@ -26,7 +26,7 @@ return array(
 	|
 	*/
 
-	'default' => 'mysql',
+	'default' =>  'mysqlRemote', //'mysql',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -62,6 +62,16 @@ return array(
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
 		),
+        'mysqlRemote' => array(
+            'driver'    => 'mysql',
+            'host'      => 'propertycrunch.co',
+            'database'  => 'propertycrunch',
+            'username'  => 'propertycrunch',
+            'password'  => 'oEgYhwNeeFvP',
+            'charset'   => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+            'prefix'    => '',
+        ),
 
 		'pgsql' => array(
 			'driver'   => 'pgsql',

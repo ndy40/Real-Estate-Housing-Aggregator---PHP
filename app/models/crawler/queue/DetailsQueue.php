@@ -134,7 +134,7 @@ class DetailsQueue extends JobQueue
                 $scrapeRespository->saveFailedScrapes(
                     $data['agency'],
                     $data['country'],
-                    $failedScrapes                    
+                    $failedScrapes
                 );
                 $job->bury();
             } else {
