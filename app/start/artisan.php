@@ -2,6 +2,7 @@
 
 use crunch\CrunchItemCommand;
 use crunch\CrunchListCommand;
+use crunch\CrunchDataCommand;
 use crunch\CrunchScrapeCommand;
 use crunch\ComputeYieldCommand;
 
@@ -20,6 +21,10 @@ Artisan::add(new CrunchListCommand(App::make("ScrapeFactory")));
 
 Artisan::add(new CrunchItemCommand(App::make("ScrapeFactory")));
 
+Artisan::add(new CrunchDataCommand(App::make("ScrapeFactory")));
+
 Artisan::add(new CrunchScrapeCommand(App::make("AgentLogic")));
 
-Artisan::add(new ComputeYieldCommand(App::make("PropertyLogic")));
+Artisan::add(new CrunchRemoveCommand(App::make("PropertyRepository")));
+
+Artisan::add(new ClearBeanstalkdQueueCommand());

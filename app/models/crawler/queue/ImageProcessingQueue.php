@@ -51,7 +51,7 @@ class ImageProcessingQueue extends JobQueue
     }
 
     public function fire($job, $data) 
-    {   
+    {
         $this->init();
         //Get Property ID and Fetch property from DB.
         $property = $this->propertyRepo->findProperty($data["property_id"]);
@@ -171,6 +171,7 @@ class ImageProcessingQueue extends JobQueue
             return $imageObject;
             
         } catch (\Exception $ex) {
+            echo "   image save exception  ";
             Log::error($ex->getMessage());
         }
         
@@ -185,6 +186,7 @@ class ImageProcessingQueue extends JobQueue
                 $property->images()->save($img);
             }
         } catch (\Exception $ex) {
+
             Log::error($ex->getMessage());
             return false;
         }

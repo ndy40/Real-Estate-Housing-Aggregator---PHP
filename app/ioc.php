@@ -22,6 +22,10 @@ App::bind('DetailsQueue', function ($app) {
     return new models\crawler\queue\DetailsQueue;
 });
 
+App::bind('DataQueue', function ($app) {
+    return new models\crawler\queue\DataQueue;
+});
+
 App::bind('ImageProcessingQueue', function ($app) {
     return new models\crawler\queue\ImageProcessingQueue;
 });

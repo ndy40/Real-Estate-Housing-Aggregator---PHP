@@ -111,7 +111,7 @@ class PropertyLogic implements DataLogicInterface
      * @return mixed
      */
     public function searchProperty(
-        $filter = '',
+        $filter,
         $isPublished = true,
         $orderColumn = "updated_at",
         $direction = "asc",
@@ -183,7 +183,6 @@ class PropertyLogic implements DataLogicInterface
                 }
             }
         }
-
         return $this->propertyRepo->searchPropertyCount($filter, $isPublished, $query);
     }
 
