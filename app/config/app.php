@@ -26,7 +26,11 @@ return array(
 	|
 	*/
 
+<<<<<<< HEAD
 	'url' => 'http://propertycrunch.local/',
+=======
+	'url' => 'http://property-crunch.local/',
+>>>>>>> ce07b156a6f337b9d44a120b15c9cdd8f3f71501
 
 	/*
 	|--------------------------------------------------------------------------
@@ -65,7 +69,24 @@ return array(
 	*/
 
 	'key' => 'vitobniwe',
+<<<<<<< HEAD
 
+=======
+        
+        /*
+	|--------------------------------------------------------------------------
+	| Frontend URL
+	|--------------------------------------------------------------------------
+	|
+	| This URL is used by the console to properly generate URLs when using
+	| the Artisan command line tool. You should set this to the root of
+	| your application so that it is used when running Artisan tasks.
+	|
+	*/
+
+	'frontend_url' => 'http://v1.propertycrunch.co',
+    
+>>>>>>> ce07b156a6f337b9d44a120b15c9cdd8f3f71501
 	/*
 	|--------------------------------------------------------------------------
 	| Autoloaded Service Providers
@@ -108,7 +129,11 @@ return array(
                 'Cartalyst\Sentry\SentryServiceProvider',
                 'Kmd\Logviewer\LogviewerServiceProvider',
                 "Intervention\Image\ImageServiceProvider",
+<<<<<<< HEAD
         'Chumper\Zipper\ZipperServiceProvider',
+=======
+        	'Thomaswelton\LaravelRackspaceOpencloud\LaravelRackspaceOpencloudServiceProvider',
+>>>>>>> ce07b156a6f337b9d44a120b15c9cdd8f3f71501
 	),
 
 	/*
@@ -176,7 +201,11 @@ return array(
 		'View'            => 'Illuminate\Support\Facades\View',
                 'Sentry'          => 'Cartalyst\Sentry\Facades\Laravel\Sentry',
                 'Image'           => "Intervention\Image\Facades\Image",
+<<<<<<< HEAD
         'Zipper' => 'Chumper\Zipper\Zipper',
+=======
+        	'OpenCloud' => 'Thomaswelton\LaravelRackspaceOpencloud\Facades\OpenCloud'
+>>>>>>> ce07b156a6f337b9d44a120b15c9cdd8f3f71501
 	),
 
 );

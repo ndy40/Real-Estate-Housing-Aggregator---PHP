@@ -5,7 +5,11 @@
 
 var casperjs = require('casper').create(),
     utils   = require('utils'),
+<<<<<<< HEAD
     _ = require("../node_modules/underscore"),
+=======
+    _ = require("node_modules/underscore"),
+>>>>>>> ce07b156a6f337b9d44a120b15c9cdd8f3f71501
     fs = require('fs'),
     config,
     scriptArgs, //holds a collection of arguments for the scrape.
@@ -50,6 +54,7 @@ agentPath = config.config.directory.agents + '/' + scrapeJob.country + '/'
 agent = require(agentPath).create();
 agent.initialize (casperjs);
 
+<<<<<<< HEAD
 if (scrapeJob.agent == 'dataexport') {
 	results = agent.itemDetail(casperjs, scrapeJob.url).results;
 	casperjs.clear();
@@ -63,6 +68,16 @@ if (scrapeJob.agent == 'dataexport') {
 	        results = agent.itemListing(casperjs, scrapeJob.url).results;
 	        casperjs.clear();
 	}
+=======
+//switch context on type of job
+switch (scrapeJob.type) {
+    case 'item':
+        results = agent.itemDetail(casperjs, scrapeJob.url).results;
+        break;
+    default:
+        results = agent.itemListing(casperjs, scrapeJob.url).results;
+        casperjs.clear();
+>>>>>>> ce07b156a6f337b9d44a120b15c9cdd8f3f71501
 }
 
 //execute scrape here.

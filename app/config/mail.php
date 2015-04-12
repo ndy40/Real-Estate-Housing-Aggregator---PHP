@@ -121,4 +121,20 @@ return array(
 
 	'pretend' => false,
 
+<<<<<<< HEAD
+=======
+        /*
+	|--------------------------------------------------------------------------
+	| Default EMail
+	|--------------------------------------------------------------------------
+	|
+	| When this option is enabled, e-mail will not actually be sent over the
+	| web and will instead be written to your application's logs files so
+	| you may inspect the message. This is great for local development.
+	|
+	*/
+
+	'default_email' => array('charlesajid@gmail.com'),
+	'default_email_name' => array('Charles'),
+>>>>>>> ce07b156a6f337b9d44a120b15c9cdd8f3f71501
 );

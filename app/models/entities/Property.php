@@ -20,8 +20,15 @@ class Property extends Ardent implements MassAssignInterface
         'rooms'     => 'numeric',
         'address'   => 'required',
         'price'     => 'numeric',
+<<<<<<< HEAD
         'url'       => 'required|url',
         'offer_type'=> 'required|in:Sale,Rent'
+=======
+//        'url'       => 'required|url',
+	'url'       => '',
+//        'offer_type'=> 'required|in:Sale,Rent'
+
+>>>>>>> ce07b156a6f337b9d44a120b15c9cdd8f3f71501
     );
     
     protected $fillable = array('marketer', 'rooms', 'url', 'address', 'price',

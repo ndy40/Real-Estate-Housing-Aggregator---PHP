@@ -48,15 +48,25 @@ class ComputeYieldCommand extends Command {
 	public function fire()
 	{
             $queryString = array("offer_type" => "Sale");
+<<<<<<< HEAD
             $count = $this->propLogic->searchPropertyCount('', false, $queryString);
+=======
+            $count = $this->propLogic->searchPropertyCount('', true, $queryString);
+>>>>>>> ce07b156a6f337b9d44a120b15c9cdd8f3f71501
             $numberOfPages = ceil($count/25);
             
             for($i = 1; $i <= $numberOfPages; $i++) {
                 $properties = $this->propLogic->searchProperty(
                     '', //empty filter
+<<<<<<< HEAD
                     false, //set publish to false. Computer all. 
                     "updated_at",
                     "asc",
+=======
+                    true, //set publish to true. Computer all. 
+                    "updated_at",
+                    "",
+>>>>>>> ce07b156a6f337b9d44a120b15c9cdd8f3f71501
                     $i,
                     25,
                     $queryString

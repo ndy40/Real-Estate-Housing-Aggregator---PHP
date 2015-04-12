@@ -31,6 +31,7 @@ class DataQueue extends JobQueue
             . $data['country'] . "\nAgency:\t"
             . $data['agent'] . "\n";
         $fileContent = file_get_contents($data['result']);
+<<<<<<< HEAD
         $doc = new \DOMDocument;
         $doc->loadXML($fileContent);
         //Validate xml to ensure it meets XSD standard.
@@ -40,19 +41,38 @@ class DataQueue extends JobQueue
             $job->bury();
             return;
         }
+=======
+        $doc = new DOMDocument('1.0', 'utf-8');
+        $doc->loadXML($fileContent);
+		unlink($data['result']);
+        //Validate xml to ensure it meets XSD standard.
+        //TODO: Add settings to XSD file for validation
+
+//        if ($job->attempts() > 5) {
+//            $job->bury();
+//            return;
+//        }
+>>>>>>> ce07b156a6f337b9d44a120b15c9cdd8f3f71501
 
         $properties = $doc->getElementsByTagName("item");
         if (is_null($properties)) {
             throw new EmptyItemException('No item found in result');
+<<<<<<< HEAD
             $job->burry();
+=======
+            $job->bury();
+>>>>>>> ce07b156a6f337b9d44a120b15c9cdd8f3f71501
             return;
             //we should log this occurrence for further investigation.
         }
 
         $numberOfItems = 0;
 
+<<<<<<< HEAD
         $job->delete();
 
+=======
+>>>>>>> ce07b156a6f337b9d44a120b15c9cdd8f3f71501
         foreach ($properties as $property) {
             //get the url
             $dom = new DOMDocument('1.0', 'utf-8');
@@ -63,6 +83,7 @@ class DataQueue extends JobQueue
 			$node->appendChild($country_ele);
 			$node->appendChild($agent_ele);
 			$dom->appendChild($node);
+<<<<<<< HEAD
 			//file_put_contents('/opt/lampp/htdocs/ndy1/app/models/crawler/queue/abc.txt', $dom->saveXML());
 
             $scrapeRespository = App::make('ScrapeRepository');
@@ -72,8 +93,22 @@ class DataQueue extends JobQueue
             $numberOfItems++; //increment for each items processed.
         }
         unlink($data['result']);
+=======
+
+            $feedRespository = App::make('FeedRepository');
+	
+			$feedRespository->saveProperty($dom);
+
+            $numberOfItems++; //increment for each items processed.
+        }
+		$job->delete();
+>>>>>>> ce07b156a6f337b9d44a120b15c9cdd8f3f71501
         //do some job logging.
         echo "Finished processing job";
     }
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> ce07b156a6f337b9d44a120b15c9cdd8f3f71501

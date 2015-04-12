@@ -46,7 +46,11 @@ return array(
 	|
 	*/
 
+<<<<<<< HEAD
 	'hasher' => 'native',
+=======
+	'hasher' => 'bcrypt',
+>>>>>>> ce07b156a6f337b9d44a120b15c9cdd8f3f71501
 
 	/*
 	|--------------------------------------------------------------------------
@@ -70,7 +74,11 @@ return array(
 		|
 		*/
 
+<<<<<<< HEAD
 		'key' => 'cartalyst_sentry',
+=======
+		'key' => 'property_crunch',
+>>>>>>> ce07b156a6f337b9d44a120b15c9cdd8f3f71501
 
  	),
 
@@ -120,7 +128,11 @@ return array(
 		|
 		*/
 
+<<<<<<< HEAD
 		'model' => 'Cartalyst\Sentry\Users\Eloquent\User',
+=======
+		'model' => 'models\entities\User',
+>>>>>>> ce07b156a6f337b9d44a120b15c9cdd8f3f71501
 
 		/*
 		|--------------------------------------------------------------------------
@@ -200,7 +212,11 @@ return array(
 		|
 		*/
 
+<<<<<<< HEAD
 		'attempt_limit' => 5,
+=======
+		'attempt_limit' => 7,
+>>>>>>> ce07b156a6f337b9d44a120b15c9cdd8f3f71501
 
 		/*
 		|--------------------------------------------------------------------------

@@ -4,7 +4,11 @@
 	"keywords": ["framework", "laravel"],
 	"license": "MIT",
 	"require": {
+<<<<<<< HEAD
             "laravel/framework": "4.2.*",
+=======
+            "laravel/framework": "4.1.*",
+>>>>>>> ce07b156a6f337b9d44a120b15c9cdd8f3f71501
             "cartalyst/sentry": "2.1.*",
             "laravelbook/ardent": "dev-master",
             "pda/pheanstalk": "v2.1.0",
@@ -12,8 +16,13 @@
             "phpmd/phpmd" : "1.4.*",
             "squizlabs/php_codesniffer": "1.*",
             "intervention/image": "2.*",
+<<<<<<< HEAD
 		    "stilliard/blmreader": "dev-master",
             "Chumper/Zipper": "dev-master"
+=======
+            "stilliard/blmreader": "dev-master",
+            "thomaswelton/laravel-rackspace-opencloud": "0.4.*"
+>>>>>>> ce07b156a6f337b9d44a120b15c9cdd8f3f71501
 	},
 	"autoload": {
             "classmap": [

@@ -53,6 +53,16 @@ App::bind('ScrapeRepository', function ($app) {
     );
 });
 
+<<<<<<< HEAD
+=======
+App::bind('FeedRepository', function ($app) {
+    return new \models\repositories\FeedRepository(
+        App::make("PropertyRepository"),
+        App::make("AgentRespository")
+    );
+});
+
+>>>>>>> ce07b156a6f337b9d44a120b15c9cdd8f3f71501
 
 /////////////////////////////
 ///// Data Logic Binding ////
@@ -81,4 +91,8 @@ App::bind("ScrapeLogic", function ($app) {
         App::make("ScrapeRepository"),
         App::make("EntityFactory")
     );
+<<<<<<< HEAD
 });
+=======
+});
+>>>>>>> ce07b156a6f337b9d44a120b15c9cdd8f3f71501

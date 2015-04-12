@@ -31,7 +31,11 @@ return array (
     
     "tor_port" => "localhost:9050",
 
+<<<<<<< HEAD
     "upload_data_path" => "/home/doru/dataexport/uploads",
+=======
+    "dataexport_upload_path" => "/home/dataexport/uploads",
+>>>>>>> ce07b156a6f337b9d44a120b15c9cdd8f3f71501
     
 );
 

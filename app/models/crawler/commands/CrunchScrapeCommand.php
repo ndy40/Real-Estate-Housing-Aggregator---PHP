@@ -3,6 +3,11 @@ namespace crunch;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Config;
+<<<<<<< HEAD
+=======
+use models\entities\Catalogue;
+use models\entities\Property;
+>>>>>>> ce07b156a6f337b9d44a120b15c9cdd8f3f71501
 use models\interfaces\DataLogicInterface;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
@@ -56,7 +61,11 @@ class CrunchScrapeCommand extends Command
         $count = 0;
 		
 		if ($agent == "dataexport")
+<<<<<<< HEAD
 			$artisan_command = "crunch:data";
+=======
+			$artisan_command = "crunch:feed";
+>>>>>>> ce07b156a6f337b9d44a120b15c9cdd8f3f71501
 		else if ($agent == "zoopla")
 			$artisan_command = "crunch:list";
 		
