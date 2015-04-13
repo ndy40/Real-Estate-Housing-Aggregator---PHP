@@ -9,7 +9,7 @@
                 <tbody>
                     <tr>
                         <td width="620" align="center">
-                            <table width="620" height="40" cellspacing="0" cellpadding="0" border="0" align="center" style="background-color:rgb(25,30,29)">
+                            <table width="620" height="40" cellspacing="0" cellpadding="0" border="0" align="center" style="table-layout: fixed; margin: 0 auto;background-color:rgb(25,30,29)">
                                 <tbody>
                                     <tr>
                                         <td width="620" align="center">
@@ -19,7 +19,7 @@
                                                         <td valign="bottom" width="620" height="30" align="center">
                                                             <div style="min-height:10px;font-size:11px;line-height:10px">&nbsp;</div>
                                                             <a target="_blank" title="Visit thenello.com" href="{{ Config::get('app.frontend_url') }}">
-                                                                <img width="57" height="23" border="0" src="https://ci4.googleusercontent.com/proxy/Gxnfumwa2i6dsq63Nuz7H00y2hppdzMEzsD0wXOmWQKRf2D4Btz6xwqTwJnQ0KTUVeSUWc_gyI4c1u0NRrxAg73GDLlrCLWiMlY4qg=s0-d-e1-ft#http://pixelative.co/demo/email-assets/nello-logo2.png" alt="nello logo" style="text-decoration:none;display:block;outline:medium none;color:rgb(203,32,39);font-size:20px;margin:0px auto" class="CToWUd">
+                                                                <img width="57" height="23" border="0" src="https://ci4.googleusercontent.com/proxy/Gxnfumwa2i6dsq63Nuz7H00y2hppdzMEzsD0wXOmWQKRf2D4Btz6xwqTwJnQ0KTUVeSUWc_gyI4c1u0NRrxAg73GDLlrCLWiMlY4qg=s0-d-e1-ft#http://pixelative.co/demo/email-assets/nello-logo2.png" alt="nello" style="text-decoration:none;display:block;outline:medium none;color:rgb(203,32,39);font-size:20px;margin:0px auto" class="CToWUd">
                                                             </a>
                                                             <div style="min-height:10px;font-size:11px;line-height:10px">&nbsp;</div>
                                                         </td>
@@ -38,7 +38,7 @@
                 <tbody>
                     <tr>
                         <td>
-                            <table width="620" cellspacing="0" cellpadding="0" border="0" align="center">
+                            <table width="620" cellspacing="0" cellpadding="0" border="0" align="center" style="table-layout: fixed; margin: 0 auto;">
                                 <tbody>
                                     <tr>
                                         <td align="center">
@@ -61,12 +61,12 @@
                                             <table width="600" cellspacing="0" cellpadding="0" border="0">
                                                 <tbody>
                                                     <tr>
-                                                        <td align="center" style="font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:22px;font-weight:600;color:#818181">
+                                                        <td align="center" style="font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:20px;font-weight:400;color:#818181">
                                                             Here are some high yield properties for you:
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <td height="20" style="font-size:20px;line-height:20px" colspan="1">&nbsp;</td>
+                                                        <td height="20" style="font-size:30px;line-height:30px" colspan="1">&nbsp;</td>
                                                     </tr>
                                                 </tbody>
                                             </table>
@@ -157,12 +157,12 @@
                                                 <tbody>
 
                                                     <tr>
-                                                        <td align="center" style="font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:22px;font-weight:600;color:#818181">
+                                                        <td align="center" style="font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:20px;font-weight:400;color:#818181">
                                                             Here are some properties with high reduction in price:
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <td height="20" style="font-size:20px;line-height:20px" colspan="1">&nbsp;</td>
+                                                        <td height="20" style="font-size:30px;line-height:30px" colspan="1">&nbsp;</td>
                                                     </tr>
                                                 </tbody>
                                             </table>
