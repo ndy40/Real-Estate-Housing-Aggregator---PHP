@@ -3,6 +3,7 @@ namespace models\repositories;
 
 use models\interfaces\AgentRepositoryInterface;
 use Cartalyst\Sentry\Facades\Laravel\Sentry;
+use models\entities\User as User;
 
 /**
  * Description of AuthRepository
@@ -137,5 +138,9 @@ class AuthRepository implements AgentRepositoryInterface
     public function findUserByResetCode($code)
     {
         return Sentry::findUserByResetPasswordCode($code);
+    }
+    
+    public function getActiveUserList() {
+        return $user = User::where('activated', '=', 1)->get();
     }
 }

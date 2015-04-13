@@ -33,3 +33,5 @@ Artisan::add(new CrunchRemoveCommand(App::make("PropertyRepository")));
 Artisan::add(new ComputeYieldCommand(App::make("PropertyLogic")));
 
 Artisan::add(new CrunchUpdateCommand(App::make("AgentLogic")));
+
+Artisan::add(new SendRetentionEmail);

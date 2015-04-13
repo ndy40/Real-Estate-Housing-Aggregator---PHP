@@ -199,34 +199,4 @@ class PropertyController extends BaseController {
         return Response::json(array("data" => 'success'), 200);
     }
 
-    /**
-     * sendRetentionWeeklyEmailToUsers method
-     * used to send properties weekly to users.
-     * 
-     */
-    public function sendRetentionWeeklyEmailToUsers() {
-        $users = User::where('activated', '=', 1)->get();
-        try {
-            if (count($users) > 0) {
-                $highestYieldProperties = $this->propertyLogic->getPropertiesByType('HighestYield');
-                $highReductionProperties = $this->propertyLogic->getPropertiesByType('HighReduction');
-                // preparing email message and sending..
-                foreach ($users as $user) {
-                    $name = $user->first_name . ' ' . $user->last_name;
-                    $userEmail = $user->email;
-                    $data = array('name' => $name, 'highestYieldProperties' => $highestYieldProperties, 'highReductionProperties' => $highReductionProperties);
-                    if (count($highestYieldProperties) > 0 || count($highReductionProperties) > 0) {
-                        \Mail::send("emails.retentionweekly", $data, function ($message) use ($userEmail, $name) {
-                                    $message->to($userEmail, $name)->subject("Property Crunch | Properties matching your preference");
-                                }
-                        );
-                    }
-                }
-            }
-            return 'success';
-        } catch (\Exception $ex) {
-            return 'failed' . $ex->getMessage();
-        }
-    }
-
 }
