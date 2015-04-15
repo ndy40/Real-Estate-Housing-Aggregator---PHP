@@ -7,6 +7,7 @@ use crunch\CrunchScrapeCommand;
 use crunch\CrunchRemoveCommand;
 use crunch\ComputeYieldCommand;
 use crunch\CrunchUpdateCommand;
+use crunch\SendRetentionEmail;
 use models\repositories\PropertyRepository;
 
 /*
@@ -34,4 +35,4 @@ Artisan::add(new ComputeYieldCommand(App::make("PropertyLogic")));
 
 Artisan::add(new CrunchUpdateCommand(App::make("AgentLogic")));
 
-Artisan::add(new SendRetentionEmail);
+Artisan::add(new SendRetentionEmail(App::make("PropertyLogic")));
