@@ -139,7 +139,7 @@ class SearchController extends BaseController {
     }
 
     public function getRemoveSavedProperty($userId, $propertyId) {
-        
+
     }
 
     public function getPropertyHistory($id) {
@@ -154,12 +154,7 @@ class SearchController extends BaseController {
         return Response::json(array("data" => $data));
     }
 
-<<<<<<< HEAD
-    public function getProperty($id)
-    {
-=======
     public function getProperty($id) {
->>>>>>> ce07b156a6f337b9d44a120b15c9cdd8f3f71501
         $property = $this->propertyLogic->find($id);
 
         if ($property) {
@@ -187,31 +182,14 @@ class SearchController extends BaseController {
         return Response::json($data, $responseCode);
     }
 
-<<<<<<< HEAD
-    public function getAverageRentalYield(
-        $postCodeId,
-        $numOfRooms,
-        $typeId,
-        $offerType = 'Sale'
-    ){
-
-        $avg_price = $this->propertyLogic->getAveragePrice(
-            $postCodeId,
-            $numOfRooms,
-            $typeId,
-            $offerType
-=======
     public function getAverageRentalYield($postCodeId, $numOfRooms, $typeId, $offerType = 'Sale') {
 
         $avg_price = $this->propertyLogic->getAveragePrice(
                 $postCodeId, $numOfRooms, $typeId, $offerType
->>>>>>> ce07b156a6f337b9d44a120b15c9cdd8f3f71501
         );
 
         return Response::json(array("data" => $avg_price));
     }
-<<<<<<< HEAD
-=======
 
     public function getComparableProperties($propertyId) {
         $comparables = $this->propertyLogic->getComparableProperties($propertyId);
@@ -227,5 +205,4 @@ class SearchController extends BaseController {
         return Response::json(array("count" => $count, "data" => $suggestions));
     }
 
->>>>>>> ce07b156a6f337b9d44a120b15c9cdd8f3f71501
 }

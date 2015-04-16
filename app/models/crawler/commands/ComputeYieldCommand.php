@@ -1,10 +1,8 @@
-<?php 
+<?php
 namespace crunch;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Queue;
-use Symfony\Component\Console\Input\InputOption;
-use Symfony\Component\Console\Input\InputArgument;
 
 class ComputeYieldCommand extends Command {
 
@@ -21,10 +19,10 @@ class ComputeYieldCommand extends Command {
 	 * @var string
 	 */
 	protected $description = 'Queue properties for rental yield computation.';
-        
+
         /**
          * Property logic class.
-         * 
+         *
          * @var PropertyLogic
          */
         protected $propLogic;
@@ -48,25 +46,15 @@ class ComputeYieldCommand extends Command {
 	public function fire()
 	{
             $queryString = array("offer_type" => "Sale");
-<<<<<<< HEAD
-            $count = $this->propLogic->searchPropertyCount('', false, $queryString);
-=======
             $count = $this->propLogic->searchPropertyCount('', true, $queryString);
->>>>>>> ce07b156a6f337b9d44a120b15c9cdd8f3f71501
             $numberOfPages = ceil($count/25);
-            
+
             for($i = 1; $i <= $numberOfPages; $i++) {
                 $properties = $this->propLogic->searchProperty(
                     '', //empty filter
-<<<<<<< HEAD
-                    false, //set publish to false. Computer all. 
-                    "updated_at",
-                    "asc",
-=======
-                    true, //set publish to true. Computer all. 
+                    true, //set publish to true. Computer all.
                     "updated_at",
                     "",
->>>>>>> ce07b156a6f337b9d44a120b15c9cdd8f3f71501
                     $i,
                     25,
                     $queryString
@@ -77,10 +65,10 @@ class ComputeYieldCommand extends Command {
                     $this->pushToQueue($properties);
                 }
             }
-            
+
             $this->info("Properties put in YieldQueue");
 	}
-        
+
         protected function pushToQueue($properties) {
             $queuData = array ();
             foreach ($properties as $property) {
@@ -92,10 +80,10 @@ class ComputeYieldCommand extends Command {
                     'currentPrice' => $property->price,
                 );
             }
-            
+
             Queue::push('\models\crawler\scrape\YieldQueue', $queuData, "pc_yield");
         }
-        
+
 	/**
 	 * Get the console command arguments.
 	 *

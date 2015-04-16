@@ -26,11 +26,7 @@ return array(
 	|
 	*/
 
-<<<<<<< HEAD
-	'default' =>  'mysqlRemote', //'mysql',
-=======
 	'default' => 'mysql',
->>>>>>> ce07b156a6f337b9d44a120b15c9cdd8f3f71501
 
 	/*
 	|--------------------------------------------------------------------------
@@ -61,28 +57,11 @@ return array(
 			'host'      => 'localhost',
 			'database'  => 'propertycrunch',
 			'username'  => 'root',
-<<<<<<< HEAD
 			'password'  => 'mysql',
-=======
-			'password'  => 'sourcefuse',
->>>>>>> ce07b156a6f337b9d44a120b15c9cdd8f3f71501
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
 		),
-<<<<<<< HEAD
-        'mysqlRemote' => array(
-            'driver'    => 'mysql',
-            'host'      => 'propertycrunch.co',
-            'database'  => 'propertycrunch',
-            'username'  => 'propertycrunch',
-            'password'  => 'oEgYhwNeeFvP',
-            'charset'   => 'utf8',
-            'collation' => 'utf8_unicode_ci',
-            'prefix'    => '',
-        ),
-=======
->>>>>>> ce07b156a6f337b9d44a120b15c9cdd8f3f71501
 
 		'pgsql' => array(
 			'driver'   => 'pgsql',
@@ -137,19 +116,12 @@ return array(
 		'default' => array(
 			'host'     => 'localhost',
 			'port'     => 6379,
-<<<<<<< HEAD
-			'database' => "pc",
-=======
 			'database' => 0,
->>>>>>> ce07b156a6f337b9d44a120b15c9cdd8f3f71501
 		),
 
 	),
 
 );
-<<<<<<< HEAD
-=======
 
 
 
->>>>>>> ce07b156a6f337b9d44a120b15c9cdd8f3f71501

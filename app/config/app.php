@@ -26,11 +26,7 @@ return array(
 	|
 	*/
 
-<<<<<<< HEAD
 	'url' => 'http://propertycrunch.local/',
-=======
-	'url' => 'http://property-crunch.local/',
->>>>>>> ce07b156a6f337b9d44a120b15c9cdd8f3f71501
 
 	/*
 	|--------------------------------------------------------------------------
@@ -69,11 +65,8 @@ return array(
 	*/
 
 	'key' => 'vitobniwe',
-<<<<<<< HEAD
 
-=======
-        
-        /*
+    /*
 	|--------------------------------------------------------------------------
 	| Frontend URL
 	|--------------------------------------------------------------------------
@@ -85,8 +78,7 @@ return array(
 	*/
 
 	'frontend_url' => 'http://v1.propertycrunch.co',
-    
->>>>>>> ce07b156a6f337b9d44a120b15c9cdd8f3f71501
+
 	/*
 	|--------------------------------------------------------------------------
 	| Autoloaded Service Providers
@@ -126,14 +118,10 @@ return array(
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
-                'Cartalyst\Sentry\SentryServiceProvider',
-                'Kmd\Logviewer\LogviewerServiceProvider',
-                "Intervention\Image\ImageServiceProvider",
-<<<<<<< HEAD
-        'Chumper\Zipper\ZipperServiceProvider',
-=======
-        	'Thomaswelton\LaravelRackspaceOpencloud\LaravelRackspaceOpencloudServiceProvider',
->>>>>>> ce07b156a6f337b9d44a120b15c9cdd8f3f71501
+        'Cartalyst\Sentry\SentryServiceProvider',
+        'Kmd\Logviewer\LogviewerServiceProvider',
+        'Intervention\Image\ImageServiceProvider',
+        'Thomaswelton\LaravelRackspaceOpencloud\LaravelRackspaceOpencloudServiceProvider',
 	),
 
 	/*
@@ -199,13 +187,9 @@ return array(
 		'URL'             => 'Illuminate\Support\Facades\URL',
 		'Validator'       => 'Illuminate\Support\Facades\Validator',
 		'View'            => 'Illuminate\Support\Facades\View',
-                'Sentry'          => 'Cartalyst\Sentry\Facades\Laravel\Sentry',
-                'Image'           => "Intervention\Image\Facades\Image",
-<<<<<<< HEAD
-        'Zipper' => 'Chumper\Zipper\Zipper',
-=======
-        	'OpenCloud' => 'Thomaswelton\LaravelRackspaceOpencloud\Facades\OpenCloud'
->>>>>>> ce07b156a6f337b9d44a120b15c9cdd8f3f71501
+        'Sentry'          => 'Cartalyst\Sentry\Facades\Laravel\Sentry',
+        'Image'           => "Intervention\Image\Facades\Image",
+        'OpenCloud'       => 'Thomaswelton\LaravelRackspaceOpencloud\Facades\OpenCloud'
 	),
 
 );

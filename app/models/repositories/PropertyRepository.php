@@ -25,8 +25,7 @@ use \models\entities\Image;
  *
  * @author ndy40
  */
-class PropertyRepository implements PropertyRespositoryInterface
-{
+class PropertyRepository implements PropertyRespositoryInterface {
 
     public function delete($id) {}
 
@@ -70,12 +69,7 @@ class PropertyRepository implements PropertyRespositoryInterface
     }
 
     //TODO: Investigate.
-<<<<<<< HEAD
-    public function insertProperty($agencyId, $data = array())
-    {
-=======
     public function insertProperty($agencyId, $data = array()) {
->>>>>>> ce07b156a6f337b9d44a120b15c9cdd8f3f71501
         $agencyRepo = App::make('AgentRepository');
         $agency = $agencyRepo->fetch($agencyId);
         if (empty($data)) {
@@ -244,37 +238,6 @@ class PropertyRepository implements PropertyRespositoryInterface
         return PropertyType::where("search_type_id", "=", $search_type_id)->get();
     }
 
-<<<<<<< HEAD
-    public function searchProperty(
-        $filter,
-        $isPublished = false,
-        $orderColumn = "updated_at",
-        $direction = "asc",
-        $startIndex = 1,
-        $size = 25,
-        $queryString = ''
-    ) {
-        $startIndex = ($startIndex - 1);
-        $index = $size * $startIndex;
-
-        $query =  Property::with(array("agency", "postCode", "type", "images"))
-            ->where("published", "=", $isPublished, "and");
-        if (!empty($filter)) {
-            $query->where(function ($query) use ($filter) {
-                $query->orWhere("address", 'like', "%$filter%")
-                    ->orWhereHas("type", function ($query) use ($filter) {
-                        $query->where("name", "like", "%$filter%");
-                    })
-                    ->orWhereHas("postCode", function ($query)  use ($filter) {
-                        $query->join("county", "county.id", "=", "post_codes.id")
-                            ->whereNested(function ($q) use ($filter) {
-                                $q->where("area", "like", "%$filter%")
-                                    ->orWhere("code", "=", $filter)
-                                    ->orWhere("county.name", "like", "%$filter%");
-                    });
-                });
-            });
-=======
     public function findPropertySearchTypes($type_id) {
         $type = $this->fetchPropertyType($type_id);
         return PropertySearchType::find($type->search_type_id);
@@ -315,7 +278,6 @@ class PropertyRepository implements PropertyRespositoryInterface
                                     });
                         }
                     });
->>>>>>> ce07b156a6f337b9d44a120b15c9cdd8f3f71501
         }
 
         if (is_array($queryString)) {
@@ -324,12 +286,6 @@ class PropertyRepository implements PropertyRespositoryInterface
             }
         }
 
-<<<<<<< HEAD
-        $output =  $query->orderBy($orderColumn, $direction)
-            ->skip($index)
-            ->take($size)
-            ->get();
-=======
         if ($direction === "") {
             $output = $query->skip($index)
                     ->take($size)
@@ -340,36 +296,10 @@ class PropertyRepository implements PropertyRespositoryInterface
                     ->take($size)
                     ->get();
         }
->>>>>>> ce07b156a6f337b9d44a120b15c9cdd8f3f71501
 
         return $output;
     }
 
-<<<<<<< HEAD
-    public function searchPropertyCount(
-        $filter,
-        $isPublished = true,
-        $queryString = ''
-    ) {
-        $query =  Property::with(array("agency", "postCode", "type", "images"))
-            ->where("published", "=", $isPublished, "and");
-        if (!empty($filter)) {
-            $query->where(function ($query) use ($filter) {
-                $query->orWhere("address", 'like', "%$filter%")
-                    ->orWhereHas("type", function ($query) use ($filter) {
-                        $query->where("name", "like", "%$filter%");
-                    })
-                    ->orWhereHas("postCode", function ($query)  use ($filter) {
-                        $query->join("county", "county.id", "=", "post_codes.id")
-                            ->whereNested(function ($q) use ($filter) {
-                                $q->where("area", "like", "%$filter%")
-                                    ->orWhere("code", "=", $filter)
-                                    ->orWhere("county.name", "like", "%$filter%");
-                    });
-                });
-            });
-
-=======
     public function searchPropertyCount($filter, $isPublished = true, $queryString = '') {
         $query = Property::with(array("agency", "postCode", "type", "images"))
                 ->where("published", "=", $isPublished, "and");
@@ -397,7 +327,6 @@ class PropertyRepository implements PropertyRespositoryInterface
                                     });
                         }
                     });
->>>>>>> ce07b156a6f337b9d44a120b15c9cdd8f3f71501
         }
 
         if (is_array($queryString)) {
@@ -487,14 +416,11 @@ class PropertyRepository implements PropertyRespositoryInterface
         return Image::find($id)->delete();
     }
 
-<<<<<<< HEAD
-=======
     public function deleteOldProperty($date) {
         $oldproperties = Property::where('updated_at', '<', $date);
         $oldproperties->delete();
     }
 
->>>>>>> ce07b156a6f337b9d44a120b15c9cdd8f3f71501
     /**
      * This computes the average price on a property. OfferType parameter defaults to Sale.
      * Rent can be sent passed to compute average rental price.
@@ -504,24 +430,11 @@ class PropertyRepository implements PropertyRespositoryInterface
      * @param int $type_id - The Type ID for the property
      * @param string $offerType - The Offer type to compute asking price on e.g sale|rent. Optional
      */
-<<<<<<< HEAD
-    public function getAveragePrice(
-        $post_code_id,
-        $rooms,
-        $type_id,
-        $offerType = 'sale'
-    ) {
-        $sql ="SELECT convert(coalesce(avg(price), 0), DECIMAL(15,2)) as avg_price"
-            . " FROM properties WHERE type_id = ? and rooms = ? and post_code_id = ?"
-            . " and offer_type = ?";
-        $params = array ($type_id, $rooms, $post_code_id, $offerType);
-=======
     public function getAveragePrice($post_code_id, $rooms, $type_id, $offerType = 'sale') {
         $sql = "SELECT convert(coalesce(avg(price), 0), DECIMAL(15,2)) as avg_price"
                 . " FROM properties WHERE type_id = ? and rooms = ? and post_code_id = ?"
                 . " and offer_type = ?";
         $params = array($type_id, $rooms, $post_code_id, $offerType);
->>>>>>> ce07b156a6f337b9d44a120b15c9cdd8f3f71501
         $average = DB::selectOne($sql, $params);
 
         if (!empty($average)) {
@@ -535,30 +448,22 @@ class PropertyRepository implements PropertyRespositoryInterface
      * Get Properties by passing a set of Ids.
      * @param array $ids
      */
-<<<<<<< HEAD
-    public function getPropertyByIds(array $ids)
-    {
-=======
     public function getPropertyByIds(array $ids) {
->>>>>>> ce07b156a6f337b9d44a120b15c9cdd8f3f71501
         if (!is_array($ids)) {
             throw new \InvalidArgumentException("Array parameter expected.");
         }
 
         return Property::whereIn("id", $ids)->get();
-<<<<<<< HEAD
      }
-=======
-    }
 
     public function getPropertiesByType($type, $recordCount = 3) {
         if ($type == 'HighestYield')
             $sql = "SELECT p.id, i.`image` image, p.rooms, p.address, p.yield, p.phone, p.`price`, (p.yield * p.`price`)/(12*100) rent
                     FROM properties p
-                        JOIN images i ON p.`id` = i.`property_id` 
-                    WHERE p.offer_type = ? 
+                        JOIN images i ON p.`id` = i.`property_id`
+                    WHERE p.offer_type = ?
                     GROUP BY p.id
-                    ORDER BY p.yield DESC, p.updated_at DESC 	
+                    ORDER BY p.yield DESC, p.updated_at DESC
                     LIMIT ?";
         elseif ($type == 'HighReduction') {
             $sql = "SELECT * FROM (
@@ -566,12 +471,12 @@ class PropertyRepository implements PropertyRespositoryInterface
                             pcl.`old_price`, pcl.`new_price`, (p.yield * p.`price`)/(12*100) rent, p.`price`, p.`updated_at`,
                             (pcl.`old_price`- pcl.`new_price`) AS priceDiff
                             FROM properties p
-                            LEFT JOIN property_change_logs pcl ON p.`id` = pcl.`property_id` 
-                            JOIN images i ON p.`id` = i.`property_id` 
-                            WHERE p.offer_type = ? AND 
+                            LEFT JOIN property_change_logs pcl ON p.`id` = pcl.`property_id`
+                            JOIN images i ON p.`id` = i.`property_id`
+                            WHERE p.offer_type = ? AND
                             pcl.`new_price` IS NOT NULL AND (p.yield > 0 AND p.yield IS NOT NULL)
                             ORDER BY pcl.property_id, p.`updated_at` DESC
-                    ) AS t 
+                    ) AS t
                     WHERE t.old_price > t.new_price AND redpercent > 0.1
                     GROUP BY t.id ORDER BY priceDiff LIMIT ?";
         }
@@ -590,5 +495,4 @@ class PropertyRepository implements PropertyRespositoryInterface
         }
     }
 
->>>>>>> ce07b156a6f337b9d44a120b15c9cdd8f3f71501
 }

@@ -117,34 +117,17 @@ class PropertyLogic implements DataLogicInterface {
             foreach ($queryString as $key => $value) {
                 switch ($key) {
                     case 'price_min':
-<<<<<<< HEAD
                         $query[] = array ("price", ">=", $value);
-=======
-                        $query[] = array("price", ">=", $value);
->>>>>>> ce07b156a6f337b9d44a120b15c9cdd8f3f71501
                         break;
                     case 'price_max':
                         $query[] = array("price", "<=", $value);
                         break;
                     case 'yield_min':
-<<<<<<< HEAD
                         $query[] = array ("yield", ">=", $value);
-=======
-                        $query[] = array("yield", ">=", $value);
->>>>>>> ce07b156a6f337b9d44a120b15c9cdd8f3f71501
                         break;
                     case 'yield_max':
                         $query[] = array("yield", "<=", $value);
                         break;
-<<<<<<< HEAD
-                    case 'sort':
-                        $sort = explode(" ", $value);
-                        $orderColumn = $sort[0];
-                        $direction   = $sort[1];
-                        break;
-                    default:
-                       $query[] = array($key, "=", $value);
-=======
                     case 'rooms_min':
                         $query[] = array("rooms", ">=", $value);
                         break;
@@ -158,7 +141,6 @@ class PropertyLogic implements DataLogicInterface {
                         break;
                     default:
                         $query[] = array($key, "=", $value);
->>>>>>> ce07b156a6f337b9d44a120b15c9cdd8f3f71501
                 }
             }
         }
@@ -169,13 +151,7 @@ class PropertyLogic implements DataLogicInterface {
     }
 
     public function searchPropertyCount(
-<<<<<<< HEAD
-        $filter = '',
-        $isPublished = true,
-        $queryString = array()
-=======
     $filter = '', $isPublished = true, $queryString = array()
->>>>>>> ce07b156a6f337b9d44a120b15c9cdd8f3f71501
     ) {
         $query = array();
 
@@ -191,13 +167,10 @@ class PropertyLogic implements DataLogicInterface {
                     $query[] = array("yield", ">=", $value);
                 } else if ($key === 'yield_min') {
                     $query[] = array("yield", "<=", $value);
-<<<<<<< HEAD
-=======
                 } else if ($key === 'rooms_min') {
                     $query[] = array("rooms", ">=", $value);
                 } else if ($key === 'rooms_max') {
                     $query[] = array("rooms", "<=", $value);
->>>>>>> ce07b156a6f337b9d44a120b15c9cdd8f3f71501
                 } else {
                     $query[] = array($key, "=", $value);
                 }
@@ -227,12 +200,7 @@ class PropertyLogic implements DataLogicInterface {
         return $this->propertyRepo->save($entity);
     }
 
-<<<<<<< HEAD
-    public function saveUserProperty($userId, $propertyId, $calculations)
-    {
-=======
     public function saveUserProperty($userId, $propertyId, $calculations) {
->>>>>>> ce07b156a6f337b9d44a120b15c9cdd8f3f71501
         $authLogic = App::make("AuthLogic");
         $user = $authLogic->findUser($userId);
         $property = $this->propertyRepo->fetch($propertyId);
@@ -254,20 +222,11 @@ class PropertyLogic implements DataLogicInterface {
      * @param integer $type_id
      * @param double $num_rooms
      */
-<<<<<<< HEAD
-    public function getAreaRentalYield($post_code_id, $rooms, $type_id)
-    {
-        $avgRental = $this->getAveragePrice($post_code_id, $rooms, $type_id, "rent");
-        $avgSalesPrice = $this->getAveragePrice($post_code_id, $rooms, $type_id, "sale");
-
-        $yield = (($avgRental * 12)/$avgSalesPrice) * 100;
-=======
     public function getAreaRentalYield($post_code_id, $rooms, $type_id) {
         $avgRental = $this->getAveragePrice($post_code_id, $rooms, $type_id, "rent");
         $avgSalesPrice = $this->getAveragePrice($post_code_id, $rooms, $type_id, "sale");
 
         $yield = (($avgRental * 12) / $avgSalesPrice) * 100;
->>>>>>> ce07b156a6f337b9d44a120b15c9cdd8f3f71501
 
         return $yield;
     }
@@ -278,12 +237,7 @@ class PropertyLogic implements DataLogicInterface {
      * @param int $id
      * @return float
      */
-<<<<<<< HEAD
-    public function getRentalYieldOfProperty($id)
-    {
-=======
     public function getRentalYieldOfProperty($id) {
->>>>>>> ce07b156a6f337b9d44a120b15c9cdd8f3f71501
         $property = $this->propertyRepo->fetch($id);
 
         $post_code_id = $property->postCode->id;
@@ -293,11 +247,7 @@ class PropertyLogic implements DataLogicInterface {
         //compute annual rental yiled
         $avg = $this->getAveragePrice($post_code_id, $rooms, $type_id, "rent") * 12;
 
-<<<<<<< HEAD
         $yield = ($avg/$property->price) * 100;
-=======
-        $yield = ($avg / $property->price) * 100;
->>>>>>> ce07b156a6f337b9d44a120b15c9cdd8f3f71501
 
         return $yield;
     }
@@ -312,25 +262,6 @@ class PropertyLogic implements DataLogicInterface {
      * @param string $offerType - The Offer type to compute asking price on e.g sale|rent. Optional
      */
     public function getAveragePrice(
-<<<<<<< HEAD
-        $post_code_id,
-        $rooms,
-        $type_id,
-        $offerType = 'sale'
-    ) {
-        return $this->propertyRepo->getAveragePrice(
-            $post_code_id,
-            $rooms,
-            $type_id,
-            $offerType
-        );
-    }
-
-
-    public function getPropertyByIds(array $ids) {
-        return $this->propertyRepo->getPropertyByIds($ids);
-    }
-=======
     $post_code_id, $rooms, $type_id, $offerType = 'sale'
     ) {
         return $this->propertyRepo->getAveragePrice(
@@ -494,5 +425,4 @@ class PropertyLogic implements DataLogicInterface {
         return $this->propertyRepo->getAutoCompleteSuggestion($search, $recordCount);
     }
 
->>>>>>> ce07b156a6f337b9d44a120b15c9cdd8f3f71501
 }
