@@ -60,7 +60,7 @@ App::error(function (Cartalyst\Sentry\Users\UserNotFoundException $ex, $code) {
     } else if (Request::is("resetpassword")) {
         return Redirect::route("resetpassword")->withErrors($message);
     }
-    
+
     return Redirect::route("login")->with("message", $message);
 });
 
@@ -88,15 +88,15 @@ App::error(function (Cartalyst\Sentry\Users\WrongPasswordException $ex, $code){
     if (Request::isJson()) {
         return Response::json(explode('\n', $ex->getMessage()), 400);
     }
-    
+
     return Redirect::intended("login");
 });
 
 App::error(function(Exception $exception, $code)
 {
-   
+
     Log::error($exception);
-    
+
 });
 
 /*
