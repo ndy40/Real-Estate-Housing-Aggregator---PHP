@@ -14,3 +14,5 @@ Vgrantfile
 public/assets/properties/*
 AskFtpSiteDeployer.xml
 *.(lock|log)
+dataexport/
+workspace.xml
