@@ -199,6 +199,7 @@ class PropertyController extends BaseController {
         return Response::json(array("data" => 'success'), 200);
     }
 
+<<<<<<< HEAD
     /**
      * sendRetentionWeeklyEmailToUsers method
      * used to send properties weekly to users.
@@ -229,4 +230,6 @@ class PropertyController extends BaseController {
         }
     }
 
+=======
+>>>>>>> 733c0966eda6fde44f4982acf4f62f9918818978
 }

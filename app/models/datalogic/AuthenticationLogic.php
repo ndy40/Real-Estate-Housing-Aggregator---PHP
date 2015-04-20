@@ -44,8 +44,14 @@ class AuthenticationLogic implements DataLogicInterface {
         return $errorMessage;
     }
 
+<<<<<<< HEAD
     public function authenticateUser($username, $password, $remember = false)
     {
+=======
+    public function authenticateUser($username, $password, $remember = false) {
+        $hasher = new BcryptHasher();
+
+>>>>>>> 733c0966eda6fde44f4982acf4f62f9918818978
         $credentials = array(
             "email" => $username,
             "password" => $password,

@@ -452,9 +452,20 @@ class PropertyRepository implements PropertyRespositoryInterface {
         if (!is_array($ids)) {
             throw new \InvalidArgumentException("Array parameter expected.");
         }
+<<<<<<< HEAD
 
         return Property::whereIn("id", $ids)->get();
      }
+=======
+        $properties = Property::whereIn("id", $ids)->get();
+        if(count($properties)>0) {
+            foreach($properties as $property) {                
+                $property->image = DB::table('images')->where("property_id", "=", $property->id)->take(1)->get();
+            }
+        }
+        return $properties;
+    }
+>>>>>>> 733c0966eda6fde44f4982acf4f62f9918818978
 
     public function getPropertiesByType($type, $recordCount = 3) {
         if ($type == 'HighestYield')
