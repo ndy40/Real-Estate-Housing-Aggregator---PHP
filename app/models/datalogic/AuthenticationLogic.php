@@ -1,4 +1,5 @@
 <?php
+
 namespace models\datalogic;
 
 use models\interfaces\DataLogicInterface;
@@ -14,33 +15,30 @@ use models\interfaces\RepositoryInterface;
  *
  * @author ndy40
  */
-class AuthenticationLogic implements DataLogicInterface
-{
+class AuthenticationLogic implements DataLogicInterface {
+
     /**
      * A respository instance.
      * @var AuthRespository
      */
     protected $authRepository;
-
     protected $userRules = array(
-        'group'     => 'required|alpha_num',
-        'password'  => 'required|alpha_num',
-        'email'     => 'required|email',
+        'group' => 'required|alpha_num',
+        'password' => 'required|alpha_num',
+        'email' => 'required|email',
         'firstName' => 'required|alpha|min:3',
-        'lastName'  => 'required|alpha|min:3',
+        'lastName' => 'required|alpha|min:3',
         'activated' => 'in:1,0',
     );
 
-    public function __construct(RepositoryInterface $repository)
-    {
+    public function __construct(RepositoryInterface $repository) {
         $this->authRepository = $repository;
     }
 
-    protected function getErrorMessages($messages)
-    {
+    protected function getErrorMessages($messages) {
         $errorMessage = '';
         foreach ($messages as $message) {
-                $errorMessage  .= $message . PHP_EOL;
+            $errorMessage .= $message . PHP_EOL;
         }
 
         return $errorMessage;
@@ -48,8 +46,6 @@ class AuthenticationLogic implements DataLogicInterface
 
     public function authenticateUser($username, $password, $remember = false)
     {
-        $hasher = new BcryptHasher();
-
         $credentials = array(
             "email" => $username,
             "password" => $password,
@@ -63,11 +59,10 @@ class AuthenticationLogic implements DataLogicInterface
      * Method for creating new users.
      *
      * @param mixed[] $credentials
-     * @return \models\enitities\User
+     * @return \\models\\enitities\User
      * @throws UserCreationException
      */
-    public function createUser($credentials)
-    {
+    public function createUser($credentials) {
         $validator = Validator::make($credentials, $this->userRules);
         $errorMessage = '';
 
@@ -76,7 +71,7 @@ class AuthenticationLogic implements DataLogicInterface
             throw new UserCreationException($errorMessage, 400);
         }
 
-        $credentials = array('activated'  => Config::get('auth.auto_activite_user'));
+        $credentials = array('activated' => Config::get('auth.auto_activite_user'));
 
         foreach ($credentials as $key => $value) {
             if (snake_case($key) == 'password') {
@@ -98,8 +93,7 @@ class AuthenticationLogic implements DataLogicInterface
         return $user;
     }
 
-    public function findUser($option)
-    {
+    public function findUser($option) {
         //if value passed is integer then fetch by user Id.
         if (is_numeric($option)) {
             $user = $this->authRepository->fetch($option);
@@ -110,8 +104,7 @@ class AuthenticationLogic implements DataLogicInterface
         return $user;
     }
 
-    public function addUserToGroup($id, $group)
-    {
+    public function addUserToGroup($id, $group) {
         $user = $this->authRepository->fetch($id);
         $group = $this->authRepository->fetchGroupByName($group);
         $user->addGroup($group);
@@ -122,16 +115,14 @@ class AuthenticationLogic implements DataLogicInterface
      * Checks if a user is logged in.
      * @return boolean
      */
-    public function isLoggedIn()
-    {
+    public function isLoggedIn() {
         return $this->authRepository->isLoggedIn();
     }
 
     /**
      * Logout current user.
      */
-    public function logOut()
-    {
+    public function logOut() {
         $this->authRepository->logOut();
         if (!$this->isLoggedIn()) {
             return true;
@@ -143,18 +134,17 @@ class AuthenticationLogic implements DataLogicInterface
      * Get currently logged in user.
      * @return User
      */
-    public function getCurrentUser()
-    {
+    public function getCurrentUser() {
         return $this->authRepository->getLoggedInUser();
     }
+
     /**
      *
      * @param mixed[] $credentials Registration parameters
      * @param boolean $activate
      * @throws UserCreationException
      */
-    public function registerUser($credentials, $activate = false)
-    {
+    public function registerUser($credentials, $activate = false) {
         $validator = Validator::make($credentials, $this->userRules);
         if ($validator->fails()) {
             $errorMessages = $this->getErrorMessages($validator->messages()->all());
@@ -181,8 +171,8 @@ class AuthenticationLogic implements DataLogicInterface
 
         return $user;
     }
-    public function updateUser($id, $options)
-    {
+
+    public function updateUser($id, $options) {
         $user = $this->findUser($id);
         foreach ($options as $key => $value) {
             $user->{$key} = $value;
@@ -190,23 +180,20 @@ class AuthenticationLogic implements DataLogicInterface
         return $user->save();
     }
 
-    public function loginUser($user)
-    {
+    public function loginUser($user) {
         $this->authRepository->loginUser($user);
     }
 
-    public function findGroupByName($groupname)
-    {
+    public function findGroupByName($groupname) {
         return $this->authRepository->findGroupByName($groupname);
     }
 
-    public function findUserByLogin($email)
-    {
+    public function findUserByLogin($email) {
         return $this->authRepository->findUserByLogin($email);
     }
 
-    public function findUserByResetCode($code)
-    {
+    public function findUserByResetCode($code) {
         return $this->authRepository->findUserByResetCode($code);
     }
+
 }

@@ -1,49 +1,44 @@
 <?php
+
 namespace models\repositories;
 
 use models\interfaces\AgentRepositoryInterface;
 use Cartalyst\Sentry\Facades\Laravel\Sentry;
+use models\entities\User as User;
 
 /**
  * Description of AuthRepository
  *
  * @author ndy40
  */
-class AuthRepository implements AgentRepositoryInterface
-{
-    public function delete($id)
-    {
+class AuthRepository implements AgentRepositoryInterface {
+
+    public function delete($id) {
         $user = Sentry::findUserById($id);
         $user->delete();
     }
 
-    public function fetch($id)
-    {
+    public function fetch($id) {
         return Sentry::findUserById($id);
     }
 
-    public function searchUser($options)
-    {
+    public function searchUser($options) {
         return Sentry::findUserByCredentials($options);
     }
 
-    public function fetchAllUsers()
-    {
+    public function fetchAllUsers() {
         return Sentry::findAllUsers();
     }
 
-    public function fetchUsersInGroup($grounName)
-    {
+    public function fetchUsersInGroup($grounName) {
         return Sentry::findAllUsersInGroup($grounName);
     }
 
-    public function save($entity)
-    {
+    public function save($entity) {
         return $entity->save();
     }
 
-    public function updateUser($id, $properties)
-    {
+    public function updateUser($id, $properties) {
         $user = Sentry::findUserById($id);
         $user->setAttributes($properties);
         if (array_key_exists('groups', $properties)) {
@@ -59,18 +54,15 @@ class AuthRepository implements AgentRepositoryInterface
         return $user;
     }
 
-    public function authenticateUser($credentials, $remember = false)
-    {
-        return  Sentry::authenticate($credentials, $remember);
+    public function authenticateUser($credentials, $remember = false) {
+        return Sentry::authenticate($credentials, $remember);
     }
 
-    public function getLoggedInUser()
-    {
+    public function getLoggedInUser() {
         return Sentry::getUser();
     }
 
-    public function isLoggedIn()
-    {
+    public function isLoggedIn() {
         return Sentry::check();
     }
 
@@ -78,37 +70,32 @@ class AuthRepository implements AgentRepositoryInterface
      * Convenient method for logging out a current user.
      * @return boolean Whether the logout was successful or not.
      */
-    public function logOut()
-    {
+    public function logOut() {
         return Sentry::logout();
     }
 
-    public function saveGroup($name, $permissions = array())
-    {
+    public function saveGroup($name, $permissions = array()) {
         return Sentry::createGroup(array(
-            'name' => $name,
-            'permissions' => $permissions,
+                    'name' => $name,
+                    'permissions' => $permissions,
         ));
     }
 
-    public function updateGroup($id, $permissions)
-    {
+    public function updateGroup($id, $permissions) {
         $group = Sentry::findGroupById($id);
         $group->permissions = $permissions;
         $group->save();
     }
 
-    public function update($entity)
-    {
+    public function update($entity) {
+        
     }
 
-    public function findGroupById($id)
-    {
+    public function findGroupById($id) {
         return Sentry::findGroupById($id);
     }
 
-    public function findGroupByName($name)
-    {
+    public function findGroupByName($name) {
         return Sentry::findGroupByName($name);
     }
 
@@ -118,24 +105,20 @@ class AuthRepository implements AgentRepositoryInterface
      * @param mixed[] $credentials
      * @param boolean $activate
      */
-    public function registerUser($credentials, $activate)
-    {
+    public function registerUser($credentials, $activate) {
         return Sentry::register($credentials, $activate);
     }
 
-
-    public function loginUser($user)
-    {
+    public function loginUser($user) {
         return Sentry::login($user, false);
     }
 
-    public function findUserByLogin($email)
-    {
+    public function findUserByLogin($email) {
         return Sentry::findUserByLogin($email);
     }
 
-    public function findUserByResetCode($code)
-    {
+    public function findUserByResetCode($code) {
         return Sentry::findUserByResetPasswordCode($code);
     }
+
 }
