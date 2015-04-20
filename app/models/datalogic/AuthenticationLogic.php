@@ -44,9 +44,8 @@ class AuthenticationLogic implements DataLogicInterface {
         return $errorMessage;
     }
 
-    public function authenticateUser($username, $password, $remember = false) {
-        $hasher = new BcryptHasher();
-
+    public function authenticateUser($username, $password, $remember = false)
+    {
         $credentials = array(
             "email" => $username,
             "password" => $password,
@@ -60,7 +59,7 @@ class AuthenticationLogic implements DataLogicInterface {
      * Method for creating new users.
      *
      * @param mixed[] $credentials
-     * @return \models\enitities\User
+     * @return \\models\\enitities\User
      * @throws UserCreationException
      */
     public function createUser($credentials) {
