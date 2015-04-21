@@ -3,12 +3,15 @@ namespace crunch;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Config;
+use Indatus\Dispatcher\Scheduler;
+use Indatus\Dispatcher\Scheduling\Schedulable;
+use Indatus\Dispatcher\Scheduling\ScheduledCommandInterface;
 use models\interfaces\PropertyRespositoryInterface;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 use Carbon\Carbon;
 
-class CrunchRemoveCommand extends Command
+class CrunchRemoveCommand extends Command implements ScheduledCommandInterface
 {
 
     /**
@@ -23,9 +26,9 @@ class CrunchRemoveCommand extends Command
      *
      * @var string
      */
-    
+
     protected $propertyRepo;
-    
+
     protected $description = 'Remove old products';
     /**
      * Create a new command instance.
@@ -66,4 +69,34 @@ class CrunchRemoveCommand extends Command
             array('days', null, InputOption::VALUE_OPTIONAL, 'day to remove.', 7)
         );
     }
+
+    /**
+     * User to run the command as
+     * @return string Defaults to false to run as default user
+     */
+    public function user()
+    {
+        return "ftpcrunch";
+    }
+
+    /**
+     * When a command should run
+     * @param Scheduler $scheduler
+     * @return \Indatus\Dispatcher\Scheduling\Schedulable|\Indatus\Dispatcher\Scheduling\Schedulable[]
+     */
+    public function schedule(Schedulable $scheduler)
+    {
+        return $scheduler->daily()->hours(2);
+    }
+
+    /**
+     * Environment(s) under which the given command should run
+     * Defaults to '*' for all environments
+     * @return string|array
+     */
+    public function environment()
+    {
+        return "production";
+    }
+
 }

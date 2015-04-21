@@ -2,16 +2,19 @@
 namespace crunch;
 
 use Illuminate\Console\Command;
-use models\interfaces\FactoryInterface;
-use Symfony\Component\Console\Input\InputOption;
-use Symfony\Component\Console\Input\InputArgument;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Queue;
-use DOMDocument;
+use Indatus\Dispatcher\Scheduler;
+use Indatus\Dispatcher\Scheduling\Schedulable;
+use Indatus\Dispatcher\Scheduling\ScheduledCommandInterface;
 use models\crawler\feed\DataexportFeed;
-use Illuminate\Support\Facades\Artisan;
+use models\factory\ScrapeFactory;
+use models\interfaces\FactoryInterface;
+use Symfony\Component\Console\Input\InputArgument;
+use Symfony\Component\Console\Input\InputOption;
+use ZipArchive;
 
-class CrunchFeedCommand extends Command
+class CrunchFeedCommand extends Command implements ScheduledCommandInterface
 {
     /**
      * The console command name.
@@ -30,7 +33,7 @@ class CrunchFeedCommand extends Command
     /**
      * An instance of the scrape factory.
      *
-     * @var \models\factory\ScrapeFactory
+     * @var ScrapeFactory
      */
     private $scrapeFactory;
 
@@ -81,7 +84,7 @@ class CrunchFeedCommand extends Command
 			return;
 
         //extract recent blm zip file.
-        $zip = new \ZipArchive;
+        $zip = new ZipArchive;
         $zipfile = $upload_dir.'/'.$recent_filename.'.zip';
         if ($zip->open($zipfile) == TRUE || filesize($zipfile) == 0) {
             $zip->extractTo($extract_dir.'/extract');
@@ -92,7 +95,7 @@ class CrunchFeedCommand extends Command
         }
 
         //save xml file from unzipped blm file.
-        $feed = new \models\crawler\feed\DataexportFeed();
+        $feed = new DataexportFeed();
         $blmfile = $extract_dir.'/extract/'.$recent_filename.'.BLM';
         $xmlfile = $extract_dir.'/xmlfromblm/'.$config['url'].'.xml';
         $feed->saveXMLfromBLM($blmfile, $xmlfile, $config['publish']);
@@ -104,7 +107,7 @@ class CrunchFeedCommand extends Command
         $this->info("Initializing scrape factory.");
 
         $scrape = null;
-		
+
 		$scrape = $this->scrapeFactory->getScrape('feed', $config);
 
         $this->info("Initialization complete.");
@@ -131,7 +134,7 @@ class CrunchFeedCommand extends Command
         $this->info("Generating output file. " . $file);
 
         $this->info("Pushing to queue.");
-		
+
         $data = array (
             'country' => $this->argument('country'),
             'agent'  => $this->argument('agent'),
@@ -143,7 +146,7 @@ class CrunchFeedCommand extends Command
 		Queue::push('DataQueue', $data);
 
         $this->info($this->name . " completed.");
-	
+
 	//remove xml and blm files created from blm zip
         unlink($xmlfile);
 	    unlink($blmfile);
@@ -177,7 +180,8 @@ class CrunchFeedCommand extends Command
         );
     }
 
-    private function getRecentFileName($upload_dir, $blmname) {
+    private function getRecentFileName($upload_dir, $blmname)
+    {
         $dir = opendir($upload_dir);
         $files = array();
         while(false != ($file = readdir($dir))) {
@@ -188,11 +192,41 @@ class CrunchFeedCommand extends Command
 			return 'No file';
         asort($files);
 
-        $zip = new \ZipArchive;
+        $zip = new ZipArchive;
         $zipfile = $upload_dir.'/'.end($files);
         if ($zip->open($zipfile) != TRUE || filesize($zipfile) == 0)   //don't upload completely yet
             array_pop($files);
 
         return str_replace('.zip', '', end($files));
+    }
+
+    /**
+     * When a command should run
+     * @param Scheduler $scheduler
+     * @return \Indatus\Dispatcher\Scheduling\Schedulable|\Indatus\Dispatcher\Scheduling\Schedulable[]
+     */
+    public function schedule(Schedulable $scheduler)
+    {
+        return $scheduler->daily()->hours([1, 15]);
+    }
+
+    /**
+     * Environment(s) under which the given command should run
+     * Defaults to '*' for all environments
+     * @return string|array
+     */
+    public function environment()
+    {
+       return ["production"];
+    }
+
+
+    /**
+     * User to run the command as
+     * @return string Defaults to false to run as default user
+     */
+    public function user()
+    {
+        return 'ftpcrunch';
     }
 }

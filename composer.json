@@ -14,7 +14,8 @@
             "intervention/image": "2.*",
             "stilliard/blmreader": "dev-master",
             "thomaswelton/laravel-rackspace-opencloud": "0.4.*",
-            "indatus/dispatcher": "1.4.*@dev"
+            "indatus/dispatcher": "1.4.*@dev",
+		"Indatus/dispatcher": "~1.4"
 	},
 	"autoload": {
             "classmap": [

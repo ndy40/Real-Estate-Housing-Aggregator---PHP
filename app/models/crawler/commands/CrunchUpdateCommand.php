@@ -3,13 +3,16 @@ namespace crunch;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Config;
+use Indatus\Dispatcher\Scheduler;
+use Indatus\Dispatcher\Scheduling\Schedulable;
+use Indatus\Dispatcher\Scheduling\ScheduledCommandInterface;
 use models\entities\Catalogue;
 use models\entities\Property;
 use models\interfaces\DataLogicInterface;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 
-class CrunchUpdateCommand extends Command
+class CrunchUpdateCommand extends Command implements ScheduledCommandInterface
 {
 
     /**
@@ -54,19 +57,19 @@ class CrunchUpdateCommand extends Command
             $agent,
             $country
         );
-		
+
 		if ($agent == "dataexport")
 			$artisan_command = "crunch:feed";
 		else if ($agent == "zoopla")
 			$artisan_command = "crunch:list";
-		
+
 		$publish = 1;
-		
+
 		$files = glob(Config::get('crawler.dataexport_upload_path') . '/*');
 		$unpublish = glob(Config::get('crawler.dataexport_upload_path') . '/unpublish/*');
 		$files[] = 'unpublish';
 		$files = array_merge($files, $unpublish);
-				
+
 		foreach ($files as $file) {
 			if ($file === 'unpublish') {
 				$publish = 0;
@@ -126,4 +129,35 @@ class CrunchUpdateCommand extends Command
             array('proxy', null, InputOption::VALUE_OPTIONAL, 'Enable proxy mode', Config::get("crawler.tor_port")),
         );
     }
+
+    /**
+     * User to run the command as
+     * @return string Defaults to false to run as default user
+     */
+    public function user()
+    {
+        return "ftpcrunch";
+    }
+
+    /**
+     * When a command should run
+     * @param Scheduler $scheduler
+     * @return \Indatus\Dispatcher\Scheduling\Schedulable|\Indatus\Dispatcher\Scheduling\Schedulable[]
+     */
+    public function schedule(Schedulable $scheduler)
+    {
+        return $scheduler->daily()->everyHours(12);
+    }
+
+    /**
+     * Environment(s) under which the given command should run
+     * Defaults to '*' for all environments
+     * @return string|array
+     */
+    public function environment()
+    {
+        return "production";
+    }
+
+
 }
