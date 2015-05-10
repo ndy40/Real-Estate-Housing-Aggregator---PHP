@@ -8,13 +8,10 @@
 
 namespace models\crawler\queue;
 
-use models\crawler\abstracts\JobQueue;
 use DOMDocument;
 use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Artisan;
+use models\crawler\abstracts\JobQueue;
 use models\exceptions\EmptyItemException;
-use models\entities\FailedScrapes;
 
 /**
  * Description of FetchQueue
@@ -23,28 +20,17 @@ use models\entities\FailedScrapes;
  */
 class DataQueue extends JobQueue
 {
-	
-    public function fire($job, $data) 
+
+    public function fire($job, $data)
     {
         echo "Picking up new job." . $job->getJobId() . PHP_EOL;
         echo "Job parameters:\n------------\nCountry\t"
             . $data['country'] . "\nAgency:\t"
             . $data['agent'] . "\n";
         $fileContent = file_get_contents($data['result']);
-<<<<<<< HEAD
-        $doc = new \DOMDocument;
+        $doc = new DOMDocument('1.0', 'UTF-8');
         $doc->loadXML($fileContent);
-        //Validate xml to ensure it meets XSD standard.
-        //TODO: Add settings to XSD file for validation
 
-        if ($job->attempts() > 5) {
-            $job->bury();
-            return;
-        }
-=======
-        $doc = new DOMDocument('1.0', 'utf-8');
-        $doc->loadXML($fileContent);
-		unlink($data['result']);
         //Validate xml to ensure it meets XSD standard.
         //TODO: Add settings to XSD file for validation
 
@@ -52,27 +38,17 @@ class DataQueue extends JobQueue
 //            $job->bury();
 //            return;
 //        }
->>>>>>> ce07b156a6f337b9d44a120b15c9cdd8f3f71501
 
         $properties = $doc->getElementsByTagName("item");
         if (is_null($properties)) {
             throw new EmptyItemException('No item found in result');
-<<<<<<< HEAD
-            $job->burry();
-=======
             $job->bury();
->>>>>>> ce07b156a6f337b9d44a120b15c9cdd8f3f71501
             return;
             //we should log this occurrence for further investigation.
         }
 
         $numberOfItems = 0;
 
-<<<<<<< HEAD
-        $job->delete();
-
-=======
->>>>>>> ce07b156a6f337b9d44a120b15c9cdd8f3f71501
         foreach ($properties as $property) {
             //get the url
             $dom = new DOMDocument('1.0', 'utf-8');
@@ -83,32 +59,17 @@ class DataQueue extends JobQueue
 			$node->appendChild($country_ele);
 			$node->appendChild($agent_ele);
 			$dom->appendChild($node);
-<<<<<<< HEAD
-			//file_put_contents('/opt/lampp/htdocs/ndy1/app/models/crawler/queue/abc.txt', $dom->saveXML());
-
-            $scrapeRespository = App::make('ScrapeRepository');
-	
-			$scrapeRespository->savePropertyForDataexport($dom);
-
-            $numberOfItems++; //increment for each items processed.
-        }
-        unlink($data['result']);
-=======
 
             $feedRespository = App::make('FeedRepository');
-	
+
 			$feedRespository->saveProperty($dom);
 
             $numberOfItems++; //increment for each items processed.
         }
 		$job->delete();
->>>>>>> ce07b156a6f337b9d44a120b15c9cdd8f3f71501
+        unlink($data['result']);
         //do some job logging.
         echo "Finished processing job";
     }
 
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> ce07b156a6f337b9d44a120b15c9cdd8f3f71501

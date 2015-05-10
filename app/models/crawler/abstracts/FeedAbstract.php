@@ -15,5 +15,5 @@ use models\exceptions\ScrapeInitializationException;
  */
 abstract class FeedAbstract
 {
-    abstract public function saveXMLfromBLM($blmpath, $xmlpath, $publish);
+    abstract public function saveXMLfromBLM($blmpath, $xmlpath, $agentFile, $publish);
 }
