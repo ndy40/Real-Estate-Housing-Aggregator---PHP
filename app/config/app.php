@@ -122,6 +122,7 @@ return array(
         'Kmd\Logviewer\LogviewerServiceProvider',
         'Intervention\Image\ImageServiceProvider',
         'Thomaswelton\LaravelRackspaceOpencloud\LaravelRackspaceOpencloudServiceProvider',
+        'Indatus\Dispatcher\ServiceProvider',
 	),
 
 	/*

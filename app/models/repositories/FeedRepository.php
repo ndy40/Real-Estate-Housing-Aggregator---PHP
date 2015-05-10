@@ -1,20 +1,10 @@
 <?php
 namespace models\repositories;
 
-use models\repositories\ScrapeRepository;
-use models\interfaces\AgentRepositoryInterface;
-use Illuminate\Support\Facades\Cache;
-use models\entities\FailedScrapes;
 use models\crawler\abstracts\JobQueue;
 use Illuminate\Support\Facades\Log;
-use models\entities\Property;
-use models\interfaces\PropertyRespositoryInterface;
-use models\interfaces\ScrapeRepositoryInterface;
 use Illuminate\Support\Facades\Queue;
-
-use models\entities\PropertyType;
-
-use postcode\Postcode;
+use models\entities\DataExport;
 
 /**
  * Description of ScrapeRepository
@@ -27,8 +17,8 @@ class FeedRepository extends ScrapeRepository
     {
         $scrapedProperty = $this->buildPropertyClassPart($data);
 
-        $status = $data->getElementsByTagName('status')->item(0)->nodeValue;
-        $agent = $data->getElementsByTagName('agent')->item(0)->nodeValue;
+        $status  = $data->getElementsByTagName('status')->item(0)->nodeValue;
+        $agent   = $data->getElementsByTagName('agent')->item(0)->nodeValue;
         $country = $data->getElementsByTagName('country')->item(0)->nodeValue;
 
         $type = $data->getElementsByTagName('type')->item(0)->nodeValue;
@@ -41,8 +31,10 @@ class FeedRepository extends ScrapeRepository
         $scrapedProperty->agency()->associate($agency);
 
         $postCodes = $this->propertyRepo->fetchPostCode($postCode);
+
         if (!$postCodes->isEmpty() && $postCodes->count() == 1) {
             $scrapedProperty->postCode()->associate($postCodes->first());
+
         } elseif (!$postCodes->isEmpty() && $postCodes->count() > 0) {
             $regex = $this->getPostCodeAreaRegex($postCode);
             $area = $this->extractAreaName($scrapedProperty->address, $regex);
@@ -51,12 +43,12 @@ class FeedRepository extends ScrapeRepository
             if (empty($area)) {
                 //then we probably have county listed there. Insert new post code against county.
                 $regex = $this->getCountyRegex($agency->country->id);
-                $area = $this->extractAreaName($scrapedProperty->address, $regex);
+                $area  = $this->extractAreaName($scrapedProperty->address, $regex);
 
                 $existingPostCode = $this->propertyRepo->fetchPostCodeByName($postCode, $area);
 
                 if (empty($existingPostCode)) {
-                    $isSaved = $this->propertyRepo->createPostCode(
+                    $this->propertyRepo->createPostCode(
                         $agency->country->id,
                         $postCode,
                         $area
@@ -66,12 +58,14 @@ class FeedRepository extends ScrapeRepository
                         "Cannot find county in address - %s in scrape address",
                         $scrapedProperty->address
                     );
-                    //Log::error($format);
+                    Log::error($format);
                     return;
                 }
             }
+
             $postCode = $this->propertyRepo->fetchPostCodeByName($postCode, $area);
             $scrapedProperty->postCode()->associate($postCode);
+
         } else {
             $format = sprintf("Cannot find post code in database %s", $postCode);
             Log::error($format);
@@ -83,22 +77,22 @@ class FeedRepository extends ScrapeRepository
                 $property = $this->propertyRepo
                     ->fetchPropertyByHash($scrapedProperty->hash);
 				$scrapedProperty->published = 0;
-				
+
                 if ($property === null) {
                     $scrapedProperty = $this->propertyRepo->save($scrapedProperty);
                 } else {
                     //perform proper test on data insert/update of property.
-                    $count = $this->propertyRepo->updateChangedFields($scrapedProperty, $property);
+                    $this->propertyRepo->updateChangedFields($scrapedProperty, $property);
                     $scrapedProperty = $this->propertyRepo->save($property);
                 }
 				break;
-            case JobQueue::ITEM_AVAILABLE:
+            case JobQueue::ITEM_AVAILABLE :
                 $scrapedProperty->available = 1;
                 $property = $this->propertyRepo
                     ->fetchPropertyByHash($scrapedProperty->hash);
+
                 //check if agency has been configured for auto-approval. If true then
                 //set available to 1.
-
                 if ($agency->auto_publish) {
                     $scrapedProperty->published = 1;
                 }
@@ -108,7 +102,7 @@ class FeedRepository extends ScrapeRepository
                     $action = "create";
                 } else {
                     //perform proper test on data insert/update of property.
-                    $count = $this->propertyRepo->updateChangedFields($scrapedProperty, $property);
+                    $this->propertyRepo->updateChangedFields($scrapedProperty, $property);
                     $scrapedProperty = $this->propertyRepo->save($property);
                     $action = "update";
                 }
@@ -129,5 +123,14 @@ class FeedRepository extends ScrapeRepository
         }
 
         return $scrapedProperty;
+    }
+
+    public function saveDataExportFeed($id, $filepath, $publish)
+    {
+        $dataExport = new DataExport;
+        $dataExport->export_id = $id;
+        $dataExport->xml = $filepath;
+        $dataExport->publish = $publish;
+        return $dataExport->save();
     }
 }

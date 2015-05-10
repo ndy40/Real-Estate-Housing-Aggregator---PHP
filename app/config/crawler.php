@@ -19,9 +19,9 @@ return array (
 
     "image_thumb" => array ("width" => 155, "height" => 103),
 
-    "image_thumb_quality" => 0,
+    "image_thumb_quality" => 50,
 
-    "image_full_quality"  => 45,
+    "image_full_quality"  => 80,
 
     "image_dir" => "/assets/properties/full",
 
@@ -31,7 +31,12 @@ return array (
 
     "tor_port" => "localhost:9050",
 
-    "dataexport_upload_path" => "/home/dataexport/uploads",
+    "dataexport_upload_path"   => storage_path() . "/data/testdata",
 
+    "dataexport_unpublished"   => storage_path() . "/data/testdata/unpublish",
+
+    "dataexport_extract_path"  => storage_path() . "/data/dataexport/uploads/extract/",
+
+    "dataexport_xml_path"      => storage_path() . "/data/dataexport/uploads/xmlfromblm/",
 );
 

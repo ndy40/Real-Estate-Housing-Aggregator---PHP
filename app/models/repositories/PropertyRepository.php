@@ -27,30 +27,31 @@ use \models\entities\Image;
  */
 class PropertyRepository implements PropertyRespositoryInterface {
 
-    public function delete($id) {}
+    public function delete($id) {
+        
+    }
 
-    public function fetch($id)
-    {
+    public function fetch($id) {
         return Property::with("images")->find($id);
     }
 
-    public function update($entity)
-    {
+    public function update($entity) {
         throw new \Exception("Not implemented yet");
     }
 
-    public function save($entity)
-    {
-       return $entity->save();
+    public function save($entity) {
+        if ($entity->save()) {
+            return $entity;
+        }
+
+        return false;
     }
 
-    public function fetchPropertyByHash($hash)
-    {
+    public function fetchPropertyByHash($hash) {
         return Property::where('hash', '=', $hash)->first();
     }
 
-    public function fetchPostCode($postcode)
-    {
+    public function fetchPostCode($postcode) {
         $postCode = null;
         if (is_numeric($postcode)) {
             $postCode = PostCode::find($postcode);
@@ -61,8 +62,7 @@ class PropertyRepository implements PropertyRespositoryInterface {
         return $postCode;
     }
 
-    public function fetchPostCodeByName($code, $areaName)
-    {
+    public function fetchPostCodeByName($code, $areaName) {
         return PostCode::where("area", "=", ucwords(strtolower(trim($areaName))))
                         ->where("code", "=", strtoupper($code))
                         ->first();
@@ -452,11 +452,6 @@ class PropertyRepository implements PropertyRespositoryInterface {
         if (!is_array($ids)) {
             throw new \InvalidArgumentException("Array parameter expected.");
         }
-<<<<<<< HEAD
-
-        return Property::whereIn("id", $ids)->get();
-     }
-=======
         $properties = Property::whereIn("id", $ids)->get();
         if(count($properties)>0) {
             foreach($properties as $property) {                
@@ -465,16 +460,15 @@ class PropertyRepository implements PropertyRespositoryInterface {
         }
         return $properties;
     }
->>>>>>> 733c0966eda6fde44f4982acf4f62f9918818978
 
     public function getPropertiesByType($type, $recordCount = 3) {
         if ($type == 'HighestYield')
             $sql = "SELECT p.id, i.`image` image, p.rooms, p.address, p.yield, p.phone, p.`price`, (p.yield * p.`price`)/(12*100) rent
                     FROM properties p
-                        JOIN images i ON p.`id` = i.`property_id`
-                    WHERE p.offer_type = ?
+                        JOIN images i ON p.`id` = i.`property_id` 
+                    WHERE p.offer_type = ? 
                     GROUP BY p.id
-                    ORDER BY p.yield DESC, p.updated_at DESC
+                    ORDER BY p.yield DESC, p.updated_at DESC 	
                     LIMIT ?";
         elseif ($type == 'HighReduction') {
             $sql = "SELECT * FROM (
@@ -482,12 +476,12 @@ class PropertyRepository implements PropertyRespositoryInterface {
                             pcl.`old_price`, pcl.`new_price`, (p.yield * p.`price`)/(12*100) rent, p.`price`, p.`updated_at`,
                             (pcl.`old_price`- pcl.`new_price`) AS priceDiff
                             FROM properties p
-                            LEFT JOIN property_change_logs pcl ON p.`id` = pcl.`property_id`
-                            JOIN images i ON p.`id` = i.`property_id`
-                            WHERE p.offer_type = ? AND
+                            LEFT JOIN property_change_logs pcl ON p.`id` = pcl.`property_id` 
+                            JOIN images i ON p.`id` = i.`property_id` 
+                            WHERE p.offer_type = ? AND 
                             pcl.`new_price` IS NOT NULL AND (p.yield > 0 AND p.yield IS NOT NULL)
                             ORDER BY pcl.property_id, p.`updated_at` DESC
-                    ) AS t
+                    ) AS t 
                     WHERE t.old_price > t.new_price AND redpercent > 0.1
                     GROUP BY t.id ORDER BY priceDiff LIMIT ?";
         }

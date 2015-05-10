@@ -7,7 +7,7 @@ var require = patchRequire(require),
     fs = require('fs'),
     Agent   = require("../../library/BaseAgent").create(),
     CrunchUtil = require("../../library/Utility").create();
-    
+
 Dataexport = CrunchUtil.extends(Agent);
 
 Dataexport.prototype.initialize = function (casperjs) {
@@ -24,26 +24,6 @@ Dataexport.prototype.initialize = function (casperjs) {
     return this;
 };
 
-<<<<<<< HEAD
-Dataexport.prototype.itemDetail = function (casperjs, url) {
-    'use strict';
-    var self = this, dataType = require('library/DataType').create();
-
-    casperjs.start(url, function () {;
-        var xmlhttp = new XMLHttpRequest();
-        xmlhttp.open("GET", url, false);
-        xmlhttp.send();
-        var xmlProperty = xmlhttp.responseXML;
-
-        xmlhttp = new XMLHttpRequest();
-        var arr = url.split('/');
-        var filename = arr.pop();
-        filename = filename.split('.');
-        arr.pop();
-        xmlhttp.open('GET', arr.join('/')+'/XML/'+filename[0]+'_AGENT.XML', false);
-        xmlhttp.send();
-        var xmlAgent = xmlhttp.responseXML;
-=======
 Dataexport.prototype.itemListing = function (casperjs, url) {
     'use strict';
     var self = this, dataType = require('library/DataType').create();
@@ -57,9 +37,8 @@ Dataexport.prototype.itemListing = function (casperjs, url) {
             parser = new DOMParser(),
             xmlProperty = parser.parseFromString (xmltext, "text/xml");
 
-        xmltext = fs.open(upload_path+'/XML/'+filename+'_AGENT.XML', 'r').read();
+        xmltext = fs.open(filename, 'r').read();
         var xmlAgent = parser.parseFromString(xmltext, "text/xml");
->>>>>>> ce07b156a6f337b9d44a120b15c9cdd8f3f71501
 
         var properties = xmlProperty.getElementsByTagName('property');
         var property_data = [];
@@ -70,24 +49,15 @@ Dataexport.prototype.itemListing = function (casperjs, url) {
             for (var j=0; j<images.length; j++) {
                 img_arr[j] = images[j].childNodes[0].nodeValue;
             }
-<<<<<<< HEAD
-            property_data[i] = {
-                type: properties[i].getElementsByTagName('type')[0].childNodes[0].nodeValue,
-                rooms: properties[i].getElementsByTagName('rooms')[0].childNodes[0].nodeValue,
-                areaCode: properties[i].getElementsByTagName('areacode')[0].childNodes[0].nodeValue,
-                address: properties[i].getElementsByTagName('address')[0].childNodes[0].nodeValue,
-                price: properties[i].getElementsByTagName('price')[0].childNodes[0].nodeValue,
-                marketer: xmlAgent.getElementsByTagName('contact')[0].childNodes[0].nodeValue,
-                phone: xmlAgent.getElementsByTagName('telephone')[0].childNodes[0].nodeValue,
-                offertype: properties[i].getElementsByTagName('offertype')[0].childNodes[0].nodeValue,
-                status: 'available',
-                url: '',
-                images: img_arr
-=======
-            var phone = xmlAgent.getElementsByTagName('telephone')[0].childNodes[0],
-                areaCode = properties[i].getElementsByTagName('areacode')[0].childNodes[0],
-                description = properties[i].getElementsByTagName('description')[0].childNodes[0];
-                status = properties[i].getElementsByTagName('publish')[0].childNodes[0].nodeValue;
+            var phone = xmlAgent.getElementsByTagName('telephone')[0]
+                    .childNodes[0],
+                areaCode = properties[i].getElementsByTagName('areacode')[0]
+                    .childNodes[0],
+                description = properties[i].getElementsByTagName('description')[0]
+                    .childNodes[0],
+                status = properties[i].getElementsByTagName('publish')[0]
+                    .childNodes[0].nodeValue;
+
             property_data[i] = {
                 type: properties[i].getElementsByTagName('type')[0].childNodes[0].nodeValue,
                 rooms: dataType.integer(properties[i].getElementsByTagName('rooms')[0].childNodes[0].nodeValue),
@@ -101,7 +71,6 @@ Dataexport.prototype.itemListing = function (casperjs, url) {
                 url: filename,
                 description: description!==undefined&&status==='1'?description.nodeValue:null,
                 images: status==='0'?null:img_arr
->>>>>>> ce07b156a6f337b9d44a120b15c9cdd8f3f71501
             };
         }
         self.results.push(property_data);
@@ -109,8 +78,4 @@ Dataexport.prototype.itemListing = function (casperjs, url) {
     return this;
 };
 
-<<<<<<< HEAD
 exports.create = function () { return new Dataexport("Dataexport"); };
-=======
-exports.create = function () { return new Dataexport("Dataexport"); };
->>>>>>> ce07b156a6f337b9d44a120b15c9cdd8f3f71501
