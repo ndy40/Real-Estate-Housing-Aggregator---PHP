@@ -4,7 +4,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Support\Facades\Schema;
 
-class CreateYieldColumnProperties extends Migration {
+class CreateDataexportTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -13,8 +13,10 @@ class CreateYieldColumnProperties extends Migration {
 	 */
 	public function up()
 	{
-        Schema::table("properties", function (Blueprint $table) {
-            $table->float("yield")->default(0.0);
+		Schema::create("dataexport", function (Blueprint $table) {
+            $table->string("export_id", 15)->unique();
+            $table->mediumText("xml");
+            $table->boolean("publish");
         });
 	}
 
@@ -25,9 +27,7 @@ class CreateYieldColumnProperties extends Migration {
 	 */
 	public function down()
 	{
-        Schema::table("properties", function (Blueprint $table) {
-            $table->dropColumn("yield");
-        });
+		Schema::drop("dataexport");
 	}
 
 }

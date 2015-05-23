@@ -18,9 +18,6 @@ use models\interfaces\PropertyRespositoryInterface;
 use models\interfaces\ScrapeRepositoryInterface;
 use Illuminate\Support\Facades\Queue;
 
-use models\entities\PropertyType;
-
-use postcode\Postcode;
 /**
  * Description of ScrapeRepository
  *
@@ -82,11 +79,12 @@ class ScrapeRepository implements ScrapeRepositoryInterface
 
     public function saveProperty(\DOMDocument $data)
     {
-        $scrapedProperty = $this->buildPropertyClassPart($data);
+        $country = $data->getElementsByTagName('country')->item(0)->nodeValue;;
+        $agent = $data->getElementsByTagName('agent')->item(0)->nodeValue;;
+
+        $scrapedProperty = $this->buildPropertyClassPart($data, $country, $agent);
 
         $status = $data->getElementsByTagName('status')->item(0)->nodeValue;
-        $agent = $data->getElementsByTagName('agent')->item(0)->nodeValue;
-        $country = $data->getElementsByTagName('country')->item(0)->nodeValue;
 
         $type = $data->getElementsByTagName('type')->item(0)->nodeValue;
         $type = $this->propertyRepo->fetchPropertyType($type);
@@ -185,12 +183,9 @@ class ScrapeRepository implements ScrapeRepositoryInterface
         return $scrapedProperty;
     }
 
-    protected function buildPropertyClassPart(\DOMDocument $data)
+    protected function buildPropertyClassPart($data, $country, $agent)
     {
         $scrapeProperty = array();
-
-        $country = rawurldecode($data->getElementsByTagName('country')->item(0)->nodeValue);
-        $agent = rawurldecode($data->getElementsByTagName('agent')->item(0)->nodeValue);
 
         $marketer = $data->getElementsByTagName('marketer');
         if ($marketer) {
@@ -199,6 +194,11 @@ class ScrapeRepository implements ScrapeRepositoryInterface
 
         $address = $data->getElementsByTagName('address');
         $scrapeProperty['address'] = $address->item(0)->nodeValue;
+
+        $phone = $data->getElementsByTagName('phone');
+        if (!is_null($phone->item(0))) {
+            $scrapeProperty['phone'] = $address->item(0)->nodeValue;
+        }
 
         $room = $data->getElementsByTagName('rooms');
         if (!is_null($room->item(0))) {
@@ -304,15 +304,15 @@ class ScrapeRepository implements ScrapeRepositoryInterface
 
         return $result;
     }
-    
+
     public function createImagesArray(\DOMDocument $dom)
-    { 
-        $imgs = $dom->getElementsByTagName("src");
+    {
+        $imgs = $dom->getElementsByTagName("image");
         $images = array();
         foreach($imgs as $image) {
             $images[] = $image->nodeValue;
         }
-        
+
         return $images;
     }
 }

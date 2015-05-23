@@ -6,6 +6,7 @@
  */
 namespace models\factory;
 
+use models\entities\DataExport;
 use models\interfaces\FactoryInterface;
 use models\entities\FailedScrapes;
 use models\entities\Property;
@@ -19,12 +20,12 @@ use models\entities\Property;
 class EntityFactory implements FactoryInterface
 {
     /**
-     * Method for creating new Property objects. 
-     * 
+     * Method for creating new Property objects.
+     *
      * @param array $attributes An associative array of properties to set for a class.
-     * @return Property An instance of the models\entities\Property class. 
+     * @return Property An instance of the models\entities\Property class.
      */
-    public function createProperty($attributes = null) 
+    public function createProperty($attributes = null)
     {
         $property = null;
         if (empty($attributes)) {
@@ -32,14 +33,14 @@ class EntityFactory implements FactoryInterface
         } else {
             $property = new Property($attributes);
         }
-        
+
         return $property;
     }
-    
+
     /**
      * This is a convenient method for created a FailedScrape object.
-     * 
-     * @param array $attributes Attributes to initialize the Object with. 
+     *
+     * @param array $attributes Attributes to initialize the Object with.
      * @return \models\entities\FailedScrapes
      */
     public function createFailedScrapes(array $attributes)
@@ -49,8 +50,25 @@ class EntityFactory implements FactoryInterface
         } else {
             $failedScrape = new FailedScrapes($attributes);
         }
-        
+
         return $failedScrape;
+    }
+
+    /**
+     * @param $exportId - String ID of property file.
+     * @param $xml - The XML content of the file.
+     * @param bool $published - Boolean whether this should be published right away.
+     * @return DataExport
+     */
+    public function createDataExport($exportId, $xml, $published = false)
+    {
+        $dataExport = new DataExport(array(
+            "export_id" => $exportId,
+            "xml"       => $xml,
+            "published" => $published
+        ));
+
+        return $dataExport;
     }
 
 

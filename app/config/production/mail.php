@@ -120,8 +120,6 @@ return array(
 	*/
 
 	'pretend' => false,
-<<<<<<< HEAD
-=======
     
 	/*
 	|--------------------------------------------------------------------------
@@ -136,6 +134,5 @@ return array(
 
 	'default_email' => array('charlesajid@gmail.com'),
 	'default_email_name' => array('Charles'),
->>>>>>> ce07b156a6f337b9d44a120b15c9cdd8f3f71501
 
 );

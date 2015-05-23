@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "4d32acb2d547c7f11091e13ec0fb70e0",
+    "hash": "ad95986464dc5bb3011119954ae39f8b",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -251,20 +251,23 @@
         },
         {
             "name": "doctrine/collections",
-            "version": "v1.2",
+            "version": "v1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/collections.git",
-                "reference": "b99c5c46c87126201899afe88ec490a25eedd6a2"
+                "reference": "6c1e4eef75f310ea1b3e30945e9f06e652128b8a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/collections/zipball/b99c5c46c87126201899afe88ec490a25eedd6a2",
-                "reference": "b99c5c46c87126201899afe88ec490a25eedd6a2",
+                "url": "https://api.github.com/repos/doctrine/collections/zipball/6c1e4eef75f310ea1b3e30945e9f06e652128b8a",
+                "reference": "6c1e4eef75f310ea1b3e30945e9f06e652128b8a",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.2"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0"
             },
             "type": "library",
             "extra": {
@@ -283,17 +286,6 @@
             ],
             "authors": [
                 {
-                    "name": "Jonathan Wage",
-                    "email": "jonwage@gmail.com",
-                    "homepage": "http://www.jwage.com/",
-                    "role": "Creator"
-                },
-                {
-                    "name": "Guilherme Blanco",
-                    "email": "guilhermeblanco@gmail.com",
-                    "homepage": "http://www.instaclick.com"
-                },
-                {
                     "name": "Roman Borschel",
                     "email": "roman@code-factory.org"
                 },
@@ -302,10 +294,16 @@
                     "email": "kontakt@beberlei.de"
                 },
                 {
+                    "name": "Guilherme Blanco",
+                    "email": "guilhermeblanco@gmail.com"
+                },
+                {
+                    "name": "Jonathan Wage",
+                    "email": "jonwage@gmail.com"
+                },
+                {
                     "name": "Johannes Schmitt",
-                    "email": "schmittjoh@gmail.com",
-                    "homepage": "https://github.com/schmittjoh",
-                    "role": "Developer of wrapped JMSSerializerBundle"
+                    "email": "schmittjoh@gmail.com"
                 }
             ],
             "description": "Collections Abstraction library",
@@ -315,7 +313,7 @@
                 "collections",
                 "iterator"
             ],
-            "time": "2014-02-03 23:07:43"
+            "time": "2015-04-14 22:21:58"
         },
         {
             "name": "filp/whoops",
@@ -472,7 +470,7 @@
         },
         {
             "name": "indatus/dispatcher",
-            "version": "1.4.x-dev",
+            "version": "v1.4.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Indatus/dispatcher.git",
@@ -525,16 +523,16 @@
         },
         {
             "name": "intervention/image",
-            "version": "2.1.3",
+            "version": "2.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Intervention/image.git",
-                "reference": "8f3761154b4c1f5128365dfc32cbf757f27d97b6"
+                "reference": "6626d7624ac0895137a38c123943afedd0827efc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Intervention/image/zipball/8f3761154b4c1f5128365dfc32cbf757f27d97b6",
-                "reference": "8f3761154b4c1f5128365dfc32cbf757f27d97b6",
+                "url": "https://api.github.com/repos/Intervention/image/zipball/6626d7624ac0895137a38c123943afedd0827efc",
+                "reference": "6626d7624ac0895137a38c123943afedd0827efc",
                 "shasum": ""
             },
             "require": {
@@ -577,7 +575,7 @@
                 "thumbnail",
                 "watermark"
             ],
-            "time": "2015-03-18 17:41:04"
+            "time": "2015-04-24 14:50:48"
         },
         {
             "name": "ircmaxell/password-compat",
@@ -841,12 +839,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravelbook/ardent.git",
-                "reference": "8af3cf8cd3ea514c68439fdae0271af71ef1449e"
+                "reference": "7a698eeb521968d798c0e1b31fbceb0bb8e24c48"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravelbook/ardent/zipball/8af3cf8cd3ea514c68439fdae0271af71ef1449e",
-                "reference": "8af3cf8cd3ea514c68439fdae0271af71ef1449e",
+                "url": "https://api.github.com/repos/laravelbook/ardent/zipball/7a698eeb521968d798c0e1b31fbceb0bb8e24c48",
+                "reference": "7a698eeb521968d798c0e1b31fbceb0bb8e24c48",
                 "shasum": ""
             },
             "require": {
@@ -892,7 +890,7 @@
                 "sql",
                 "validation"
             ],
-            "time": "2014-07-10 04:06:41"
+            "time": "2015-05-09 15:51:25"
         },
         {
             "name": "monolog/monolog",
@@ -1104,16 +1102,16 @@
         },
         {
             "name": "patchwork/utf8",
-            "version": "v1.2.1",
+            "version": "v1.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tchwork/utf8.git",
-                "reference": "01f0ed1628db7794e2d4e336f55a09daef4248a5"
+                "reference": "7287a6fb2c46a66ac6bfbaf0e4975229b27efcba"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tchwork/utf8/zipball/01f0ed1628db7794e2d4e336f55a09daef4248a5",
-                "reference": "01f0ed1628db7794e2d4e336f55a09daef4248a5",
+                "url": "https://api.github.com/repos/tchwork/utf8/zipball/7287a6fb2c46a66ac6bfbaf0e4975229b27efcba",
+                "reference": "7287a6fb2c46a66ac6bfbaf0e4975229b27efcba",
                 "shasum": ""
             },
             "require": {
@@ -1157,7 +1155,7 @@
                 "utf-8",
                 "utf8"
             ],
-            "time": "2015-01-29 08:36:50"
+            "time": "2015-04-26 09:51:43"
         },
         {
             "name": "pda/pheanstalk",
@@ -1671,40 +1669,6 @@
                 "stack"
             ],
             "time": "2014-11-23 20:37:11"
-        },
-        {
-            "name": "stilliard/blmreader",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/stilliard/blmreader.git",
-                "reference": "8d498c5d1e7fec1ad9ca26697d97886a628a097a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/stilliard/blmreader/zipball/8d498c5d1e7fec1ad9ca26697d97886a628a097a",
-                "reference": "8d498c5d1e7fec1ad9ca26697d97886a628a097a",
-                "shasum": ""
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "BLM\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Andrew Stilliard",
-                    "email": "andrew.stilliard@gmail.com",
-                    "role": "Developer"
-                }
-            ],
-            "description": "BLM file format reader (for use with rightmove files)",
-            "time": "2014-03-29 15:02:43"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -2748,9 +2712,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "laravelbook/ardent": 20,
-        "stilliard/blmreader": 20,
-        "indatus/dispatcher": 20
+        "laravelbook/ardent": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

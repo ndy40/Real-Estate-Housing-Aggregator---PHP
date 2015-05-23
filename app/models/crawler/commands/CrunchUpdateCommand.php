@@ -3,6 +3,7 @@ namespace crunch;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Log;
 use Indatus\Dispatcher\Scheduler;
 use Indatus\Dispatcher\Scheduling\Schedulable;
 use Indatus\Dispatcher\Scheduling\ScheduledCommandInterface;
@@ -98,8 +99,13 @@ class CrunchUpdateCommand extends Command implements ScheduledCommandInterface
             }
 
             $this->call($artisan_command, $scrapeData);
-			unlink(Config::get('crawler.dataexport_upload_path') . '/XML/' . $name . '_AGENT.XML');
-			unlink($file);
+            try {
+                unlink(Config::get('crawler.dataexport_upload_path') . '/XML/' . $name . '_AGENT.XML');
+                unlink($file);
+            } catch (\ErrorException $ex) {
+                Log::error($ex->getMessage());
+            }
+
             $this->info("Finished scraping " . $name);
 		}
     }
@@ -146,7 +152,7 @@ class CrunchUpdateCommand extends Command implements ScheduledCommandInterface
      */
     public function schedule(Schedulable $scheduler)
     {
-        return $scheduler->daily()->everyHours(12);
+        return $scheduler->daily()->everyHours(3)->args(["gb", "dataexport"]);
     }
 
     /**

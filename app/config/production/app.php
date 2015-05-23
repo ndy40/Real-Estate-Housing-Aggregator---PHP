@@ -52,8 +52,6 @@ return array(
 	*/
 
 	'key' => 'vitobniwe',
-<<<<<<< HEAD
-=======
     
         /*
 	|--------------------------------------------------------------------------
@@ -67,5 +65,4 @@ return array(
 	*/
 
 	'frontend_url' => 'http://propertycrunch.co',
->>>>>>> ce07b156a6f337b9d44a120b15c9cdd8f3f71501
 );

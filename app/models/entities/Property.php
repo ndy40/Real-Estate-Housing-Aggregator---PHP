@@ -16,15 +16,15 @@ class Property extends Ardent implements MassAssignInterface
 
     public static $rules = array (
         'marketer'  => 'required',
-        'phone'     => 'required',
+//        'phone'     => 'required',
         'rooms'     => 'numeric',
         'address'   => 'required',
         'price'     => 'numeric',
-//        'url'       => 'required|url',
-	'url'       => '',
+        'url'       => 'required',
 //        'offer_type'=> 'required|in:Sale,Rent'
-
     );
+
+    public $throwOnValidation = true;
 
     protected $fillable = array('marketer', 'rooms', 'url', 'address', 'price',
         'hash', 'available', 'published', "offer_type"

@@ -86,7 +86,7 @@ class CrunchRemoveCommand extends Command implements ScheduledCommandInterface
      */
     public function schedule(Schedulable $scheduler)
     {
-        return $scheduler->daily()->hours(2);
+        return $scheduler->daily()->hours(4);
     }
 
     /**

@@ -25,7 +25,10 @@ Artisan::add(new CrunchListCommand(App::make("ScrapeFactory")));
 
 Artisan::add(new CrunchItemCommand(App::make("ScrapeFactory")));
 
-Artisan::add(new CrunchFeedCommand(App::make("ScrapeFactory")));
+Artisan::add(new CrunchFeedCommand(
+    App::make("ScrapeFactory"),
+    App::make("FeedRepository"))
+);
 
 Artisan::add(new CrunchScrapeCommand(App::make("AgentLogic")));
 

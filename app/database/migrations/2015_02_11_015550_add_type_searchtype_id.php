@@ -13,8 +13,8 @@ class AddTypeSearchtypeId extends Migration {
 	public function up()
 	{
 		Schema::table("type", function (Blueprint $table) {
-            		$table->foreign('search_type_id')->references('id')->on('property_search_type');
-        	});
+            $table->foreign('search_type_id')->references('id')->on('property_search_type');
+        });
 	}
 
 	/**
@@ -25,8 +25,8 @@ class AddTypeSearchtypeId extends Migration {
 	public function down()
 	{
 		Schema::table('type', function (Blueprint $table) {
-            		$table->dropForeign('type_search_type_foreign');
-        	});
+            $table->dropForeign('type_search_type_foreign');
+        });
 	}
 
 }

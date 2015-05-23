@@ -54,11 +54,7 @@ return array(
 
 		'mysql' => array(
 			'driver'    => 'mysql',
-<<<<<<< HEAD
-			'host'      => '192.168.33.4',
-=======
 			'host'      => 'localhost',
->>>>>>> ce07b156a6f337b9d44a120b15c9cdd8f3f71501
 			'database'  => 'propertycrunch_tests',
 			'username'  => 'root',
 			'password'  => 'mysql',
@@ -118,11 +114,7 @@ return array(
 		'cluster' => false,
 
 		'default' => array(
-<<<<<<< HEAD
-			'host'     => '192.168.33.4',
-=======
 			'host'     => 'localhost',
->>>>>>> ce07b156a6f337b9d44a120b15c9cdd8f3f71501
 			'port'     => 6379,
 			'database' => 0,
 		),

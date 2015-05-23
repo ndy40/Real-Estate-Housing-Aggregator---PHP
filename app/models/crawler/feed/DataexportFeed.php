@@ -118,7 +118,7 @@ class DataexportFeed extends FeedAbstract
         $agentDoc = new \SimpleXMLElement($agentFile);
         $data = array(
             "marketer" => $agentDoc->agentname->__toString(),
-            "phone"    => $agentDoc->telephone->__toString(),
+            "phone"    => $agentDoc->telephone->__toString() . ' ' . $agentDoc->email->__toString(),
         );
 
         return $data;
@@ -134,10 +134,10 @@ class DataexportFeed extends FeedAbstract
                 if (is_array($prop)) {
                     $propertyAttribute = $property->addChild($key . 's'); //make the DOM element plural
                     foreach($prop as $item) {
-                        $propertyAttribute->addChild($key, $item);
+                        $propertyAttribute->addChild($key, htmlspecialchars($item, ENT_XML1));
                     }
                 } else {
-                    $property->addChild($key, $prop);
+                    $property->addChild($key, htmlspecialchars($prop, ENT_XML1));
                 }
             }
         });
