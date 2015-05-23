@@ -10,10 +10,11 @@ vendor/
 app/storage/scrape
 Vgrantfile
 .vagrant
-.idea/
+.idea
 public/assets/properties/*
 AskFtpSiteDeployer.xml
 *.(lock|log)
 dataexport/
 workspace.xml
 app/storage/data
+
