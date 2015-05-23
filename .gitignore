@@ -16,3 +16,4 @@ AskFtpSiteDeployer.xml
 *.(lock|log)
 dataexport/
 workspace.xml
+app/storage/data
