@@ -13,33 +13,35 @@ use models\interfaces\MassAssignInterface;
 class Property extends Ardent implements MassAssignInterface
 {
     protected $table = 'properties';
-    
+
     public static $rules = array (
         'marketer'  => 'required',
-        'phone'     => 'required',
+//        'phone'     => 'required',
         'rooms'     => 'numeric',
         'address'   => 'required',
         'price'     => 'numeric',
-        'url'       => 'required|url',
-        'offer_type'=> 'required|in:Sale,Rent'
+        'url'       => 'required',
+//        'offer_type'=> 'required|in:Sale,Rent'
     );
-    
+
+    public $throwOnValidation = true;
+
     protected $fillable = array('marketer', 'rooms', 'url', 'address', 'price',
         'hash', 'available', 'published', "offer_type"
     );
 
     protected $hidden = array("hash");
-    
+
     public function postCode()
     {
         return $this->belongsTo('\\models\\entities\\PostCode');
     }
-    
+
     public function agency()
     {
         return $this->belongsTo('\\models\\entities\\Agency');
     }
-    
+
     public function type()
     {
         return $this->belongsTo('\\models\\entities\\PropertyType', 'type_id');
@@ -56,7 +58,7 @@ class Property extends Ardent implements MassAssignInterface
             $this->setAttribute($key, $value);
         }
     }
-    
+
     public function images() {
         return $this->hasMany("\\models\\entities\\Image", "property_id");
     }

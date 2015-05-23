@@ -13,9 +13,9 @@ class CreateYieldColumnProperties extends Migration {
 	 */
 	public function up()
 	{
-            Schema::table("property", function (Blueprint $table) {
-                $table->float("yield")->default(0.0);
-            });
+        Schema::table("properties", function (Blueprint $table) {
+            $table->float("yield")->default(0.0);
+        });
 	}
 
 	/**
@@ -25,9 +25,9 @@ class CreateYieldColumnProperties extends Migration {
 	 */
 	public function down()
 	{
-            Schema::table("property", function (Blueprint $table) {
-                $table->dropColumn("yield");
-            });
+        Schema::table("properties", function (Blueprint $table) {
+            $table->dropColumn("yield");
+        });
 	}
 
 }

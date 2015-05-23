@@ -12,4 +12,8 @@ class PropertyType extends Ardent
 {
     protected $table = 'type';
 	public $timestamps = false;
+
+    public function searchType() {
+        return $this->belongsTo('\\models\\entities\\PropertySearchType');
+    }
 }

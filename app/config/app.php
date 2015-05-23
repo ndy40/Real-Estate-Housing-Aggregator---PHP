@@ -35,7 +35,7 @@ return array(
 	|
 	| Here you may specify the default timezone for your application, which
 	| will be used by the PHP date and date-time functions. We have gone
-	| ahead and set this to a sensible default for you out of the box.
+	| ahead and set this to a sensible default for y    ou out of the box.
 	|
 	*/
 
@@ -65,6 +65,19 @@ return array(
 	*/
 
 	'key' => 'vitobniwe',
+
+    /*
+	|--------------------------------------------------------------------------
+	| Frontend URL
+	|--------------------------------------------------------------------------
+	|
+	| This URL is used by the console to properly generate URLs when using
+	| the Artisan command line tool. You should set this to the root of
+	| your application so that it is used when running Artisan tasks.
+	|
+	*/
+
+	'frontend_url' => 'http://v1.propertycrunch.co',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -105,10 +118,11 @@ return array(
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
-                'Cartalyst\Sentry\SentryServiceProvider',
-                'Kmd\Logviewer\LogviewerServiceProvider',
-                "Intervention\Image\ImageServiceProvider",
-        'Chumper\Zipper\ZipperServiceProvider',
+        'Cartalyst\Sentry\SentryServiceProvider',
+        'Kmd\Logviewer\LogviewerServiceProvider',
+        'Intervention\Image\ImageServiceProvider',
+        'Thomaswelton\LaravelRackspaceOpencloud\LaravelRackspaceOpencloudServiceProvider',
+        'Indatus\Dispatcher\ServiceProvider',
 	),
 
 	/*
@@ -174,9 +188,9 @@ return array(
 		'URL'             => 'Illuminate\Support\Facades\URL',
 		'Validator'       => 'Illuminate\Support\Facades\Validator',
 		'View'            => 'Illuminate\Support\Facades\View',
-                'Sentry'          => 'Cartalyst\Sentry\Facades\Laravel\Sentry',
-                'Image'           => "Intervention\Image\Facades\Image",
-        'Zipper' => 'Chumper\Zipper\Zipper',
+        'Sentry'          => 'Cartalyst\Sentry\Facades\Laravel\Sentry',
+        'Image'           => "Intervention\Image\Facades\Image",
+        'OpenCloud'       => 'Thomaswelton\LaravelRackspaceOpencloud\Facades\OpenCloud'
 	),
 
 );

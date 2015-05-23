@@ -21,8 +21,11 @@ class YieldQueue extends JobQueue
         foreach ($data as $property) {
             $yield = $propertyLogic->getRentalYieldOfProperty($property["id"]);
             $entity = $propertyLogic->find($property["id"]);
-            $entity->yield = $yield;
-            $saved = $propertyLogic->save($entity);
+			if ($yield !== 0 && $entity->yield !== $yield) {
+				echo 'save' . $property["id"];
+            	$entity->yield = $yield;
+            	$saved = $propertyLogic->save($entity);
+			}
         }
         $job->delete();
     }

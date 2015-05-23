@@ -14,7 +14,7 @@ use models\interfaces\RepositoryInterface;
 class AgentLogic implements DataLogicInterface
 {
     protected $agentRepo;
-    
+
     public function __construct(RepositoryInterface $respository)
     {
         $this->agentRepo = $respository;
@@ -23,25 +23,27 @@ class AgentLogic implements DataLogicInterface
     {
         return $this->agentRepo->fetchAllAgents($column, $direction);
     }
-    
+
     public function fetch($id)
     {
         return $this->agentRepo->fetch($id);
     }
-    
+
     public function addCatalogue($agentId, $url)
     {
         $agent = $this->agentRepo->fetch($agentId);
+	if (count(Catalogue::where('url', '=', $url)->get()))
+		return;
         $catalogue = new Catalogue();
         $catalogue->url = $url;
         return $agent->catalogues()->save($catalogue);
     }
-    
+
     public function deleteCatalogue($id)
     {
         return $this->agentRepo->deleteCatalogue($id);
     }
-    
+
     public function fetchAgentByNameAndCountry($agent, $country)
     {
         return $this->agentRepo->fetchAgentByNameAndCountry($agent, $country);

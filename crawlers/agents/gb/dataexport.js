@@ -7,7 +7,7 @@ var require = patchRequire(require),
     fs = require('fs'),
     Agent   = require("../../library/BaseAgent").create(),
     CrunchUtil = require("../../library/Utility").create();
-    
+
 Dataexport = CrunchUtil.extends(Agent);
 
 Dataexport.prototype.initialize = function (casperjs) {
@@ -24,24 +24,21 @@ Dataexport.prototype.initialize = function (casperjs) {
     return this;
 };
 
-Dataexport.prototype.itemDetail = function (casperjs, url) {
+Dataexport.prototype.itemListing = function (casperjs, url) {
     'use strict';
     var self = this, dataType = require('library/DataType').create();
 
-    casperjs.start(url, function () {;
-        var xmlhttp = new XMLHttpRequest();
-        xmlhttp.open("GET", url, false);
-        xmlhttp.send();
-        var xmlProperty = xmlhttp.responseXML;
+    casperjs.start(url, function () {
+        var path = url.split(','),
+            extractxml_path = path[0],
+            upload_path = path[1],
+            filename = path[2],
+            xmltext = fs.open(extractxml_path, 'r').read(),
+            parser = new DOMParser(),
+            xmlProperty = parser.parseFromString (xmltext, "text/xml");
 
-        xmlhttp = new XMLHttpRequest();
-        var arr = url.split('/');
-        var filename = arr.pop();
-        filename = filename.split('.');
-        arr.pop();
-        xmlhttp.open('GET', arr.join('/')+'/XML/'+filename[0]+'_AGENT.XML', false);
-        xmlhttp.send();
-        var xmlAgent = xmlhttp.responseXML;
+        xmltext = fs.open(filename, 'r').read();
+        var xmlAgent = parser.parseFromString(xmltext, "text/xml");
 
         var properties = xmlProperty.getElementsByTagName('property');
         var property_data = [];
@@ -52,18 +49,28 @@ Dataexport.prototype.itemDetail = function (casperjs, url) {
             for (var j=0; j<images.length; j++) {
                 img_arr[j] = images[j].childNodes[0].nodeValue;
             }
+            var phone = xmlAgent.getElementsByTagName('telephone')[0]
+                    .childNodes[0],
+                areaCode = properties[i].getElementsByTagName('areacode')[0]
+                    .childNodes[0],
+                description = properties[i].getElementsByTagName('description')[0]
+                    .childNodes[0],
+                status = properties[i].getElementsByTagName('publish')[0]
+                    .childNodes[0].nodeValue;
+
             property_data[i] = {
                 type: properties[i].getElementsByTagName('type')[0].childNodes[0].nodeValue,
-                rooms: properties[i].getElementsByTagName('rooms')[0].childNodes[0].nodeValue,
-                areaCode: properties[i].getElementsByTagName('areacode')[0].childNodes[0].nodeValue,
-                address: properties[i].getElementsByTagName('address')[0].childNodes[0].nodeValue,
-                price: properties[i].getElementsByTagName('price')[0].childNodes[0].nodeValue,
-                marketer: xmlAgent.getElementsByTagName('contact')[0].childNodes[0].nodeValue,
-                phone: xmlAgent.getElementsByTagName('telephone')[0].childNodes[0].nodeValue,
-                offertype: properties[i].getElementsByTagName('offertype')[0].childNodes[0].nodeValue,
-                status: 'available',
-                url: '',
-                images: img_arr
+                rooms: dataType.integer(properties[i].getElementsByTagName('rooms')[0].childNodes[0].nodeValue),
+                areaCode: areaCode!==undefined?dataType.areaCode(areaCode.nodeValue):null,
+                address: dataType.string(properties[i].getElementsByTagName('address')[0].childNodes[0].nodeValue),
+                price: dataType.currency(properties[i].getElementsByTagName('price')[0].childNodes[0].nodeValue),
+                marketer: dataType.string(xmlAgent.getElementsByTagName('agentname')[0].childNodes[0].nodeValue),
+                phone: phone!==undefined?dataType.string(phone.nodeValue):null,
+                offertype: dataType.offerType(properties[i].getElementsByTagName('offertype')[0].childNodes[0].nodeValue),
+                status: status==='0'?'notAvailable':'available',
+                url: filename,
+                description: description!==undefined&&status==='1'?description.nodeValue:null,
+                images: status==='0'?null:img_arr
             };
         }
         self.results.push(property_data);

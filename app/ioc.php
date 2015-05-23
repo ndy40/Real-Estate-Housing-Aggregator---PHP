@@ -1,6 +1,6 @@
 <?php
 
-/* 
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -48,6 +48,13 @@ App::singleton('EntityFactory', function ($app) {
 
 App::bind('ScrapeRepository', function ($app) {
     return new \models\repositories\ScrapeRepository(
+        App::make("PropertyRepository"),
+        App::make("AgentRespository")
+    );
+});
+
+App::bind('FeedRepository', function ($app) {
+    return new \models\repositories\FeedRepository(
         App::make("PropertyRepository"),
         App::make("AgentRespository")
     );

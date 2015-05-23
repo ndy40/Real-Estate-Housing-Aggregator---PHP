@@ -5,7 +5,7 @@
 
 var casperjs = require('casper').create(),
     utils   = require('utils'),
-    _ = require("../node_modules/underscore"),
+    _ = require("node_modules/underscore"),
     fs = require('fs'),
     config,
     scriptArgs, //holds a collection of arguments for the scrape.
@@ -50,19 +50,14 @@ agentPath = config.config.directory.agents + '/' + scrapeJob.country + '/'
 agent = require(agentPath).create();
 agent.initialize (casperjs);
 
-if (scrapeJob.agent == 'dataexport') {
-	results = agent.itemDetail(casperjs, scrapeJob.url).results;
-	casperjs.clear();
-} else if (scrapeJob.agent == 'zoopla') {
-	//switch context on type of job
-	switch (scrapeJob.type) {
-	    case 'item':
-	        results = agent.itemDetail(casperjs, scrapeJob.url).results;
-	        break;
-	    default:
-	        results = agent.itemListing(casperjs, scrapeJob.url).results;
-	        casperjs.clear();
-	}
+//switch context on type of job
+switch (scrapeJob.type) {
+    case 'item':
+        results = agent.itemDetail(casperjs, scrapeJob.url).results;
+        break;
+    default:
+        results = agent.itemListing(casperjs, scrapeJob.url).results;
+        casperjs.clear();
 }
 
 //execute scrape here.

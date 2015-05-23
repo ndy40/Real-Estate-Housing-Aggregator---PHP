@@ -1,4 +1,5 @@
 <?php
+
 namespace controllers\property;
 
 use Illuminate\Support\Facades\App;
@@ -7,6 +8,7 @@ use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Input;
+use models\entities\User;
 use BaseController;
 
 /**
@@ -14,20 +16,17 @@ use BaseController;
  *
  * @author ndy40
  */
-class PropertyController extends BaseController
-{
-    protected $propertyLogic;
+class PropertyController extends BaseController {
 
+    protected $propertyLogic;
     protected $agencyLogic;
 
-    public function __construct()
-    {
+    public function __construct() {
         $this->propertyLogic = App::make("PropertyLogic");
         $this->agencyLogic = App::make("AgentLogic");
     }
 
-    public function index()
-    {
+    public function index() {
         if (Cache::has("counties")) {
             $counties = Cache::get("counties");
         } else {
@@ -43,15 +42,12 @@ class PropertyController extends BaseController
         return View::make("property.property", array("county" => $data));
     }
 
-
-    public function getCountries()
-    {
+    public function getCountries() {
         $countries = $this->propertyLogic->fetchCountries();
         return Response::json($countries);
     }
 
-    public function getPostcode()
-    {
+    public function getPostcode() {
         if (Cache::has("county_list")) {
             $counties = Cache::get("county_list");
         } else {
@@ -65,14 +61,13 @@ class PropertyController extends BaseController
         return View::make("property.postcode", array("counties" => $data));
     }
 
-    public function getPostCodesByCounty($id)
-    {
+    public function getPostCodesByCounty($id) {
         $postcodes = array();
 
         if (Cache::has("fetch_county_" . $id)) {
-             $postcodes = Cache::get("fetch_county_" . $id);
+            $postcodes = Cache::get("fetch_county_" . $id);
         } elseif ($id != "-1") {
-             $county = $this->propertyLogic->fetchCounty($id);
+            $county = $this->propertyLogic->fetchCounty($id);
             if ($county) {
                 $postcodes = $county->postCodes->toArray();
             }
@@ -81,8 +76,7 @@ class PropertyController extends BaseController
         return Response::json(array("data" => $postcodes), 200);
     }
 
-    public function postDeletePostCode()
-    {
+    public function postDeletePostCode() {
         $data = Input::get("data");
         $id = $data["id"];
         $deleted = $this->propertyLogic->deletePostCode($id);
@@ -90,8 +84,7 @@ class PropertyController extends BaseController
         return Response::json(array("data" => $deleted), 200);
     }
 
-    public function postAddPostCode()
-    {
+    public function postAddPostCode() {
         $data = Input::get("data");
         $countyId = $data["county"];
         $area = $data["area"];
@@ -101,8 +94,7 @@ class PropertyController extends BaseController
         return Response::json(array("data" => $postCode), 200);
     }
 
-    public function getFetchProperties()
-    {
+    public function getFetchProperties() {
         $data = Input::get("data");
         $filter = array();
         if (array_key_exists("county", $data)) {
@@ -112,23 +104,23 @@ class PropertyController extends BaseController
         }
 
         if (array_key_exists("post_code_id", $data)) {
-            if ($data["post_code_id"] != null  && $data["post_code_id"] > 0) {
+            if ($data["post_code_id"] != null && $data["post_code_id"] > 0) {
                 $filter["post_code_id"] = $data["post_code_id"];
             }
         }
 
         $startIndex = array_key_exists("page", $data) ? $data["page"] : 1;
-        $size = array_key_exists("size", $data) ? $data["size"] : (int)Config::get("view.pagination_size");
+        $size = array_key_exists("size", $data) ? $data["size"] : (int) Config::get("view.pagination_size");
 
         $key = "admin_listing_"
-            . implode('#', array_values($filter))
-            . $startIndex
-            . $size;
+                . implode('#', array_values($filter))
+                . $startIndex
+                . $size;
 
         if (Cache::has($key)) {
             $data = Cache::get($key);
         } else {
-            $data  = $this->propertyLogic->fetchAllProperty($filter, $startIndex, $size);
+            $data = $this->propertyLogic->fetchAllProperty($filter, $startIndex, $size);
 
             if (!$data->isEmpty()) {
                 $data = $data->toArray();
@@ -141,6 +133,70 @@ class PropertyController extends BaseController
 
         $count = $this->propertyLogic->countAllProperty($filter);
 
-        return Response::json(array("count" => $count, "page"  => $startIndex, "size"  => $size, "data"  => $data));
+        return Response::json(array("count" => $count, "page" => $startIndex, "size" => $size, "data" => $data));
     }
+
+    /**
+     * sendPropertyEmailToFriend method
+     * this method is used to send email to friend(s) about property.
+     * 
+     * @param int $propertyId
+     * @return json
+     */
+    public function sendPropertyEmailToFriend($property_id) {
+        $name = Input::get("name");
+        $email = Input::get("email");
+        $friendemails = explode(',', Input::get("friendemail"));
+        $message = Input::get("message");
+
+        $data = array('name' => $name, 'email' => $email, 'messages' => $message, 'property_id' => $property_id);
+        //return View::make("emails.emailtofriend", $data);exit;
+        \Mail::queue("emails.emailtofriend", $data, function ($message) use ($name, $email, $friendemails) {
+                    $message->from($email, $name)->to($friendemails)->subject("Property Crunch | Property Detail");
+                }
+        );
+        return Response::json(array("data" => 'success'), 200);
+    }
+
+    /**
+     * sendPropertyRequestDetail method
+     * this method is used to send request email to admin/agent about property.
+     * 
+     * @param int $propertyId
+     * @return json
+     */
+    public function sendPropertyRequestDetail($property_id) {
+        $name = Input::get("name");
+        $email = Input::get("email");
+        $agentemail = Input::get("agentemail");
+        $agentname = Input::get("agentname");
+        $phone = Input::get("phone");
+        $message = Input::get("message");
+
+        // send to agent..
+        $data = array(
+            'name' => $name, 'email' => $email, 'messages' => $message,
+            'phone' => $phone, 'property_id' => $property_id, 'recepientemail' => $agentemail, 'recepientname' => $agentname);
+        \Mail::send("emails.requestdetail", $data, function ($message) use ($name, $email, $agentemail) {
+                    $message->from($email, $name)->to($agentemail)->subject("Property Crunch | Property Request Detail");
+                }
+        );
+        // send to default emails..
+        if (Config::get('mail.default_email') != '') {
+            foreach (Config::get('mail.default_email') as $defaultEmailKey => $defaultEmail) {
+                $defaultEmailNameArray = Config::get('mail.default_email_name');
+                $defaultEmailName = $defaultEmailNameArray[$defaultEmailKey];
+                $dataDefault = array(
+                    'name' => $name, 'email' => $email, 'messages' => $message, 'phone' => $phone, 'property_id' => $property_id,
+                    'recepientemail' => $defaultEmail, 'recepientname' => $defaultEmailName);
+                \Mail::send("emails.requestdetail", $dataDefault, function ($message) use ($name, $email, $defaultEmail, $defaultEmailName) {
+                            $message->from($email, $name)->to($defaultEmail, $defaultEmailName)
+                                    ->subject("Property Crunch | Property Request Detail");
+                        }
+                );
+            }
+        }
+        return Response::json(array("data" => 'success'), 200);
+    }
+
 }

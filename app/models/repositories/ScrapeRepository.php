@@ -18,9 +18,6 @@ use models\interfaces\PropertyRespositoryInterface;
 use models\interfaces\ScrapeRepositoryInterface;
 use Illuminate\Support\Facades\Queue;
 
-use models\entities\PropertyType;
-
-use postcode\Postcode;
 /**
  * Description of ScrapeRepository
  *
@@ -80,123 +77,14 @@ class ScrapeRepository implements ScrapeRepositoryInterface
         return $failedScrape;
     }
 
-	public function savePropertyForDataexport(\DOMDocument $data) {
-		$scrapedProperty = $this->buildPropertyClassPart($data);
-
-        $status = $data->getElementsByTagName('status')->item(0)->nodeValue;
-        $agent = $data->getElementsByTagName('agent')->item(0)->nodeValue;
-        $country = $data->getElementsByTagName('country')->item(0)->nodeValue;
-
-        $type = $data->getElementsByTagName('type')->item(0)->nodeValue;
-		$type = $this->propertyRepo->fetchAndInsertPropertyType($type);
-		//var_dump($type);
-		$scrapedProperty->type()->associate($type);
-
-        $postCode = $data->getElementsByTagName('areacode')->item(0)->nodeValue;
-
-        $agency = $this->agentRepo->fetchAgentByNameAndCountry($agent, $country);
-        $scrapedProperty->agency()->associate($agency);
-
-        //echo $postCode.'-';
-        $postCodes = $this->propertyRepo->fetchPostCode($postCode);
-		//$postTown = Postcode::getDistrict($postCode);
-
-        if (!$postCodes->isEmpty() && $postCodes->count() == 1) {
-            $scrapedProperty->postCode()->associate($postCodes->first());
-        } elseif (!$postCodes->isEmpty() && $postCodes->count() > 0) {
-            $regex = $this->getPostCodeAreaRegex($postCode);
-            $area = $this->extractAreaName($scrapedProperty->address, $regex);
-
-            //Since we couldn't find the area name No choice but to use county
-            if (empty($area)) {
-                //then we probably have county listed there. Insert new post code against county.
-                $regex = $this->getCountyRegex($agency->country->id);
-
-                $area = $this->extractAreaName($scrapedProperty->address, $regex);
-
-                $existingPostCode = $this->propertyRepo->fetchPostCodeByName($postCode, $area);
-
-                if (empty($existingPostCode)) {
-                    $isSaved = $this->propertyRepo->createPostCode(
-                        $agency->country->id,
-                        $postCode,
-                        $area
-                    );
-                } elseif (empty($area)) {
-                    //echo $scrapedProperty->address.'---';
-                    $format = sprintf(
-                        "Cannot find county in address - %s in scrape address",
-                        $scrapedProperty->address
-                    );
-                    Log::error($format);
-                    return;
-                }
-            }
-            $postCode = $this->propertyRepo->fetchPostCodeByName($postCode, $area);
-            $scrapedProperty->postCode()->associate($postCode);
-        } else {
-            $format = sprintf("Cannot find post code in database %s", $postCode);
-            Log::error($format);
-            return;
-        }
-
-        switch ($status) {
-            case JobQueue::ITEM_NOT_AVAILABLE:
-                $property = $this->propertyRepo
-                    ->fetchPropertyByHash($scrapedProperty->hash);
-
-                if (!is_null($property)) {
-                    $property->available = false;
-                    $property->save();
-                }
-                break;
-            case JobQueue::ITEM_AVAILABLE:
-                $scrapedProperty->available = 1;
-                $property = $this->propertyRepo
-                    ->fetchPropertyByHash($scrapedProperty->hash);
-                //check if agency has been configured for auto-approval. If true then
-                //set available to 1.
-
-                if ($agency->auto_publish) {
-                    $scrapedProperty->published = 1;
-                }
-
-                if ($property === null) {
-                    $scrapedProperty = $this->propertyRepo->save($scrapedProperty);
-                    $action = "create";
-                } else {
-                    //perform proper test on data insert/update of property.
-                    //echo $scrapedProperty->marketer;
-                    $count = $this->propertyRepo->updateChangedFields($scrapedProperty, $property);
-                    $scrapedProperty = $this->propertyRepo->save($property);
-                    $action = "update";
-                }
-
-                if ($scrapedProperty === false) {
-                    Log::warning("Failed to save property " . $scrapedProperty);
-                } else {
-                    $images = $this->createImagesArray($data);
-                    $jobData = array (
-                        "property_id" => $scrapedProperty->id,
-                        "images"      => $images,
-                        "action"      => $action
-                    );
-                    Queue::push("ImageProcessingQueue", $jobData, "scrape_images");
-                }
-
-                break;
-        }
-
-        return $scrapedProperty;
-	}
-
     public function saveProperty(\DOMDocument $data)
     {
-        $scrapedProperty = $this->buildPropertyClassPart($data);
+        $country = $data->getElementsByTagName('country')->item(0)->nodeValue;;
+        $agent = $data->getElementsByTagName('agent')->item(0)->nodeValue;;
+
+        $scrapedProperty = $this->buildPropertyClassPart($data, $country, $agent);
 
         $status = $data->getElementsByTagName('status')->item(0)->nodeValue;
-        $agent = $data->getElementsByTagName('agent')->item(0)->nodeValue;
-        $country = $data->getElementsByTagName('country')->item(0)->nodeValue;
 
         $type = $data->getElementsByTagName('type')->item(0)->nodeValue;
         $type = $this->propertyRepo->fetchPropertyType($type);
@@ -268,20 +156,18 @@ class ScrapeRepository implements ScrapeRepositoryInterface
                 }
 
                 if ($property === null) {
-                    $saved = $this->propertyRepo->save($scrapedProperty);
+                    $scrapedProperty = $this->propertyRepo->save($scrapedProperty);
                     $action = "create";
                 } else {
                     //perform proper test on data insert/update of property.
                     $count = $this->propertyRepo->updateChangedFields($scrapedProperty, $property);
-                    $saved = $this->propertyRepo->save($property);
+                    $scrapedProperty = $this->propertyRepo->save($property);
                     $action = "update";
                 }
 
-                if ($saved === false) {
+                if ($scrapedProperty === false) {
                     Log::warning("Failed to save property " . $scrapedProperty);
                 } else {
-                    $scrapedProperty = $property = $this->propertyRepo
-                        ->fetchPropertyByHash($scrapedProperty->hash);
                     $images = $this->createImagesArray($data);
                     $jobData = array (
                         "property_id" => $scrapedProperty->id,
@@ -297,12 +183,9 @@ class ScrapeRepository implements ScrapeRepositoryInterface
         return $scrapedProperty;
     }
 
-    protected function buildPropertyClassPart(\DOMDocument $data)
+    protected function buildPropertyClassPart($data, $country, $agent)
     {
         $scrapeProperty = array();
-
-        $country = rawurldecode($data->getElementsByTagName('country')->item(0)->nodeValue);
-        $agent = rawurldecode($data->getElementsByTagName('agent')->item(0)->nodeValue);
 
         $marketer = $data->getElementsByTagName('marketer');
         if ($marketer) {
@@ -311,6 +194,11 @@ class ScrapeRepository implements ScrapeRepositoryInterface
 
         $address = $data->getElementsByTagName('address');
         $scrapeProperty['address'] = $address->item(0)->nodeValue;
+
+        $phone = $data->getElementsByTagName('phone');
+        if (!is_null($phone->item(0))) {
+            $scrapeProperty['phone'] = $address->item(0)->nodeValue;
+        }
 
         $room = $data->getElementsByTagName('rooms');
         if (!is_null($room->item(0))) {
@@ -326,12 +214,12 @@ class ScrapeRepository implements ScrapeRepositoryInterface
 
         $scrapeProperty['price'] = doubleval($data->getElementsByTagName('price')->item(0)->nodeValue);
 
-//        $offe = $data->getElementsByTagName("offertype")->item(0)->nodeValue;
-        //print_r($data);
         $scrapeProperty["offer_type"] = $data->getElementsByTagName("offertype")->item(0)->nodeValue;
         $type = $data->getElementsByTagName("type")->item(0)->nodeValue;
 
         $scrapeProperty['url'] = rawurldecode($data->getElementsByTagName('url')->item(0)->nodeValue);
+
+        $scrapeProperty['description'] = $data->getElementsByTagName('description')->item(0)->nodeValue;
 
         $scrapeProperty['hash'] = $this->propertyRepo->generatePropertyHash(
             $country,
@@ -345,10 +233,6 @@ class ScrapeRepository implements ScrapeRepositoryInterface
         );
         $property = new Property();
         $property->assignAttributes($scrapeProperty);
-        //He shouldn't do this here.
-        $rules = Property::$rules;
-        $rules['url'] = '';
-        Property::$rules = $rules;
 
         return $property;
     }
@@ -423,7 +307,7 @@ class ScrapeRepository implements ScrapeRepositoryInterface
 
     public function createImagesArray(\DOMDocument $dom)
     {
-        $imgs = $dom->getElementsByTagName("src");
+        $imgs = $dom->getElementsByTagName("image");
         $images = array();
         foreach($imgs as $image) {
             $images[] = $image->nodeValue;
